@@ -1,0 +1,11 @@
+---
+import CardPage from '@/components/l10n/CardPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+import { supportCards } from '@/lib/static-content';
+export function getStaticPaths() {
+  return NEW_LOCALES.flatMap((lang) => supportCards.map((card) => ({ params: { lang, id: card.id }, props: { card } })));
+}
+const { lang } = Astro.params;
+const { card } = Astro.props;
+---
+<CardPage locale={lang as any} card={card} />

@@ -119,31 +119,70 @@ npm run deploy  # Uses wrangler pages deploy
 5. **Simplicity**: Single deployment to Cloudflare Pages
 6. **Scalability**: Can handle millions of requests with CDN
 
-## Data refresh (since 2026-10)
+## Weekly update procedure (since 2026-10) — follow this exactly
 
-The JSON in `public/data/` is now generated from GameTora's public data files, not from the SQLite database:
+The site is static. All data in `public/data/*.json` comes from GameTora's public data files (no SQLite, no hand-written data).
+Five locales are built from the same data: `en` (default, no prefix), `ja` (`/ja/`), `zh` Simplified (`/zh/`), `zh-tw` Traditional (`/zh-tw/`), `ko` (`/ko/`).
+Nothing depends on GitHub Actions; run these steps from a checkout of `shiyuzi-ship-it/umamusumedb` (branch `main`).
 
+### 1. Refresh data (idempotent, safe to re-run)
 ```bash
-node scripts/import-gametora.mjs   # characters, supportCards, skills, scenarios, releases, *-lite.json, legacy-id map
-node scripts/fetch-news.mjs        # latest Global announcement headlines (umamusume.gg RSS) -> public/data/news.json
-npm run build && npm run deploy    # Cloudflare Pages direct upload (wrangler login or CLOUDFLARE_API_TOKEN required)
+npm ci                              # first time / after dependency changes
+node scripts/import-gametora.mjs    # characters, supportCards, skills, scenarios, releases, *-lite.json, i18n names (ko / zh-TW / zh-CN), images
+node scripts/fetch-news.mjs         # Global announcement headlines (umamusume.gg RSS) -> public/data/news.json
+```
+- `import-gametora.mjs` also calls `scripts/fetch-images.mjs`: real GameTora artwork is downloaded only for ids that have no file yet
+  (`public/img/characters/{card_id}.webp`, `public/img/cards/{support_id}.webp`, `public/img/skills/{icon_id}.webp`; webp via sharp) and
+  `image_url` / `icon_url` are written into the JSON. Set `GT_CACHE=/some/dir` to cache the downloaded JSON for offline re-runs.
+- Every character / card / skill gets `i18n: { ko, zh_tw, zh }` (official Korean text and Taiwan-server text from GameTora). **Simplified Chinese
+  is derived from the Traditional text with `opencc-js` (character conversion, not CN-server text)** — say so on `/data-sources/`. Missing translations
+  fall back (ko -> English, zh/zh-tw -> Japanese) in `src/lib/localized.js`, so new JP-only items still show their real names.
+- Not imported on purpose: story/training events (GameTora serves them obfuscated) and anything without a verifiable source.
+  Known gaps: ~8 skill icon ids that GameTora has no image for (shown without icon); a few newest support cards use GameTora's small
+  `support_card_s_{id}.png` fallback art.
+- Never edit `public/data/*.json` by hand — fix the importer instead. New game ids appear automatically on all five locales (pages are generated from the JSON).
+
+### 2. Build and check
+```bash
+npm run build                # astro build + scripts/build-sitemaps.mjs (dist/sitemap-{en,ja,zh,zh-tw,ko}.xml + sitemap-index.xml)
+node scripts/check-seo.mjs   # must print "0 problems": hreflang targets exist/reciprocal/indexable, titles unique, canonical, html lang, no ads on noindex pages
+npx vitest run
+```
+- Page budget: Cloudflare Pages allows **20,000 files** per deployment; the build is ~10,000 pages + ~1,000 images (~11,100 files). Check
+  `find dist -type f | wc -l` after a data refresh; if it nears 18k, reduce pages (e.g. stop building a locale's skill pages) before deploying.
+- Pages per locale: en/ja build every character, card and skill (evolved, JP-only (en) and placeholder skills are `noindex`); zh / zh-tw / ko build all
+  characters, cards, indexable global skills, updates and tools. `src/lib/i18n.ts` (`availableLocalesFor`) is the single source of truth for which locales have
+  which page (hreflang, language switcher); `src/lib/skill-class.ts` classifies skills (`all` / `jp` / `none`).
+- Search: `src/pages/search/[lang].json.ts` emits `/search/{locale}.json` (names in every language + English/romaji, loaded by the header search box).
+- Sitemaps are built from the built HTML (`scripts/build-sitemaps.mjs`): noindex pages are skipped, hreflang alternates are copied from each page.
+  `robots.txt` points to `sitemap-index.xml`; `/sitemap.xml` and `/sitemap-0.xml` redirect to it (`public/_redirects`).
+- UI strings for all locales: `src/lib/ui-strings.ts` (add a key to `en`; `ja`, `zh`, `ko` need their own; `zh-tw` is converted from `zh`).
+  New-locale templates: `src/components/l10n/` + `src/pages/[lang]/`; en/ja keep their own pages (`src/pages/*`, `src/pages/ja/*`).
+
+### 3. Commit and push
+```bash
+git add -A && git commit -m "Data update YYYY-MM-DD" && git push origin main
 ```
 
-The old `collect-*` / `export-to-json` scripts and `database/` no longer feed the site. Tool formulas (training gain, spark inheritance,
-skill hint discounts) are community-measured; sources are cited in the tool components and on `/data-sources/`.
+### 4. Deploy to Cloudflare Pages (project `umamusumedb`, production branch `main`, no API token needed)
+Uses the Cloudflare MCP (`execute` tool) and an upload JWT; the JWT is written to a file and never printed.
+1. MCP `execute` (with `write_to_file: true`): `GET /accounts/2a1d5be78bef5d6b2063bd45ebc2a3da/pages/projects/umamusumedb/upload-token` -> the response file contains `{ jwt }`.
+2. `node scripts/pages-upload.mjs <that-file> <commit-hash> "<commit message>"` — hashes dist/ (blake3, same as wrangler), calls
+   `/pages/assets/check-missing`, `/pages/assets/upload`, `/pages/assets/upsert-hashes` with the JWT, then writes `/workspace/deploy/create.js`
+   (the deployment request incl. `_redirects` / `_headers`) and the manifest.
+3. MCP `execute` with `"code": "$file:/workspace/deploy/create.js"` -> creates the production deployment; note the deployment id.
+4. Delete the JWT file. If step 5 shows a problem, roll back to the previous deployment (MCP `POST .../deployments/{id}/rollback`, or the dashboard).
+5. Verify live with curl: `/`, `/ja/`, `/zh/`, `/zh-tw/`, `/ko/`, one character + one card page per locale (200, `<html lang>`, hreflang block incl. `x-default`),
+   `/search/en.json` (and the other four), `/sitemap-index.xml` + the five `sitemap-*.xml`, an image (`/img/characters/100101.webp` -> 200 image/webp with cache-control),
+   old redirects (`/tier-list/` and legacy ids -> 301).
+(`npm run deploy` with wrangler + `CLOUDFLARE_API_TOKEN` also works if a token ever exists, but never ask the user for one.)
 
-## Data Management
-
-### Current Data
-- **Characters**: 60 entries with full stats and skills
-- **Support Cards**: 25 entries with effects
-- **Skills**: 47 unique skills
-- **Tier Lists**: 284 entries across multiple categories
-
-### Updating Data
-1. Run collection scripts to update SQLite database
-2. Export to JSON: `node scripts/export-to-json.js`
-3. Build and deploy: `npm run build && npx wrangler pages deploy dist`
+### Notes
+- Formulas in the tools (training gain, spark inheritance, hint discounts) are community-measured; sources are cited in the tool components and `/data-sources/`.
+  Tool component bodies are English-only in every locale (the localized wrapper pages say so).
+- The old `collect-*` / `export-to-json` / R2 scripts and `database/` no longer feed the site.
+- AdSense (auto ads script) and GA live in `src/layouts/Layout.astro`; the AdSense script is intentionally not loaded on `noindex` pages. Keep the ad code intact.
+- `/guides/`, `/privacy-policy/`, `/terms-of-service/`, `/data-sources/` exist in English and Japanese only; `/tools/character-comparison/` has no Japanese page.
 
 ## Common Issues and Solutions
 
@@ -181,7 +220,7 @@ If images return 403 errors, ensure they use the custom domain:
 - Target keyword: "umamusumedb"
 - Static HTML for search engine crawlers
 - Structured data for rich snippets
-- Multi-language support (EN/JP/ZH)
+- Multi-language support: EN / JA / ZH-Hans / ZH-Hant / KO with hreflang + x-default and per-locale sitemaps
 
 ## Future Enhancements
 

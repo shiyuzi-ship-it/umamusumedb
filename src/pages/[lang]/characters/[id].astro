@@ -1,0 +1,11 @@
+---
+import CharacterPage from '@/components/l10n/CharacterPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+import { characters } from '@/lib/static-content';
+export function getStaticPaths() {
+  return NEW_LOCALES.flatMap((lang) => characters.map((character) => ({ params: { lang, id: character.id }, props: { character } })));
+}
+const { lang } = Astro.params;
+const { character } = Astro.props;
+---
+<CharacterPage locale={lang as any} character={character} />

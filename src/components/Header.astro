@@ -1,278 +1,121 @@
 ---
-import { Search, Menu, X, Github } from 'lucide-react';
-import { getLocaleFromPathname, localizePathname, stripLocaleFromPathname, type Locale } from '@/lib/i18n';
+import { Search, Menu, X, Github, Globe } from 'lucide-react';
+import {
+  LOCALE_META, SUPPORTED_LOCALES, availableLocalesFor, getLocaleFromPathname, hrefFor, localizePathname,
+  stripLocaleFromPathname, type Locale,
+} from '@/lib/i18n';
+import { skillClass } from '@/lib/skill-class';
+import { t } from '@/lib/ui-strings';
 
 const pathname = Astro.url.pathname;
 const locale: Locale = getLocaleFromPathname(pathname);
 const basePath = stripLocaleFromPathname(pathname);
+const avail = new Set<Locale>([...availableLocalesFor(basePath, { skillClass }), locale]);
+const switcher = SUPPORTED_LOCALES.filter((l) => avail.has(l)).map((l) => ({
+  locale: l,
+  href: localizePathname(basePath, l),
+  native: LOCALE_META[l].native,
+  hreflang: LOCALE_META[l].htmlLang,
+}));
 
-const localePrefix = locale === 'en' ? '' : `/${locale}`;
-
-const STRINGS: Record<
-  Locale,
-  {
-    nav: { tools: string; characters: string; cards: string; skills: string; tierList: string; guides: string };
-    langShort: { en: string; ja: string; zh: string };
-    langLong: { en: string; ja: string; zh: string };
-    search: {
-      ariaLabel: string;
-      placeholder: string;
-      hintPrefix: string;
-      hintSuffix: string;
-      startTyping: string;
-      noResults: string;
-      offline: string;
-    };
-  }
-> = {
-  en: {
-    nav: {
-      tools: 'Tools',
-      characters: 'Characters',
-      cards: 'Support Cards',
-      skills: 'Skills',
-      tierList: 'Updates',
-      guides: 'Guides'
-    },
-    langShort: { en: 'EN', ja: '日本語', zh: '中文' },
-    langLong: { en: 'English', ja: '日本語', zh: '简体中文' },
-    search: {
-      ariaLabel: 'Search',
-      placeholder: 'Search characters, cards, skills, guides, or tools...',
-      hintPrefix: 'Press',
-      hintSuffix: 'to close',
-      startTyping: 'Start typing to search...',
-      noResults: 'No results found',
-      offline: 'Offline mode: only basic links available.'
-    }
-  },
-  ja: {
-    nav: {
-      tools: 'ツール',
-      characters: 'キャラクター',
-      cards: 'サポートカード',
-      skills: 'スキル',
-      tierList: '更新情報',
-      guides: 'ガイド'
-    },
-    langShort: { en: 'EN', ja: '日本語', zh: '中文' },
-    langLong: { en: 'English', ja: '日本語', zh: '简体中文' },
-    search: {
-      ariaLabel: '検索',
-      placeholder: 'キャラ・サポカ・スキル・ガイド・ツールを検索…',
-      hintPrefix: '',
-      hintSuffix: 'で閉じる',
-      startTyping: '入力して検索…',
-      noResults: '一致する結果がありません',
-      offline: 'オフライン: 基本リンクのみ利用可能です。'
-    }
-  },
-  zh: {
-    nav: {
-      tools: '工具',
-      characters: '角色',
-      cards: '支援卡',
-      skills: '技能',
-      tierList: '更新信息',
-      guides: '攻略'
-    },
-    langShort: { en: 'EN', ja: '日本語', zh: '中文' },
-    langLong: { en: 'English', ja: '日本語', zh: '简体中文' },
-    search: {
-      ariaLabel: '搜索',
-      placeholder: '搜索角色、支援卡、技能、攻略或工具…',
-      hintPrefix: '按',
-      hintSuffix: '关闭',
-      startTyping: '开始输入以搜索…',
-      noResults: '没有找到结果',
-      offline: '离线模式：仅提供基础链接。'
-    }
-  }
-};
-
-const s = STRINGS[locale] ?? STRINGS.en;
-
+const nav = [
+  { href: hrefFor('/tools/', locale), label: t(locale, 'navTools') },
+  { href: hrefFor('/characters/', locale), label: t(locale, 'navCharacters') },
+  { href: hrefFor('/cards/', locale), label: t(locale, 'navCards') },
+  { href: hrefFor('/skills/', locale), label: t(locale, 'navSkills') },
+  { href: hrefFor('/updates/', locale), label: t(locale, 'navUpdates') },
+  { href: hrefFor('/guides/', locale), label: t(locale, 'navGuides') },
+];
 const hrefHome = localizePathname('/', locale);
-const hrefTools = localizePathname('/tools/', locale);
-const hrefCharacters = localizePathname('/characters/', locale);
-const hrefCards = localizePathname('/cards/', locale);
-const hrefSkills = localizePathname('/skills/', locale);
-const hrefTierList = localizePathname('/updates/', locale);
-const hrefGuides = localizePathname('/guides/', locale);
-
-const hrefEn = localizePathname(basePath, 'en');
-const hrefJa = localizePathname(basePath, 'ja');
+const searchStrings = {
+  start: t(locale, 'searchStart'), none: t(locale, 'searchNone'), offline: t(locale, 'searchOffline'),
+  character: t(locale, 'kindCharacter'), card: t(locale, 'kindSupport'), skill: t(locale, 'navSkills'),
+};
 ---
 
 <header class="sticky top-0 z-50 glass">
   <nav class="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
     <div class="flex items-center justify-between gap-2">
-      <!-- Logo -->
       <a href={hrefHome} class="flex items-center space-x-2 sm:space-x-3 group flex-shrink-0">
-        <img src="/logo.svg" alt="UmamusumeDB" class="w-8 h-8 sm:w-10 sm:h-10 group-hover:animate-bounce" />
+        <img src="/logo.svg" alt="UmamusumeDB" width="40" height="40" class="w-8 h-8 sm:w-10 sm:h-10" />
         <span class="font-display text-lg sm:text-2xl gradient-text hidden xs:inline">UmamusumeDB</span>
       </a>
 
-      <!-- Desktop Navigation -->
       <div class="hidden lg:flex items-center space-x-6">
-        <a href={hrefTools} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">
-          {s.nav.tools}
-        </a>
-        <a href={hrefCharacters} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">
-          {s.nav.characters}
-        </a>
-        <a href={hrefCards} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">
-          {s.nav.cards}
-        </a>
-        <a href={hrefSkills} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">
-          {s.nav.skills}
-        </a>
-        <a href={hrefTierList} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">
-          {s.nav.tierList}
-        </a>
-        <a href={hrefGuides} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">
-          {s.nav.guides}
-        </a>
+        {nav.map((n) => (
+          <a href={n.href} class="font-medium hover:text-uma-primary transition-colors whitespace-nowrap">{n.label}</a>
+        ))}
       </div>
 
-      <!-- Actions -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Search Button -->
-        <button id="search-btn" class="p-2 hover:bg-uma-primary/10 rounded-lg transition-colors flex-shrink-0 group relative" aria-label={s.search.ariaLabel}>
+        <button id="search-btn" class="p-2 hover:bg-uma-primary/10 rounded-lg transition-colors flex-shrink-0" aria-label={t(locale, 'searchLabel')}>
           <Search class="w-4 h-4 sm:w-5 sm:h-5" />
-          <span class="hidden lg:block absolute -bottom-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-            ⌘K / Ctrl+K
-          </span>
         </button>
 
-        <!-- GitHub Link - Desktop -->
-        <a href="https://github.com/tianyu19920816/umamusumedb" target="_blank" rel="noopener noreferrer"
+        <a href="https://github.com/shiyuzi-ship-it/umamusumedb" target="_blank" rel="noopener noreferrer"
            class="hidden lg:flex items-center gap-1 px-3 py-1.5 rounded-lg border border-uma-primary/20 bg-white/50 text-sm hover:bg-uma-primary/10 transition-colors whitespace-nowrap">
           <Github class="w-4 h-4" />
           <span>GitHub</span>
         </a>
 
-        <!-- Language Switcher - Desktop -->
-        <div class="hidden lg:flex items-center gap-2">
-          <a
-            href={hrefEn}
-            class={`px-3 py-1.5 rounded-lg border text-sm transition-colors whitespace-nowrap ${
-              locale === 'en'
-                ? 'border-uma-primary bg-uma-primary/10'
-                : 'border-uma-primary/20 bg-white/50 hover:bg-uma-primary/10'
-            }`}
-          >
-            {s.langShort.en}
-          </a>
-          <a
-            href={hrefJa}
-            class={`px-3 py-1.5 rounded-lg border text-sm transition-colors whitespace-nowrap ${
-              locale === 'ja'
-                ? 'border-uma-primary bg-uma-primary/10'
-                : 'border-uma-primary/20 bg-white/50 hover:bg-uma-primary/10'
-            }`}
-          >
-            {s.langShort.ja}
-          </a>
-        </div>
+        <!-- Language switcher (only locales that have this page) -->
+        <details class="relative lang-switcher">
+          <summary class="list-none cursor-pointer flex items-center gap-1 px-3 py-1.5 rounded-lg border border-uma-primary/20 bg-white/50 text-sm hover:bg-uma-primary/10 whitespace-nowrap" aria-label={t(locale, 'language')}>
+            <Globe class="w-4 h-4" />
+            <span>{LOCALE_META[locale].native}</span>
+          </summary>
+          <ul class="absolute right-0 mt-2 w-40 rounded-lg border border-uma-primary/20 bg-white shadow-lg py-1 z-50">
+            {switcher.map((o) => (
+              <li>
+                <a
+                  href={o.href}
+                  hreflang={o.hreflang}
+                  lang={o.hreflang}
+                  class={`block px-3 py-2 text-sm hover:bg-uma-primary/10 ${o.locale === locale ? 'font-bold text-uma-primary' : ''}`}
+                >{o.native}</a>
+              </li>
+            ))}
+          </ul>
+        </details>
 
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-uma-primary/10 rounded-lg transition-colors flex-shrink-0" aria-label="Toggle menu">
+        <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-uma-primary/10 rounded-lg transition-colors flex-shrink-0" aria-label="Menu">
           <Menu id="menu-icon" class="w-5 h-5" />
           <X id="close-icon" class="w-5 h-5 hidden" />
         </button>
       </div>
     </div>
 
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-uma-primary/20 animate-fadeIn">
+    <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-uma-primary/20">
       <div class="flex flex-col space-y-3">
-        <a href={hrefTools} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          {s.nav.tools}
-        </a>
-        <a href={hrefCharacters} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          {s.nav.characters}
-        </a>
-        <a href={hrefCards} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          {s.nav.cards}
-        </a>
-        <a href={hrefSkills} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          {s.nav.skills}
-        </a>
-        <a href={hrefTierList} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          {s.nav.tierList}
-        </a>
-        <a href={hrefGuides} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          {s.nav.guides}
-        </a>
-
-        <!-- Divider -->
-        <div class="border-t border-uma-primary/10 my-2"></div>
-
-        <a href="https://github.com/tianyu19920816/umamusumedb" target="_blank" rel="noopener noreferrer"
-           class="flex items-center gap-2 font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">
-          <Github class="w-4 h-4" />
-          <span>GitHub</span>
-        </a>
-
-        <!-- Language Switcher -->
-        <div class="flex gap-2 pt-2">
-          <a
-            href={hrefEn}
-            class={`flex-1 px-3 py-2.5 rounded-lg border text-center transition-colors font-medium ${
-              locale === 'en'
-                ? 'border-uma-primary bg-uma-primary/10'
-                : 'border-uma-primary/20 bg-white/50 hover:bg-uma-primary/10'
-            }`}
-          >
-            {s.langLong.en}
-          </a>
-          <a
-            href={hrefJa}
-            class={`flex-1 px-3 py-2.5 rounded-lg border text-center transition-colors font-medium ${
-              locale === 'ja'
-                ? 'border-uma-primary bg-uma-primary/10'
-                : 'border-uma-primary/20 bg-white/50 hover:bg-uma-primary/10'
-            }`}
-          >
-            {s.langLong.ja}
-          </a>
-        </div>
+        {nav.map((n) => (
+          <a href={n.href} class="font-medium hover:text-uma-primary transition-colors py-2 px-2 rounded-lg hover:bg-uma-primary/5">{n.label}</a>
+        ))}
       </div>
     </div>
 
-    <!-- Search Modal -->
+    <!-- Search modal -->
     <div id="search-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden">
       <div class="container mx-auto px-4 py-8 sm:py-16">
         <div class="max-w-3xl mx-auto">
-          <!-- Search Box -->
           <div class="glass rounded-2xl p-4 sm:p-6 mb-4">
             <div class="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 sm:w-6 sm:h-6 text-gray-400" />
+              <Search class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
-                type="text"
+                type="search"
                 id="global-search-input"
-                placeholder={s.search.placeholder}
-                class="w-full pl-12 sm:pl-14 pr-4 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-2 border-uma-primary/20 bg-white/90 focus:outline-none focus:border-uma-primary"
-                autofocus
+                placeholder={t(locale, 'searchPlaceholder')}
+                autocomplete="off"
+                class="w-full pl-12 pr-12 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-2 border-uma-primary/20 bg-white/90 focus:outline-none focus:border-uma-primary"
               />
-              <button id="close-search" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
+              <button id="close-search" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600" aria-label="Close">
+                <X class="w-5 h-5" />
               </button>
             </div>
-            <div class="text-xs sm:text-sm text-gray-500 mt-2 px-1">
-              {s.search.hintPrefix && <span>{s.search.hintPrefix}</span>}
-              <kbd class="px-2 py-1 bg-gray-100 rounded text-xs mx-1">ESC</kbd>
-              {s.search.hintSuffix && <span>{s.search.hintSuffix}</span>}
-            </div>
+            <div class="text-xs sm:text-sm text-gray-500 mt-2 px-1"><kbd class="px-2 py-1 bg-gray-100 rounded text-xs mx-1">ESC</kbd> {t(locale, 'searchHint')}</div>
           </div>
-
-          <!-- Search Results -->
           <div id="search-results" class="glass rounded-2xl p-4 sm:p-6 max-h-[60vh] overflow-y-auto">
-            <div id="search-empty" class="text-center py-8 text-gray-500">
-              {s.search.startTyping}
-            </div>
-            <div id="search-content" class="hidden space-y-4"></div>
+            <div id="search-empty" class="text-center py-8 text-gray-500">{t(locale, 'searchStart')}</div>
+            <div id="search-content" class="hidden space-y-3"></div>
           </div>
         </div>
       </div>
@@ -281,288 +124,89 @@ const hrefJa = localizePathname(basePath, 'ja');
 </header>
 
 <style>
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fadeIn {
-    animation: fadeIn 0.2s ease-out;
-  }
-
-  /* Extra small breakpoint for very small screens */
+  .lang-switcher summary::-webkit-details-marker { display: none; }
   @media (min-width: 375px) {
-    .xs\:inline {
-      display: inline;
-    }
+    .xs\:inline { display: inline; }
   }
 </style>
 
-<script define:vars={{ localePrefix, startTypingText: s.search.startTyping, noResultsText: s.search.noResults, offlineText: s.search.offline }}>
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
-
-  mobileMenuBtn?.addEventListener('click', () => {
-    const isHidden = mobileMenu?.classList.toggle('hidden');
-    menuIcon?.classList.toggle('hidden', !isHidden);
-    closeIcon?.classList.toggle('hidden', isHidden);
+<script define:vars={{ locale, searchStrings }}>
+  const $ = (id) => document.getElementById(id);
+  const mobileBtn = $('mobile-menu-btn'), mobileMenu = $('mobile-menu'), menuIcon = $('menu-icon'), closeIcon = $('close-icon');
+  mobileBtn?.addEventListener('click', () => {
+    const hidden = mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden', !hidden);
+    closeIcon.classList.toggle('hidden', hidden);
   });
 
-  // Close mobile menu when clicking on a link
-  const mobileLinks = mobileMenu?.querySelectorAll('a');
-  mobileLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
-      menuIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    });
-  });
-
-  // Close mobile menu when clicking outside
+  // Close the language menu when clicking elsewhere
   document.addEventListener('click', (e) => {
-    if (!mobileMenuBtn?.contains(/** @type {Node} */ (e.target)) && !mobileMenu?.contains(/** @type {Node} */ (e.target))) {
-      mobileMenu?.classList.add('hidden');
-      menuIcon?.classList.remove('hidden');
-      closeIcon?.classList.add('hidden');
-    }
+    document.querySelectorAll('.lang-switcher[open]').forEach((d) => { if (!d.contains(e.target)) d.removeAttribute('open'); });
   });
 
-  // Search functionality
-  const searchBtn = document.getElementById('search-btn');
-  const searchModal = document.getElementById('search-modal');
-  const closeSearchBtn = document.getElementById('close-search');
-  /** @type {HTMLInputElement|null} */
-  const searchInput = document.getElementById('global-search-input');
-  const searchEmpty = document.getElementById('search-empty');
-  const searchContent = document.getElementById('search-content');
+  const modal = $('search-modal'), input = $('global-search-input'), empty = $('search-empty'), content = $('search-content');
+  const prefix = locale === 'en' ? '' : '/' + locale;
+  const ICON = { c: '👤', k: '🎴', s: '✨', p: '📑', t: '🛠️' };
+  const PATH = { c: 'characters', k: 'cards', s: 'skills' };
+  let data = null, loading = null;
 
-  /** @param {string} url */
-  const localizeUrl = (url) => {
-    if (!url) return url;
-    if (!localePrefix) return url;
-    if (!url.startsWith('/')) return url;
-    if (url === '/') return `${localePrefix}/`;
-    if (url.startsWith(`${localePrefix}/`) || url === localePrefix) return url;
-    return `${localePrefix}${url}`;
+  // Normalise for matching: lowercase, katakana -> hiragana, drop spaces / punctuation / brackets
+  const norm = (s) => String(s || '').toLowerCase()
+    .replace(/[\u30a1-\u30f6]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60))
+    .replace(/[\s\-_・·.,'’"“”()（）\[\]【】「」:：!！?？~〜☆★♪]/g, '');
+
+  const load = () => {
+    if (data) return Promise.resolve(data);
+    if (!loading) {
+      loading = fetch('/search/' + locale + '.json')
+        .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then((j) => { data = j.items; for (const it of data) it._q = norm(it.q); return data; })
+        .catch(() => { data = []; empty.textContent = searchStrings.offline; return data; });
+    }
+    return loading;
   };
 
-  // Close search modal
-  const closeSearch = () => {
-    searchModal?.classList.add('hidden');
-    if (searchInput) searchInput.value = '';
-    searchEmpty?.classList.remove('hidden');
-    searchContent?.classList.add('hidden');
-    if (searchEmpty) searchEmpty.textContent = startTypingText;
-  };
-
-  closeSearchBtn?.addEventListener('click', closeSearch);
-
-  // Close on ESC key
+  const openSearch = () => { modal.classList.remove('hidden'); setTimeout(() => input.focus(), 50); load(); };
+  const closeSearch = () => { modal.classList.add('hidden'); input.value = ''; empty.textContent = searchStrings.start; empty.classList.remove('hidden'); content.classList.add('hidden'); };
+  $('search-btn')?.addEventListener('click', openSearch);
+  $('close-search')?.addEventListener('click', closeSearch);
+  modal?.addEventListener('click', (e) => { if (e.target === modal) closeSearch(); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !searchModal?.classList.contains('hidden')) {
-      closeSearch();
-    }
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeSearch();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
   });
 
-  // Close when clicking outside
-  searchModal?.addEventListener('click', (e) => {
-    if (e.target === searchModal) {
-      closeSearch();
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const urlOf = (it) => it.u ? it.u : prefix + '/' + PATH[it.t] + '/' + it.id + '/';
+
+  input?.addEventListener('input', async () => {
+    const q = norm(input.value);
+    if (!q) { empty.textContent = searchStrings.start; empty.classList.remove('hidden'); content.classList.add('hidden'); return; }
+    const items = await load();
+    const scored = [];
+    for (const it of items) {
+      const n = norm(it.n);
+      let score = 0;
+      if (n === q) score = 100;
+      else if (n.startsWith(q)) score = 80;
+      else if (n.includes(q)) score = 60;
+      else if (it._q.includes(q)) score = 40;
+      if (score) scored.push([score + (it.t === 'p' ? 5 : it.t === 'c' ? 3 : 0), it]);
     }
-  });
-
-  // Search data
-  const SEARCH_CACHE_KEY = 'umadb-search-cache-v2';
-  const SEARCH_CACHE_TTL = 1000 * 60 * 60 * 6; // 6 hours
-
-  /** @type {any[]} */
-  let searchData = [];
-  let isLoading = false;
-
-  /** @param {any} data */
-  const flattenSearchData = (data) => ([
-    ...(data?.pages || []),
-    ...(data?.tools || []),
-    ...(data?.characters || []),
-    ...(data?.cards || []),
-    ...(data?.skills || [])
-  ]);
-
-  const readCachedSearchData = () => {
-    try {
-      const raw = localStorage.getItem(SEARCH_CACHE_KEY);
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      const generatedAt = parsed?.generatedAt;
-      if (!generatedAt) return null;
-      const age = Date.now() - new Date(generatedAt).getTime();
-      if (Number.isNaN(age) || age > SEARCH_CACHE_TTL) {
-        localStorage.removeItem(SEARCH_CACHE_KEY);
-        return null;
-      }
-      return parsed;
-    } catch (error) {
-      console.warn('[search] Failed to read cached search data', error);
-      return null;
-    }
-  };
-
-  /** @param {any} data */
-  const cacheSearchData = (data) => {
-    try {
-      localStorage.setItem(SEARCH_CACHE_KEY, JSON.stringify(data));
-    } catch (error) {
-      console.warn('[search] Failed to cache search data', error);
-    }
-  };
-
-  const fallbackSearchData = () => ([
-    { name_en: 'Characters', name_ja: 'キャラクター', type: 'page', url: '/characters/' },
-    { name_en: 'Support Cards', name_ja: 'サポートカード', type: 'page', url: '/cards/' },
-    { name_en: 'Skills', name_ja: 'スキル', type: 'page', url: '/skills/' },
-    { name_en: 'Updates', name_ja: '更新情報', type: 'page', url: '/updates/' },
-    { name_en: 'Tools', name_ja: 'ツール', type: 'page', url: '/tools/' },
-    { name_en: 'Guides', name_ja: 'ガイド', type: 'page', url: '/guides/' }
-  ]);
-
-  const fetchSearchData = async () => {
-    try {
-      const response = await fetch('/search-data.json', { cache: 'no-cache' });
-      if (!response.ok) {
-        throw new Error(`Unexpected status ${response.status}`);
-      }
-      const json = await response.json();
-      console.info(`[search] Loaded ${flattenSearchData(json).length} searchable items`);
-      return json;
-    } catch (error) {
-      console.warn('[search] Failed to fetch search data', error);
-      return null;
-    }
-  };
-
-  // Load search data
-  async function loadSearchData() {
-    if (searchData.length || isLoading) return;
-
-    const cached = readCachedSearchData();
-    if (cached) {
-      searchData = flattenSearchData(cached);
-      return;
-    }
-
-    isLoading = true;
-    const fetched = await fetchSearchData();
-    if (fetched) {
-      cacheSearchData(fetched);
-      searchData = flattenSearchData(fetched);
-    } else {
-      searchData = fallbackSearchData();
-      if (searchEmpty) {
-        searchEmpty.textContent = offlineText;
-      }
-    }
-    isLoading = false;
-  }
-
-  // Load data when search is opened
-  searchBtn?.addEventListener('click', () => {
-    searchModal?.classList.remove('hidden');
-    setTimeout(() => searchInput?.focus(), 100);
-    if (searchData.length < 20) {
-      loadSearchData();
-    }
-  });
-
-  // Perform search
-  searchInput?.addEventListener('input', (e) => {
-    /** @type {HTMLInputElement} */
-    const target = /** @type {HTMLInputElement} */ (e.target);
-    const query = (target.value || '').toLowerCase().trim();
-
-    if (!query) {
-      searchEmpty?.classList.remove('hidden');
-      searchContent?.classList.add('hidden');
-      if (searchEmpty) searchEmpty.textContent = startTypingText;
-      return;
-    }
-
-    const results = searchData.filter(item =>
-      item.name_en?.toLowerCase().includes(query) ||
-      item.name_ja?.toLowerCase().includes(query)
-    ).slice(0, 10);
-
-    if (results.length === 0) {
-      if (searchEmpty) searchEmpty.textContent = noResultsText;
-      searchEmpty?.classList.remove('hidden');
-      searchContent?.classList.add('hidden');
-      return;
-    }
-
-    searchEmpty?.classList.add('hidden');
-    searchContent?.classList.remove('hidden');
-
-    if (searchContent) searchContent.innerHTML = results.map(item => {
-      const rawUrl =
-        item.url ||
-        (item.type === 'character'
-          ? `/characters/${item.id}/`
-          : item.type === 'card'
-            ? `/cards/${item.id}/`
-            : item.type === 'skill'
-              ? `/skills/${item.id}/`
-            : '');
-      const url = localizeUrl(rawUrl);
-
-      let badge = '📄';
-      let badgeColor = 'bg-gray-100';
-
-      if (item.type === 'character') {
-        badge = '👤';
-        badgeColor = 'bg-pink-100';
-      } else if (item.type === 'card') {
-        badge = '🎴';
-        badgeColor = 'bg-purple-100';
-      } else if (item.type === 'skill') {
-        badge = '✨';
-        badgeColor = 'bg-yellow-100';
-      } else if (item.type === 'tool') {
-        badge = '🛠️';
-        badgeColor = 'bg-blue-100';
-      } else if (item.type === 'page') {
-        badge = '📑';
-        badgeColor = 'bg-green-100';
-      }
-
-      return `
-        <a href="${url}" class="block p-3 sm:p-4 bg-white rounded-lg hover:shadow-lg transition-all hover:scale-[1.02]">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 ${badgeColor} rounded-lg flex items-center justify-center text-xl flex-shrink-0">
-              ${badge}
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="font-semibold text-gray-900 truncate">${item.name_en}</div>
-              ${item.name_ja ? `<div class="text-sm text-gray-500 truncate">${item.name_ja}</div>` : ''}
-            </div>
-            <div class="text-xs text-gray-400 uppercase px-2 py-1 bg-gray-50 rounded flex-shrink-0">${item.type}</div>
+    scored.sort((a, b) => b[0] - a[0]);
+    const results = scored.slice(0, 12).map((x) => x[1]);
+    if (!results.length) { empty.textContent = searchStrings.none; empty.classList.remove('hidden'); content.classList.add('hidden'); return; }
+    empty.classList.add('hidden'); content.classList.remove('hidden');
+    content.innerHTML = results.map((it) => `
+      <a href="${urlOf(it)}" class="block p-3 bg-white rounded-lg hover:shadow-lg transition-shadow">
+        <div class="flex items-center gap-3">
+          ${it.im ? `<img src="${esc(it.im)}" alt="" width="40" height="40" loading="lazy" class="w-10 h-10 rounded object-contain bg-gray-50 flex-shrink-0">` : `<div class="w-10 h-10 rounded bg-gray-100 flex items-center justify-center text-xl flex-shrink-0">${ICON[it.t] || '📄'}</div>`}
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-gray-900 truncate">${esc(it.n)}</div>
+            ${it.s ? `<div class="text-sm text-gray-500 truncate">${esc(it.s)}</div>` : ''}
           </div>
-        </a>
-      `;
-    }).join('');
-  });
-
-  // Keyboard navigation (Ctrl+K / Cmd+K)
-  document.addEventListener('keydown', (e) => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault();
-      searchBtn?.click();
-    }
+          <div class="text-xs text-gray-400 px-2 py-1 bg-gray-50 rounded flex-shrink-0">${esc(searchStrings[{ c: 'character', k: 'card', s: 'skill' }[it.t]] || '')}</div>
+        </div>
+      </a>`).join('');
   });
 </script>

@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { characters, supportCards, skills } from '@/lib/static-content';
 import type { Skill } from '@/types';
+import { skillClass, duplicateSkillNameEn } from '@/lib/skill-class';
 import { Sparkles, Info, Zap, Users } from 'lucide-react';
 
 export function getStaticPaths() {
@@ -36,9 +37,10 @@ const linkedCharacters = characters.filter((c) => {
 ---
 
 <Layout
-  noindex={skill.rarity === 'evolved' || skill.server === 'jp'}
-  title={`${skill.name_en} - Skill Details | UmamusumeDB`}
-  description={`${skill.name_en} (${skill.name_jp || ''}) skill details: effect, trigger condition, duration, and cross-links to support cards and characters.`}
+  noindex={skillClass.get(skill.id) !== 'all'}
+  title={`${skill.name_en}${duplicateSkillNameEn.has(skill.name_en) && skill.name_jp ? ` (${skill.name_jp})` : ''} - Skill Effect & Cost | UmamusumeDB`}
+  description={`${skill.name_en}${skill.name_jp ? ` (${skill.name_jp})` : ''}: ${String(skill.description_en || skill.effect || 'Uma Musume skill details').slice(0, 150)}`}
+  image={skill.icon_url}
 >
   <Header />
 

@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { characters, supportCards, skills } from '@/lib/static-content';
 import type { Skill } from '@/types';
+import { skillClass, duplicateSkillNameEn } from '@/lib/skill-class';
 import { Sparkles, Info, Zap, Users } from 'lucide-react';
 
 export function getStaticPaths() {
@@ -36,9 +37,10 @@ const linkedCharacters = characters.filter((c) => {
 ---
 
 <Layout
-  noindex={skill.rarity === 'evolved'}
-  title={`${skill.name_jp || skill.name_en} - スキル | UmamusumeDB`}
-  description={`${skill.name_jp || skill.name_en} の効果・発動条件・レアリティ。キャラ/サポカとの相互リンクも参照できます。`}
+  noindex={skillClass.get(skill.id) === 'none'}
+  title={`${skill.name_jp || skill.name_en}${duplicateSkillNameEn.has(skill.name_en) ? ` (${skill.name_en})` : ''} - スキル効果・必要Pt | UmamusumeDB`}
+  description={`${skill.name_jp || skill.name_en}: ${String(skill.description_jp || skill.description_en || 'ウマ娘のスキル詳細').slice(0, 110)}`}
+  image={skill.icon_url}
 >
   <Header />
 

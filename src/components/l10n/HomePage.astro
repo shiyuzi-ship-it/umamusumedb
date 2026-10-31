@@ -1,0 +1,96 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { characters, supportCards, skills } from '@/lib/static-content';
+import { charName, cardName } from '@/lib/localized.js';
+import { path } from '@/lib/page-helpers';
+import releasesData from '../../../public/data/releases.json';
+import scenariosData from '../../../public/data/scenarios.json';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const loc = locale;
+const globalOnly = (x: any) => x.server !== 'jp';
+const newChars = characters.filter(globalOnly).slice(0, 12);
+const newCards = supportCards.filter((c: any) => globalOnly(c) && c.rarity === 'SSR').slice(0, 12);
+const releases = ((releasesData as any).releases as any[]).filter((r) => r.server === 'global').slice(0, 10);
+const byId = (list: any[]) => new Map(list.map((x) => [x.id, x]));
+const charById = byId(characters as any[]);
+const cardById = byId(supportCards as any[]);
+const dataDate = (releasesData as any).generatedAt.slice(0, 10);
+const stats: [string, number | string][] = [
+  [t(loc, 'statCharacters'), characters.length], [t(loc, 'statCards'), supportCards.length], [t(loc, 'statSkills'), skills.length],
+  [t(loc, 'statScenarios'), (scenariosData as any[]).length], [t(loc, 'statUpdated'), dataDate],
+];
+const tools = [
+  ['/tools/training-calculator/', 'toolTraining'], ['/tools/factor-calculator/', 'toolFactor'], ['/tools/skill-builder/', 'toolSkill'],
+  ['/tools/support-deck/', 'toolDeck'], ['/tools/character-comparison/', 'toolCompare'], ['/tools/training-goals/', 'toolGoals'],
+];
+const rel = releases.map((r) => {
+  const rec: any = r.kind === 'character' ? charById.get(r.id) : cardById.get(r.id);
+  return { date: r.date, href: path(`/${r.kind === 'character' ? 'characters' : 'cards'}/${r.id}/`, loc), name: rec ? (r.kind === 'character' ? charName(rec, loc) : cardName(rec, loc)) : r.name_en, kind: r.kind === 'character' ? t(loc, 'kindCharacter') : t(loc, 'kindSupport') };
+});
+---
+
+<Layout title={t(loc, 'homeTitle')} description={t(loc, 'homeDesc')}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
+    <div class="glass rounded-2xl p-4 sm:p-8 mb-8 bg-gradient-to-br from-uma-primary/10 to-uma-secondary/10 text-center">
+      <h1 class="text-2xl sm:text-4xl font-display gradient-text mb-3">{t(loc, 'homeH1')}</h1>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-5">{t(loc, 'homeIntro')}</p>
+      <button type="button" id="hero-search" class="w-full max-w-2xl mx-auto block text-left px-4 py-3 rounded-xl border-2 border-uma-primary/20 bg-white/90 text-gray-400 shadow">{t(loc, 'searchPlaceholder')}</button>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-6">
+        {stats.map(([label, v]) => (<div><div class="text-xl font-bold gradient-text">{v}</div><div class="text-xs text-gray-600">{label}</div></div>))}
+      </div>
+      <p class="text-xs text-gray-500 mt-3">{t(loc, 'serverNote')}</p>
+    </div>
+
+    <section class="mb-10">
+      <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'newestChars')}</h2><a href={path('/characters/', loc)} class="text-sm text-uma-primary hover:underline">{t(loc, 'viewAll')}</a></div>
+      <ul class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+        {newChars.map((c: any) => (
+          <li><a href={path(`/characters/${c.id}/`, loc)} class="block bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow h-full">
+            <img src={c.image_url} alt={charName(c, loc)} width="240" height="320" loading="lazy" class="w-full aspect-[3/4] object-cover object-top bg-gray-50" />
+            <span class="block p-2 text-xs font-medium leading-tight">{charName(c, loc)}</span>
+          </a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'newestCards')}</h2><a href={path('/cards/', loc)} class="text-sm text-uma-primary hover:underline">{t(loc, 'viewAll')}</a></div>
+      <ul class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+        {newCards.map((c: any) => (
+          <li><a href={path(`/cards/${c.id}/`, loc)} class="block bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow h-full">
+            <img src={c.image_url} alt={cardName(c, loc)} width="240" height="320" loading="lazy" class="w-full aspect-[3/4] object-cover object-top bg-gray-50" />
+            <span class="block p-2 text-xs font-medium leading-tight">{cardName(c, loc)}</span>
+          </a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'toolsHeading')}</h2><a href={path('/tools/', loc)} class="text-sm text-uma-primary hover:underline">{t(loc, 'viewAllTools')}</a></div>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {tools.map(([href, key]) => (
+          <li><a href={path(href, loc)} class="block bg-white rounded-lg p-4 shadow hover:shadow-lg transition-shadow h-full"><span class="block font-semibold">{t(loc, key)}</span><span class="block text-sm text-gray-600 mt-1">{t(loc, key + 'Desc')}</span></a></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mb-10">
+      <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'latestReleases')}</h2><a href={path('/updates/', loc)} class="text-sm text-uma-primary hover:underline">{t(loc, 'allUpdates')}</a></div>
+      <ul class="grid md:grid-cols-2 gap-3">
+        {rel.map((r) => (
+          <li><a href={r.href} class="flex justify-between gap-3 bg-white rounded-lg p-3 hover:shadow text-sm"><span class="font-medium">{r.name}</span><span class="text-xs text-gray-500 whitespace-nowrap">{r.date} · {r.kind}</span></a></li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  document.getElementById('hero-search')?.addEventListener('click', () => document.getElementById('search-btn')?.click());
+</script>

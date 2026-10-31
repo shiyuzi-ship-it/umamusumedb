@@ -1,0 +1,24 @@
+---
+export interface Item { href: string; name: string; image?: string; sub?: string; }
+interface Props { title: string; items: Item[]; limit?: number; }
+const { title, items, limit = 24 } = Astro.props;
+const shown = items.slice(0, limit);
+---
+{shown.length > 0 && (
+  <section class="glass rounded-xl p-6">
+    <h2 class="text-xl font-display mb-4">{title}</h2>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {shown.map((it) => (
+        <li>
+          <a href={it.href} class="flex items-center gap-3 bg-white rounded-lg p-2 hover:shadow transition-shadow">
+            {it.image && <img src={it.image} alt="" width="48" height="48" loading="lazy" class="w-12 h-12 rounded object-cover object-top flex-shrink-0 bg-gray-50" />}
+            <span class="min-w-0">
+              <span class="block text-sm font-medium truncate">{it.name}</span>
+              {it.sub && <span class="block text-xs text-gray-500 truncate">{it.sub}</span>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

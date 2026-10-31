@@ -1,14 +1,14 @@
 ---
-import type { Locale } from '@/lib/i18n';
+import { LOCALE_META, type Locale } from '@/lib/i18n';
 
 export interface Props {
   title: string;
   description: string;
   image?: string;
-  canonicalURL?: string;
+  canonicalURL: string;
   type?: 'website' | 'article';
-  keywords?: string;
   locale?: Locale;
+  /** Absolute URLs of every real translation of this page (including the page itself). Empty/single => no hreflang block. */
   alternates?: Partial<Record<Locale, string>>;
   noindex?: boolean;
 }
@@ -17,87 +17,48 @@ const {
   title,
   description,
   image = 'https://umamusumedb.com/og-image.png',
-  canonicalURL = Astro.url.href,
+  canonicalURL,
   type = 'website',
-  keywords = 'uma musume, pretty derby, umamusume database, ウマ娘, プリティーダービー, support cards, tier list, training calculator, character stats',
   locale = 'en',
-  alternates,
-  noindex = false
+  alternates = {},
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = title.includes('UmamusumeDB') ? title : `${title} | UmamusumeDB`;
-
-const ogLocaleMap: Record<Locale, string> = {
-  en: 'en_US',
-  ja: 'ja_JP',
-  zh: 'zh_CN'
-};
-
-const ogLocale = ogLocaleMap[locale] ?? ogLocaleMap.en;
-const availableLocales = Array.from(
-  new Set<Locale>([
-    ...(alternates ? (Object.keys(alternates) as Locale[]) : []),
-    locale
-  ])
-);
-const ogAlternates = availableLocales
-  .filter((key) => key !== locale)
-  .map((key) => ogLocaleMap[key])
-  .filter(Boolean);
-
-const hrefEn = alternates?.en ?? canonicalURL;
-const hrefJa = alternates?.ja;
-const hrefZh = alternates?.zh;
+const isDefaultOg = image.endsWith('og-image.png');
+const altEntries = (Object.entries(alternates) as [Locale, string][]).filter(([, url]) => !!url);
+// hreflang only on indexable pages that actually have at least one other-language page
+const showHreflang = !noindex && altEntries.length > 1;
+const ogAlternates = altEntries.filter(([l]) => l !== locale).map(([l]) => LOCALE_META[l].og);
 ---
 
-<!-- Primary Meta Tags -->
 <title>{fullTitle}</title>
-<meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
-<meta name="keywords" content={keywords} />
-<meta name="author" content="UmamusumeDB" />
 <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Open Graph / Facebook -->
+{showHreflang && altEntries.map(([l, url]) => <link rel="alternate" hreflang={LOCALE_META[l].hreflang} href={url} />)}
+{showHreflang && alternates.en && <link rel="alternate" hreflang="x-default" href={alternates.en} />}
+
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
-{image.endsWith('og-image.png') && <meta property="og:image:width" content="1200" />}
-{image.endsWith('og-image.png') && <meta property="og:image:height" content="630" />}
+{isDefaultOg && <meta property="og:image:width" content="1200" />}
+{isDefaultOg && <meta property="og:image:height" content="630" />}
 <meta property="og:site_name" content="UmamusumeDB" />
-<meta property="og:locale" content={ogLocale} />
-{ogAlternates.map((alt) => (
-  <meta property="og:locale:alternate" content={alt} />
-))}
+<meta property="og:locale" content={LOCALE_META[locale].og} />
+{showHreflang && ogAlternates.map((alt) => <meta property="og:locale:alternate" content={alt} />)}
 
-<!-- Twitter -->
-<meta property="twitter:card" content={image.endsWith('og-image.png') ? 'summary_large_image' : 'summary'} />
-<meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={fullTitle} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
-<meta property="twitter:site" content="@umamusumedb" />
-<meta property="twitter:creator" content="@umamusumedb" />
+<meta name="twitter:card" content={isDefaultOg ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:site" content="@umamusumedb" />
 
-<!-- Additional SEO Meta Tags -->
-<meta name="googlebot" content="index, follow" />
-<meta name="bingbot" content="index, follow" />
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="UmamusumeDB" />
+<meta name="author" content="UmamusumeDB" />
 <meta name="application-name" content="UmamusumeDB" />
-<meta name="msapplication-TileColor" content="#4F46E5" />
-<meta name="theme-color" content="#4F46E5" />
-
-<!-- Preconnect to external domains -->
-<link rel="preconnect" href="https://img.umamusumedb.com" />
-<link rel="dns-prefetch" href="https://img.umamusumedb.com" />
-
-<!-- Language alternatives -->
-<link rel="alternate" hreflang="en" href={hrefEn} />
-{hrefJa && <link rel="alternate" hreflang="ja" href={hrefJa} />}
-{hrefZh && <link rel="alternate" hreflang="zh-Hans" href={hrefZh} />}
-<link rel="alternate" hreflang="x-default" href={hrefEn} />
+<meta name="apple-mobile-web-app-title" content="UmamusumeDB" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="theme-color" content="#FF6B9D" />

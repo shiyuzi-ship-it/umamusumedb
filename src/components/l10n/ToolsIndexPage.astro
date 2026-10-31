@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { path } from '@/lib/page-helpers';
+interface Props { locale: Locale }
+const { locale: loc } = Astro.props;
+const tools = [
+  ['/tools/training-calculator/', 'toolTraining'], ['/tools/factor-calculator/', 'toolFactor'], ['/tools/skill-builder/', 'toolSkill'],
+  ['/tools/support-deck/', 'toolDeck'], ['/tools/character-comparison/', 'toolCompare'], ['/tools/training-goals/', 'toolGoals'],
+];
+---
+<Layout title={t(loc, 'toolsTitle')} description={t(loc, 'toolsDesc')} itemList={tools.map(([h, k]) => ({ name: t(loc, k), url: path(h, loc) }))}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: t(loc, 'toolsH1') }]} />
+    <h1 class="text-3xl font-display gradient-text mb-2">{t(loc, 'toolsH1')}</h1>
+    <p class="text-gray-600 mb-2">{t(loc, 'toolsDesc')}</p>
+    <p class="text-xs text-gray-500 mb-6">{t(loc, 'toolNote')}</p>
+    <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map(([href, key]) => (
+        <li><a href={path(href, loc)} class="block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow h-full"><h2 class="text-xl font-bold mb-2">{t(loc, key)}</h2><p class="text-gray-600">{t(loc, key + 'Desc')}</p></a></li>
+      ))}
+    </ul>
+  </main>
+</Layout>

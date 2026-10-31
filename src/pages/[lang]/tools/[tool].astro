@@ -1,0 +1,10 @@
+---
+import ToolPage from '@/components/l10n/ToolPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() {
+  const TOOLS = ['training-calculator', 'factor-calculator', 'skill-builder', 'support-deck', 'training-goals', 'character-comparison'];
+  return NEW_LOCALES.flatMap((lang) => TOOLS.map((tool) => ({ params: { lang, tool } })));
+}
+const { lang, tool } = Astro.params;
+---
+<ToolPage locale={lang as any} tool={tool as string} />

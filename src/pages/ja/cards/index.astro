@@ -1,4 +1,6 @@
 ---
+import { t as tr } from '@/lib/ui-strings';
+import { characters as __chars, supportCards as __cards } from '@/lib/static-content';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
@@ -30,7 +32,7 @@ const typeCount = supportCards.reduce((acc, card) => {
 }, {} as Record<string, number>);
 ---
 
-<Layout title="サポートカード - ウマ娘DB">
+<Layout title={tr('ja', 'cardsTitle', { n: __cards.length })} description={tr('ja', 'cardsDesc', { n: __cards.length })}>
   <Header />
 
   <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">

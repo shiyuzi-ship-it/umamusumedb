@@ -1,4 +1,6 @@
 ---
+import { t as tr } from '@/lib/ui-strings';
+import { characters as __chars, supportCards as __cards } from '@/lib/static-content';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import CharacterCard from '@/components/CharacterCard';
@@ -23,7 +25,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
 }, {} as Record<number, typeof characters>);
 ---
 
-<Layout title="キャラクター - ウマ娘DB">
+<Layout title={tr('ja', 'charactersTitle', { n: __chars.length })} description={tr('ja', 'charactersDesc', { n: __chars.length })}>
   <Header />
   
   <main class="container mx-auto px-4 py-8">

@@ -1,0 +1,54 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { charName, cardName, skillName, skillDesc } from '@/lib/localized.js';
+import { duplicateSkillNameEn } from '@/lib/skill-class';
+import { holdersOf, relatedSkills } from '@/lib/related';
+import { skillRarityLabel, cleanSeconds, path } from '@/lib/page-helpers';
+
+interface Props { locale: Locale; skill: any }
+const { locale, skill } = Astro.props;
+const loc = locale;
+const name = skillName(skill, loc);
+const desc = skillDesc(skill, loc);
+const other = [skill.name_en, skill.name_jp].filter((n) => n && n !== name);
+const h = holdersOf(skill.id);
+const chars = h.chars.map((c: any) => ({ href: path(`/characters/${c.id}/`, loc), name: charName(c, loc), image: c.image_url, sub: c.server === 'jp' ? t(loc, 'jpOnly') : '' }));
+const cards = h.cards.map((c: any) => ({ href: path(`/cards/${c.id}/`, loc), name: cardName(c, loc), image: c.image_url, sub: c.rarity }));
+const related = relatedSkills(skill, 9).map((s: any) => ({ href: path(`/skills/${s.id}/`, loc), name: skillName(s, loc), image: s.icon_url }));
+const title = t(loc, 'detailTitleSkill', { name: duplicateSkillNameEn.has(skill.name_en) && skill.name_jp ? `${name} (${skill.name_jp})` : name });
+const description = t(loc, 'detailDescSkill', { name, desc: desc || skillRarityLabel(loc, skill.rarity) });
+const rows: [string, string][] = [[t(loc, 'skillType'), skillRarityLabel(loc, skill.rarity)]];
+if (skill.cost) rows.push([t(loc, 'cost'), String(skill.cost)]);
+if (cleanSeconds(skill.duration)) rows.push([t(loc, 'duration'), cleanSeconds(skill.duration)]);
+if (cleanSeconds(skill.cooldown)) rows.push([t(loc, 'cooldown'), cleanSeconds(skill.cooldown)]);
+---
+
+<Layout title={title} description={description} image={skill.icon_url || 'https://umamusumedb.com/og-image.png'} structuredDataType="skill" structuredData={{ name, title, description, image_url: skill.icon_url, alternateName: other }}>
+  <Header />
+  <main class="container mx-auto px-4 py-8">
+    <Breadcrumb items={[{ label: t(loc, 'navSkills'), href: path('/skills/', loc) }, { label: name }]} />
+    <div class="glass rounded-xl p-6 mb-6">
+      <div class="flex items-start gap-4">
+        {skill.icon_url && <img src={skill.icon_url} alt="" width="64" height="64" class="w-16 h-16 flex-shrink-0" />}
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-display gradient-text mb-1">{name}</h1>
+          {other.length > 0 && <p class="text-sm text-gray-500">{other.join(' / ')}</p>}
+        </div>
+      </div>
+      {desc && <p class="mt-4 text-gray-700">{desc}</p>}
+      <dl class="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-1 text-sm">
+        {rows.map(([k, v]) => (<div class="flex justify-between gap-3"><dt class="text-gray-500">{k}</dt><dd class="font-medium">{v}</dd></div>))}
+      </dl>
+    </div>
+    <div class="space-y-6">
+      <RelatedLinks title={t(loc, 'heldBy')} items={chars} />
+      <RelatedLinks title={t(loc, 'taughtBy')} items={cards} />
+      <RelatedLinks title={t(loc, 'relatedSkills')} items={related} limit={9} />
+    </div>
+  </main>
+</Layout>

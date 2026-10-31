@@ -1,0 +1,114 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { characters, supportCards, skills } from '@/lib/static-content';
+import { charName, cardName, skillName, skillDesc, allNames } from '@/lib/localized.js';
+import { newLocaleSkillIds } from '@/lib/skill-class';
+import { typeLabel, skillRarityLabel, cardRarityClass, path } from '@/lib/page-helpers';
+
+interface Props { locale: Locale; kind: 'characters' | 'cards' | 'skills' }
+const { locale, kind } = Astro.props;
+const loc = locale;
+
+let entries: any[] = [];
+if (kind === 'characters') {
+  entries = characters.map((c: any) => ({ href: path(`/characters/${c.id}/`, loc), name: charName(c, loc), image: c.image_url, q: allNames(c).join(' '), server: c.server, sub: '★'.repeat(c.rarity) }));
+} else if (kind === 'cards') {
+  entries = supportCards.map((c: any) => ({ href: path(`/cards/${c.id}/`, loc), name: cardName(c, loc), image: c.image_url, q: allNames(c).join(' '), server: c.server, rarity: c.rarity, type: c.type, sub: `${c.rarity} · ${typeLabel(loc, c.type)}` }));
+} else {
+  const ok = new Set(newLocaleSkillIds);
+  entries = skills.filter((s: any) => ok.has(s.id)).map((s: any) => ({ href: path(`/skills/${s.id}/`, loc), name: skillName(s, loc), image: s.icon_url, q: allNames({ ...s, base_name_en: undefined }).join(' '), server: s.server, rarity: s.rarity, desc: skillDesc(s, loc), sub: skillRarityLabel(loc, s.rarity) }));
+}
+const n = entries.length;
+const key = { characters: 'characters', cards: 'cards', skills: 'skills' }[kind];
+const title = t(loc, `${key}Title`, { n });
+const description = t(loc, `${key}Desc`, { n });
+const itemList = entries.slice(0, 50).map((e) => ({ name: e.name, url: e.href, image: e.image }));
+const rarities = kind === 'cards' ? ['SSR', 'SR', 'R'] : kind === 'skills' ? ['normal', 'gold', 'unique'] : [];
+const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom', 'friend', 'group'] : [];
+---
+
+<Layout title={title} description={description} itemList={itemList}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: t(loc, `nav${kind === 'characters' ? 'Characters' : kind === 'cards' ? 'Cards' : 'Skills'}`) }]} />
+    <div class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-2">{t(loc, `${key}H1`)}</h1>
+      <p class="text-gray-600">{t(loc, `${key}Intro`, { n })}</p>
+    </div>
+
+    <div class="glass rounded-xl p-4 mb-6 flex flex-wrap gap-3 items-center" id="filters">
+      <input id="f-q" type="search" placeholder={t(loc, 'filterSearch')} class="flex-1 min-w-[12rem] px-3 py-2 rounded-lg border border-uma-primary/20 bg-white" />
+      <select id="f-server" class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+        <option value="">{t(loc, 'filterServer')}: {t(loc, 'filterAll')}</option>
+        <option value="global">{t(loc, 'global')}</option>
+        <option value="jp">{t(loc, 'jpOnly')}</option>
+      </select>
+      {rarities.length > 0 && (
+        <select id="f-rarity" class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+          <option value="">{t(loc, 'filterRarity')}: {t(loc, 'filterAll')}</option>
+          {rarities.map((r) => <option value={r}>{kind === 'skills' ? skillRarityLabel(loc, r) : r}</option>)}
+        </select>
+      )}
+      {types.length > 0 && (
+        <select id="f-type" class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+          <option value="">{t(loc, 'filterType')}: {t(loc, 'filterAll')}</option>
+          {types.map((r) => <option value={r}>{typeLabel(loc, r)}</option>)}
+        </select>
+      )}
+      <span id="f-count" class="text-sm text-gray-500"></span>
+    </div>
+
+    <ul id="list" class={kind === 'skills' ? 'grid md:grid-cols-2 gap-3' : 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3'}>
+      {entries.map((e, i) => (
+        <li data-q={e.q.toLowerCase()} data-server={e.server ?? ''} data-rarity={e.rarity ?? ''} data-type={e.type ?? ''}>
+          {kind === 'skills' ? (
+            <a href={e.href} class="flex gap-3 bg-white rounded-lg p-3 shadow hover:shadow-lg transition-shadow h-full">
+              {e.image && <img src={e.image} alt="" width="40" height="40" loading="lazy" class="w-10 h-10 flex-shrink-0" />}
+              <span class="min-w-0">
+                <span class="block font-medium text-sm">{e.name}</span>
+                <span class="block text-xs text-gray-500 mb-1">{e.sub}{e.server === 'jp' ? ` · ${t(loc, 'jpOnly')}` : ''}</span>
+                <span class="block text-xs text-gray-600 line-clamp-2">{e.desc}</span>
+              </span>
+            </a>
+          ) : (
+            <a href={e.href} class="block bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow h-full">
+              {e.image && <img src={e.image} alt={e.name} width="240" height="320" loading={i < 6 ? 'eager' : 'lazy'} class="w-full aspect-[3/4] object-cover object-top bg-gray-50" />}
+              <span class="block p-2">
+                <span class="block text-sm font-medium leading-tight">{e.name}</span>
+                <span class="block text-xs text-gray-500 mt-1">{e.sub}{e.server === 'jp' ? ` · ${t(loc, 'jpOnly')}` : ''}</span>
+              </span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+    <p id="none" class="hidden text-center text-gray-500 py-8">{t(loc, 'noMatches')}</p>
+  </main>
+</Layout>
+
+<script>
+  const $ = (id: string) => document.getElementById(id) as HTMLInputElement | null;
+  const items = Array.from(document.querySelectorAll<HTMLElement>('#list > li'));
+  const norm = (s: string) => s.toLowerCase().replace(/[\u30a1-\u30f6]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)).replace(/[\s\-_・·.'’()（）\[\]【】「」]/g, '');
+  const prepared = items.map((li) => ({ li, q: norm(li.dataset.q ?? '') }));
+  function apply() {
+    const q = norm($('f-q')?.value ?? '');
+    const server = $('f-server')?.value ?? '';
+    const rarity = $('f-rarity')?.value ?? '';
+    const type = $('f-type')?.value ?? '';
+    let shown = 0;
+    for (const { li, q: hay } of prepared) {
+      const ok = (!q || hay.includes(q)) && (!server || li.dataset.server === server) && (!rarity || li.dataset.rarity === rarity) && (!type || li.dataset.type === type);
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    const c = $('f-count'); if (c) c.textContent = String(shown) + ' / ' + String(items.length);
+    $('none')?.classList.toggle('hidden', shown > 0);
+  }
+  ['f-q', 'f-server', 'f-rarity', 'f-type'].forEach((id) => $(id)?.addEventListener('input', apply));
+  apply();
+</script>

@@ -1,0 +1,137 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { charName, charBaseName, cardName, skillName, skillDesc } from '@/lib/localized.js';
+import { findSkill, otherOutfits, cardsOfCharacter } from '@/lib/related';
+import { skillClass } from '@/lib/skill-class';
+import { STAT_KEYS, statLabel, gradeClass, path, formatBirthday } from '@/lib/page-helpers';
+
+interface Props { locale: Locale; character: any }
+const { locale, character } = Astro.props;
+const loc = locale;
+const name = charName(character, loc);
+const base = charBaseName(character, loc);
+const stats3 = character.initial_stats ?? {};
+const stats4 = character.initial_stats_4star;
+const stats5 = character.initial_stats_5star;
+const growth = character.growth_rates ?? {};
+const apt = character.aptitudes ?? {};
+const jpOnly = character.server === 'jp';
+
+const skillRow = (n: string) => {
+  const s = findSkill(n);
+  if (!s) return { name: n, desc: '', href: '' };
+  return {
+    name: skillName(s, loc),
+    desc: skillDesc(s, loc),
+    href: skillClass.get(s.id) === 'all' ? path(`/skills/${s.id}/`, loc) : '',
+  };
+};
+const unique = character.unique_skill ? skillRow(character.unique_skill.name_en || character.unique_skill.name_jp) : null;
+const innate = (character.innate_skills ?? []).map(skillRow);
+const awakening = (character.awakening_skills ?? []).map(skillRow);
+
+const outfits = otherOutfits(character).map((o: any) => ({ href: path(`/characters/${o.id}/`, loc), name: charName(o, loc), image: o.image_url, sub: o.server === 'jp' ? t(loc, 'jpOnly') : '' }));
+const cards = cardsOfCharacter(character.char_id).map((c: any) => ({ href: path(`/cards/${c.id}/`, loc), name: cardName(c, loc), image: c.image_url, sub: `${c.rarity}${c.server === 'jp' ? ' · ' + t(loc, 'jpOnly') : ''}` }));
+
+const rows: [string, string][] = [];
+if (character.birthday) rows.push([t(loc, 'birthday'), formatBirthday(character.birthday, loc)]);
+if (character.cv) rows.push([t(loc, 'voice'), character.cv]);
+if (character.height_cm) rows.push([t(loc, 'height'), `${character.height_cm} cm`]);
+rows.push([t(loc, 'jpRelease'), character.release_date_jp ?? '-']);
+rows.push([t(loc, 'globalRelease'), character.release_date_global ?? t(loc, 'notYetGlobal')]);
+
+const title = t(loc, 'detailTitleChar', { name });
+const description = t(loc, 'detailDescChar', { name });
+const otherNames = [character.name_en, character.name_jp].filter((n) => n && n !== name);
+const statTable: [string, any][] = [['3★', stats3], ...(stats4 ? [['4★', stats4]] : []), ...(stats5 ? [['5★', stats5]] : [])] as any;
+---
+
+<Layout
+  title={title}
+  description={description}
+  image={character.image_url || 'https://umamusumedb.com/og-image.png'}
+  structuredDataType="character"
+  structuredData={{ name, title, description, image_url: character.image_url, alternateName: otherNames }}
+>
+  <Header />
+  <main class="container mx-auto px-4 py-8">
+    <Breadcrumb items={[{ label: t(loc, 'navCharacters'), href: path('/characters/', loc) }, { label: name }]} />
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-1">
+        <div class="glass rounded-xl p-6">
+          {character.image_url && (
+            <div class="relative aspect-[3/4] bg-gradient-to-br from-uma-primary/20 to-uma-secondary/20 rounded-lg mb-4 overflow-hidden">
+              <img src={character.image_url} alt={`${name} ${t(loc, 'imageAlt')}`} width="480" height="640" class="absolute inset-0 w-full h-full object-cover object-top" fetchpriority="high" />
+            </div>
+          )}
+          <h1 class="text-2xl font-display gradient-text mb-1">{name}</h1>
+          {otherNames.length > 0 && <p class="text-sm text-gray-500 mb-3">{otherNames.join(' / ')}</p>}
+          <div class="flex flex-wrap gap-2 mb-4 text-xs">
+            <span class="px-2 py-1 rounded-full bg-yellow-100 text-yellow-800">{'★'.repeat(character.rarity)}</span>
+            {jpOnly ? <span class="px-2 py-1 rounded-full bg-red-100 text-red-700">{t(loc, 'jpOnlyFull')}</span> : <span class="px-2 py-1 rounded-full bg-green-100 text-green-700">{t(loc, 'releasedGlobal')}</span>}
+          </div>
+          <dl class="text-sm space-y-1">
+            {rows.map(([k, v]) => (<div class="flex justify-between gap-3"><dt class="text-gray-500">{k}</dt><dd class="font-medium text-right">{v}</dd></div>))}
+          </dl>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 space-y-6">
+        <section class="glass rounded-xl p-6">
+          <h2 class="text-xl font-display mb-4">{t(loc, 'stats')}</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-center">
+              <thead><tr class="text-xs text-gray-500"><th class="p-2 text-left"></th>{STAT_KEYS.map((k) => <th class="p-2">{statLabel(loc, k)}</th>)}</tr></thead>
+              <tbody>
+                {statTable.map(([label, st]) => (<tr class="border-t border-gray-100"><td class="p-2 text-left font-medium">{label}</td>{STAT_KEYS.map((k) => <td class="p-2">{st?.[k] ?? '-'}</td>)}</tr>))}
+                <tr class="border-t border-gray-100"><td class="p-2 text-left font-medium">{t(loc, 'growth')}</td>{STAT_KEYS.map((k) => <td class="p-2">{growth?.[k] ?? '-'}</td>)}</tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="glass rounded-xl p-6">
+          <h2 class="text-xl font-display mb-4">{t(loc, 'aptitudes')}</h2>
+          <div class="grid sm:grid-cols-3 gap-6 text-sm">
+            <div>
+              <h3 class="font-semibold mb-2">{t(loc, 'surface')}</h3>
+              {['turf', 'dirt'].map((k) => <div class="flex justify-between"><span>{t(loc, k)}</span><span class={gradeClass(apt[k])}>{apt[k] ?? '-'}</span></div>)}
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">{t(loc, 'distance')}</h3>
+              {['sprint', 'mile', 'medium', 'long'].map((k) => <div class="flex justify-between"><span>{t(loc, k)}</span><span class={gradeClass(apt[k])}>{apt[k] ?? '-'}</span></div>)}
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2">{t(loc, 'style')}</h3>
+              {['escape', 'lead', 'between', 'chase'].map((k) => <div class="flex justify-between"><span>{t(loc, k)}</span><span class={gradeClass(apt[k])}>{apt[k] ?? '-'}</span></div>)}
+            </div>
+          </div>
+        </section>
+
+        {[[t(loc, 'uniqueSkill'), unique ? [unique] : []], [t(loc, 'innateSkills'), innate], [t(loc, 'awakeningSkills'), awakening]].map(([heading, list]: any) => (
+          list.length > 0 && (
+            <section class="glass rounded-xl p-6">
+              <h2 class="text-xl font-display mb-4">{heading}</h2>
+              <ul class="space-y-2">
+                {list.map((s: any) => (
+                  <li class="bg-white rounded-lg p-3">
+                    <div class="font-medium text-sm">{s.href ? <a href={s.href} class="text-uma-primary hover:underline">{s.name}</a> : s.name}</div>
+                    {s.desc && <p class="text-xs text-gray-600 mt-1">{s.desc}</p>}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        ))}
+
+        <RelatedLinks title={t(loc, 'relatedCards')} items={cards} />
+        <RelatedLinks title={t(loc, 'otherOutfits')} items={outfits} />
+      </div>
+    </div>
+  </main>
+</Layout>

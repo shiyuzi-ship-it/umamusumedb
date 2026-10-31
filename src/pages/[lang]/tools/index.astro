@@ -1,0 +1,7 @@
+---
+import ToolsIndexPage from '@/components/l10n/ToolsIndexPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() { return NEW_LOCALES.map((lang) => ({ params: { lang } })); }
+const { lang } = Astro.params;
+---
+<ToolsIndexPage locale={lang as any} />

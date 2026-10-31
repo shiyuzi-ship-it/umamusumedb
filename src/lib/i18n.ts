@@ -1,18 +1,27 @@
-export const SUPPORTED_LOCALES = ['en', 'ja', 'zh'] as const;
+// Locale helpers. en is the default locale (no URL prefix); the others live under /ja/, /zh/ (Simplified), /zh-tw/ (Traditional), /ko/.
+export const SUPPORTED_LOCALES = ['en', 'ja', 'zh', 'zh-tw', 'ko'] as const;
 export type Locale = (typeof SUPPORTED_LOCALES)[number];
-
 export const DEFAULT_LOCALE: Locale = 'en';
+export const SITE_ORIGIN = 'https://umamusumedb.com';
+
+export const LOCALE_META: Record<Locale, { htmlLang: string; hreflang: string; og: string; native: string; short: string }> = {
+  en: { htmlLang: 'en', hreflang: 'en', og: 'en_US', native: 'English', short: 'EN' },
+  ja: { htmlLang: 'ja', hreflang: 'ja', og: 'ja_JP', native: '日本語', short: 'JA' },
+  zh: { htmlLang: 'zh-Hans', hreflang: 'zh-CN', og: 'zh_CN', native: '简体中文', short: '简' },
+  'zh-tw': { htmlLang: 'zh-Hant', hreflang: 'zh-TW', og: 'zh_TW', native: '繁體中文', short: '繁' },
+  ko: { htmlLang: 'ko', hreflang: 'ko', og: 'ko_KR', native: '한국어', short: 'KO' },
+};
+
+export function isLocale(value: string | undefined | null): value is Locale {
+  return !!value && (SUPPORTED_LOCALES as readonly string[]).includes(value);
+}
 
 export function getLocaleFromPathname(pathname: string): Locale {
   const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
-
   for (const locale of SUPPORTED_LOCALES) {
     if (locale === DEFAULT_LOCALE) continue;
-    if (normalized === `/${locale}` || normalized.startsWith(`/${locale}/`)) {
-      return locale;
-    }
+    if (normalized === `/${locale}` || normalized.startsWith(`/${locale}/`)) return locale;
   }
-
   return DEFAULT_LOCALE;
 }
 
@@ -22,74 +31,55 @@ export function ensureLeadingSlash(pathname: string): string {
 
 export function ensureTrailingSlash(pathname: string): string {
   if (!pathname) return '/';
-  if (pathname.endsWith('/')) return pathname;
-  return `${pathname}/`;
+  return pathname.endsWith('/') ? pathname : `${pathname}/`;
 }
 
 export function stripLocaleFromPathname(pathname: string): string {
   const normalized = ensureLeadingSlash(pathname);
   const locale = getLocaleFromPathname(normalized);
-
-  if (locale === DEFAULT_LOCALE) {
-    return ensureTrailingSlash(normalized);
-  }
-
+  if (locale === DEFAULT_LOCALE) return ensureTrailingSlash(normalized);
   const prefix = `/${locale}`;
-  const stripped = normalized === prefix ? '/' : normalized.replace(new RegExp(`^/${locale}(?=/|$)`), '');
+  const stripped = normalized === prefix ? '/' : normalized.slice(prefix.length);
   return ensureTrailingSlash(stripped || '/');
 }
 
 export function localizePathname(pathname: string, locale?: Locale): string {
   const basePath = stripLocaleFromPathname(pathname);
-
-  const resolvedLocale: Locale =
-    locale ??
-    (typeof window !== 'undefined' ? getLocaleFromPathname(window.location.pathname) : DEFAULT_LOCALE);
-
-  if (resolvedLocale === DEFAULT_LOCALE) {
-    return ensureTrailingSlash(basePath);
-  }
-
-  const prefixed = basePath === '/' ? `/${resolvedLocale}` : `/${resolvedLocale}${basePath}`;
-  return ensureTrailingSlash(prefixed);
+  const resolved: Locale =
+    locale ?? (typeof window !== 'undefined' ? getLocaleFromPathname(window.location.pathname) : DEFAULT_LOCALE);
+  if (resolved === DEFAULT_LOCALE) return ensureTrailingSlash(basePath);
+  return ensureTrailingSlash(basePath === '/' ? `/${resolved}` : `/${resolved}${basePath}`);
 }
 
-export function getHtmlLang(locale: Locale): string {
-  switch (locale) {
-    case 'ja':
-      return 'ja';
-    case 'zh':
-      return 'zh-Hans';
-    case 'en':
-    default:
-      return 'en';
+export const getHtmlLang = (locale: Locale) => LOCALE_META[locale].htmlLang;
+export const getOgLocale = (locale: Locale) => LOCALE_META[locale].og;
+export const getHreflang = (locale: Locale) => LOCALE_META[locale].hreflang;
+
+/**
+ * Which locales have a real page for a (locale-less) path. Used for hreflang, the language switcher and the sitemaps.
+ * skillClass: 'all' = indexable skill (global, not evolved) -> every locale; 'jp' = JP-only skill (only the ja page is indexable);
+ * 'none' = evolved skill (noindex everywhere, no alternates).
+ */
+const ALL: Locale[] = ['en', 'ja', 'zh', 'zh-tw', 'ko'];
+const EN_JA: Locale[] = ['en', 'ja'];
+const NEW_ONLY_EN: Locale[] = ['en'];
+
+export function availableLocalesFor(basePath: string, opts: { skillClass?: Map<string, 'all' | 'jp' | 'none'> } = {}): Locale[] {
+  const p = ensureTrailingSlash(basePath);
+  if (p === '/' || p === '/characters/' || p === '/cards/' || p === '/skills/' || p === '/updates/' || p === '/tools/') return ALL;
+  if (/^\/(characters|cards)\/[^/]+\/$/.test(p)) return ALL;
+  const skill = p.match(/^\/skills\/([^/]+)\/$/);
+  if (skill) {
+    const cls = opts.skillClass?.get(skill[1]) ?? 'none';
+    return cls === 'all' ? ALL : cls === 'jp' ? ['ja'] : [];
   }
+  if (/^\/tools\/(factor-calculator|skill-builder|support-deck|training-calculator|training-goals)\/$/.test(p)) return ALL;
+  if (p === '/tools/character-comparison/') return ['en', 'zh', 'zh-tw', 'ko'];
+  if (p === '/data-sources/' || p === '/privacy-policy/' || p === '/terms-of-service/' || p === '/guides/') return EN_JA;
+  return NEW_ONLY_EN;
 }
 
-export function getOgLocale(locale: Locale): string {
-  switch (locale) {
-    case 'ja':
-      return 'ja_JP';
-    case 'zh':
-      return 'zh_CN';
-    case 'en':
-    default:
-      return 'en_US';
-  }
+/** Link to a path in the given locale, falling back to the English page when that locale has no such page. */
+export function hrefFor(path: string, locale: Locale, opts: { skillClass?: Map<string, 'all' | 'jp' | 'none'> } = {}): string {
+  return availableLocalesFor(path, opts).includes(locale) ? localizePathname(path, locale) : localizePathname(path, 'en');
 }
-
-export function getHreflang(locale: Locale): string {
-  switch (locale) {
-    case 'ja':
-      return 'ja';
-    case 'zh':
-      return 'zh-Hans';
-    case 'en':
-    default:
-      return 'en';
-  }
-}
-
-
-
-

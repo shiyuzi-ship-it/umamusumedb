@@ -1,0 +1,47 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { path } from '@/lib/page-helpers';
+import { characters as allCharacters } from '@/lib/static-content';
+import { charName } from '@/lib/localized.js';
+import TrainingCalculator from '@/components/tools/TrainingCalculator';
+import FactorCalculator from '@/components/tools/FactorCalculator';
+import SkillBuilder from '@/components/tools/SkillBuilder';
+import SupportDeckBuilder from '@/components/tools/SupportDeckBuilder';
+import TrainingGoals from '@/components/tools/TrainingGoals';
+import CharacterComparisonTool from '@/components/tools/CharacterComparisonTool';
+
+interface Props { locale: Locale; tool: string }
+const { locale: loc, tool } = Astro.props;
+const KEYS: Record<string, string> = {
+  'training-calculator': 'toolTraining', 'factor-calculator': 'toolFactor', 'skill-builder': 'toolSkill',
+  'support-deck': 'toolDeck', 'training-goals': 'toolGoals', 'character-comparison': 'toolCompare',
+};
+const key = KEYS[tool];
+const name = t(loc, key);
+const desc = t(loc, key + 'Desc');
+const characters = allCharacters.map((c: any) => ({
+  id: c.id, name_en: charName(c, loc), name_jp: c.name_jp, rarity: c.rarity, image_url: c.image_url, server: c.server,
+  aptitudes: c.aptitudes, growth_rates: c.growth_rates, max_stats: c.max_stats, initial_stats: c.initial_stats,
+}));
+---
+<Layout title={`${name} - ${t(loc, 'toolsH1')}`} description={desc} structuredDataType="tool" structuredData={{ name, description: desc, url: path(`/tools/${tool}/`, loc) }}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: t(loc, 'toolsH1'), href: path('/tools/', loc) }, { label: name }]} />
+    <div class="mb-6">
+      <h1 class="text-2xl sm:text-3xl font-bold mb-2">{name}</h1>
+      <p class="text-gray-600">{desc}</p>
+      <p class="text-xs text-gray-500 mt-2">{t(loc, 'toolNote')}</p>
+    </div>
+    {tool === 'training-calculator' && <TrainingCalculator client:load />}
+    {tool === 'factor-calculator' && <FactorCalculator client:load />}
+    {tool === 'skill-builder' && <SkillBuilder client:load />}
+    {tool === 'support-deck' && <SupportDeckBuilder client:load />}
+    {tool === 'training-goals' && <TrainingGoals client:load />}
+    {tool === 'character-comparison' && <CharacterComparisonTool characters={characters} client:load />}
+  </main>
+</Layout>

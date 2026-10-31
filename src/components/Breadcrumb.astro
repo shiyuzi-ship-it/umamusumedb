@@ -1,6 +1,7 @@
 ---
 import { Home, ChevronRight } from 'lucide-react';
-import { getLocaleFromPathname, localizePathname, type Locale } from '@/lib/i18n';
+import { getLocaleFromPathname, localizePathname, SITE_ORIGIN, type Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
 
 export interface BreadcrumbItem {
   label: string;
@@ -15,10 +16,25 @@ const { items } = Astro.props;
 
 const locale: Locale = getLocaleFromPathname(Astro.url.pathname);
 const homeHref = localizePathname('/', locale);
-const homeLabel = locale === 'ja' ? 'ホーム' : locale === 'zh' ? '首页' : 'Home';
+const homeLabel = t(locale, 'home');
+const abs = (href: string) => new URL(href, SITE_ORIGIN).toString();
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: homeLabel, item: abs(homeHref) },
+    ...items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: item.label,
+      item: abs(item.href ?? Astro.url.pathname),
+    })),
+  ],
+};
 ---
 
-<nav class="flex items-center gap-2 text-sm mb-6 sm:mb-8" aria-label="Breadcrumb">
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<nav class="flex items-center gap-2 text-sm mb-6 sm:mb-8" aria-label={t(locale, 'breadcrumb')}>
   <a
     href={homeHref}
     class="flex items-center gap-1 text-gray-600 hover:text-uma-primary transition-colors"
@@ -28,16 +44,11 @@ const homeLabel = locale === 'ja' ? 'ホーム' : locale === 'zh' ? '首页' : '
     <span class="hidden sm:inline">{homeLabel}</span>
   </a>
 
-  {items.map((item, index) => (
+  {items.map((item) => (
     <>
       <ChevronRight className="w-4 h-4 text-gray-400" />
       {item.href ? (
-        <a
-          href={item.href}
-          class="text-gray-600 hover:text-uma-primary transition-colors"
-        >
-          {item.label}
-        </a>
+        <a href={item.href} class="text-gray-600 hover:text-uma-primary transition-colors">{item.label}</a>
       ) : (
         <span class="text-gray-900 font-medium">{item.label}</span>
       )}

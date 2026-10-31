@@ -1,0 +1,125 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
+import type { Locale } from '@/lib/i18n';
+import { t, effectLabelL } from '@/lib/ui-strings';
+import { charName, cardName, skillName, skillDesc } from '@/lib/localized.js';
+import { EFFECT_LABELS, effectSuffix } from '@/lib/game-format';
+import { findSkill, otherCardsOfCharacter, characterOfCard } from '@/lib/related';
+import { skillClass } from '@/lib/skill-class';
+import { typeLabel, cardRarityClass, path, num } from '@/lib/page-helpers';
+
+interface Props { locale: Locale; card: any }
+const { locale, card } = Astro.props;
+const loc = locale;
+const name = cardName(card, loc);
+const jpOnly = card.server === 'jp';
+const effects = card.effects ?? {};
+const levelSet = new Set<number>();
+for (const v of Object.values(effects) as any[]) if (v && typeof v === 'object') for (const k of Object.keys(v)) levelSet.add(Number(k.replace('lv', '')));
+const levels = [...levelSet].sort((a, b) => a - b);
+const effectKeys = Object.keys(effects);
+const cell = (v: any, lv: number) => {
+  const x = v && typeof v === 'object' ? v[`lv${lv}`] : lv === levels[levels.length - 1] ? v : undefined;
+  return x === undefined || x === null ? '-' : num(x);
+};
+
+const hint = (card.hint_skills ?? []).map((n: string) => ({ n, kind: 'hint' }));
+const evt = (card.event_skills ?? []).map((n: string) => ({ n, kind: 'event' }));
+const skillRows = [...hint, ...evt].map(({ n, kind }: any) => {
+  const s = findSkill(n);
+  return {
+    kind,
+    name: s ? skillName(s, loc) : n,
+    desc: s ? skillDesc(s, loc) : '',
+    href: s && skillClass.get(s.id) === 'all' ? path(`/skills/${s.id}/`, loc) : '',
+  };
+});
+const owner = characterOfCard(card);
+const ownerLinks = owner ? [{ href: path(`/characters/${owner.id}/`, loc), name: charName(owner, loc), image: owner.image_url }] : [];
+const siblings = otherCardsOfCharacter(card).map((c: any) => ({ href: path(`/cards/${c.id}/`, loc), name: cardName(c, loc), image: c.image_url, sub: `${c.rarity} · ${typeLabel(loc, c.type)}` }));
+
+const title = t(loc, 'detailTitleCard', { name: `${name} (${card.rarity} ${typeLabel(loc, card.type)})` });
+const description = t(loc, 'detailDescCard', { name, rarity: card.rarity, type: typeLabel(loc, card.type) });
+const otherNames = [card.name_en, card.name_jp].filter((n) => n && n !== name);
+const rows: [string, string][] = [
+  [t(loc, 'rarity'), card.rarity], [t(loc, 'type'), typeLabel(loc, card.type)], [t(loc, 'maxLevel'), String(card.max_level ?? levels[levels.length - 1] ?? '')],
+  [t(loc, 'jpRelease'), card.release_date_jp ?? '-'], [t(loc, 'globalRelease'), card.release_date_global ?? t(loc, 'notYetGlobal')],
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  image={card.image_url || 'https://umamusumedb.com/og-image.png'}
+  structuredDataType="supportCard"
+  structuredData={{ name, title, description, image_url: card.image_url, alternateName: otherNames }}
+>
+  <Header />
+  <main class="container mx-auto px-4 py-8">
+    <Breadcrumb items={[{ label: t(loc, 'navCards'), href: path('/cards/', loc) }, { label: name }]} />
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="lg:col-span-1">
+        <div class="glass rounded-xl p-6">
+          {card.image_url && (
+            <div class="mb-4 rounded-lg overflow-hidden bg-gray-50">
+              <img src={card.image_url} alt={`${name} ${t(loc, 'imageAlt')}`} width="400" height="540" class="w-full h-auto" fetchpriority="high" />
+            </div>
+          )}
+          <h1 class="text-2xl font-display gradient-text mb-1">{name}</h1>
+          {otherNames.length > 0 && <p class="text-sm text-gray-500 mb-3">{otherNames.join(' / ')}</p>}
+          <div class="flex flex-wrap gap-2 mb-4 text-xs">
+            <span class={`px-2 py-1 rounded-full ${cardRarityClass(card.rarity)}`}>{card.rarity}</span>
+            {jpOnly ? <span class="px-2 py-1 rounded-full bg-red-100 text-red-700">{t(loc, 'jpOnlyFull')}</span> : <span class="px-2 py-1 rounded-full bg-green-100 text-green-700">{t(loc, 'releasedGlobal')}</span>}
+          </div>
+          <dl class="text-sm space-y-1">
+            {rows.map(([k, v]) => (<div class="flex justify-between gap-3"><dt class="text-gray-500">{k}</dt><dd class="font-medium text-right">{v}</dd></div>))}
+          </dl>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 space-y-6">
+        {effectKeys.length > 0 && (
+          <section class="glass rounded-xl p-6">
+            <h2 class="text-xl font-display mb-4">{t(loc, 'effects')}</h2>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-center">
+                <thead><tr class="text-xs text-gray-500"><th class="p-2 text-left"></th>{levels.map((lv) => <th class="p-2">{t(loc, 'level')}{lv}</th>)}</tr></thead>
+                <tbody>
+                  {effectKeys.map((k) => (
+                    <tr class="border-t border-gray-100">
+                      <td class="p-2 text-left font-medium whitespace-nowrap">{effectLabelL(k, loc, EFFECT_LABELS[k])}</td>
+                      {levels.map((lv) => <td class="p-2">{cell(effects[k], lv)}{cell(effects[k], lv) !== '-' ? effectSuffix(k) : ''}</td>)}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+
+        {skillRows.length > 0 && (
+          <section class="glass rounded-xl p-6">
+            <h2 class="text-xl font-display mb-4">{t(loc, 'hintSkills')}</h2>
+            <ul class="space-y-2">
+              {skillRows.map((s: any) => (
+                <li class="bg-white rounded-lg p-3">
+                  <div class="flex justify-between gap-2 items-start">
+                    <div class="font-medium text-sm">{s.href ? <a href={s.href} class="text-uma-primary hover:underline">{s.name}</a> : s.name}</div>
+                    <span class="text-xs px-2 py-0.5 bg-gray-100 rounded-full whitespace-nowrap">{s.kind === 'hint' ? t(loc, 'hintSkills') : t(loc, 'eventSkills')}</span>
+                  </div>
+                  {s.desc && <p class="text-xs text-gray-600 mt-1">{s.desc}</p>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <RelatedLinks title={t(loc, 'characterOutfits')} items={ownerLinks} />
+        <RelatedLinks title={t(loc, 'relatedCardsOther')} items={siblings} />
+      </div>
+    </div>
+  </main>
+</Layout>

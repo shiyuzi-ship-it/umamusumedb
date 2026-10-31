@@ -1,4 +1,9 @@
 ---
+import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
+import { t as __t } from '@/lib/ui-strings';
+import { charName as __cn, cardName as __kn } from '@/lib/localized.js';
+import { otherOutfits as __outfits, cardsOfCharacter as __cardsOf, otherCardsOfCharacter as __otherCards, characterOfCard as __ownerOf } from '@/lib/related';
+import { localizePathname as __lp } from '@/lib/i18n';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import { characters, skills, realHorses } from '@/lib/static-content';
@@ -90,6 +95,10 @@ function getBestStrategy(aptitudes: any) {
   }
   return labels[best] || best.charAt(0).toUpperCase() + best.slice(1);
 }
+const __loc = 'en' as const;
+const __relCards = __cardsOf(character.char_id).map((c: any) => ({ href: __lp(`/cards/${c.id}/`, __loc), name: __kn(c, __loc), image: c.image_url, sub: c.rarity + (c.server === 'jp' ? ' · ' + __t(__loc, 'jpOnly') : '') }));
+const __relOutfits = __outfits(character).map((o: any) => ({ href: __lp(`/characters/${o.id}/`, __loc), name: __cn(o, __loc), image: o.image_url, sub: o.server === 'jp' ? __t(__loc, 'jpOnly') : '' }));
+
 ---
 
 <Layout
@@ -550,6 +559,10 @@ function getBestStrategy(aptitudes: any) {
           </div>
         )}
       </div>
+    </div>
+    <div class="mt-8 space-y-6">
+      <RelatedLinks title={__t(__loc, 'relatedCards')} items={__relCards} />
+      <RelatedLinks title={__t(__loc, 'otherOutfits')} items={__relOutfits} />
     </div>
   </main>
 

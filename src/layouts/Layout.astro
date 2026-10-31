@@ -4,46 +4,55 @@ import MetaTags from '@/components/SEO/MetaTags.astro';
 import StructuredData from '@/components/SEO/StructuredData.astro';
 import Footer from '@/components/Footer.astro';
 import {
-  getHtmlLang,
+  LOCALE_META,
+  availableLocalesFor,
   getLocaleFromPathname,
   localizePathname,
   stripLocaleFromPathname,
   type Locale
 } from '@/lib/i18n';
+import { skillClass } from '@/lib/skill-class';
 
 export interface Props {
   title: string;
   description?: string;
   image?: string;
-  structuredDataType?: 'website' | 'character' | 'supportCard' | 'tool';
+  structuredDataType?: 'website' | 'character' | 'supportCard' | 'skill' | 'tool';
   structuredData?: any;
   noindex?: boolean;
+  itemList?: { name: string; url: string; image?: string }[];
 }
 
 const { 
   title, 
-  description = 'Comprehensive database and tools for Uma Musume Pretty Derby - Characters, Support Cards, Tier Lists, Training Calculators', 
+  description = 'Uma Musume Pretty Derby database: characters, support cards, skills, release dates and free training calculators.', 
   image = 'https://umamusumedb.com/og-image.png',
   structuredDataType = 'website',
   structuredData,
-  noindex = false
+  noindex = false,
+  itemList
 } = Astro.props;
 
-const imageAbs = image.startsWith('/') ? `https://umamusumedb.com${image}` : image;
+const imageSrc = image || 'https://umamusumedb.com/og-image.png';
+const imageAbs = imageSrc.startsWith('/') ? `https://umamusumedb.com${imageSrc}` : imageSrc;
 const locale: Locale = getLocaleFromPathname(Astro.url.pathname);
 const basePath = stripLocaleFromPathname(Astro.url.pathname);
 const canonicalPath = localizePathname(basePath, locale);
 const canonicalURL = new URL(canonicalPath, Astro.url.origin).toString();
-const alternates: Partial<Record<Locale, string>> = {
-  en: new URL(localizePathname(basePath, 'en'), Astro.url.origin).toString(),
-  ja: new URL(localizePathname(basePath, 'ja'), Astro.url.origin).toString()
+const alternates: Partial<Record<Locale, string>> = {};
+for (const l of availableLocalesFor(basePath, { skillClass })) {
+  alternates[l] = new URL(localizePathname(basePath, l), Astro.url.origin).toString();
+}
+const htmlLang = LOCALE_META[locale].htmlLang;
+
+const FEEDBACK: Record<Locale, [string, string, string]> = {
+  en: ['Feedback', 'Open a GitHub Issue', 'Share feedback on GitHub issues'],
+  ja: ['フィードバック', 'GitHubでIssueを投稿', 'GitHubでフィードバックを投稿'],
+  zh: ['反馈', '在 GitHub 提交 Issue', '在 GitHub 提交反馈'],
+  'zh-tw': ['意見回饋', '在 GitHub 提交 Issue', '在 GitHub 提交意見回饋'],
+  ko: ['피드백', 'GitHub 이슈 등록', 'GitHub 이슈로 피드백 보내기'],
 };
-
-const htmlLang = getHtmlLang(locale);
-
-const feedbackTitle = locale === 'ja' ? 'フィードバック' : locale === 'zh' ? '反馈' : 'Feedback';
-const feedbackSubtitle =
-  locale === 'ja' ? 'GitHubでIssueを投稿' : locale === 'zh' ? '在 GitHub 提交 Issue' : 'Open a GitHub Issue';
+const [feedbackTitle, feedbackSubtitle, feedbackAria] = FEEDBACK[locale];
 ---
 
 <!DOCTYPE html>
@@ -61,8 +70,10 @@ const feedbackSubtitle =
     </script>
     
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3627510332717021"
-         crossorigin="anonymous"></script>
+    {!noindex && (
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3627510332717021"
+           crossorigin="anonymous"></script>
+    )}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -88,17 +99,10 @@ const feedbackSubtitle =
       data={structuredData}
       pageUrl={canonicalURL}
       locale={locale}
+      itemList={itemList}
     />
     
-    <!-- Twitter -->
-    <meta name="twitter:card" content={imageAbs.endsWith('og-image.png') ? 'summary_large_image' : 'summary'} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageAbs} />
-    
     <!-- PWA -->
-    <meta name="theme-color" content="#FF6B9D" />
-    <link rel="manifest" href="/manifest.json" />
   </head>
   <body class="min-h-screen bg-gradient-to-br from-uma-light via-white to-uma-sky/10">
     <div class="relative">
@@ -114,15 +118,11 @@ const feedbackSubtitle =
         <slot />
         <Footer />
         <a
-          href="https://github.com/tianyu19920816/umamusumedb/issues"
+          href="https://github.com/shiyuzi-ship-it/umamusumedb/issues"
           target="_blank"
           rel="noopener noreferrer"
           class="feedback-widget"
-          aria-label={locale === 'ja'
-            ? 'GitHubでフィードバックを投稿'
-            : locale === 'zh'
-              ? '在 GitHub 提交反馈'
-              : 'Share feedback on GitHub issues'}
+          aria-label={feedbackAria}
         >
           <div class="feedback-widget__content">
             <span class="feedback-widget__title">{feedbackTitle}</span>

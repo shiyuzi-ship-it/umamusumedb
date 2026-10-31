@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/generate-search-data.mjs && astro build && node scripts/format-sitemap.mjs",
+    "build": "astro build && node scripts/build-sitemaps.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && npx wrangler pages deploy dist --project-name=umamusumedb",
     "deploy:preview": "npm run build && npx wrangler pages deploy dist --project-name=umamusumedb --branch=preview",
@@ -50,6 +50,7 @@
     "better-sqlite3": "^12.2.0",
     "happy-dom": "^20.4.0",
     "jsdom": "^27.4.0",
+    "opencc-js": "^1.4.2",
     "typescript": "^5.7.2",
     "vitest": "^4.0.18",
     "wrangler": "^3.101.0"

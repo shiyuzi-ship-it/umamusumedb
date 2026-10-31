@@ -1,5 +1,6 @@
 # Redirect sitemap.xml to sitemap-index.xml
 /sitemap.xml /sitemap-index.xml 301
+/sitemap-0.xml /sitemap-index.xml 301
 
 # Legacy URL redirects (ids used before the 2026-10 data refresh)
 /characters/oguri_cap_starlight/ /characters/oguri_cap_starlight_beat/ 301

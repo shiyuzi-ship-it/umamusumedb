@@ -16,6 +16,16 @@
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { syncImages } from './fetch-images.mjs';
+import * as OpenCC from 'opencc-js';
+
+// Simplified Chinese: GameTora only has Korean and Traditional Chinese (TW server) text. Simplified is derived from the
+// official Traditional text by character-set conversion (no re-translation), so wording may differ from the CN server.
+const toCn = OpenCC.Converter({ from: 'tw', to: 'cn' });
+const loc = (ko, tw) => ({
+  ko: ko ? { name: ko[0], title: ko[1] ?? null, desc: ko[2] ?? null } : null,
+  zh_tw: tw ? { name: tw[0], title: tw[1] ?? null, desc: tw[2] ?? null } : null,
+  zh: tw ? { name: toCn(tw[0]), title: tw[1] ? toCn(tw[1]) : null, desc: tw[2] ? toCn(tw[2]) : null } : null,
+});
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -202,6 +212,7 @@ async function main() {
       effect_type: effectTypeOf(desc, tags),
       server: s.unreleased ? 'jp' : 'global',
       icon_url: '',
+      i18n: loc(s.name_ko ? [s.name_ko, null, s.desc_ko] : null, s.name_tw ? [s.name_tw, null, s.desc_tw] : null),
     };
   });
   const skillIdOut = new Map(skills.map((s, i) => [s.id, skillOut[i].id]));
@@ -251,6 +262,7 @@ async function main() {
       release_date_global: c.release_en ?? null,
       obtained: c.obtained ?? null,
       gt_url_name: c.url_name,
+      i18n: loc(c.name_ko ? [c.name_ko, c.title_ko ? stripBr(c.title_ko) : null] : null, c.name_tw ? [c.name_tw, c.title_tw ? stripBr(c.title_tw) : null] : null),
     });
   }
 
@@ -290,6 +302,7 @@ async function main() {
       release_date_global: s.release_en ?? null,
       obtained: s.obtained ?? null,
       gt_url_name: s.url_name,
+      i18n: loc(s.name_ko ? [s.name_ko, s.title_ko ? stripBr(s.title_ko) : null] : null, s.name_tw ? [s.name_tw, s.title_zh_tw ? stripBr(s.title_zh_tw) : null] : null),
     });
   }
 

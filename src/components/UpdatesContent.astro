@@ -3,29 +3,28 @@ import releasesData from '../../public/data/releases.json';
 import scenariosData from '../../public/data/scenarios.json';
 import newsData from '../../public/data/news.json';
 
+import { localizePathname, type Locale } from '@/lib/i18n';
+import { t as tr } from '@/lib/ui-strings';
+import { charName, cardName } from '@/lib/localized.js';
+import charactersData from '../../public/data/characters.json';
+import cardsData from '../../public/data/supportCards.json';
+
 interface Props {
-  locale?: 'en' | 'ja';
+  locale?: Locale;
 }
 const { locale = 'en' } = Astro.props;
-const prefix = locale === 'ja' ? '/ja' : '';
+const prefix = locale === 'en' ? '' : `/${locale}`;
 const ja = locale === 'ja';
 
 const t = {
-  news: ja ? '公式お知らせ(グローバル版)' : 'Latest Global announcements',
-  newsNote: ja
-    ? '見出しとリンクのみを掲載しています。詳細は各記事をご覧ください。'
-    : 'Headlines and links only. Open each post for full details.',
-  global: ja ? 'グローバル版の新規実装' : 'Recently released – Global server',
-  jp: ja ? '日本版の新規実装(グローバル未実装)' : 'Recently released – JP server (not yet in Global)',
-  scenarios: ja ? '育成シナリオ' : 'Training scenarios',
-  scenario: ja ? 'シナリオ' : 'Scenario',
-  jpStart: ja ? '日本版開始' : 'JP start',
-  glStart: ja ? 'グローバル版開始' : 'Global start',
-  notYet: ja ? '未実装' : 'Not yet',
-  character: ja ? 'ウマ娘' : 'Character',
-  support: ja ? 'サポートカード' : 'Support card',
-  source: ja ? 'データ出典' : 'Data source',
+  news: tr(locale, 'news'), newsNote: tr(locale, 'newsNote'),
+  global: tr(locale, 'recentGlobal'), jp: tr(locale, 'recentJp'),
+  scenarios: tr(locale, 'scenarios'), scenario: tr(locale, 'scenario'),
+  jpStart: tr(locale, 'jpStart'), glStart: tr(locale, 'glStart'), notYet: tr(locale, 'notYet'),
+  character: tr(locale, 'kindCharacter'), support: tr(locale, 'kindSupport'), source: tr(locale, 'dataSource'),
 };
+const charById = new Map((charactersData as any[]).map((c) => [c.id, c]));
+const cardById = new Map((cardsData as any[]).map((c) => [c.id, c]));
 
 const releases = (releasesData as any).releases as any[];
 const byKind = (e: any) => (e.kind === 'character' ? `${prefix}/characters/${e.id}/` : `${prefix}/cards/${e.id}/`);
@@ -48,7 +47,11 @@ const globalGroups = group(globalRecent);
 const jpGroups = group(jpOnly);
 const scenarios = scenariosData as any[];
 const news = (newsData as any).items as any[];
-const name = (e: any) => (ja ? e.name_jp || e.name_en : e.name_en);
+const name = (e: any) => {
+  const rec: any = e.kind === 'character' ? charById.get(e.id) : cardById.get(e.id);
+  if (!rec) return ja ? e.name_jp || e.name_en : e.name_en;
+  return e.kind === 'character' ? charName(rec, locale) : cardName(rec, locale);
+};
 ---
 
 <section class="mb-10">
@@ -116,7 +119,7 @@ const name = (e: any) => (ja ? e.name_jp || e.name_en : e.name_en);
       <tbody>
         {scenarios.map((s) => (
           <tr class="border-t border-gray-100">
-            <td class="p-3">{ja ? s.name_jp : s.name_en_full || s.name_en || s.name_jp}</td>
+            <td class="p-3">{ja || locale === 'zh' || locale === 'zh-tw' ? s.name_jp : s.name_en_full || s.name_en || s.name_jp}</td>
             <td class="p-3">{s.start_jp ?? '-'}</td>
             <td class="p-3">{s.start_global ?? t.notYet}</td>
           </tr>

@@ -26,6 +26,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100101-special-week",
+    "i18n": {
+      "ko": {
+        "name": "스페셜 위크",
+        "title": "스페셜 드리머",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "特別週",
+        "title": "特別夢想家",
+        "desc": null
+      },
+      "zh": {
+        "name": "特别周",
+        "title": "特别梦想家",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100101.webp"
   },
   {
@@ -55,6 +72,23 @@
     "release_date_global": "2025-10-14",
     "obtained": "gacha",
     "gt_url_name": "100102-special-week",
+    "i18n": {
+      "ko": {
+        "name": "스페셜 위크",
+        "title": "호핑♪비타민 하트",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "特別週",
+        "title": "跳躍♪富含維他命的心",
+        "desc": null
+      },
+      "zh": {
+        "name": "特别周",
+        "title": "跳跃♪富含维他命的心",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100102.webp"
   },
   {
@@ -84,6 +118,23 @@
     "release_date_global": "2026-06-25",
     "obtained": "main_story",
     "gt_url_name": "100103-special-week",
+    "i18n": {
+      "ko": {
+        "name": "스페셜 위크",
+        "title": "일본 최고의 총대장",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "特別週",
+        "title": "日之本第一總大將",
+        "desc": null
+      },
+      "zh": {
+        "name": "特别周",
+        "title": "日之本第一总大将",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100103.webp"
   },
   {
@@ -113,6 +164,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100201-silence-suzuka",
+    "i18n": {
+      "ko": {
+        "name": "사일런스 스즈카",
+        "title": "사일런트 이노센스",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "無聲鈴鹿",
+        "title": "無聲純真",
+        "desc": null
+      },
+      "zh": {
+        "name": "无声铃鹿",
+        "title": "无声纯真",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100201.webp"
   },
   {
@@ -142,6 +210,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100202-silence-suzuka",
+    "i18n": {
+      "ko": {
+        "name": "사일런스 스즈카",
+        "title": "물결 사이의 에메랄드",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "無聲鈴鹿",
+        "title": "波浪間的綠寶石",
+        "desc": null
+      },
+      "zh": {
+        "name": "无声铃鹿",
+        "title": "波浪间的绿宝石",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100202.webp"
   },
   {
@@ -171,6 +256,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100301-tokai-teio",
+    "i18n": {
+      "ko": {
+        "name": "토카이 테이오",
+        "title": "톱・오브・조이풀",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "東海帝皇",
+        "title": "歡樂巔峰",
+        "desc": null
+      },
+      "zh": {
+        "name": "东海帝皇",
+        "title": "欢乐巅峰",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100301.webp"
   },
   {
@@ -200,6 +302,23 @@
     "release_date_global": "2025-07-16",
     "obtained": "gacha",
     "gt_url_name": "100302-tokai-teio",
+    "i18n": {
+      "ko": {
+        "name": "토카이 테이오",
+        "title": "비욘드・더・호라이즌",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "東海帝皇",
+        "title": "超越地平線",
+        "desc": null
+      },
+      "zh": {
+        "name": "东海帝皇",
+        "title": "超越地平线",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100302.webp"
   },
   {
@@ -229,6 +348,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100303-tokai-teio",
+    "i18n": {
+      "ko": {
+        "name": "토카이 테이오",
+        "title": "자색 구름의 나비",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "東海帝皇",
+        "title": "紫雲下的追夢蝶",
+        "desc": null
+      },
+      "zh": {
+        "name": "东海帝皇",
+        "title": "紫云下的追梦蝶",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100303.webp"
   },
   {
@@ -258,6 +394,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100401-maruzensky",
+    "i18n": {
+      "ko": {
+        "name": "마루젠스키",
+        "title": "포뮬러 오브 루주",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "丸善斯基",
+        "title": "嫣紅方程式",
+        "desc": null
+      },
+      "zh": {
+        "name": "丸善斯基",
+        "title": "嫣红方程式",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100401.webp"
   },
   {
@@ -287,6 +440,23 @@
     "release_date_global": "2025-10-14",
     "obtained": "gacha",
     "gt_url_name": "100402-maruzensky",
+    "i18n": {
+      "ko": {
+        "name": "마루젠스키",
+        "title": "날아라☆서머 나이트",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "丸善斯基",
+        "title": "飛越☆盛夏騎士",
+        "desc": null
+      },
+      "zh": {
+        "name": "丸善斯基",
+        "title": "飞越☆盛夏骑士",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100402.webp"
   },
   {
@@ -316,6 +486,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100403-maruzensky",
+    "i18n": {
+      "ko": {
+        "name": "마루젠스키",
+        "title": "축복을 전하는 신속 선녀",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "丸善斯基",
+        "title": "祈福祝賀的神速天女",
+        "desc": null
+      },
+      "zh": {
+        "name": "丸善斯基",
+        "title": "祈福祝贺的神速天女",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100403.webp"
   },
   {
@@ -345,6 +532,23 @@
     "release_date_global": "2025-10-02",
     "obtained": "gacha",
     "gt_url_name": "100501-fuji-kiseki",
+    "i18n": {
+      "ko": {
+        "name": "후지 키세키",
+        "title": "슈팅 스타・레뷔",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "富士奇石",
+        "title": "流星歌舞劇",
+        "desc": null
+      },
+      "zh": {
+        "name": "富士奇石",
+        "title": "流星歌舞剧",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100501.webp"
   },
   {
@@ -374,6 +578,23 @@
     "release_date_global": "2026-04-05",
     "obtained": "gacha",
     "gt_url_name": "100502-fuji-kiseki",
+    "i18n": {
+      "ko": {
+        "name": "후지 키세키",
+        "title": "쉭세・에투알",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "富士奇石",
+        "title": "勝利明星",
+        "desc": null
+      },
+      "zh": {
+        "name": "富士奇石",
+        "title": "胜利明星",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100502.webp"
   },
   {
@@ -403,6 +624,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100503-fuji-kiseki",
+    "i18n": {
+      "ko": {
+        "name": "후지 키세키",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "富士奇石",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "富士奇石",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100503.webp"
   },
   {
@@ -432,6 +670,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100601-oguri-cap",
+    "i18n": {
+      "ko": {
+        "name": "오구리 캡",
+        "title": "스타라이트 비트",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "小栗帽",
+        "title": "星光躍動",
+        "desc": null
+      },
+      "zh": {
+        "name": "小栗帽",
+        "title": "星光跃动",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100601.webp"
   },
   {
@@ -461,6 +716,23 @@
     "release_date_global": "2026-01-05",
     "obtained": "gacha",
     "gt_url_name": "100602-oguri-cap",
+    "i18n": {
+      "ko": {
+        "name": "오구리 캡",
+        "title": "기적의 하얀 별",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "小栗帽",
+        "title": "奇蹟白星",
+        "desc": null
+      },
+      "zh": {
+        "name": "小栗帽",
+        "title": "奇迹白星",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100602.webp"
   },
   {
@@ -490,6 +762,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100603-oguri-cap",
+    "i18n": {
+      "ko": {
+        "name": "오구리 캡",
+        "title": "シンデレラグレイ",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "小栗帽",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "小栗帽",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100603.webp"
   },
   {
@@ -519,6 +808,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100701-gold-ship",
+    "i18n": {
+      "ko": {
+        "name": "골드 쉽",
+        "title": "레드 스트라이프",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金船",
+        "title": "火紅鬥爭",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金船",
+        "title": "火红斗争",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100701.webp"
   },
   {
@@ -548,6 +854,23 @@
     "release_date_global": "2026-07-02",
     "obtained": "gacha",
     "gt_url_name": "100702-gold-ship",
+    "i18n": {
+      "ko": {
+        "name": "골드 쉽",
+        "title": "RUN! 럼블! 런처!!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金船",
+        "title": "RUN！亂！亂槍射手！！",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金船",
+        "title": "RUN！乱！乱枪射手！！",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100702.webp"
   },
   {
@@ -577,6 +900,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100703-gold-ship",
+    "i18n": {
+      "ko": {
+        "name": "골드 쉽",
+        "title": "La mode 564",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金船",
+        "title": "La mode 564",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金船",
+        "title": "La mode 564",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100703.webp"
   },
   {
@@ -606,6 +946,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100801-vodka",
+    "i18n": {
+      "ko": {
+        "name": "보드카",
+        "title": "와일드 톱기어",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "伏特加",
+        "title": "狂野極速",
+        "desc": null
+      },
+      "zh": {
+        "name": "伏特加",
+        "title": "狂野极速",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100801.webp"
   },
   {
@@ -635,6 +992,23 @@
     "release_date_global": "2026-09-28",
     "obtained": "gacha",
     "gt_url_name": "100802-vodka",
+    "i18n": {
+      "ko": {
+        "name": "보드카",
+        "title": "얼지 않는 아쿠아・비타이",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "伏特加",
+        "title": "不凍的生命之水",
+        "desc": null
+      },
+      "zh": {
+        "name": "伏特加",
+        "title": "不冻的生命之水",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100802.webp"
   },
   {
@@ -664,6 +1038,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100901-daiwa-scarlet",
+    "i18n": {
+      "ko": {
+        "name": "다이와 스칼렛",
+        "title": "톱・오브・블루",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大和赤驥",
+        "title": "蒼藍巔峰",
+        "desc": null
+      },
+      "zh": {
+        "name": "大和赤骥",
+        "title": "苍蓝巅峰",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100901.webp"
   },
   {
@@ -693,6 +1084,23 @@
     "release_date_global": "2026-09-28",
     "obtained": "gacha",
     "gt_url_name": "100902-daiwa-scarlet",
+    "i18n": {
+      "ko": {
+        "name": "다이와 스칼렛",
+        "title": "다홍색 뉘・에투알레",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大和赤驥",
+        "title": "緋紅的星落之夜",
+        "desc": null
+      },
+      "zh": {
+        "name": "大和赤骥",
+        "title": "绯红的星落之夜",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100902.webp"
   },
   {
@@ -722,6 +1130,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100903-daiwa-scarlet",
+    "i18n": {
+      "ko": {
+        "name": "다이와 스칼렛",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大和赤驥",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "大和赤骥",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/100903.webp"
   },
   {
@@ -751,6 +1176,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101001-taiki-shuttle",
+    "i18n": {
+      "ko": {
+        "name": "타이키 셔틀",
+        "title": "와일드・프론티어",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大樹快車",
+        "title": "野性邊境",
+        "desc": null
+      },
+      "zh": {
+        "name": "大树快车",
+        "title": "野性边境",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101001.webp"
   },
   {
@@ -780,6 +1222,23 @@
     "release_date_global": "2026-06-11",
     "obtained": "gacha",
     "gt_url_name": "101002-taiki-shuttle",
+    "i18n": {
+      "ko": {
+        "name": "타이키 셔틀",
+        "title": "Bubblegum☆Memories",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大樹快車",
+        "title": "Bubblegum☆Memories",
+        "desc": null
+      },
+      "zh": {
+        "name": "大树快车",
+        "title": "Bubblegum☆Memories",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101002.webp"
   },
   {
@@ -809,6 +1268,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101003-taiki-shuttle",
+    "i18n": {
+      "ko": {
+        "name": "타이키 셔틀",
+        "title": "Baa Baa Patisserie",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大樹快車",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "大树快车",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101003.webp"
   },
   {
@@ -838,6 +1314,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101101-grass-wonder",
+    "i18n": {
+      "ko": {
+        "name": "그래스 원더",
+        "title": "바위 뚫는 파랑",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "草上飛",
+        "title": "穿岩之青",
+        "desc": null
+      },
+      "zh": {
+        "name": "草上飞",
+        "title": "穿岩之青",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101101.webp"
   },
   {
@@ -867,6 +1360,23 @@
     "release_date_global": "2025-09-21",
     "obtained": "gacha",
     "gt_url_name": "101102-grass-wonder",
+    "i18n": {
+      "ko": {
+        "name": "그래스 원더",
+        "title": "세인트 제이드・힐러",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "草上飛",
+        "title": "神聖翡翠治癒師",
+        "desc": null
+      },
+      "zh": {
+        "name": "草上飞",
+        "title": "神圣翡翠治愈师",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101102.webp"
   },
   {
@@ -896,6 +1406,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101103-grass-wonder",
+    "i18n": {
+      "ko": {
+        "name": "그래스 원더",
+        "title": "푸른 불꽃의 명예",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "草上飛",
+        "title": "蒼炎之譽",
+        "desc": null
+      },
+      "zh": {
+        "name": "草上飞",
+        "title": "苍炎之誉",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101103.webp"
   },
   {
@@ -925,6 +1452,23 @@
     "release_date_global": "2025-09-17",
     "obtained": "gacha",
     "gt_url_name": "101201-hishi-amazon",
+    "i18n": {
+      "ko": {
+        "name": "히시 아마존",
+        "title": "아마조네스・라피스",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "菱亞馬遜",
+        "title": "亞馬遜青金石",
+        "desc": null
+      },
+      "zh": {
+        "name": "菱亚马逊",
+        "title": "亚马逊青金石",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101201.webp"
   },
   {
@@ -954,6 +1498,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101202-hishi-amazon",
+    "i18n": {
+      "ko": {
+        "name": "히시 아마존",
+        "title": "Hungry Veil",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "菱亞馬遜",
+        "title": "Hungry Veil",
+        "desc": null
+      },
+      "zh": {
+        "name": "菱亚马逊",
+        "title": "Hungry Veil",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101202.webp"
   },
   {
@@ -983,6 +1544,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101301-mejiro-mcqueen",
+    "i18n": {
+      "ko": {
+        "name": "메지로 맥퀸",
+        "title": "엘레강스・라인",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白麥昆",
+        "title": "優雅線條",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白麦昆",
+        "title": "优雅线条",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101301.webp"
   },
   {
@@ -1012,6 +1590,23 @@
     "release_date_global": "2025-07-16",
     "obtained": "gacha",
     "gt_url_name": "101302-mejiro-mcqueen",
+    "i18n": {
+      "ko": {
+        "name": "메지로 맥퀸",
+        "title": "엔드・오브・스카이",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白麥昆",
+        "title": "空之盡頭",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白麦昆",
+        "title": "空之尽头",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101302.webp"
   },
   {
@@ -1041,6 +1636,23 @@
     "release_date_global": "2026-07-02",
     "obtained": "gacha",
     "gt_url_name": "101303-mejiro-mcqueen",
+    "i18n": {
+      "ko": {
+        "name": "메지로 맥퀸",
+        "title": "잔물결 페어 레이디",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白麥昆",
+        "title": "漣漪窈窕淑女",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白麦昆",
+        "title": "涟漪窈窕淑女",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101303.webp"
   },
   {
@@ -1070,6 +1682,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101401-el-condor-pasa",
+    "i18n": {
+      "ko": {
+        "name": "엘 콘도르 파사",
+        "title": "엘☆Número 1",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "神鷹",
+        "title": "神鷹☆Número 1",
+        "desc": null
+      },
+      "zh": {
+        "name": "神鹰",
+        "title": "神鹰☆Número 1",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101401.webp"
   },
   {
@@ -1099,6 +1728,23 @@
     "release_date_global": "2025-09-21",
     "obtained": "gacha",
     "gt_url_name": "101402-el-condor-pasa",
+    "i18n": {
+      "ko": {
+        "name": "엘 콘도르 파사",
+        "title": "쿠쿨칸・몽크",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "神鷹",
+        "title": "羽蛇神武鬥家",
+        "desc": null
+      },
+      "zh": {
+        "name": "神鹰",
+        "title": "羽蛇神武斗家",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101402.webp"
   },
   {
@@ -1128,6 +1774,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101501-tm-opera-o",
+    "i18n": {
+      "ko": {
+        "name": "티엠 오페라 오",
+        "title": "오・솔레・수오!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "好歌劇",
+        "title": "你的太陽！",
+        "desc": null
+      },
+      "zh": {
+        "name": "好歌剧",
+        "title": "你的太阳！",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101501.webp"
   },
   {
@@ -1157,6 +1820,23 @@
     "release_date_global": "2026-01-29",
     "obtained": "gacha",
     "gt_url_name": "101502-tm-opera-o",
+    "i18n": {
+      "ko": {
+        "name": "티엠 오페라 오",
+        "title": "새해 창천・푸르른 현란",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "好歌劇",
+        "title": "初晴．湛藍絢爛",
+        "desc": null
+      },
+      "zh": {
+        "name": "好歌剧",
+        "title": "初晴．湛蓝绚烂",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101502.webp"
   },
   {
@@ -1186,6 +1866,23 @@
     "release_date_global": "2025-08-20",
     "obtained": "gacha",
     "gt_url_name": "101601-narita-brian",
+    "i18n": {
+      "ko": {
+        "name": "나리타 브라이언",
+        "title": "Maverick",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田白仁",
+        "title": "Maverick",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田白仁",
+        "title": "Maverick",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101601.webp"
   },
   {
@@ -1215,6 +1912,23 @@
     "release_date_global": "2026-10-14",
     "obtained": "gacha",
     "gt_url_name": "101602-narita-brian",
+    "i18n": {
+      "ko": {
+        "name": "나리타 브라이언",
+        "title": "굶주린 늑대",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田白仁",
+        "title": "餓狼",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田白仁",
+        "title": "饿狼",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101602.webp"
   },
   {
@@ -1244,6 +1958,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101701-symboli-rudolf",
+    "i18n": {
+      "ko": {
+        "name": "심볼리 루돌프",
+        "title": "로드・오브・엠퍼러",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "魯道夫象徵",
+        "title": "皇帝之路",
+        "desc": null
+      },
+      "zh": {
+        "name": "鲁道夫象征",
+        "title": "皇帝之路",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101701.webp"
   },
   {
@@ -1273,6 +2004,23 @@
     "release_date_global": "2025-12-14",
     "obtained": "gacha",
     "gt_url_name": "101702-symboli-rudolf",
+    "i18n": {
+      "ko": {
+        "name": "심볼리 루돌프",
+        "title": "밝은 달의 활잡이",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "魯道夫象徵",
+        "title": "皓月下的弓手",
+        "desc": null
+      },
+      "zh": {
+        "name": "鲁道夫象征",
+        "title": "皓月下的弓手",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101702.webp"
   },
   {
@@ -1302,6 +2050,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101703-symboli-rudolf",
+    "i18n": {
+      "ko": {
+        "name": "심볼리 루돌프",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "魯道夫象徵",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "鲁道夫象征",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101703.webp"
   },
   {
@@ -1331,6 +2096,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101801-air-groove",
+    "i18n": {
+      "ko": {
+        "name": "에어 그루브",
+        "title": "엠프리스 로드",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "氣槽",
+        "title": "女帝之路",
+        "desc": null
+      },
+      "zh": {
+        "name": "气槽",
+        "title": "女帝之路",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101801.webp"
   },
   {
@@ -1360,6 +2142,23 @@
     "release_date_global": "2025-08-28",
     "obtained": "gacha",
     "gt_url_name": "101802-air-groove",
+    "i18n": {
+      "ko": {
+        "name": "에어 그루브",
+        "title": "퀘르쿠스・키윌리스",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "氣槽",
+        "title": "榮譽橡木冠",
+        "desc": null
+      },
+      "zh": {
+        "name": "气槽",
+        "title": "荣誉橡木冠",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101802.webp"
   },
   {
@@ -1389,6 +2188,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101803-air-groove",
+    "i18n": {
+      "ko": {
+        "name": "에어 그루브",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "氣槽",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "气槽",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101803.webp"
   },
   {
@@ -1418,6 +2234,23 @@
     "release_date_global": "2025-11-19",
     "obtained": "gacha",
     "gt_url_name": "101901-agnes-digital",
+    "i18n": {
+      "ko": {
+        "name": "아그네스 디지털",
+        "title": "초특급! 풀컬러 특수 PP",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛麗數碼",
+        "title": "超特急！全彩特殊膜",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱丽数码",
+        "title": "超特急！全彩特殊膜",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101901.webp"
   },
   {
@@ -1447,6 +2280,23 @@
     "release_date_global": "2026-08-18",
     "obtained": "gacha",
     "gt_url_name": "101902-agnes-digital",
+    "i18n": {
+      "ko": {
+        "name": "아그네스 디지털",
+        "title": "아이리♡강시",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛麗數碼",
+        "title": "愛麗♡殭屍",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱丽数码",
+        "title": "爱丽♡僵尸",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/101902.webp"
   },
   {
@@ -1476,6 +2326,23 @@
     "release_date_global": "2025-09-07",
     "obtained": "gacha",
     "gt_url_name": "102001-seiun-sky",
+    "i18n": {
+      "ko": {
+        "name": "세이운 스카이",
+        "title": "푸른 구름 서밍",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "青雲天空",
+        "title": "青雲釣術",
+        "desc": null
+      },
+      "zh": {
+        "name": "青云天空",
+        "title": "青云钓术",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102001.webp"
   },
   {
@@ -1505,6 +2372,23 @@
     "release_date_global": "2026-04-05",
     "obtained": "gacha",
     "gt_url_name": "102002-seiun-sky",
+    "i18n": {
+      "ko": {
+        "name": "세이운 스카이",
+        "title": "수아레・드・샤통",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "青雲天空",
+        "title": "小貓咪的晚宴",
+        "desc": null
+      },
+      "zh": {
+        "name": "青云天空",
+        "title": "小猫咪的晚宴",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102002.webp"
   },
   {
@@ -1534,6 +2418,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102003-seiun-sky",
+    "i18n": {
+      "ko": {
+        "name": "세이운 스카이",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "青雲天空",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "青云天空",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102003.webp"
   },
   {
@@ -1563,6 +2464,23 @@
     "release_date_global": "2026-01-22",
     "obtained": "gacha",
     "gt_url_name": "102101-tamamo-cross",
+    "i18n": {
+      "ko": {
+        "name": "타마모 크로스",
+        "title": "질풍신뢰",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "玉藻十字",
+        "title": "疾風迅雷",
+        "desc": null
+      },
+      "zh": {
+        "name": "玉藻十字",
+        "title": "疾风迅雷",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102101.webp"
   },
   {
@@ -1592,6 +2510,23 @@
     "release_date_global": "2026-09-07",
     "obtained": "gacha",
     "gt_url_name": "102102-tamamo-cross",
+    "i18n": {
+      "ko": {
+        "name": "타마모 크로스",
+        "title": "날뛰는 나루카미",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "玉藻十字",
+        "title": "荒暴雷神",
+        "desc": null
+      },
+      "zh": {
+        "name": "玉藻十字",
+        "title": "荒暴雷神",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102102.webp"
   },
   {
@@ -1621,6 +2556,23 @@
     "release_date_global": "2026-01-15",
     "obtained": "gacha",
     "gt_url_name": "102201-fine-motion",
+    "i18n": {
+      "ko": {
+        "name": "파인 모션",
+        "title": "Noble Seamair",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美妙姿勢",
+        "title": "Noble Seamair",
+        "desc": null
+      },
+      "zh": {
+        "name": "美妙姿势",
+        "title": "Noble Seamair",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102201.webp"
   },
   {
@@ -1650,6 +2602,23 @@
     "release_date_global": "2026-05-18",
     "obtained": "gacha",
     "gt_url_name": "102202-fine-motion",
+    "i18n": {
+      "ko": {
+        "name": "파인 모션",
+        "title": "Titania",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美妙姿勢",
+        "title": "Titania",
+        "desc": null
+      },
+      "zh": {
+        "name": "美妙姿势",
+        "title": "Titania",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102202.webp"
   },
   {
@@ -1679,6 +2648,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102203-fine-motion",
+    "i18n": {
+      "ko": {
+        "name": "파인 모션",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美妙姿勢",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "美妙姿势",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102203.webp"
   },
   {
@@ -1708,6 +2694,23 @@
     "release_date_global": "2025-07-10",
     "obtained": "gacha",
     "gt_url_name": "102301-biwa-hayahide",
+    "i18n": {
+      "ko": {
+        "name": "비와 하야히데",
+        "title": "pf.Victory formula...",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "琵琶晨光",
+        "title": "pf.Victory formula...",
+        "desc": null
+      },
+      "zh": {
+        "name": "琵琶晨光",
+        "title": "pf.Victory formula...",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102301.webp"
   },
   {
@@ -1737,6 +2740,23 @@
     "release_date_global": "2026-01-05",
     "obtained": "gacha",
     "gt_url_name": "102302-biwa-hayahide",
+    "i18n": {
+      "ko": {
+        "name": "비와 하야히데",
+        "title": "노엘 루주・캐럴",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "琵琶晨光",
+        "title": "聖夜紅袍頌歌",
+        "desc": null
+      },
+      "zh": {
+        "name": "琵琶晨光",
+        "title": "圣夜红袍颂歌",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102302.webp"
   },
   {
@@ -1766,6 +2786,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102303-biwa-hayahide",
+    "i18n": {
+      "ko": {
+        "name": "비와 하야히데",
+        "title": "Engineered Victory",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "琵琶晨光",
+        "title": "Engineered Victory",
+        "desc": null
+      },
+      "zh": {
+        "name": "琵琶晨光",
+        "title": "Engineered Victory",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102303.webp"
   },
   {
@@ -1795,6 +2832,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "102401-mayano-top-gun",
+    "i18n": {
+      "ko": {
+        "name": "마야노 탑건",
+        "title": "스크램블☆존",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "重砲",
+        "title": "急飛☆區域",
+        "desc": null
+      },
+      "zh": {
+        "name": "重砲",
+        "title": "急飞☆区域",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102401.webp"
   },
   {
@@ -1824,6 +2878,23 @@
     "release_date_global": "2025-08-28",
     "obtained": "gacha",
     "gt_url_name": "102402-mayano-top-gun",
+    "i18n": {
+      "ko": {
+        "name": "마야노 탑건",
+        "title": "선라이트・부케",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "重砲",
+        "title": "陽光捧花",
+        "desc": null
+      },
+      "zh": {
+        "name": "重砲",
+        "title": "阳光捧花",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102402.webp"
   },
   {
@@ -1853,6 +2924,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102403-mayano-top-gun",
+    "i18n": {
+      "ko": {
+        "name": "마야노 탑건",
+        "title": "록 인☆MewMeow",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "重砲",
+        "title": "搖滾☆MewMeow",
+        "desc": null
+      },
+      "zh": {
+        "name": "重砲",
+        "title": "摇滚☆MewMeow",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102403.webp"
   },
   {
@@ -1882,6 +2970,23 @@
     "release_date_global": "2025-12-08",
     "obtained": "gacha",
     "gt_url_name": "102501-manhattan-cafe",
+    "i18n": {
+      "ko": {
+        "name": "맨하탄 카페",
+        "title": "Creeping Black",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "曼哈頓咖啡",
+        "title": "Creeping Black",
+        "desc": null
+      },
+      "zh": {
+        "name": "曼哈顿咖啡",
+        "title": "Creeping Black",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102501.webp"
   },
   {
@@ -1911,6 +3016,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102502-manhattan-cafe",
+    "i18n": {
+      "ko": {
+        "name": "맨하탄 카페",
+        "title": "버들빛 밤",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "曼哈頓咖啡",
+        "title": "柳綠小夜",
+        "desc": null
+      },
+      "zh": {
+        "name": "曼哈顿咖啡",
+        "title": "柳绿小夜",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102502.webp"
   },
   {
@@ -1940,6 +3062,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102503-manhattan-cafe",
+    "i18n": {
+      "ko": {
+        "name": "맨하탄 카페",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "曼哈頓咖啡",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "曼哈顿咖啡",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102503.webp"
   },
   {
@@ -1969,6 +3108,23 @@
     "release_date_global": "2025-07-02",
     "obtained": "gacha",
     "gt_url_name": "102601-mihono-bourbon",
+    "i18n": {
+      "ko": {
+        "name": "미호노 부르봉",
+        "title": "MB-19890425",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美浦波旁",
+        "title": "MB-19890425",
+        "desc": null
+      },
+      "zh": {
+        "name": "美浦波旁",
+        "title": "MB-19890425",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102601.webp"
   },
   {
@@ -1998,6 +3154,23 @@
     "release_date_global": "2026-02-18",
     "obtained": "gacha",
     "gt_url_name": "102602-mihono-bourbon",
+    "i18n": {
+      "ko": {
+        "name": "미호노 부르봉",
+        "title": "CODE: 글라사주",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美浦波旁",
+        "title": "CODE：淋面裝飾",
+        "desc": null
+      },
+      "zh": {
+        "name": "美浦波旁",
+        "title": "CODE：淋面装饰",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102602.webp"
   },
   {
@@ -2027,6 +3200,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "102701-mejiro-ryan",
+    "i18n": {
+      "ko": {
+        "name": "메지로 라이언",
+        "title": "스트레이트・라인",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白雷恩",
+        "title": "勇往直前",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白雷恩",
+        "title": "勇往直前",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102701.webp"
   },
   {
@@ -2056,6 +3246,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102702-mejiro-ryan",
+    "i18n": {
+      "ko": {
+        "name": "메지로 라이언",
+        "title": "마가렛・라떼",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白雷恩",
+        "title": "雛菊．拿鐵",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白雷恩",
+        "title": "雏菊．拿铁",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102702.webp"
   },
   {
@@ -2085,6 +3292,23 @@
     "release_date_global": "2025-11-11",
     "obtained": "gacha",
     "gt_url_name": "102801-hishi-akebono",
+    "i18n": {
+      "ko": {
+        "name": "히시 아케보노",
+        "title": "보노☆알라모다",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "菱曙",
+        "title": "Buono☆時尚",
+        "desc": null
+      },
+      "zh": {
+        "name": "菱曙",
+        "title": "Buono☆时尚",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102801.webp"
   },
   {
@@ -2114,6 +3338,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102802-hishi-akebono",
+    "i18n": {
+      "ko": {
+        "name": "히시 아케보노",
+        "title": "マジックナイトガーランド",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "菱曙",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "菱曙",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102802.webp"
   },
   {
@@ -2143,6 +3384,23 @@
     "release_date_global": "2026-08-05",
     "obtained": "gacha",
     "gt_url_name": "102901-yukino-bijin",
+    "i18n": {
+      "ko": {
+        "name": "유키노 비진",
+        "title": "귀엽고 귀여운 눈꽃",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "雪之美人",
+        "title": "好口愛好口愛的銀粟",
+        "desc": null
+      },
+      "zh": {
+        "name": "雪之美人",
+        "title": "好口爱好口爱的银粟",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102901.webp"
   },
   {
@@ -2172,6 +3430,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102902-yukino-bijin",
+    "i18n": {
+      "ko": {
+        "name": "유키노 비진",
+        "title": "차 과자와 눈의 요정",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "雪之美人",
+        "title": "小茶點小雪精",
+        "desc": null
+      },
+      "zh": {
+        "name": "雪之美人",
+        "title": "小茶点小雪精",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/102902.webp"
   },
   {
@@ -2201,6 +3476,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "103001-rice-shower",
+    "i18n": {
+      "ko": {
+        "name": "라이스 샤워",
+        "title": "로제스 드림",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "米浴",
+        "title": "薔薇之夢",
+        "desc": null
+      },
+      "zh": {
+        "name": "米浴",
+        "title": "蔷薇之梦",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103001.webp"
   },
   {
@@ -2230,6 +3522,23 @@
     "release_date_global": "2025-11-24",
     "obtained": "gacha",
     "gt_url_name": "103002-rice-shower",
+    "i18n": {
+      "ko": {
+        "name": "라이스 샤워",
+        "title": "Make up Vampire!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "米浴",
+        "title": "Make up Vampire!",
+        "desc": null
+      },
+      "zh": {
+        "name": "米浴",
+        "title": "Make up Vampire!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103002.webp"
   },
   {
@@ -2259,6 +3568,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103003-rice-shower",
+    "i18n": {
+      "ko": {
+        "name": "라이스 샤워",
+        "title": "Yummy Dreamy Fairy",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "米浴",
+        "title": "Yummy Dreamy Fairy",
+        "desc": null
+      },
+      "zh": {
+        "name": "米浴",
+        "title": "Yummy Dreamy Fairy",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103003.webp"
   },
   {
@@ -2288,6 +3614,23 @@
     "release_date_global": "2026-04-30",
     "obtained": "gacha",
     "gt_url_name": "103101-ines-fujin",
+    "i18n": {
+      "ko": {
+        "name": "아이네스 후진",
+        "title": "올 타임・피버",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "艾尼風神",
+        "title": "全天候狂熱",
+        "desc": null
+      },
+      "zh": {
+        "name": "艾尼风神",
+        "title": "全天候狂热",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103101.webp"
   },
   {
@@ -2317,6 +3660,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103102-ines-fujin",
+    "i18n": {
+      "ko": {
+        "name": "아이네스 후진",
+        "title": "MELTY GIFT",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "艾尼風神",
+        "title": "MELTY GIFT",
+        "desc": null
+      },
+      "zh": {
+        "name": "艾尼风神",
+        "title": "MELTY GIFT",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103102.webp"
   },
   {
@@ -2346,6 +3706,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103103-ines-fujin",
+    "i18n": {
+      "ko": {
+        "name": "아이네스 후진",
+        "title": "Hello Hello Island",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "艾尼風神",
+        "title": "Hello Hello Island",
+        "desc": null
+      },
+      "zh": {
+        "name": "艾尼风神",
+        "title": "Hello Hello Island",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103103.webp"
   },
   {
@@ -2375,6 +3752,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "103201-agnes-tachyon",
+    "i18n": {
+      "ko": {
+        "name": "아그네스 타키온",
+        "title": "tach-nology",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛麗速子",
+        "title": "tach-nology",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱丽速子",
+        "title": "tach-nology",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103201.webp"
   },
   {
@@ -2404,6 +3798,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103202-agnes-tachyon",
+    "i18n": {
+      "ko": {
+        "name": "아그네스 타키온",
+        "title": "Lunatic Lab",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛麗速子",
+        "title": "Lunatic Lab",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱丽速子",
+        "title": "Lunatic Lab",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103202.webp"
   },
   {
@@ -2433,6 +3844,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103203-agnes-tachyon",
+    "i18n": {
+      "ko": {
+        "name": "아그네스 타키온",
+        "title": "Σ Experiment",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛麗速子",
+        "title": "Σ Experiment",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱丽速子",
+        "title": "Σ Experiment",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103203.webp"
   },
   {
@@ -2462,6 +3890,23 @@
     "release_date_global": "2026-03-05",
     "obtained": "gacha",
     "gt_url_name": "103301-admire-vega",
+    "i18n": {
+      "ko": {
+        "name": "어드마이어 베가",
+        "title": "Starry Nocturne",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛慕織姬",
+        "title": "Starry Nocturne",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱慕织姬",
+        "title": "Starry Nocturne",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103301.webp"
   },
   {
@@ -2491,6 +3936,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103302-admire-vega",
+    "i18n": {
+      "ko": {
+        "name": "어드마이어 베가",
+        "title": "Glacialis Vega",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛慕織姬",
+        "title": "Glacialis Vega",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱慕织姬",
+        "title": "Glacialis Vega",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103302.webp"
   },
   {
@@ -2520,6 +3982,23 @@
     "release_date_global": "2026-05-28",
     "obtained": "gacha",
     "gt_url_name": "103401-inari-one",
+    "i18n": {
+      "ko": {
+        "name": "이나리 원",
+        "title": "여우와 연이 있는 보랏빛",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "稻荷一",
+        "title": "稻荷因緣江戶紫",
+        "desc": null
+      },
+      "zh": {
+        "name": "稻荷一",
+        "title": "稻荷因缘江户紫",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103401.webp"
   },
   {
@@ -2549,6 +4028,23 @@
     "release_date_global": "2026-09-07",
     "obtained": "gacha",
     "gt_url_name": "103402-inari-one",
+    "i18n": {
+      "ko": {
+        "name": "이나리 원",
+        "title": "꿈의 카나하라",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "稻荷一",
+        "title": "夢想的金原",
+        "desc": null
+      },
+      "zh": {
+        "name": "稻荷一",
+        "title": "梦想的金原",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103402.webp"
   },
   {
@@ -2578,6 +4074,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "103501-winning-ticket",
+    "i18n": {
+      "ko": {
+        "name": "위닝 티켓",
+        "title": "Go To Winning!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "勝利獎券",
+        "title": "Go To Winning!",
+        "desc": null
+      },
+      "zh": {
+        "name": "胜利奖券",
+        "title": "Go To Winning!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103501.webp"
   },
   {
@@ -2607,6 +4120,23 @@
     "release_date_global": "2026-07-27",
     "obtained": "gacha",
     "gt_url_name": "103502-winning-ticket",
+    "i18n": {
+      "ko": {
+        "name": "위닝 티켓",
+        "title": "Dream Deliverer",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "勝利獎券",
+        "title": "Dream Deliverer",
+        "desc": null
+      },
+      "zh": {
+        "name": "胜利奖券",
+        "title": "Dream Deliverer",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103502.webp"
   },
   {
@@ -2636,6 +4166,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103503-winning-ticket",
+    "i18n": {
+      "ko": {
+        "name": "위닝 티켓",
+        "title": "Glorious Coat",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "勝利獎券",
+        "title": "Glorious Coat",
+        "desc": null
+      },
+      "zh": {
+        "name": "胜利奖券",
+        "title": "Glorious Coat",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103503.webp"
   },
   {
@@ -2665,6 +4212,23 @@
     "release_date_global": "2026-06-18",
     "obtained": "gacha",
     "gt_url_name": "103601-air-shakur",
+    "i18n": {
+      "ko": {
+        "name": "에어 샤커",
+        "title": "unsigned",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "空中神宮",
+        "title": "unsigned",
+        "desc": null
+      },
+      "zh": {
+        "name": "空中神宫",
+        "title": "unsigned",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103601.webp"
   },
   {
@@ -2694,6 +4258,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103602-air-shakur",
+    "i18n": {
+      "ko": {
+        "name": "에어 샤커",
+        "title": "Belphegor's Prime",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "空中神宮",
+        "title": "Belphegor's Prime",
+        "desc": null
+      },
+      "zh": {
+        "name": "空中神宫",
+        "title": "Belphegor's Prime",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103602.webp"
   },
   {
@@ -2723,6 +4304,23 @@
     "release_date_global": "2025-10-30",
     "obtained": "gacha",
     "gt_url_name": "103701-eishin-flash",
+    "i18n": {
+      "ko": {
+        "name": "에이신 플래시",
+        "title": "Meisterschaft",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "榮進閃耀",
+        "title": "Meisterschaft",
+        "desc": null
+      },
+      "zh": {
+        "name": "荣进闪耀",
+        "title": "Meisterschaft",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103701.webp"
   },
   {
@@ -2752,6 +4350,23 @@
     "release_date_global": "2026-02-18",
     "obtained": "gacha",
     "gt_url_name": "103702-eishin-flash",
+    "i18n": {
+      "ko": {
+        "name": "에이신 플래시",
+        "title": "컬렉트・쇼콜라티에",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "榮進閃耀",
+        "title": "精確無比巧克力師",
+        "desc": null
+      },
+      "zh": {
+        "name": "荣进闪耀",
+        "title": "精确无比巧克力师",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103702.webp"
   },
   {
@@ -2781,6 +4396,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103703-eishin-flash",
+    "i18n": {
+      "ko": {
+        "name": "에이신 플래시",
+        "title": "Reines Plätschern",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "榮進閃耀",
+        "title": "Reines Plätschern",
+        "desc": null
+      },
+      "zh": {
+        "name": "荣进闪耀",
+        "title": "Reines Plätschern",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103703.webp"
   },
   {
@@ -2810,6 +4442,23 @@
     "release_date_global": "2025-07-27",
     "obtained": "gacha",
     "gt_url_name": "103801-curren-chan",
+    "i18n": {
+      "ko": {
+        "name": "카렌짱",
+        "title": "피유・에클레르",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "真機伶",
+        "title": "閃光少女",
+        "desc": null
+      },
+      "zh": {
+        "name": "真机伶",
+        "title": "闪光少女",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103801.webp"
   },
   {
@@ -2839,6 +4488,23 @@
     "release_date_global": "2026-05-18",
     "obtained": "gacha",
     "gt_url_name": "103802-curren-chan",
+    "i18n": {
+      "ko": {
+        "name": "카렌짱",
+        "title": "삭월의 마・셰리",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "真機伶",
+        "title": "朔月甜心",
+        "desc": null
+      },
+      "zh": {
+        "name": "真机伶",
+        "title": "朔月甜心",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103802.webp"
   },
   {
@@ -2868,6 +4534,23 @@
     "release_date_global": "2025-12-01",
     "obtained": "gacha",
     "gt_url_name": "103901-kawakami-princess",
+    "i18n": {
+      "ko": {
+        "name": "카와카미 프린세스",
+        "title": "프린세스・오브・핑크",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "川上公主",
+        "title": "Princess of pink",
+        "desc": null
+      },
+      "zh": {
+        "name": "川上公主",
+        "title": "Princess of pink",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103901.webp"
   },
   {
@@ -2897,6 +4580,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103902-kawakami-princess",
+    "i18n": {
+      "ko": {
+        "name": "카와카미 프린세스",
+        "title": "무사 요조숙녀",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "川上公主",
+        "title": "水干撫子",
+        "desc": null
+      },
+      "zh": {
+        "name": "川上公主",
+        "title": "水干抚子",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/103902.webp"
   },
   {
@@ -2926,6 +4626,23 @@
     "release_date_global": "2025-10-07",
     "obtained": "gacha",
     "gt_url_name": "104001-gold-city",
+    "i18n": {
+      "ko": {
+        "name": "골드 시티",
+        "title": "오센틱/1928",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金城市",
+        "title": "純正/1928",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金城市",
+        "title": "纯正/1928",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104001.webp"
   },
   {
@@ -2955,6 +4672,23 @@
     "release_date_global": "2025-12-14",
     "obtained": "gacha",
     "gt_url_name": "104002-gold-city",
+    "i18n": {
+      "ko": {
+        "name": "골드 시티",
+        "title": "코스모스 단차트리체",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金城市",
+        "title": "秋櫻舞者",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金城市",
+        "title": "秋樱舞者",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104002.webp"
   },
   {
@@ -2984,6 +4718,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104003-gold-city",
+    "i18n": {
+      "ko": {
+        "name": "골드 시티",
+        "title": "Boho Flare",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金城市",
+        "title": "Boho Flare",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金城市",
+        "title": "Boho Flare",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104003.webp"
   },
   {
@@ -3013,6 +4764,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "104101-sakura-bakushin-o",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 바쿠신 오",
+        "title": "사쿠라, 나아가라!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花驀進王",
+        "title": "前進吧！櫻花",
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花蓦进王",
+        "title": "前进吧！樱花",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104101.webp"
   },
   {
@@ -3042,6 +4810,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104102-sakura-bakushin-o",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 바쿠신 오",
+        "title": "레드 핫☆리더",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花驀進王",
+        "title": "赤熱☆隊長",
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花蓦进王",
+        "title": "赤热☆队长",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104102.webp"
   },
   {
@@ -3071,6 +4856,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104103-sakura-bakushin-o",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 바쿠신 오",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花驀進王",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花蓦进王",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104103.webp"
   },
   {
@@ -3100,6 +4902,23 @@
     "release_date_global": "2026-08-12",
     "obtained": "gacha",
     "gt_url_name": "104201-seeking-the-pearl",
+    "i18n": {
+      "ko": {
+        "name": "시킹 더 펄",
+        "title": "Rocket☆Star",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "採珠",
+        "title": "Rocket☆Star",
+        "desc": null
+      },
+      "zh": {
+        "name": "采珠",
+        "title": "Rocket☆Star",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104201.webp"
   },
   {
@@ -3129,6 +4948,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104202-seeking-the-pearl",
+    "i18n": {
+      "ko": {
+        "name": "시킹 더 펄",
+        "title": "Be♪Witched",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "採珠",
+        "title": "Be♪Witched",
+        "desc": null
+      },
+      "zh": {
+        "name": "采珠",
+        "title": "Be♪Witched",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104202.webp"
   },
   {
@@ -3158,6 +4994,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104301-shinko-windy",
+    "i18n": {
+      "ko": {
+        "name": "신코 윈디",
+        "title": "Wicked Punk",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "新光風",
+        "title": "Wicked Punk",
+        "desc": null
+      },
+      "zh": {
+        "name": "新光风",
+        "title": "Wicked Punk",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104301.webp"
   },
   {
@@ -3187,6 +5040,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104302-shinko-windy",
+    "i18n": {
+      "ko": {
+        "name": "신코 윈디",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "新光風",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "新光风",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104302.webp"
   },
   {
@@ -3216,6 +5086,23 @@
     "release_date_global": "2026-06-04",
     "obtained": "gacha",
     "gt_url_name": "104401-sweep-tosho",
+    "i18n": {
+      "ko": {
+        "name": "스윕 토쇼",
+        "title": "플라타너스・위치",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "東商變革",
+        "title": "懸鈴木魔女",
+        "desc": null
+      },
+      "zh": {
+        "name": "东商变革",
+        "title": "悬铃木魔女",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104401.webp"
   },
   {
@@ -3245,6 +5132,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104402-sweep-tosho",
+    "i18n": {
+      "ko": {
+        "name": "스윕 토쇼",
+        "title": "리얼라이즈・룬",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "東商變革",
+        "title": "實現憧憬的符文",
+        "desc": null
+      },
+      "zh": {
+        "name": "东商变革",
+        "title": "实现憧憬的符文",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104402.webp"
   },
   {
@@ -3274,6 +5178,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "104501-super-creek",
+    "i18n": {
+      "ko": {
+        "name": "슈퍼 크릭",
+        "title": "머머링 스트림",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "超級小溪",
+        "title": "低語溪流",
+        "desc": null
+      },
+      "zh": {
+        "name": "超级小溪",
+        "title": "低语溪流",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104501.webp"
   },
   {
@@ -3303,6 +5224,23 @@
     "release_date_global": "2025-11-24",
     "obtained": "gacha",
     "gt_url_name": "104502-super-creek",
+    "i18n": {
+      "ko": {
+        "name": "슈퍼 크릭",
+        "title": "쉬폰 리본 머미",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "超級小溪",
+        "title": "雪紡緞帶木乃伊",
+        "desc": null
+      },
+      "zh": {
+        "name": "超级小溪",
+        "title": "雪纺缎带木乃伊",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104502.webp"
   },
   {
@@ -3332,6 +5270,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104503-super-creek",
+    "i18n": {
+      "ko": {
+        "name": "슈퍼 크릭",
+        "title": "자우화영",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "超級小溪",
+        "title": "慈雨華影",
+        "desc": null
+      },
+      "zh": {
+        "name": "超级小溪",
+        "title": "慈雨华影",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104503.webp"
   },
   {
@@ -3361,6 +5316,23 @@
     "release_date_global": "2025-08-11",
     "obtained": "gacha",
     "gt_url_name": "104601-smart-falcon",
+    "i18n": {
+      "ko": {
+        "name": "스마트 팔콘",
+        "title": "앱설루트☆LOVE",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "醒目飛鷹",
+        "title": "絕對純粹☆LOVE",
+        "desc": null
+      },
+      "zh": {
+        "name": "醒目飞鹰",
+        "title": "绝对纯粹☆LOVE",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104601.webp"
   },
   {
@@ -3390,6 +5362,23 @@
     "release_date_global": "2026-07-22",
     "obtained": "gacha",
     "gt_url_name": "104602-smart-falcon",
+    "i18n": {
+      "ko": {
+        "name": "스마트 팔콘",
+        "title": "황혼 트라이엄프",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "醒目飛鷹",
+        "title": "黃昏凱旋",
+        "desc": null
+      },
+      "zh": {
+        "name": "醒目飞鹰",
+        "title": "黄昏凯旋",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104602.webp"
   },
   {
@@ -3419,6 +5408,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104603-smart-falcon",
+    "i18n": {
+      "ko": {
+        "name": "스마트 팔콘",
+        "title": "루미너스☆트월러",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "醒目飛鷹",
+        "title": "光輝☆舞棒者",
+        "desc": null
+      },
+      "zh": {
+        "name": "醒目飞鹰",
+        "title": "光辉☆舞棒者",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104603.webp"
   },
   {
@@ -3448,6 +5454,23 @@
     "release_date_global": "2026-10-07",
     "obtained": "gacha",
     "gt_url_name": "104701-zenno-rob-roy",
+    "i18n": {
+      "ko": {
+        "name": "젠노 롭 로이",
+        "title": "Heroic Author",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "荒漠英雄",
+        "title": "Heroic Author",
+        "desc": null
+      },
+      "zh": {
+        "name": "荒漠英雄",
+        "title": "Heroic Author",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104701.webp"
   },
   {
@@ -3477,6 +5500,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104702-zenno-rob-roy",
+    "i18n": {
+      "ko": {
+        "name": "젠노 롭 로이",
+        "title": "Inlaid Stories",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "荒漠英雄",
+        "title": "Inlaid Stories",
+        "desc": null
+      },
+      "zh": {
+        "name": "荒漠英雄",
+        "title": "Inlaid Stories",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104702.webp"
   },
   {
@@ -3506,6 +5546,23 @@
     "release_date_global": "2025-12-18",
     "obtained": "gacha",
     "gt_url_name": "104801-tosen-jordan",
+    "i18n": {
+      "ko": {
+        "name": "토센 조던",
+        "title": "팝스☆조커",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "島川喬登",
+        "title": "POPS☆JOKER",
+        "desc": null
+      },
+      "zh": {
+        "name": "岛川乔登",
+        "title": "POPS☆JOKER",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104801.webp"
   },
   {
@@ -3535,6 +5592,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104802-tosen-jordan",
+    "i18n": {
+      "ko": {
+        "name": "토센 조던",
+        "title": "Aurore☆Vacances",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "島川喬登",
+        "title": "Aurore☆Vacances",
+        "desc": null
+      },
+      "zh": {
+        "name": "岛川乔登",
+        "title": "Aurore☆Vacances",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104802.webp"
   },
   {
@@ -3564,6 +5638,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104803-tosen-jordan",
+    "i18n": {
+      "ko": {
+        "name": "토센 조던",
+        "title": "Highkey☆Hallowed",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "島川喬登",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "岛川乔登",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104803.webp"
   },
   {
@@ -3593,6 +5684,23 @@
     "release_date_global": "2026-09-15",
     "obtained": "gacha",
     "gt_url_name": "104901-nakayama-festa",
+    "i18n": {
+      "ko": {
+        "name": "나카야마 페스타",
+        "title": "사중구활",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "中山慶典",
+        "title": "死中求活",
+        "desc": null
+      },
+      "zh": {
+        "name": "中山庆典",
+        "title": "死中求活",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104901.webp"
   },
   {
@@ -3622,6 +5730,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104902-nakayama-festa",
+    "i18n": {
+      "ko": {
+        "name": "나카야마 페스타",
+        "title": "祝祭遊戯",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "中山慶典",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "中山庆典",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/104902.webp"
   },
   {
@@ -3651,6 +5776,23 @@
     "release_date_global": "2025-08-03",
     "obtained": "gacha",
     "gt_url_name": "105001-narita-taishin",
+    "i18n": {
+      "ko": {
+        "name": "나리타 타이신",
+        "title": "Nevertheless",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田大進",
+        "title": "Nevertheless",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田大进",
+        "title": "Nevertheless",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105001.webp"
   },
   {
@@ -3680,6 +5822,23 @@
     "release_date_global": "2026-07-27",
     "obtained": "gacha",
     "gt_url_name": "105002-narita-taishin",
+    "i18n": {
+      "ko": {
+        "name": "나리타 타이신",
+        "title": "디퍼런스・엔지니어",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田大進",
+        "title": "與眾不同的技師",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田大进",
+        "title": "与众不同的技师",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105002.webp"
   },
   {
@@ -3709,6 +5868,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105003-narita-taishin",
+    "i18n": {
+      "ko": {
+        "name": "나리타 타이신",
+        "title": "미광 오버라이드",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田大進",
+        "title": "迷光追越",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田大进",
+        "title": "迷光追越",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105003.webp"
   },
   {
@@ -3738,6 +5914,23 @@
     "release_date_global": "2026-04-12",
     "obtained": "gacha",
     "gt_url_name": "105101-nishino-flower",
+    "i18n": {
+      "ko": {
+        "name": "니시노 플라워",
+        "title": "티어드・페탈",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "西野花",
+        "title": "重瓣花朵",
+        "desc": null
+      },
+      "zh": {
+        "name": "西野花",
+        "title": "重瓣花朵",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105101.webp"
   },
   {
@@ -3767,6 +5960,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105102-nishino-flower",
+    "i18n": {
+      "ko": {
+        "name": "니시노 플라워",
+        "title": "Sweet Juneberry",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "西野花",
+        "title": "Sweet Juneberry",
+        "desc": null
+      },
+      "zh": {
+        "name": "西野花",
+        "title": "Sweet Juneberry",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105102.webp"
   },
   {
@@ -3796,6 +6006,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "105201-haru-urara",
+    "i18n": {
+      "ko": {
+        "name": "하루 우라라",
+        "title": "화창한 1등상♪",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "春烏菈菈",
+        "title": "烏菈菈得第一♪",
+        "desc": null
+      },
+      "zh": {
+        "name": "春乌菈菈",
+        "title": "乌菈菈得第一♪",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105201.webp"
   },
   {
@@ -3825,6 +6052,23 @@
     "release_date_global": "2026-01-29",
     "obtained": "gacha",
     "gt_url_name": "105202-haru-urara",
+    "i18n": {
+      "ko": {
+        "name": "하루 우라라",
+        "title": "새해의 화창함♪ 활짝 핀 벚꽃",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "春烏菈菈",
+        "title": "初烏菈菈♪櫻花綻放",
+        "desc": null
+      },
+      "zh": {
+        "name": "春乌菈菈",
+        "title": "初乌菈菈♪樱花绽放",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105202.webp"
   },
   {
@@ -3854,6 +6098,23 @@
     "release_date_global": "2026-07-07",
     "obtained": "gacha",
     "gt_url_name": "105301-bamboo-memory",
+    "i18n": {
+      "ko": {
+        "name": "뱀부 메모리",
+        "title": "흑철의 큰 뜻",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "青竹回憶",
+        "title": "黑鐵大志",
+        "desc": null
+      },
+      "zh": {
+        "name": "青竹回忆",
+        "title": "黑铁大志",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105301.webp"
   },
   {
@@ -3883,6 +6144,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105302-bamboo-memory",
+    "i18n": {
+      "ko": {
+        "name": "뱀부 메모리",
+        "title": "Ultra☆Marine",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "青竹回憶",
+        "title": "Ultra☆Marine",
+        "desc": null
+      },
+      "zh": {
+        "name": "青竹回忆",
+        "title": "Ultra☆Marine",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105302.webp"
   },
   {
@@ -3912,6 +6190,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105401-biko-pegasus",
+    "i18n": {
+      "ko": {
+        "name": "비코 페가수스",
+        "title": "질풍 페가수스・영식",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "微光飛駒",
+        "title": "疾風飛駒．零式",
+        "desc": null
+      },
+      "zh": {
+        "name": "微光飞驹",
+        "title": "疾风飞驹．零式",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105401.webp"
   },
   {
@@ -3941,6 +6236,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105501-marvelous-sunday",
+    "i18n": {
+      "ko": {
+        "name": "마블러스 선데이",
+        "title": "☆반짝★두근☆콩닥∞마블∞",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美麗週日",
+        "title": "☆閃耀★怦然☆雀躍∞美麗∞",
+        "desc": null
+      },
+      "zh": {
+        "name": "美丽周日",
+        "title": "☆闪耀★怦然☆雀跃∞美丽∞",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105501.webp"
   },
   {
@@ -3970,6 +6282,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105502-marvelous-sunday",
+    "i18n": {
+      "ko": {
+        "name": "마블러스 선데이",
+        "title": "トリック☆リボネッタ",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "美麗週日",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "美丽周日",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105502.webp"
   },
   {
@@ -3999,6 +6328,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "105601-matikanefukukitaru",
+    "i18n": {
+      "ko": {
+        "name": "마치카네 후쿠키타루",
+        "title": "운기상승☆행복만래",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "待兼福來",
+        "title": "運勢上升☆好運臨門",
+        "desc": null
+      },
+      "zh": {
+        "name": "待兼福来",
+        "title": "运势上升☆好运临门",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105601.webp"
   },
   {
@@ -4028,6 +6374,23 @@
     "release_date_global": "2025-11-06",
     "obtained": "gacha",
     "gt_url_name": "105602-matikanefukukitaru",
+    "i18n": {
+      "ko": {
+        "name": "마치카네 후쿠키타루",
+        "title": "길조・초가을 바람",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "待兼福來",
+        "title": "吉兆初現",
+        "desc": null
+      },
+      "zh": {
+        "name": "待兼福来",
+        "title": "吉兆初现",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105602.webp"
   },
   {
@@ -4057,6 +6420,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105701-mr-cb",
+    "i18n": {
+      "ko": {
+        "name": "미스터 시비",
+        "title": "Clear Bliss",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "千明代表",
+        "title": "Clear Bliss",
+        "desc": null
+      },
+      "zh": {
+        "name": "千明代表",
+        "title": "Clear Bliss",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105701.webp"
   },
   {
@@ -4086,6 +6466,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105702-mr-cb",
+    "i18n": {
+      "ko": {
+        "name": "미스터 시비",
+        "title": "현란한 꽃길, 가무하는 그대",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "千明代表",
+        "title": "絢爛花道歌舞之人",
+        "desc": null
+      },
+      "zh": {
+        "name": "千明代表",
+        "title": "绚烂花道歌舞之人",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105702.webp"
   },
   {
@@ -4115,6 +6512,23 @@
     "release_date_global": "2025-10-21",
     "obtained": "gacha",
     "gt_url_name": "105801-meisho-doto",
+    "i18n": {
+      "ko": {
+        "name": "메이쇼 도토",
+        "title": "블루/레이징",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "名將怒濤",
+        "title": "湛藍/湧濤",
+        "desc": null
+      },
+      "zh": {
+        "name": "名将怒涛",
+        "title": "湛蓝/涌涛",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105801.webp"
   },
   {
@@ -4144,6 +6558,23 @@
     "release_date_global": "2026-08-18",
     "obtained": "gacha",
     "gt_url_name": "105802-meisho-doto",
+    "i18n": {
+      "ko": {
+        "name": "메이쇼 도토",
+        "title": "Dot-o'-Lantern",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "名將怒濤",
+        "title": "Dot-o'-Lantern",
+        "desc": null
+      },
+      "zh": {
+        "name": "名将怒涛",
+        "title": "Dot-o'-Lantern",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105802.webp"
   },
   {
@@ -4173,6 +6604,23 @@
     "release_date_global": "2025-12-28",
     "obtained": "gacha",
     "gt_url_name": "105901-mejiro-dober",
+    "i18n": {
+      "ko": {
+        "name": "메지로 도베르",
+        "title": "트위스티드・라인",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白多伯",
+        "title": "Twisted Line",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白多伯",
+        "title": "Twisted Line",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105901.webp"
   },
   {
@@ -4202,6 +6650,23 @@
     "release_date_global": "2026-06-11",
     "obtained": "gacha",
     "gt_url_name": "105902-mejiro-dober",
+    "i18n": {
+      "ko": {
+        "name": "메지로 도베르",
+        "title": "바캉스・사피르",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白多伯",
+        "title": "藍寶石假期",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白多伯",
+        "title": "蓝宝石假期",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/105902.webp"
   },
   {
@@ -4231,6 +6696,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "106001-nice-nature",
+    "i18n": {
+      "ko": {
+        "name": "나이스 네이처",
+        "title": "포인세티아・리본",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "優秀素質",
+        "title": "聖誕紅緞帶",
+        "desc": null
+      },
+      "zh": {
+        "name": "优秀素质",
+        "title": "圣诞红缎带",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106001.webp"
   },
   {
@@ -4260,6 +6742,23 @@
     "release_date_global": "2026-04-26",
     "obtained": "gacha",
     "gt_url_name": "106002-nice-nature",
+    "i18n": {
+      "ko": {
+        "name": "나이스 네이처",
+        "title": "RUN&WIN",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "優秀素質",
+        "title": "RUN＆WIN",
+        "desc": null
+      },
+      "zh": {
+        "name": "优秀素质",
+        "title": "RUN＆WIN",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106002.webp"
   },
   {
@@ -4289,6 +6788,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106003-nice-nature",
+    "i18n": {
+      "ko": {
+        "name": "나이스 네이처",
+        "title": "소원의 겹옷",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "優秀素質",
+        "title": "萬千祈願",
+        "desc": null
+      },
+      "zh": {
+        "name": "优秀素质",
+        "title": "万千祈愿",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106003.webp"
   },
   {
@@ -4318,6 +6834,23 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "106101-king-halo",
+    "i18n": {
+      "ko": {
+        "name": "킹 헤일로",
+        "title": "킹・오브・에메랄드",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "帝王光輝",
+        "title": "綠寶石之王",
+        "desc": null
+      },
+      "zh": {
+        "name": "帝王光辉",
+        "title": "绿宝石之王",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106101.webp"
   },
   {
@@ -4347,6 +6880,23 @@
     "release_date_global": "2026-04-26",
     "obtained": "gacha",
     "gt_url_name": "106102-king-halo",
+    "i18n": {
+      "ko": {
+        "name": "킹 헤일로",
+        "title": "하얗고 고결한 격려의 복장",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "帝王光輝",
+        "title": "潔白高貴的激勵之服",
+        "desc": null
+      },
+      "zh": {
+        "name": "帝王光辉",
+        "title": "洁白高贵的激励之服",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106102.webp"
   },
   {
@@ -4376,6 +6926,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106103-king-halo",
+    "i18n": {
+      "ko": {
+        "name": "킹 헤일로",
+        "title": "Evergreen Identity",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "帝王光輝",
+        "title": "Evergreen Identity",
+        "desc": null
+      },
+      "zh": {
+        "name": "帝王光辉",
+        "title": "Evergreen Identity",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106103.webp"
   },
   {
@@ -4405,6 +6972,23 @@
     "release_date_global": "2026-03-12",
     "obtained": "gacha",
     "gt_url_name": "106201-matikanetannhauser",
+    "i18n": {
+      "ko": {
+        "name": "마치카네 탄호이저",
+        "title": "팡파카 틸토트",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "待兼唐懷瑟",
+        "title": "鏘鏘～斜裝登場",
+        "desc": null
+      },
+      "zh": {
+        "name": "待兼唐怀瑟",
+        "title": "锵锵～斜装登场",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106201.webp"
   },
   {
@@ -4434,6 +7018,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106202-matikanetannhauser",
+    "i18n": {
+      "ko": {
+        "name": "마치카네 탄호이저",
+        "title": "블루・터뷸런스",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "待兼唐懷瑟",
+        "title": "藍色‧亂流",
+        "desc": null
+      },
+      "zh": {
+        "name": "待兼唐怀瑟",
+        "title": "蓝色‧乱流",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106202.webp"
   },
   {
@@ -4463,6 +7064,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106301-ikuno-dictus",
+    "i18n": {
+      "ko": {
+        "name": "이쿠노 딕터스",
+        "title": "Mantle of Steel",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "生野狄杜斯",
+        "title": "Mantle of Steel",
+        "desc": null
+      },
+      "zh": {
+        "name": "生野狄杜斯",
+        "title": "Mantle of Steel",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106301.webp"
   },
   {
@@ -4492,6 +7110,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106302-ikuno-dictus",
+    "i18n": {
+      "ko": {
+        "name": "이쿠노 딕터스",
+        "title": "逍遥、整然たる路を",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "生野狄杜斯",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "生野狄杜斯",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106302.webp"
   },
   {
@@ -4521,6 +7156,23 @@
     "release_date_global": "2026-05-10",
     "obtained": "gacha",
     "gt_url_name": "106401-mejiro-palmer",
+    "i18n": {
+      "ko": {
+        "name": "메지로 파머",
+        "title": "Line Breakthrough",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白善信",
+        "title": "Line Breakthrough",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白善信",
+        "title": "Line Breakthrough",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106401.webp"
   },
   {
@@ -4550,6 +7202,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106402-mejiro-palmer",
+    "i18n": {
+      "ko": {
+        "name": "메지로 파머",
+        "title": "진심인 순록 씨",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白善信",
+        "title": "飽含真心的馴鹿",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白善信",
+        "title": "饱含真心的驯鹿",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106402.webp"
   },
   {
@@ -4579,6 +7248,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106501-daitaku-helios",
+    "i18n": {
+      "ko": {
+        "name": "다이타쿠 헬리오스",
+        "title": "Fun☆Fun☆파뤼나잇",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大德太陽",
+        "title": "Fun☆Fun☆派對夜",
+        "desc": null
+      },
+      "zh": {
+        "name": "大德太阳",
+        "title": "Fun☆Fun☆派对夜",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106501.webp"
   },
   {
@@ -4608,6 +7294,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106502-daitaku-helios",
+    "i18n": {
+      "ko": {
+        "name": "다이타쿠 헬리오스",
+        "title": "Joyful Jamboree!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大德太陽",
+        "title": "Joyful Jamboree!",
+        "desc": null
+      },
+      "zh": {
+        "name": "大德太阳",
+        "title": "Joyful Jamboree!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106502.webp"
   },
   {
@@ -4637,6 +7340,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106601-twin-turbo",
+    "i18n": {
+      "ko": {
+        "name": "트윈 터보",
+        "title": "폭주! 터보 엔진",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "雙渦輪",
+        "title": "暴衝！渦輪引擎",
+        "desc": null
+      },
+      "zh": {
+        "name": "双涡轮",
+        "title": "暴冲！涡轮引擎",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106601.webp"
   },
   {
@@ -4666,6 +7386,23 @@
     "release_date_global": "2026-03-22",
     "obtained": "gacha",
     "gt_url_name": "106701-satono-diamond",
+    "i18n": {
+      "ko": {
+        "name": "사토노 다이아몬드",
+        "title": "Natural Brilliance",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "里見光鑽",
+        "title": "Natural Brilliance",
+        "desc": null
+      },
+      "zh": {
+        "name": "里见光钻",
+        "title": "Natural Brilliance",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106701.webp"
   },
   {
@@ -4695,6 +7432,23 @@
     "release_date_global": "2026-10-20",
     "obtained": "gacha",
     "gt_url_name": "106702-satono-diamond",
+    "i18n": {
+      "ko": {
+        "name": "사토노 다이아몬드",
+        "title": "각광・번영을 부르는 녹빛",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "里見光鑽",
+        "title": "當家花旦・彌榮之翠",
+        "desc": null
+      },
+      "zh": {
+        "name": "里见光钻",
+        "title": "当家花旦・弥荣之翠",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106702.webp"
   },
   {
@@ -4724,6 +7478,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106703-satono-diamond",
+    "i18n": {
+      "ko": {
+        "name": "사토노 다이아몬드",
+        "title": "슈발리에・블뢰",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "里見光鑽",
+        "title": "蒼藍騎士",
+        "desc": null
+      },
+      "zh": {
+        "name": "里见光钻",
+        "title": "苍蓝骑士",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106703.webp"
   },
   {
@@ -4753,6 +7524,23 @@
     "release_date_global": "2026-03-12",
     "obtained": "gacha",
     "gt_url_name": "106801-kitasan-black",
+    "i18n": {
+      "ko": {
+        "name": "키타산 블랙",
+        "title": "금상・금화가마",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北部玄駒",
+        "title": "錦上．大判御輿",
+        "desc": null
+      },
+      "zh": {
+        "name": "北部玄驹",
+        "title": "锦上．大判御舆",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106801.webp"
   },
   {
@@ -4782,6 +7570,23 @@
     "release_date_global": "2026-10-20",
     "obtained": "gacha",
     "gt_url_name": "106802-kitasan-black",
+    "i18n": {
+      "ko": {
+        "name": "키타산 블랙",
+        "title": "주역・경사스러운 학의 뜻",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北部玄駒",
+        "title": "壓軸好戲・慶鶴之志",
+        "desc": null
+      },
+      "zh": {
+        "name": "北部玄驹",
+        "title": "压轴好戏・庆鹤之志",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106802.webp"
   },
   {
@@ -4811,6 +7616,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106803-kitasan-black",
+    "i18n": {
+      "ko": {
+        "name": "키타산 블랙",
+        "title": "결원의 마지막 꽃",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北部玄駒",
+        "title": "償願謝幕之花",
+        "desc": null
+      },
+      "zh": {
+        "name": "北部玄驹",
+        "title": "偿愿谢幕之花",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106803.webp"
   },
   {
@@ -4840,6 +7662,23 @@
     "release_date_global": "2026-02-11",
     "obtained": "gacha",
     "gt_url_name": "106901-sakura-chiyono-o",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 치요노 오",
+        "title": "천하무쌍・만개한 벚꽃의 빛",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花千代王",
+        "title": "天下第一花滿天",
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花千代王",
+        "title": "天下第一花满天",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106901.webp"
   },
   {
@@ -4869,6 +7708,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106902-sakura-chiyono-o",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 치요노 오",
+        "title": "Fleur Enneigée",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花千代王",
+        "title": "Fleur Enneigée",
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花千代王",
+        "title": "Fleur Enneigée",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/106902.webp"
   },
   {
@@ -4898,6 +7754,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107001-sirius-symboli",
+    "i18n": {
+      "ko": {
+        "name": "시리우스 심볼리",
+        "title": "Féroce",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "天狼星象徵",
+        "title": "Féroce",
+        "desc": null
+      },
+      "zh": {
+        "name": "天狼星象征",
+        "title": "Féroce",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107001.webp"
   },
   {
@@ -4927,6 +7800,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107002-sirius-symboli",
+    "i18n": {
+      "ko": {
+        "name": "시리우스 심볼리",
+        "title": "Louve stellaire",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "天狼星象徵",
+        "title": "Louve stellaire",
+        "desc": null
+      },
+      "zh": {
+        "name": "天狼星象征",
+        "title": "Louve stellaire",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107002.webp"
   },
   {
@@ -4956,6 +7846,23 @@
     "release_date_global": "2026-02-25",
     "obtained": "gacha",
     "gt_url_name": "107101-mejiro-ardan",
+    "i18n": {
+      "ko": {
+        "name": "메지로 아르당",
+        "title": "클리노클로어・라인",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白阿爾丹",
+        "title": "Clinochlore Line",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白阿尔丹",
+        "title": "Clinochlore Line",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107101.webp"
   },
   {
@@ -4985,6 +7892,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107102-mejiro-ardan",
+    "i18n": {
+      "ko": {
+        "name": "메지로 아르당",
+        "title": "Neige Émeraude",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白阿爾丹",
+        "title": "Neige Émeraude",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白阿尔丹",
+        "title": "Neige Émeraude",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107102.webp"
   },
   {
@@ -5014,6 +7938,23 @@
     "release_date_global": "2026-04-20",
     "obtained": "gacha",
     "gt_url_name": "107201-yaeno-muteki",
+    "i18n": {
+      "ko": {
+        "name": "야에노 무테키",
+        "title": "사백유성의 습격",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "八重無敵",
+        "title": "四白流星襲擊",
+        "desc": null
+      },
+      "zh": {
+        "name": "八重无敌",
+        "title": "四白流星袭击",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107201.webp"
   },
   {
@@ -5043,6 +7984,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107202-yaeno-muteki",
+    "i18n": {
+      "ko": {
+        "name": "야에노 무테키",
+        "title": "흑장 Zen",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "八重無敵",
+        "title": "黑將Zen",
+        "desc": null
+      },
+      "zh": {
+        "name": "八重无敌",
+        "title": "黑将Zen",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107202.webp"
   },
   {
@@ -5072,6 +8030,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107301-tsurumaru-tsuyoshi",
+    "i18n": {
+      "ko": {
+        "name": "츠루마루 츠요시",
+        "title": "뜻, 높고, 강하게!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "鶴丸強志",
+        "title": "志向、遠大、堅強！",
+        "desc": null
+      },
+      "zh": {
+        "name": "鹤丸强志",
+        "title": "志向、远大、坚强！",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107301.webp"
   },
   {
@@ -5101,6 +8076,23 @@
     "release_date_global": "2026-03-26",
     "obtained": "gacha",
     "gt_url_name": "107401-mejiro-bright",
+    "i18n": {
+      "ko": {
+        "name": "메지로 브라이트",
+        "title": "브뤼니사주・라인",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白光明",
+        "title": "Vernissage Line",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白光明",
+        "title": "Vernissage Line",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107401.webp"
   },
   {
@@ -5130,6 +8122,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107402-mejiro-bright",
+    "i18n": {
+      "ko": {
+        "name": "메지로 브라이트",
+        "title": "거룩한 밤 경사로운 스노우 롤리타",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白光明",
+        "title": "絢麗星夜的細雪蘿莉塔",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白光明",
+        "title": "绚丽星夜的细雪萝莉塔",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107402.webp"
   },
   {
@@ -5159,6 +8168,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107403-mejiro-bright",
+    "i18n": {
+      "ko": {
+        "name": "메지로 브라이트",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白光明",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "目白光明",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107403.webp"
   },
   {
@@ -5188,6 +8214,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107601-sakura-laurel",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 로렐",
+        "title": "Saisir le rêve",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花桂冠",
+        "title": "Saisir le rêve",
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花桂冠",
+        "title": "Saisir le rêve",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107601.webp"
   },
   {
@@ -5217,6 +8260,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107602-sakura-laurel",
+    "i18n": {
+      "ko": {
+        "name": "사쿠라 로렐",
+        "title": "Nouvelle pousse",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "櫻花桂冠",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "樱花桂冠",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107602.webp"
   },
   {
@@ -5246,6 +8306,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107701-narita-top-road",
+    "i18n": {
+      "ko": {
+        "name": "나리타 탑 로드",
+        "title": "The Proud Road",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田路",
+        "title": "The Proud Road",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田路",
+        "title": "The Proud Road",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107701.webp"
   },
   {
@@ -5275,6 +8352,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107702-narita-top-road",
+    "i18n": {
+      "ko": {
+        "name": "나리타 탑 로드",
+        "title": "Celestial Road",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田路",
+        "title": "Celestial Road",
+        "desc": null
+      },
+      "zh": {
+        "name": "成田路",
+        "title": "Celestial Road",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107702.webp"
   },
   {
@@ -5304,6 +8398,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107703-narita-top-road",
+    "i18n": {
+      "ko": {
+        "name": "나리타 탑 로드",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "成田路",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "成田路",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107703.webp"
   },
   {
@@ -5333,6 +8444,23 @@
     "release_date_global": "2026-09-01",
     "obtained": "gacha",
     "gt_url_name": "107801-yamanin-zephyr",
+    "i18n": {
+      "ko": {
+        "name": "야마닌 제퍼",
+        "title": "Fluttertail Spirit",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "山人西風",
+        "title": "Fluttertail Spirit",
+        "desc": null
+      },
+      "zh": {
+        "name": "山人西风",
+        "title": "Fluttertail Spirit",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107801.webp"
   },
   {
@@ -5362,6 +8490,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107802-yamanin-zephyr",
+    "i18n": {
+      "ko": {
+        "name": "야마닌 제퍼",
+        "title": "Sugary Wind",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "山人西風",
+        "title": "Sugary Wind",
+        "desc": null
+      },
+      "zh": {
+        "name": "山人西风",
+        "title": "Sugary Wind",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107802.webp"
   },
   {
@@ -5391,6 +8536,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107901-furioso",
+    "i18n": {
+      "ko": {
+        "name": "푸리오소",
+        "title": "금의환향의 상서로운 별",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "狂熱激昂",
+        "title": "衣錦還鄉的瑞星",
+        "desc": null
+      },
+      "zh": {
+        "name": "狂热激昂",
+        "title": "衣锦还乡的瑞星",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/107901.webp"
   },
   {
@@ -5420,6 +8582,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108001-transcend",
+    "i18n": {
+      "ko": {
+        "name": "트랜센드",
+        "title": "JJARIT-JJARIT GIZMO",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "創升",
+        "title": "興奮不已GIZMO",
+        "desc": null
+      },
+      "zh": {
+        "name": "创升",
+        "title": "兴奋不已GIZMO",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108001.webp"
   },
   {
@@ -5449,6 +8628,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108002-transcend",
+    "i18n": {
+      "ko": {
+        "name": "트랜센드",
+        "title": "宵闇ネオカグラ",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "創升",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "创升",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108002.webp"
   },
   {
@@ -5478,6 +8674,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108101-espoir-city",
+    "i18n": {
+      "ko": {
+        "name": "에스푸아르 시티",
+        "title": "Red Devil Gear",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "希望城市",
+        "title": "Red Devil Gear",
+        "desc": null
+      },
+      "zh": {
+        "name": "希望城市",
+        "title": "Red Devil Gear",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108101.webp"
   },
   {
@@ -5507,6 +8720,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108201-north-flight",
+    "i18n": {
+      "ko": {
+        "name": "노스 플라이트",
+        "title": "Looking Fly!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北方飛翔",
+        "title": "Looking Fly!",
+        "desc": null
+      },
+      "zh": {
+        "name": "北方飞翔",
+        "title": "Looking Fly!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108201.webp"
   },
   {
@@ -5536,6 +8766,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108202-north-flight",
+    "i18n": {
+      "ko": {
+        "name": "노스 플라이트",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北方飛翔",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "北方飞翔",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108202.webp"
   },
   {
@@ -5565,6 +8812,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108301-symboli-kris-s",
+    "i18n": {
+      "ko": {
+        "name": "심볼리 크리스 에스",
+        "title": "Onyx Soldier",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "克莉斯耶絲象徵",
+        "title": "Onyx Soldier",
+        "desc": null
+      },
+      "zh": {
+        "name": "克莉斯耶丝象征",
+        "title": "Onyx Soldier",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108301.webp"
   },
   {
@@ -5594,6 +8858,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108302-symboli-kris-s",
+    "i18n": {
+      "ko": {
+        "name": "심볼리 크리스 에스",
+        "title": "Jetblack Automaton",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "克莉斯耶絲象徵",
+        "title": "Jetblack Automaton",
+        "desc": null
+      },
+      "zh": {
+        "name": "克莉斯耶丝象征",
+        "title": "Jetblack Automaton",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108302.webp"
   },
   {
@@ -5623,6 +8904,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108401-tanino-gimlet",
+    "i18n": {
+      "ko": {
+        "name": "타니노 김렛",
+        "title": "몸을 휘감는 케라브노스",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "谷水琴蕾",
+        "title": "雷光纏身",
+        "desc": null
+      },
+      "zh": {
+        "name": "谷水琴蕾",
+        "title": "雷光缠身",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108401.webp"
   },
   {
@@ -5652,6 +8950,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108402-tanino-gimlet",
+    "i18n": {
+      "ko": {
+        "name": "타니노 김렛",
+        "title": "With a Twist",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "谷水琴蕾",
+        "title": "With a Twist",
+        "desc": null
+      },
+      "zh": {
+        "name": "谷水琴蕾",
+        "title": "With a Twist",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108402.webp"
   },
   {
@@ -5681,6 +8996,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108501-daiichi-ruby",
+    "i18n": {
+      "ko": {
+        "name": "다이이치 루비",
+        "title": "화려한 홍옥",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "第一紅寶",
+        "title": "華麗紅玉",
+        "desc": null
+      },
+      "zh": {
+        "name": "第一红宝",
+        "title": "华丽红玉",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108501.webp"
   },
   {
@@ -5710,6 +9042,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108502-daiichi-ruby",
+    "i18n": {
+      "ko": {
+        "name": "다이이치 루비",
+        "title": "Flowing Blue",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "第一紅寶",
+        "title": "Flowing Blue",
+        "desc": null
+      },
+      "zh": {
+        "name": "第一红宝",
+        "title": "Flowing Blue",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108502.webp"
   },
   {
@@ -5739,6 +9088,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108601-mejiro-ramonu",
+    "i18n": {
+      "ko": {
+        "name": "메지로 라모누",
+        "title": "오닉스・라인",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白拉茉奴",
+        "title": "Onyx Line",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白拉茉奴",
+        "title": "Onyx Line",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108601.webp"
   },
   {
@@ -5768,6 +9134,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108602-mejiro-ramonu",
+    "i18n": {
+      "ko": {
+        "name": "메지로 라모누",
+        "title": "Untouchable Eden",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "目白拉茉奴",
+        "title": "Untouchable Eden",
+        "desc": null
+      },
+      "zh": {
+        "name": "目白拉茉奴",
+        "title": "Untouchable Eden",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108602.webp"
   },
   {
@@ -5797,6 +9180,23 @@
     "release_date_global": "2026-08-25",
     "obtained": "gacha",
     "gt_url_name": "108701-aston-machan",
+    "i18n": {
+      "ko": {
+        "name": "애스턴 마짱",
+        "title": "Flare",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "奧斯頓真弓",
+        "title": "Flare",
+        "desc": null
+      },
+      "zh": {
+        "name": "奥斯顿真弓",
+        "title": "Flare",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108701.webp"
   },
   {
@@ -5826,6 +9226,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108702-aston-machan",
+    "i18n": {
+      "ko": {
+        "name": "애스턴 마짱",
+        "title": "녹지 않는 설탕 과자",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "奧斯頓真弓",
+        "title": "不融的砂糖點心",
+        "desc": null
+      },
+      "zh": {
+        "name": "奥斯顿真弓",
+        "title": "不融的砂糖点心",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108702.webp"
   },
   {
@@ -5855,6 +9272,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108801-satono-crown",
+    "i18n": {
+      "ko": {
+        "name": "사토노 크라운",
+        "title": "검은 옥이 천 리를 간다",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "里見皇冠",
+        "title": "黑翠千里行",
+        "desc": null
+      },
+      "zh": {
+        "name": "里见皇冠",
+        "title": "黑翠千里行",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108801.webp"
   },
   {
@@ -5884,6 +9318,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108802-satono-crown",
+    "i18n": {
+      "ko": {
+        "name": "사토노 크라운",
+        "title": "맑은 섬에 핀 아름다운 꽃",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "里見皇冠",
+        "title": "晴島花麗",
+        "desc": null
+      },
+      "zh": {
+        "name": "里见皇冠",
+        "title": "晴岛花丽",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108802.webp"
   },
   {
@@ -5913,6 +9364,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108901-cheval-grand",
+    "i18n": {
+      "ko": {
+        "name": "슈발 그랑",
+        "title": "Grand itinéraire",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "高尚駿逸",
+        "title": "Grand itinéraire",
+        "desc": null
+      },
+      "zh": {
+        "name": "高尚骏逸",
+        "title": "Grand itinéraire",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108901.webp"
   },
   {
@@ -5942,6 +9410,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "108902-cheval-grand",
+    "i18n": {
+      "ko": {
+        "name": "슈발 그랑",
+        "title": "잔잔한 여름의 네이비 드롭",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "高尚駿逸",
+        "title": "夏日靜謐的深藍水滴",
+        "desc": null
+      },
+      "zh": {
+        "name": "高尚骏逸",
+        "title": "夏日静谧的深蓝水滴",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/108902.webp"
   },
   {
@@ -5971,6 +9456,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109001-verxina",
+    "i18n": {
+      "ko": {
+        "name": "베르시나",
+        "title": "Le beau sommet",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "極峰",
+        "title": "Le beau sommet",
+        "desc": null
+      },
+      "zh": {
+        "name": "极峰",
+        "title": "Le beau sommet",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109001.webp"
   },
   {
@@ -6000,6 +9502,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109101-vivlos",
+    "i18n": {
+      "ko": {
+        "name": "비블로스",
+        "title": "Voyage étincelant",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "比布魯斯",
+        "title": "Voyage étincelant",
+        "desc": null
+      },
+      "zh": {
+        "name": "比布鲁斯",
+        "title": "Voyage étincelant",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109101.webp"
   },
   {
@@ -6029,6 +9548,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109102-vivlos",
+    "i18n": {
+      "ko": {
+        "name": "비블로스",
+        "title": "Éclat d'été",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "比布魯斯",
+        "title": "Éclat d'été",
+        "desc": null
+      },
+      "zh": {
+        "name": "比布鲁斯",
+        "title": "Éclat d'été",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109102.webp"
   },
   {
@@ -6058,6 +9594,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109201-dantsu-flame",
+    "i18n": {
+      "ko": {
+        "name": "단츠 플레임",
+        "title": "まんなか◎スポットライト",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "緞通烈焰",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "缎通烈焰",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109201.webp"
   },
   {
@@ -6087,6 +9640,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109301-ksmiracle",
+    "i18n": {
+      "ko": {
+        "name": "케이에스 미라클",
+        "title": "Prism",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "喜嘉奇蹟",
+        "title": "Prism",
+        "desc": null
+      },
+      "zh": {
+        "name": "喜嘉奇迹",
+        "title": "Prism",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109301.webp"
   },
   {
@@ -6116,6 +9686,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109302-ksmiracle",
+    "i18n": {
+      "ko": {
+        "name": "케이에스 미라클",
+        "title": "가을빛 안단테",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "喜嘉奇蹟",
+        "title": "秋日暖調行板節奏",
+        "desc": null
+      },
+      "zh": {
+        "name": "喜嘉奇迹",
+        "title": "秋日暖调行板节奏",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109302.webp"
   },
   {
@@ -6145,6 +9732,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109401-jungle-pocket",
+    "i18n": {
+      "ko": {
+        "name": "정글 포켓",
+        "title": "왕의 함성",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "叢林口袋",
+        "title": "王者的吶喊",
+        "desc": null
+      },
+      "zh": {
+        "name": "丛林口袋",
+        "title": "王者的呐喊",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109401.webp"
   },
   {
@@ -6174,6 +9778,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109402-jungle-pocket",
+    "i18n": {
+      "ko": {
+        "name": "정글 포켓",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "叢林口袋",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "丛林口袋",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109402.webp"
   },
   {
@@ -6203,6 +9824,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109501-believe",
+    "i18n": {
+      "ko": {
+        "name": "빌리브",
+        "title": "精粋",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "信念",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "信念",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109501.webp"
   },
   {
@@ -6232,6 +9870,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109601-no-reason",
+    "i18n": {
+      "ko": {
+        "name": "노 리즌",
+        "title": "질주하는 붉은 갑주",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "無需理由",
+        "title": "赤紅漆疾馳甲冑",
+        "desc": null
+      },
+      "zh": {
+        "name": "无需理由",
+        "title": "赤红漆疾驰甲胄",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109601.webp"
   },
   {
@@ -6261,6 +9916,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109701-still-in-love",
+    "i18n": {
+      "ko": {
+        "name": "스틸 인 러브",
+        "title": "진홍빛 염원의 서의",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛如往昔",
+        "title": "緋念誓衣",
+        "desc": null
+      },
+      "zh": {
+        "name": "爱如往昔",
+        "title": "绯念誓衣",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109701.webp"
   },
   {
@@ -6290,6 +9962,23 @@
     "release_date_global": "2026-07-16",
     "obtained": "gacha",
     "gt_url_name": "109801-copano-rickey",
+    "i18n": {
+      "ko": {
+        "name": "코파노 리키",
+        "title": "음양팔괘☆운이 트이는 옷",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "小林歷奇",
+        "title": "陰陽八卦☆開運衣",
+        "desc": null
+      },
+      "zh": {
+        "name": "小林历奇",
+        "title": "阴阳八卦☆开运衣",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109801.webp"
   },
   {
@@ -6319,6 +10008,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109802-copano-rickey",
+    "i18n": {
+      "ko": {
+        "name": "코파노 리키",
+        "title": "광채육리☆복을 부르는 옷",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "小林歷奇",
+        "title": "光彩奪目☆招福衣",
+        "desc": null
+      },
+      "zh": {
+        "name": "小林历奇",
+        "title": "光彩夺目☆招福衣",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109802.webp"
   },
   {
@@ -6348,6 +10054,23 @@
     "release_date_global": "2026-10-24",
     "obtained": "gacha",
     "gt_url_name": "109901-hokko-tarumae",
+    "i18n": {
+      "ko": {
+        "name": "홋코 타루마에",
+        "title": "스타・라이트・십",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北幸樽前",
+        "title": "繁星．光華．船隻",
+        "desc": null
+      },
+      "zh": {
+        "name": "北幸樽前",
+        "title": "繁星．光华．船只",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109901.webp"
   },
   {
@@ -6377,6 +10100,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "109902-hokko-tarumae",
+    "i18n": {
+      "ko": {
+        "name": "홋코 타루마에",
+        "title": "파스텔 마린・지역 아이돌",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "北幸樽前",
+        "title": "粉藍海洋．地方偶像",
+        "desc": null
+      },
+      "zh": {
+        "name": "北幸樽前",
+        "title": "粉蓝海洋．地方偶像",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/109902.webp"
   },
   {
@@ -6406,6 +10146,23 @@
     "release_date_global": "2026-09-24",
     "obtained": "gacha",
     "gt_url_name": "110001-wonder-acute",
+    "i18n": {
+      "ko": {
+        "name": "원더 어큐트",
+        "title": "Butterfly Sting",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "奇銳駿",
+        "title": "Butterfly Sting",
+        "desc": null
+      },
+      "zh": {
+        "name": "奇锐骏",
+        "title": "Butterfly Sting",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110001.webp"
   },
   {
@@ -6435,6 +10192,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110002-wonder-acute",
+    "i18n": {
+      "ko": {
+        "name": "원더 어큐트",
+        "title": "柔灯・湯の香の装い",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "奇銳駿",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "奇锐骏",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110002.webp"
   },
   {
@@ -6464,6 +10238,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110201-sounds-of-earth",
+    "i18n": {
+      "ko": {
+        "name": "사운즈 오브 어스",
+        "title": "Ritmo della Terra",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "萬籟爭鳴",
+        "title": "地球的節奏",
+        "desc": null
+      },
+      "zh": {
+        "name": "万籁争鸣",
+        "title": "地球的节奏",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110201.webp"
   },
   {
@@ -6493,6 +10284,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110202-sounds-of-earth",
+    "i18n": {
+      "ko": {
+        "name": "사운즈 오브 어스",
+        "title": "ソナタ・アッラ・メンタ",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "萬籟爭鳴",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "万籁争鸣",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110202.webp"
   },
   {
@@ -6522,6 +10330,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110301-royce-and-royce",
+    "i18n": {
+      "ko": {
+        "name": "로이스 앤 로이스",
+        "title": "Inspiring Genius",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "萊斯萊斯",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "莱斯莱斯",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110301.webp"
   },
   {
@@ -6551,6 +10376,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110401-katsuragi-ace",
+    "i18n": {
+      "ko": {
+        "name": "카츠라기 에이스",
+        "title": "등용지정",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "葛城榮主",
+        "title": "登龍之頂",
+        "desc": null
+      },
+      "zh": {
+        "name": "葛城荣主",
+        "title": "登龙之顶",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110401.webp"
   },
   {
@@ -6580,6 +10422,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110402-katsuragi-ace",
+    "i18n": {
+      "ko": {
+        "name": "카츠라기 에이스",
+        "title": "아호・묵룡",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "葛城榮主",
+        "title": "雅號．墨龍",
+        "desc": null
+      },
+      "zh": {
+        "name": "葛城荣主",
+        "title": "雅号．墨龙",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110402.webp"
   },
   {
@@ -6609,6 +10468,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110501-neo-universe",
+    "i18n": {
+      "ko": {
+        "name": "네오 유니버스",
+        "title": "Universe-Naut",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "新宇宙",
+        "title": "Universe-Naut",
+        "desc": null
+      },
+      "zh": {
+        "name": "新宇宙",
+        "title": "Universe-Naut",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110501.webp"
   },
   {
@@ -6638,6 +10514,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110502-neo-universe",
+    "i18n": {
+      "ko": {
+        "name": "네오 유니버스",
+        "title": "Like “ZEER”",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "新宇宙",
+        "title": "Like “ZEER”",
+        "desc": null
+      },
+      "zh": {
+        "name": "新宇宙",
+        "title": "Like “ZEER”",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110502.webp"
   },
   {
@@ -6667,6 +10560,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110601-hishi-miracle",
+    "i18n": {
+      "ko": {
+        "name": "히시 미라클",
+        "title": "미라클 메이크업!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "菱奇蹟",
+        "title": "點綴奇蹟！",
+        "desc": null
+      },
+      "zh": {
+        "name": "菱奇迹",
+        "title": "点缀奇迹！",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110601.webp"
   },
   {
@@ -6696,6 +10606,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110602-hishi-miracle",
+    "i18n": {
+      "ko": {
+        "name": "히시 미라클",
+        "title": "해피・리틀・노츠",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "菱奇蹟",
+        "title": "快樂小音符",
+        "desc": null
+      },
+      "zh": {
+        "name": "菱奇迹",
+        "title": "快乐小音符",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110602.webp"
   },
   {
@@ -6725,6 +10652,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110701-tap-dance-city",
+    "i18n": {
+      "ko": {
+        "name": "탭 댄스 시티",
+        "title": "GLITTER!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "踢踏城市",
+        "title": "GLITTER!",
+        "desc": null
+      },
+      "zh": {
+        "name": "踢踏城市",
+        "title": "GLITTER!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110701.webp"
   },
   {
@@ -6754,6 +10698,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110702-tap-dance-city",
+    "i18n": {
+      "ko": {
+        "name": "탭 댄스 시티",
+        "title": "Tap! Tap! Tap!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "踢踏城市",
+        "title": "Tap! Tap! Tap!",
+        "desc": null
+      },
+      "zh": {
+        "name": "踢踏城市",
+        "title": "Tap! Tap! Tap!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110702.webp"
   },
   {
@@ -6783,6 +10744,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110801-duramente",
+    "i18n": {
+      "ko": {
+        "name": "두라멘테",
+        "title": "Red in Black",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大鳴大放",
+        "title": "Red in Black",
+        "desc": null
+      },
+      "zh": {
+        "name": "大鸣大放",
+        "title": "Red in Black",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110801.webp"
   },
   {
@@ -6812,6 +10790,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110802-duramente",
+    "i18n": {
+      "ko": {
+        "name": "두라멘테",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "大鳴大放",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "大鸣大放",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110802.webp"
   },
   {
@@ -6841,6 +10836,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "110901-rhein-kraft",
+    "i18n": {
+      "ko": {
+        "name": "라인 크라프트",
+        "title": "Dream Successor",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "萊茵實力",
+        "title": "Dream Successor",
+        "desc": null
+      },
+      "zh": {
+        "name": "莱茵实力",
+        "title": "Dream Successor",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110901.webp"
   },
   {
@@ -6870,6 +10882,23 @@
     "release_date_global": null,
     "obtained": "main_story",
     "gt_url_name": "110902-rhein-kraft",
+    "i18n": {
+      "ko": {
+        "name": "라인 크라프트",
+        "title": "Eternal Fairytale",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "萊茵實力",
+        "title": "Eternal Fairytale",
+        "desc": null
+      },
+      "zh": {
+        "name": "莱茵实力",
+        "title": "Eternal Fairytale",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/110902.webp"
   },
   {
@@ -6899,6 +10928,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111001-cesario",
+    "i18n": {
+      "ko": {
+        "name": "세자리오",
+        "title": "Future Weaver",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "西薩里奧",
+        "title": "Future Weaver",
+        "desc": null
+      },
+      "zh": {
+        "name": "西萨里奥",
+        "title": "Future Weaver",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111001.webp"
   },
   {
@@ -6928,6 +10974,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111002-cesario",
+    "i18n": {
+      "ko": {
+        "name": "세자리오",
+        "title": "Twinbell Queen",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "西薩里奧",
+        "title": "Twinbell Queen",
+        "desc": null
+      },
+      "zh": {
+        "name": "西萨里奥",
+        "title": "Twinbell Queen",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111002.webp"
   },
   {
@@ -6957,6 +11020,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111101-air-messiah",
+    "i18n": {
+      "ko": {
+        "name": "에어 메사이어",
+        "title": "Inherited Hope",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "空中彌賽亞",
+        "title": "Inherited Hope",
+        "desc": null
+      },
+      "zh": {
+        "name": "空中弥赛亚",
+        "title": "Inherited Hope",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111101.webp"
   },
   {
@@ -6986,6 +11066,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111201-daring-heart",
+    "i18n": {
+      "ko": {
+        "name": "데어링 하트",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "勇敢之心",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "勇敢之心",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111201.webp"
   },
   {
@@ -7015,6 +11112,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111301-fusaichi-pandora",
+    "i18n": {
+      "ko": {
+        "name": "후사이치 판도라",
+        "title": "Assorted Cuteness♡",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "房一潘朵拉",
+        "title": "Assorted Cuteness♡",
+        "desc": null
+      },
+      "zh": {
+        "name": "房一潘朵拉",
+        "title": "Assorted Cuteness♡",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111301.webp"
   },
   {
@@ -7044,6 +11158,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111302-fusaichi-pandora",
+    "i18n": {
+      "ko": {
+        "name": "후사이치 판도라",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "房一潘朵拉",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "房一潘朵拉",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111302.webp"
   },
   {
@@ -7073,6 +11204,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111401-buena-vista",
+    "i18n": {
+      "ko": {
+        "name": "부에나 비스타",
+        "title": "Heroína Inocente",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "迷人景致",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "迷人景致",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111401.webp"
   },
   {
@@ -7102,6 +11250,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111501-orfevre",
+    "i18n": {
+      "ko": {
+        "name": "오르페브르",
+        "title": "총람",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金巨匠",
+        "title": "總攬",
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金巨匠",
+        "title": "总揽",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111501.webp"
   },
   {
@@ -7131,6 +11296,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111601-gentildonna",
+    "i18n": {
+      "ko": {
+        "name": "젠틸돈나",
+        "title": "Regina dei fiori",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "貴婦人",
+        "title": "Regina dei fiori",
+        "desc": null
+      },
+      "zh": {
+        "name": "贵妇人",
+        "title": "Regina dei fiori",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111601.webp"
   },
   {
@@ -7160,6 +11342,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111602-gentildonna",
+    "i18n": {
+      "ko": {
+        "name": "젠틸돈나",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "貴婦人",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "贵妇人",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111602.webp"
   },
   {
@@ -7189,6 +11388,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111701-win-variation",
+    "i18n": {
+      "ko": {
+        "name": "윈 바리아시옹",
+        "title": "드라마틱・튀튀",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "凱旋芭蕾",
+        "title": "戲夢芭蕾裙",
+        "desc": null
+      },
+      "zh": {
+        "name": "凯旋芭蕾",
+        "title": "戏梦芭蕾裙",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111701.webp"
   },
   {
@@ -7218,6 +11434,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111801-admire-groove",
+    "i18n": {
+      "ko": {
+        "name": "어드마이어 그루브",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "愛慕律動",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "爱慕律动",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111801.webp"
   },
   {
@@ -7247,6 +11480,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111901-dream-journey",
+    "i18n": {
+      "ko": {
+        "name": "드림 저니",
+        "title": "꿈길의 인연",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "夢之旅",
+        "title": "夢之所歸",
+        "desc": null
+      },
+      "zh": {
+        "name": "梦之旅",
+        "title": "梦之所归",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111901.webp"
   },
   {
@@ -7276,6 +11526,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "111902-dream-journey",
+    "i18n": {
+      "ko": {
+        "name": "드림 저니",
+        "title": "雪白の夢路",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "夢之旅",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "梦之旅",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/111902.webp"
   },
   {
@@ -7305,6 +11572,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112001-calstone-light-o",
+    "i18n": {
+      "ko": {
+        "name": "칼스톤 라이트 오",
+        "title": "진실일로",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "浮岩光王",
+        "title": "一心求真",
+        "desc": null
+      },
+      "zh": {
+        "name": "浮岩光王",
+        "title": "一心求真",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112001.webp"
   },
   {
@@ -7334,6 +11618,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112101-durandal",
+    "i18n": {
+      "ko": {
+        "name": "뒤랑달",
+        "title": "Chevalier fidèle",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "杜蘭達爾",
+        "title": "Chevalier fidèle",
+        "desc": null
+      },
+      "zh": {
+        "name": "杜兰达尔",
+        "title": "Chevalier fidèle",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112101.webp"
   },
   {
@@ -7363,6 +11664,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112401-bubble-gum-fellow",
+    "i18n": {
+      "ko": {
+        "name": "버블검 펠로",
+        "title": "POPPING!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "泡泡糖小子",
+        "title": "POPPING!",
+        "desc": null
+      },
+      "zh": {
+        "name": "泡泡糖小子",
+        "title": "POPPING!",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112401.webp"
   },
   {
@@ -7392,6 +11710,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112402-bubble-gum-fellow",
+    "i18n": {
+      "ko": {
+        "name": "버블검 펠로",
+        "title": "暁光",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "泡泡糖小子",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "泡泡糖小子",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112402.webp"
   },
   {
@@ -7421,6 +11756,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112701-fenomeno",
+    "i18n": {
+      "ko": {
+        "name": "페노메노",
+        "title": "정의심의 검은 불꽃",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "超常駿驥",
+        "title": "義心黑焰",
+        "desc": null
+      },
+      "zh": {
+        "name": "超常骏骥",
+        "title": "义心黑焰",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112701.webp"
   },
   {
@@ -7450,6 +11802,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112702-fenomeno",
+    "i18n": {
+      "ko": {
+        "name": "페노메노",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "超常駿驥",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "超常骏骥",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112702.webp"
   },
   {
@@ -7479,6 +11848,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112901-almond-eye",
+    "i18n": {
+      "ko": {
+        "name": "아몬드 아이",
+        "title": "The Changer",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "杏目",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "杏目",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/112901.webp"
   },
   {
@@ -7508,6 +11894,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113001-lucky-lilac",
+    "i18n": {
+      "ko": {
+        "name": "럭키 라일락",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "幸運歐丁香",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "幸运欧丁香",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113001.webp"
   },
   {
@@ -7537,6 +11940,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113101-gran-alegria",
+    "i18n": {
+      "ko": {
+        "name": "그란 알레그리아",
+        "title": "스마일・마이・웨이!",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "放聲歡呼",
+        "title": "微笑哩有我的路！",
+        "desc": null
+      },
+      "zh": {
+        "name": "放声欢呼",
+        "title": "微笑哩有我的路！",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113101.webp"
   },
   {
@@ -7566,6 +11986,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113201-loves-only-you",
+    "i18n": {
+      "ko": {
+        "name": "러브즈 온리 유",
+        "title": "9927 Wishes",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "唯獨愛你",
+        "title": "9927 Wishes",
+        "desc": null
+      },
+      "zh": {
+        "name": "唯独爱你",
+        "title": "9927 Wishes",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113201.webp"
   },
   {
@@ -7595,6 +12032,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113202-loves-only-you",
+    "i18n": {
+      "ko": {
+        "name": "러브즈 온리 유",
+        "title": "Love-Linked Aster",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "唯獨愛你",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "唯独爱你",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113202.webp"
   },
   {
@@ -7624,6 +12078,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113301-chrono-genesis",
+    "i18n": {
+      "ko": {
+        "name": "크로노 제네시스",
+        "title": "찬란한 편찬자",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "時代創世",
+        "title": "璀璨的編篡者",
+        "desc": null
+      },
+      "zh": {
+        "name": "时代创世",
+        "title": "璀璨的编篡者",
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113301.webp"
   },
   {
@@ -7653,6 +12124,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113401-curren-bouquetdor",
+    "i18n": {
+      "ko": {
+        "name": "카렌 부케도르",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "機伶金花",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "机伶金花",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113401.webp"
   },
   {
@@ -7682,6 +12170,23 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113501-stay-gold",
+    "i18n": {
+      "ko": {
+        "name": "스테이 골드",
+        "title": "Sunlit Outsider",
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金旅程",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金旅程",
+        "title": null,
+        "desc": null
+      }
+    },
     "image_url": "/img/characters/113501.webp"
   },
   {
@@ -7711,6 +12216,15 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113601-red-desire",
+    "i18n": {
+      "ko": {
+        "name": "레드 디자이어",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/113601.webp"
   },
   {
@@ -7740,6 +12254,15 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113701-kiseki",
+    "i18n": {
+      "ko": {
+        "name": "키세키",
+        "title": "Miracle Author",
+        "desc": null
+      },
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/113701.webp"
   },
   {
@@ -7769,6 +12292,15 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "114101-epiphaneia",
+    "i18n": {
+      "ko": {
+        "name": "에피파네이아",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/114101.webp"
   },
   {
@@ -7798,6 +12330,15 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "114301-victoire-pisa",
+    "i18n": {
+      "ko": {
+        "name": "빅투아르 피사",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/114301.webp"
   },
   {
@@ -7827,6 +12368,15 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "114401-rose-kingdom",
+    "i18n": {
+      "ko": {
+        "name": "로즈 킹덤",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/114401.webp"
   },
   {
@@ -7856,6 +12406,15 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "114501-rulership",
+    "i18n": {
+      "ko": {
+        "name": "룰러쉽",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/114501.webp"
   },
   {
@@ -7885,6 +12444,11 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "114901-phalaenopsis",
+    "i18n": {
+      "ko": null,
+      "zh_tw": null,
+      "zh": null
+    },
     "image_url": "/img/characters/114901.webp"
   }
 ]

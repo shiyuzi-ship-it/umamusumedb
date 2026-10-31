@@ -1,4 +1,5 @@
 ---
+import { t as tr } from '@/lib/ui-strings';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import CharacterCard from '@/components/CharacterCard';
@@ -13,7 +14,7 @@ const featuredCards = supportCards.filter(card => card.rarity === 'SSR').slice(0
 const latestReleases = ((releasesData as any).releases as any[]).slice(0, 12);
 ---
 
-<Layout title="ウマ娘DB - ウマ娘プリティーダービー完全データベース">
+<Layout title={tr('ja', 'homeTitle')} description={tr('ja', 'homeDesc')}>
   <Header />
   
   <main>
