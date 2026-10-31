@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import UpdatesContent from '@/components/UpdatesContent.astro';
+---
+
+<Layout title="Updates & Release Timeline - UmamusumeDB" description="Latest Uma Musume Global announcements, newly released characters and support cards on Global and JP, and training scenarios.">
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: 'Updates' }]} />
+    <div class="mb-6 sm:mb-8">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-3 sm:mb-4">Updates</h1>
+      <p class="text-gray-600">What's new in Uma Musume: announcements, new releases and scenarios.</p>
+    </div>
+    <UpdatesContent locale="en" />
+  </main>
+</Layout>

@@ -2,8 +2,6 @@
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
-import CharacterCard from '@/components/CharacterCard';
-import SupportCardCard from '@/components/SupportCardCard';
 import { characters, supportCards, skills } from '@/lib/static-content';
 import type { Skill } from '@/types';
 import { Sparkles, Info, Zap, Users } from 'lucide-react';
@@ -38,6 +36,7 @@ const linkedCharacters = characters.filter((c) => {
 ---
 
 <Layout
+  noindex={skill.rarity === 'evolved'}
   title={`${skill.name_jp || skill.name_en} - スキル | UmamusumeDB`}
   description={`${skill.name_jp || skill.name_en} の効果・発動条件・レアリティ。キャラ/サポカとの相互リンクも参照できます。`}
 >
@@ -76,7 +75,7 @@ const linkedCharacters = characters.filter((c) => {
               <Sparkles className="w-4 h-4 text-uma-accent mt-0.5" />
               <div>
                 <div class="text-gray-500 text-xs uppercase tracking-wide">効果</div>
-                <div class="font-medium">{skill.effect || skill.description_en || '—'}</div>
+                <div class="font-medium">{skill.description_jp || skill.effect || skill.description_en || '—'}</div>
               </div>
             </div>
             {skill.trigger_condition && (
@@ -89,18 +88,18 @@ const linkedCharacters = characters.filter((c) => {
               </div>
             )}
             <div class="grid grid-cols-2 gap-3">
-              <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
+              {skill.duration && (<div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">持続</div>
                 <div class="font-semibold">{skill.duration || '—'}</div>
-              </div>
-              <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
+              </div>)}
+              {skill.cooldown && (<div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">クールダウン</div>
                 <div class="font-semibold">{skill.cooldown || '—'}</div>
-              </div>
-              <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
+              </div>)}
+              {skill.activation_rate && (<div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">発動率</div>
                 <div class="font-semibold">{skill.activation_rate || '—'}</div>
-              </div>
+              </div>)}
               <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">ID</div>
                 <div class="font-mono text-xs">{skill.id}</div>
@@ -126,13 +125,14 @@ const linkedCharacters = characters.filter((c) => {
             <span class="text-sm text-gray-500 font-normal">({linkedCharacters.length})</span>
           </h2>
           {linkedCharacters.length ? (
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {linkedCharacters.map((c) => (
-                <CharacterCard character={c} localePrefix="/ja" client:load />
+            <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+              {linkedCharacters.slice(0, 40).map((c) => (
+                <li><a href={`/ja/characters/${c.id}/`} class="text-uma-primary hover:underline">{c.name_jp || c.name_en}</a></li>
               ))}
-            </div>
+              {linkedCharacters.length > 40 && <li class="text-gray-500">…ほか {linkedCharacters.length - 40} 件</li>}
+            </ul>
           ) : (
-            <p class="text-gray-600 text-sm">このスキルに紐づくキャラはまだありません。</p>
+            <p class="text-gray-600 text-sm">このスキルに紐づくキャラはありません。</p>
           )}
         </div>
 
@@ -143,13 +143,14 @@ const linkedCharacters = characters.filter((c) => {
             <span class="text-sm text-gray-500 font-normal">({linkedCards.length})</span>
           </h2>
           {linkedCards.length ? (
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {linkedCards.map((c) => (
-                <SupportCardCard card={c} localePrefix="/ja" client:load />
+            <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+              {linkedCards.slice(0, 40).map((c) => (
+                <li><a href={`/ja/cards/${c.id}/`} class="text-uma-primary hover:underline">{c.name_jp || c.name_en} <span class="text-gray-400">({c.rarity})</span></a></li>
               ))}
-            </div>
+              {linkedCards.length > 40 && <li class="text-gray-500">…ほか {linkedCards.length - 40} 件</li>}
+            </ul>
           ) : (
-            <p class="text-gray-600 text-sm">このスキルに紐づくサポカはまだありません。</p>
+            <p class="text-gray-600 text-sm">このスキルに紐づくサポカはありません。</p>
           )}
         </div>
       </div>

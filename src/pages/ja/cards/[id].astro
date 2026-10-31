@@ -4,6 +4,7 @@ import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { supportCards, skills } from '@/lib/static-content';
 import { createSkillIndex, findSkillIdByName } from '@/lib/skill-lookup';
+import { effectAtMax, effectLabel, effectSuffix, maxLevelFor, serverLabel } from '@/lib/game-format';
 import { Star, Zap, Heart, Brain, Shield, Sparkles, Users, TrendingUp, Award } from 'lucide-react';
 
 export function getStaticPaths() {
@@ -23,7 +24,8 @@ const typeConfig = {
   power: { color: 'bg-orange-500', icon: Sparkles, label: 'パワー' },
   guts: { color: 'bg-purple-500', icon: Star, label: '根性' },
   wisdom: { color: 'bg-blue-500', icon: Brain, label: '賢さ' },
-  friend: { color: 'bg-pink-500', icon: Users, label: '友人' }
+  friend: { color: 'bg-pink-500', icon: Users, label: '友人' },
+  group: { color: 'bg-teal-500', icon: Users, label: 'グループ' }
 };
 
 const config = typeConfig[card.type as keyof typeof typeConfig] || typeConfig.speed;
@@ -36,17 +38,10 @@ const rarityColors = {
   R: 'bg-gradient-to-r from-gray-400 to-gray-600'
 };
 
-const extractEffectValue = (value: any) => {
-  if (typeof value === 'number') return value;
-  if (typeof value === 'string') {
-    const numeric = Number(value.replace(/[^0-9.-]/g, ''));
-    return Number.isFinite(numeric) ? numeric : 0;
-  }
-  if (value && typeof value === 'object') {
-    return value.lv50 ?? value.lv45 ?? value.lv40 ?? value.lv35 ?? value.lv30 ?? value.lv1 ?? 0;
-  }
-  return 0;
-};
+const maxLevel = maxLevelFor(card);
+const toMap = (v: any): Record<string, number> => v;
+const extractEffectValue = (value: any) => effectAtMax(value, maxLevel);
+const skillByName = new Map(skills.map((sk) => [sk.name_en, sk]));
 
 const effectHighlights = Object.entries(card.effects || {})
   .map(([key, value]) => ({
@@ -61,7 +56,7 @@ const effectHighlights = Object.entries(card.effects || {})
 
 <Layout
   title={`${card.name_jp || card.name_en}（${card.rarity} ${config.label}）- サポートカード | ウマ娘DB`}
-  description={`${card.name_jp || card.name_en} の効果・スキル・イベント情報。育成デッキ構築の参考に。`}
+  description={`${card.name_jp || card.name_en} の効果（レベル別）・ヒントスキル・実装日（日本版 ${card.release_date_jp ?? '—'} / グローバル版 ${card.release_date_global ?? '未実装'}）。`}
   image={card.image_url || 'https://umamusumedb.com/og-image.png'}
   structuredDataType="supportCard"
   structuredData={{
@@ -95,9 +90,9 @@ const effectHighlights = Object.entries(card.effects || {})
               <TypeIcon className="w-6 h-6 text-white" />
             </div>
 
-            {card.image_url ? (
+            {(card.character_image_url || card.image_url) ? (
               <img
-                src={card.image_url}
+                src={card.character_image_url || card.image_url}
                 alt={card.name_jp || card.name_en}
                 class="absolute inset-0 w-full h-full object-contain object-center"
                 loading="lazy"
@@ -129,6 +124,12 @@ const effectHighlights = Object.entries(card.effects || {})
                 {card.rarity}
               </div>
             </div>
+            <dl class="text-xs text-gray-600 space-y-1">
+              <div class="flex justify-between"><dt>配信状況</dt><dd class="font-medium">{serverLabel(card.server, 'ja')}</dd></div>
+              {card.release_date_jp && <div class="flex justify-between"><dt>日本版 実装日</dt><dd>{card.release_date_jp}</dd></div>}
+              {card.release_date_global && <div class="flex justify-between"><dt>グローバル版 実装日</dt><dd>{card.release_date_global}</dd></div>}
+              <div class="flex justify-between"><dt>最大レベル</dt><dd>Lv.{maxLevel}（4凸）</dd></div>
+            </dl>
           </div>
         </div>
       </div>
@@ -140,8 +141,8 @@ const effectHighlights = Object.entries(card.effects || {})
             {effectHighlights.map(({ key, display }) => (
               <div class="bg-white rounded-lg shadow-sm border border-uma-primary/10 p-4">
                 <div class="text-xs uppercase tracking-wide text-gray-500">注目効果</div>
-                <div class="text-sm font-semibold text-gray-800 mt-1">{key.replace(/_/g, ' ')}</div>
-                <div class="text-2xl font-bold text-uma-primary mt-2">+{display}</div>
+                <div class="text-sm font-semibold text-gray-800 mt-1">{effectLabel(key, 'ja')}</div>
+                <div class="text-2xl font-bold text-uma-primary mt-2">+{display}{effectSuffix(key)}</div>
               </div>
             ))}
           </div>
@@ -156,52 +157,38 @@ const effectHighlights = Object.entries(card.effects || {})
 
           <div class="grid md:grid-cols-2 gap-4">
             {Object.entries(card.effects || {}).map(([key, value]) => {
-              const isLevelData = typeof value === 'object' && value !== null && 'lv1' in value;
-              const displayValue = isLevelData ? value.lv50 : value;
+              const levels = Object.keys(toMap(value))
+                .map((k) => Number(k.replace('lv', '')))
+                .sort((x, y) => x - y);
+              const displayValue = extractEffectValue(value);
+              const suffix = effectSuffix(key);
 
               return (
                 <div class="bg-white rounded-lg p-4">
                   <div class="flex justify-between items-center mb-2">
-                    <span class="text-sm text-gray-600 capitalize">
-                      {key.replace(/_/g, ' ')}
-                    </span>
-                    <span class="text-lg font-bold text-uma-primary">
-                      +{displayValue}
-                    </span>
+                    <span class="text-sm text-gray-600">{effectLabel(key, 'ja')}</span>
+                    <span class="text-lg font-bold text-uma-primary">+{displayValue}{suffix}</span>
                   </div>
-                  {isLevelData && (
-                    <div class="text-xs text-gray-500 space-y-1">
+                  <div class="text-xs text-gray-500 space-y-1">
+                    {levels.map((lv) => (
                       <div class="flex justify-between">
-                        <span>Lv.1:</span>
-                        <span>+{value.lv1}</span>
+                        <span>Lv.{lv}:</span>
+                        <span class={lv === maxLevel ? 'font-bold text-uma-primary' : ''}>+{toMap(value)[`lv${lv}`]}{suffix}</span>
                       </div>
-                      <div class="flex justify-between">
-                        <span>Lv.30:</span>
-                        <span>+{value.lv30}</span>
-                      </div>
-                      <div class="flex justify-between">
-                        <span>Lv.50:</span>
-                        <span class="font-bold text-uma-primary">+{value.lv50}</span>
-                      </div>
-                    </div>
-                  )}
-                  <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      class="h-full bg-gradient-to-r from-uma-primary to-uma-secondary transition-all duration-500"
-                      style={{width: `${Math.min(Number(displayValue) * 2, 100)}%`}}
-                    />
+                    ))}
                   </div>
                 </div>
               );
             })}
           </div>
+          <p class="mt-4 text-xs text-gray-500">固有ボーナスは解放レベル以降の値に加算済みです。中間レベルはゲームと同じ方式で補間しています。</p>
         </div>
 
         <!-- Skills Section -->
         <div class="glass rounded-xl p-6">
           <h2 class="text-xl font-display mb-4 flex items-center gap-2">
             <Zap className="w-5 h-5 text-uma-primary" />
-            所持スキル
+            所持スキル・ヒント
           </h2>
 
           <div class="grid gap-3">
@@ -222,10 +209,10 @@ const effectHighlights = Object.entries(card.effects || {})
                       skillName
                     )}
                   </h3>
-                  <p class="text-sm text-gray-600">育成中に取得できるスキル</p>
+                  <p class="text-sm text-gray-600">{skillByName.get(skillName)?.description_jp || skillByName.get(skillName)?.description_en || ''}</p>
                 </div>
                 <div class="text-xs px-2 py-1 bg-gray-100 rounded-full">
-                  Lv.1
+                  {(card.event_skills ?? []).includes(skillName) ? 'イベント' : 'ヒント'}
                 </div>
               </div>
               );
@@ -259,21 +246,6 @@ const effectHighlights = Object.entries(card.effects || {})
           </div>
         )}
 
-        <!-- Usage Tips -->
-        <div class="glass rounded-xl p-6">
-          <h2 class="text-xl font-display mb-4 flex items-center gap-2">
-            <Shield className="w-5 h-5 text-uma-primary" />
-            使い方のヒント
-          </h2>
-
-          <div class="prose prose-sm max-w-none text-gray-600">
-            <ul>
-              <li>{config.label} 伸ばしの育成で採用しやすい</li>
-              <li>汎用スキルは多めに確保し、加速/回復など目的に合わせて調整</li>
-              <li>対人ではコース条件に合わせた“勝ち筋”を優先</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </main>

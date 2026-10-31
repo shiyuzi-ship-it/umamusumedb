@@ -2,7 +2,16 @@
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import CharacterCard from '@/components/CharacterCard';
-import { characters } from '@/lib/static-content';
+import { characters as allCharacters } from '@/lib/static-content';
+
+// Newest releases first (Global-released outfits first on the English site, JP date order on the Japanese site)
+const releaseKey = (c: any) => 'ja' === 'ja' ? (c.release_date_jp ?? '') : (c.release_date_global ?? '') + '|' + (c.release_date_jp ?? '');
+const characters = [...allCharacters]
+  .sort((a: any, b: any) => releaseKey(b).localeCompare(releaseKey(a)) || (b.card_id ?? 0) - (a.card_id ?? 0))
+  .map((c: any) => ({
+    id: c.id, name_en: c.name_en, name_jp: c.name_jp, rarity: c.rarity, attributes: c.initial_stats,
+    skills: (c.awakening_skills ?? []).slice(0, 4), image_url: c.image_url, server: c.server, aptitudes: c.aptitudes,
+  }));
 import { Filter, Search, Grid, List } from 'lucide-react';
 
 // Group characters by rarity
@@ -64,6 +73,9 @@ const charactersByRarity = characters.reduce((acc, char) => {
             <List className="w-5 h-5" />
           </button>
         </div>
+        <select id="server-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
+          <option value="all">全サーバー</option><option value="global">グローバル版配信中</option><option value="jp">日本版のみ</option>
+        </select>
       </div>
     </div>
 
@@ -91,6 +103,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
                      data-name={character.name_en.toLowerCase()} 
                      data-search={`${character.name_en} ${character.name_jp}`.toLowerCase()}
                      data-rarity={character.rarity}
+                     data-server={character.server}
                      data-aptitudes={JSON.stringify(character.aptitudes)}>
                   <CharacterCard character={character} localePrefix="/ja" client:load />
                 </div>
@@ -124,6 +137,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
     const aptitudeFilter = document.getElementById('aptitude-filter') as HTMLSelectElement;
     const gridViewBtn = document.getElementById('grid-view');
     const listViewBtn = document.getElementById('list-view');
+    const serverFilter = document.getElementById('server-filter') as HTMLSelectElement;
     const container = document.getElementById('characters-container');
     const noResults = document.getElementById('no-results');
 
@@ -142,10 +156,11 @@ const charactersByRarity = characters.reduce((acc, char) => {
         
         const matchesSearch = name.includes(searchTerm);
         const matchesRarity = selectedRarity === 'all' || rarity === selectedRarity;
+        const matchesServer = (serverFilter?.value || 'all') === 'all' || item.getAttribute('data-server') === serverFilter?.value;
         const matchesAptitude = selectedAptitude === 'all' || 
           (aptitudes[selectedAptitude] && ['A', 'B'].includes(aptitudes[selectedAptitude]));
         
-        if (matchesSearch && matchesRarity && matchesAptitude) {
+        if (matchesSearch && matchesRarity && matchesServer && matchesAptitude) {
           (item as HTMLElement).style.display = '';
           hasResults = true;
         } else {
@@ -188,6 +203,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
     // Event listeners
     searchInput?.addEventListener('input', filterCharacters);
     rarityFilter?.addEventListener('change', filterCharacters);
+    serverFilter?.addEventListener('change', filterCharacters);
     aptitudeFilter?.addEventListener('change', filterCharacters);
     gridViewBtn?.addEventListener('click', setGridView);
     listViewBtn?.addEventListener('click', setListView);

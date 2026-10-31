@@ -61,6 +61,12 @@ export interface CharacterRecord {
   image_url?: string;
   birthday?: string | null;
   cv?: string | null;
+  server?: 'global' | 'jp';
+  release_date_jp?: string | null;
+  release_date_global?: string | null;
+  title_en?: string | null;
+  title_jp?: string | null;
+  base_name_en?: string;
   created_at?: string;
   updated_at?: string;
   [key: string]: unknown;
@@ -75,9 +81,13 @@ export interface Character extends Omit<CharacterRecord, 'initial_stats' | 'max_
   awakening_skills?: string[];
   attributes?: CharacterStats;
   skills?: string[];
+  innate_skills?: string[];
+  initial_stats_4star?: CharacterStats | null;
+  initial_stats_5star?: CharacterStats | null;
 }
 
 export interface LevelValueMap {
+  [key: string]: number | undefined;
   lv1?: number;
   lv25?: number;
   lv30?: number;
@@ -98,7 +108,11 @@ export interface SupportCardRecord {
   name_en: string;
   name_jp: string;
   character?: string;
-  type: 'speed' | 'stamina' | 'power' | 'guts' | 'wisdom' | 'friend';
+  type: 'speed' | 'stamina' | 'power' | 'guts' | 'wisdom' | 'friend' | 'group';
+  max_level?: number;
+  server?: 'global' | 'jp';
+  release_date_jp?: string | null;
+  release_date_global?: string | null;
   rarity: 'R' | 'SR' | 'SSR';
   effects?: SupportCardEffects | string | null;
   skills?: string[] | string | null;
@@ -114,6 +128,8 @@ export interface SupportCard extends Omit<SupportCardRecord, 'effects' | 'skills
   effects?: SupportCardEffects;
   skills?: string[];
   events?: string[];
+  hint_skills?: string[];
+  event_skills?: string[];
   character_image_url?: string;
 }
 

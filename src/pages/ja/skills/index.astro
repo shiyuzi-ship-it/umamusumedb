@@ -5,7 +5,12 @@ import Breadcrumb from '@/components/Breadcrumb.astro';
 import { skills } from '@/lib/static-content';
 import { Search, Sparkles, Filter } from 'lucide-react';
 
-const rarities = ['SS', 'S', 'A', 'B', 'C'] as const;
+const rarities = [
+  { value: 'normal', label: '通常（白）' },
+  { value: 'gold', label: 'レア（金）' },
+  { value: 'unique', label: '固有' },
+  { value: 'evolved', label: '進化' }
+] as const;
 ---
 
 <Layout
@@ -40,15 +45,15 @@ const rarities = ['SS', 'S', 'A', 'B', 'C'] as const;
         <select id="rarity-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
           <option value="all">全レアリティ</option>
           {rarities.map((r) => (
-            <option value={r}>{r}</option>
+            <option value={r.value}>{r.label}</option>
           ))}
         </select>
 
         <select id="type-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
           <option value="all">全タイプ</option>
-          <option value="unique">Unique</option>
-          <option value="common">Common</option>
-          <option value="training">Training</option>
+          <option value="unique">固有</option>
+          <option value="common">通常・レア</option>
+          <option value="evolved">進化</option>
         </select>
       </div>
     </div>
@@ -57,6 +62,7 @@ const rarities = ['SS', 'S', 'A', 'B', 'C'] as const;
       {skills.map((skill) => (
         <a
           href={`/ja/skills/${skill.id}/`}
+          style="content-visibility:auto;contain-intrinsic-size:auto 150px"
           class="skill-item bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-uma-primary/10 p-5 block"
           data-search={`${skill.name_en} ${skill.name_jp || ''} ${skill.effect || ''} ${skill.trigger_condition || ''}`.toLowerCase()}
           data-rarity={skill.rarity || ''}
@@ -73,10 +79,8 @@ const rarities = ['SS', 'S', 'A', 'B', 'C'] as const;
                   {skill.rarity}
                 </span>
               )}
-              {skill.skill_type && (
-                <span class="text-[11px] px-2 py-1 rounded-full bg-gray-100 text-gray-700 uppercase">
-                  {skill.skill_type}
-                </span>
+              {skill.server === 'jp' && (
+                <span class="text-[10px] px-2 py-0.5 rounded-full bg-gray-800/80 text-white font-semibold">日本版のみ</span>
               )}
             </div>
           </div>
@@ -84,7 +88,7 @@ const rarities = ['SS', 'S', 'A', 'B', 'C'] as const;
           <div class="mt-3 text-sm text-gray-700">
             <div class="flex items-center gap-2 text-gray-600">
               <Sparkles className="w-4 h-4 text-uma-accent" />
-              <span class="truncate">{skill.effect || skill.description_en || '—'}</span>
+              <span class="truncate">{skill.description_jp || skill.effect || skill.description_en || '—'}</span>
             </div>
             {skill.trigger_condition && (
               <div class="flex items-center gap-2 mt-2 text-gray-500">

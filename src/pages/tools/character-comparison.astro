@@ -3,7 +3,13 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import CharacterComparisonTool from '@/components/tools/CharacterComparisonTool';
-import { characters } from '@/lib/static-content';
+import { characters as allCharacters } from '@/lib/static-content';
+
+// Slim payload for the client island (the full records are large)
+const characters = allCharacters.map((c: any) => ({
+  id: c.id, name_en: c.name_en, name_jp: c.name_jp, rarity: c.rarity, image_url: c.image_url, server: c.server,
+  aptitudes: c.aptitudes, growth_rates: c.growth_rates, max_stats: c.max_stats, initial_stats: c.initial_stats,
+}));
 ---
 
 <Layout

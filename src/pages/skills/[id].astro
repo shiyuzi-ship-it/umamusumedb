@@ -2,8 +2,6 @@
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
-import CharacterCard from '@/components/CharacterCard';
-import SupportCardCard from '@/components/SupportCardCard';
 import { characters, supportCards, skills } from '@/lib/static-content';
 import type { Skill } from '@/types';
 import { Sparkles, Info, Zap, Users } from 'lucide-react';
@@ -38,6 +36,7 @@ const linkedCharacters = characters.filter((c) => {
 ---
 
 <Layout
+  noindex={skill.rarity === 'evolved' || skill.server === 'jp'}
   title={`${skill.name_en} - Skill Details | UmamusumeDB`}
   description={`${skill.name_en} (${skill.name_jp || ''}) skill details: effect, trigger condition, duration, and cross-links to support cards and characters.`}
 >
@@ -89,18 +88,18 @@ const linkedCharacters = characters.filter((c) => {
               </div>
             )}
             <div class="grid grid-cols-2 gap-3">
-              <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
+              {skill.duration && (<div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">Duration</div>
                 <div class="font-semibold">{skill.duration || '—'}</div>
-              </div>
-              <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
+              </div>)}
+              {skill.cooldown && (<div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">Cooldown</div>
                 <div class="font-semibold">{skill.cooldown || '—'}</div>
-              </div>
-              <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
+              </div>)}
+              {skill.activation_rate && (<div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">Activation</div>
                 <div class="font-semibold">{skill.activation_rate || '—'}</div>
-              </div>
+              </div>)}
               <div class="bg-white rounded-lg p-3 border border-uma-primary/10">
                 <div class="text-xs text-gray-500">Skill ID</div>
                 <div class="font-mono text-xs">{skill.id}</div>
@@ -126,13 +125,14 @@ const linkedCharacters = characters.filter((c) => {
             <span class="text-sm text-gray-500 font-normal">({linkedCharacters.length})</span>
           </h2>
           {linkedCharacters.length ? (
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {linkedCharacters.map((c) => (
-                <CharacterCard character={c} client:load />
+            <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+              {linkedCharacters.slice(0, 40).map((c) => (
+                <li><a href={`/characters/${c.id}/`} class="text-uma-primary hover:underline">{c.name_en}</a></li>
               ))}
-            </div>
+              {linkedCharacters.length > 40 && <li class="text-gray-500">…and {linkedCharacters.length - 40} more</li>}
+            </ul>
           ) : (
-            <p class="text-gray-600 text-sm">No linked characters found for this skill yet.</p>
+            <p class="text-gray-600 text-sm">No linked characters found for this skill.</p>
           )}
         </div>
 
@@ -143,13 +143,14 @@ const linkedCharacters = characters.filter((c) => {
             <span class="text-sm text-gray-500 font-normal">({linkedCards.length})</span>
           </h2>
           {linkedCards.length ? (
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {linkedCards.map((c) => (
-                <SupportCardCard card={c} client:load />
+            <ul class="grid sm:grid-cols-2 gap-2 text-sm">
+              {linkedCards.slice(0, 40).map((c) => (
+                <li><a href={`/cards/${c.id}/`} class="text-uma-primary hover:underline">{c.name_en} <span class="text-gray-400">({c.rarity})</span></a></li>
               ))}
-            </div>
+              {linkedCards.length > 40 && <li class="text-gray-500">…and {linkedCards.length - 40} more</li>}
+            </ul>
           ) : (
-            <p class="text-gray-600 text-sm">No linked support cards found for this skill yet.</p>
+            <p class="text-gray-600 text-sm">No linked support cards found for this skill.</p>
           )}
         </div>
       </div>

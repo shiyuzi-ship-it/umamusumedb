@@ -1,0 +1,18 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import UpdatesContent from '@/components/UpdatesContent.astro';
+---
+
+<Layout title="更新情報・実装タイムライン - ウマ娘DB" description="ウマ娘のグローバル版お知らせ、日本版・グローバル版の新規ウマ娘とサポートカード、育成シナリオの一覧。">
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: '更新情報' }]} />
+    <div class="mb-6 sm:mb-8">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-3 sm:mb-4">更新情報</h1>
+      <p class="text-gray-600">お知らせ、新規実装、シナリオの最新情報。</p>
+    </div>
+    <UpdatesContent locale="ja" />
+  </main>
+</Layout>

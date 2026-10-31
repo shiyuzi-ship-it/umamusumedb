@@ -1,0 +1,131 @@
+---
+import releasesData from '../../public/data/releases.json';
+import scenariosData from '../../public/data/scenarios.json';
+import newsData from '../../public/data/news.json';
+
+interface Props {
+  locale?: 'en' | 'ja';
+}
+const { locale = 'en' } = Astro.props;
+const prefix = locale === 'ja' ? '/ja' : '';
+const ja = locale === 'ja';
+
+const t = {
+  news: ja ? '公式お知らせ(グローバル版)' : 'Latest Global announcements',
+  newsNote: ja
+    ? '見出しとリンクのみを掲載しています。詳細は各記事をご覧ください。'
+    : 'Headlines and links only. Open each post for full details.',
+  global: ja ? 'グローバル版の新規実装' : 'Recently released – Global server',
+  jp: ja ? '日本版の新規実装(グローバル未実装)' : 'Recently released – JP server (not yet in Global)',
+  scenarios: ja ? '育成シナリオ' : 'Training scenarios',
+  scenario: ja ? 'シナリオ' : 'Scenario',
+  jpStart: ja ? '日本版開始' : 'JP start',
+  glStart: ja ? 'グローバル版開始' : 'Global start',
+  notYet: ja ? '未実装' : 'Not yet',
+  character: ja ? 'ウマ娘' : 'Character',
+  support: ja ? 'サポートカード' : 'Support card',
+  source: ja ? 'データ出典' : 'Data source',
+};
+
+const releases = (releasesData as any).releases as any[];
+const byKind = (e: any) => (e.kind === 'character' ? `${prefix}/characters/${e.id}/` : `${prefix}/cards/${e.id}/`);
+
+const latestGlobalDate = releases.find((r) => r.server === 'global')?.date;
+const globalCutoff = latestGlobalDate ? new Date(new Date(latestGlobalDate).getTime() - 75 * 86400000).toISOString().slice(0, 10) : '';
+const globalRecent = releases.filter((r) => r.server === 'global' && r.date >= globalCutoff);
+const globalIds = new Set(releases.filter((r) => r.server === 'global').map((r) => r.id));
+const jpOnly = releases.filter((r) => r.server === 'jp' && !globalIds.has(r.id)).slice(0, 30);
+
+function group(list: any[]) {
+  const map = new Map<string, any[]>();
+  for (const e of list) {
+    if (!map.has(e.date)) map.set(e.date, []);
+    map.get(e.date)!.push(e);
+  }
+  return [...map.entries()];
+}
+const globalGroups = group(globalRecent);
+const jpGroups = group(jpOnly);
+const scenarios = scenariosData as any[];
+const news = (newsData as any).items as any[];
+const name = (e: any) => (ja ? e.name_jp || e.name_en : e.name_en);
+---
+
+<section class="mb-10">
+  <h2 class="text-2xl font-display mb-2">{t.news}</h2>
+  <p class="text-sm text-gray-500 mb-4">{t.newsNote} (<a href="https://umamusume.gg/" rel="noopener" class="underline">umamusume.gg</a>)</p>
+  <ul class="glass rounded-xl divide-y divide-gray-100">
+    {news.map((n) => (
+      <li class="p-3 flex gap-3 items-baseline">
+        <time class="text-xs text-gray-500 whitespace-nowrap" datetime={n.date}>{n.date}</time>
+        <a href={n.link} rel="noopener" class="text-sm text-uma-primary hover:underline">{n.title}</a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<section class="mb-10">
+  <h2 class="text-2xl font-display mb-4">{t.global}</h2>
+  {globalGroups.map(([date, list]) => (
+    <div class="mb-4">
+      <h3 class="text-sm font-semibold text-gray-600 mb-2"><time datetime={date}>{date}</time></h3>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        {list.map((e) => (
+          <li>
+            <a href={byKind(e)} class="block bg-white rounded-lg p-3 shadow hover:shadow-lg transition-shadow text-sm">
+              <span class="font-medium">{name(e)}</span>
+              <span class="block text-xs text-gray-500">{e.kind === 'character' ? t.character : t.support}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
+
+<section class="mb-10">
+  <h2 class="text-2xl font-display mb-4">{t.jp}</h2>
+  {jpGroups.map(([date, list]) => (
+    <div class="mb-4">
+      <h3 class="text-sm font-semibold text-gray-600 mb-2"><time datetime={date}>{date}</time></h3>
+      <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+        {list.map((e) => (
+          <li>
+            <a href={byKind(e)} class="block bg-white rounded-lg p-3 shadow hover:shadow-lg transition-shadow text-sm">
+              <span class="font-medium">{name(e)}</span>
+              <span class="block text-xs text-gray-500">{e.kind === 'character' ? t.character : t.support}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>
+
+<section class="mb-10">
+  <h2 class="text-2xl font-display mb-4">{t.scenarios}</h2>
+  <div class="glass rounded-xl overflow-x-auto">
+    <table class="w-full text-sm text-left">
+      <thead>
+        <tr class="text-xs text-gray-500">
+          <th class="p-3">{t.scenario}</th>
+          <th class="p-3">{t.jpStart}</th>
+          <th class="p-3">{t.glStart}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {scenarios.map((s) => (
+          <tr class="border-t border-gray-100">
+            <td class="p-3">{ja ? s.name_jp : s.name_en_full || s.name_en || s.name_jp}</td>
+            <td class="p-3">{s.start_jp ?? '-'}</td>
+            <td class="p-3">{s.start_global ?? t.notYet}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<p class="text-xs text-gray-500">
+  {t.source}: GameTora (gametora.com) · umamusume.gg · {(releasesData as any).generatedAt.slice(0, 10)}
+</p>

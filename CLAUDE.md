@@ -119,6 +119,19 @@ npm run deploy  # Uses wrangler pages deploy
 5. **Simplicity**: Single deployment to Cloudflare Pages
 6. **Scalability**: Can handle millions of requests with CDN
 
+## Data refresh (since 2026-10)
+
+The JSON in `public/data/` is now generated from GameTora's public data files, not from the SQLite database:
+
+```bash
+node scripts/import-gametora.mjs   # characters, supportCards, skills, scenarios, releases, *-lite.json, legacy-id map
+node scripts/fetch-news.mjs        # latest Global announcement headlines (umamusume.gg RSS) -> public/data/news.json
+npm run build && npm run deploy    # Cloudflare Pages direct upload (wrangler login or CLOUDFLARE_API_TOKEN required)
+```
+
+The old `collect-*` / `export-to-json` scripts and `database/` no longer feed the site. Tool formulas (training gain, spark inheritance,
+skill hint discounts) are community-measured; sources are cited in the tool components and on `/data-sources/`.
+
 ## Data Management
 
 ### Current Data

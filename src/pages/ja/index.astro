@@ -3,15 +3,14 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import CharacterCard from '@/components/CharacterCard';
 import SupportCardCard from '@/components/SupportCardCard';
-import { characters, supportCards, getTierListByCategory } from '@/lib/static-content';
-import { Search, Filter, TrendingUp, Users, Star, Trophy, ChevronRight, Sparkles } from 'lucide-react';
+import { characters, supportCards, skills } from '@/lib/static-content';
+import releasesData from '../../../public/data/releases.json';
+import { Search, Users, Star, Trophy, ChevronRight, Sparkles, Newspaper } from 'lucide-react';
 
-// Get featured content
+// 日本版の最新実装を先頭から表示(リストは新しい順)
 const featuredCharacters = characters.slice(0, 6);
 const featuredCards = supportCards.filter(card => card.rarity === 'SSR').slice(0, 6);
-const topTierCharacters = getTierListByCategory('overall')
-  .filter(item => item.item_type === 'character' && ['SS', 'S'].includes(item.tier))
-  .slice(0, 4);
+const latestReleases = ((releasesData as any).releases as any[]).slice(0, 12);
 ---
 
 <Layout title="ウマ娘DB - ウマ娘プリティーダービー完全データベース">
@@ -36,7 +35,7 @@ const topTierCharacters = getTierListByCategory('overall')
             <input
               type="text"
               id="main-search"
-              placeholder="キャラクターやカードを検索..."
+              placeholder="キャラクターやカードを検索…"
               class="w-full pl-14 pr-6 py-4 rounded-full text-lg text-gray-900 bg-white shadow-2xl focus:outline-none focus:ring-4 focus:ring-uma-accent/50"
             />
           </div>
@@ -52,7 +51,7 @@ const topTierCharacters = getTierListByCategory('overall')
               <div class="text-sm opacity-90">サポートカード</div>
             </div>
             <div class="glass rounded-lg p-4">
-              <div class="text-3xl font-bold">30+</div>
+              <div class="text-3xl font-bold">{skills.length}</div>
               <div class="text-sm opacity-90">スキル</div>
             </div>
           </div>
@@ -78,10 +77,10 @@ const topTierCharacters = getTierListByCategory('overall')
             <ChevronRight className="w-5 h-5 text-uma-secondary mt-3 group-hover:translate-x-1 transition-transform" />
           </a>
 
-          <a href="/ja/tier-list/" class="group glass rounded-xl p-6 hover:shadow-xl transition-shadow">
-            <Trophy className="w-10 h-10 text-uma-accent mb-3" />
-            <h3 class="font-display text-lg mb-2">ティアリスト</h3>
-            <p class="text-sm text-gray-600">最新のランキング評価</p>
+          <a href="/ja/updates/" class="group glass rounded-xl p-6 hover:shadow-xl transition-shadow">
+            <Newspaper className="w-10 h-10 text-uma-accent mb-3" />
+            <h3 class="font-display text-lg mb-2">更新情報</h3>
+            <p class="text-sm text-gray-600">お知らせと新規実装</p>
             <ChevronRight className="w-5 h-5 text-uma-accent mt-3 group-hover:translate-x-1 transition-transform" />
           </a>
           
@@ -105,7 +104,7 @@ const topTierCharacters = getTierListByCategory('overall')
           <div class="inline-flex rounded-lg glass p-1">
             <button class="tab-btn active" data-tab="characters">キャラクター</button>
             <button class="tab-btn" data-tab="support-cards">サポートカード</button>
-            <button class="tab-btn" data-tab="tier-list">ティアリスト</button>
+            <button class="tab-btn" data-tab="tier-list">実装タイムライン</button>
           </div>
         </div>
 
@@ -139,29 +138,21 @@ const topTierCharacters = getTierListByCategory('overall')
             </div>
           </div>
 
-          <!-- Tier List Tab -->
+          <!-- Release Timeline Tab -->
           <div class="tab-content" id="tier-list-tab">
             <div class="glass rounded-xl p-6">
-              <h3 class="text-xl font-display mb-4">トップティアキャラクター</h3>
+              <h3 class="text-xl font-display mb-4">最新の実装</h3>
               <div class="grid md:grid-cols-2 gap-4">
-                {topTierCharacters.map((item: any) => (
-                  <div class="flex items-center justify-between p-4 bg-white rounded-lg">
-                    <div>
-                      <span class={`tier-badge tier-${item.tier.toLowerCase()} px-2 py-1 rounded text-xs font-bold mr-2`}>
-                        {item.tier}
-                      </span>
-                      <span class="font-semibold">{item.item_name}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-green-500" />
-                      <span class="text-sm text-gray-600">{item.votes} 票</span>
-                    </div>
-                  </div>
+                {latestReleases.map((e: any) => (
+                  <a href={e.kind === 'character' ? `/ja/characters/${e.id}/` : `/ja/cards/${e.id}/`} class="flex items-center justify-between p-4 bg-white rounded-lg hover:shadow">
+                    <span class="font-semibold text-sm">{e.name_jp || e.name_en}</span>
+                    <span class="text-xs text-gray-500">{e.date} · {e.kind === 'character' ? 'ウマ娘' : 'サポート'}</span>
+                  </a>
                 ))}
               </div>
               <div class="text-center mt-6">
-                <a href="/ja/tier-list/" class="btn-secondary">
-                  完全なティアリストを見る
+                <a href="/ja/updates/" class="btn-secondary">
+                  更新情報をすべて見る
                 </a>
               </div>
             </div>
@@ -170,47 +161,6 @@ const topTierCharacters = getTierListByCategory('overall')
       </div>
     </section>
 
-    <!-- Search Filters Section -->
-    <section class="py-12 bg-gray-50">
-      <div class="container mx-auto px-4">
-        <div class="glass rounded-xl p-6">
-          <h3 class="text-xl font-display mb-4 flex items-center gap-2">
-            <Filter className="w-5 h-5 text-uma-primary" />
-            詳細検索
-          </h3>
-          
-          <div class="grid md:grid-cols-4 gap-4">
-            <select class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white">
-              <option>全タイプ</option>
-              <option>スピード</option>
-              <option>スタミナ</option>
-              <option>パワー</option>
-              <option>根性</option>
-              <option>賢さ</option>
-            </select>
-            
-            <select class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white">
-              <option>全レアリティ</option>
-              <option>SSR</option>
-              <option>SR</option>
-              <option>R</option>
-            </select>
-            
-            <select class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white">
-              <option>全距離</option>
-              <option>短距離</option>
-              <option>マイル</option>
-              <option>中距離</option>
-              <option>長距離</option>
-            </select>
-            
-            <button class="btn-primary">
-              検索
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <style>
@@ -265,11 +215,11 @@ const topTierCharacters = getTierListByCategory('overall')
       });
     });
 
-    // Main search functionality
-    const searchInput = document.getElementById('main-search') as HTMLInputElement;
-    searchInput?.addEventListener('input', (e) => {
-      const query = (e.target as HTMLInputElement).value.toLowerCase();
-      // 検索ロジックを実装
+    // 検索ボックスはサイト全体の検索(全キャラ・カード・スキル)を開く
+    const searchInput = document.getElementById('main-search') as HTMLInputElement | null;
+    searchInput?.addEventListener('focus', () => {
+      (document.getElementById('search-btn') as HTMLButtonElement | null)?.click();
+      searchInput.blur();
     });
   </script>
 </Layout>

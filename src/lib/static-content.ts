@@ -1,6 +1,5 @@
 import charactersData from '../../public/data/characters.json';
 import supportCardsData from '../../public/data/supportCards.json';
-import tierListsData from '../../public/data/tierLists.json';
 import skillsData from '../../public/data/skills.json';
 import realHorsesData from '../../public/data/realHorses.json';
 
@@ -12,7 +11,6 @@ import type {
   CharacterStats,
   SupportCard,
   SupportCardRecord,
-  TierListEntry,
   Skill,
   RealHorsesPayload
 } from '@/types';
@@ -77,6 +75,12 @@ export const characters: Character[] = charactersRaw.map((char) => {
       context: `character:${char.id}.awakening_skills`
     }) ?? [];
 
+  const innateSkills =
+    parseJsonField<string[]>(char.innate_skills, {
+      fallback: [],
+      context: `character:${char.id}.innate_skills`
+    }) ?? [];
+
   const attributes =
     parseJsonField<CharacterStats>(char.attributes, {
       fallback: initialStats,
@@ -98,7 +102,10 @@ export const characters: Character[] = charactersRaw.map((char) => {
     unique_skill: uniqueSkill,
     awakening_skills: awakeningSkills,
     attributes,
-    skills
+    skills,
+    innate_skills: innateSkills,
+    initial_stats_4star: parseJsonField<CharacterStats>(char.initial_stats_4star) ?? null,
+    initial_stats_5star: parseJsonField<CharacterStats>(char.initial_stats_5star) ?? null
   };
 });
 
@@ -119,11 +126,18 @@ export const supportCards: SupportCard[] = supportCardsRaw.map((card) => ({
     parseJsonField<string[]>(card.events, {
       fallback: [],
       context: `support_card:${card.id}.events`
+    }) ?? [],
+  hint_skills:
+    parseJsonField<string[]>(card.hint_skills, {
+      fallback: [],
+      context: `support_card:${card.id}.hint_skills`
+    }) ?? [],
+  event_skills:
+    parseJsonField<string[]>(card.event_skills, {
+      fallback: [],
+      context: `support_card:${card.id}.event_skills`
     }) ?? []
 }));
-
-// Export tier lists
-export const tierLists = tierListsData as TierListEntry[];
 
 // Export skills
 export const skills = skillsData as Skill[];
@@ -138,10 +152,6 @@ export function getCharacterById(id: string) {
 
 export function getSupportCardById(id: string) {
   return supportCards.find((card) => card.id === id) || null;
-}
-
-export function getTierListByCategory(category: string) {
-  return tierLists.filter((item) => item.category === category);
 }
 
 export function getSkillById(id: string) {

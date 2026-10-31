@@ -24,6 +24,32 @@ import { ExternalLink, ShieldCheck, Database, Scale } from 'lucide-react';
         <section class="bg-white rounded-xl p-5 border border-uma-primary/10">
           <h2 class="text-lg font-bold flex items-center gap-2">
             <Database className="w-5 h-5 text-uma-primary" />
+            Game data — GameTora
+          </h2>
+          <p class="text-sm text-gray-700 mt-2">
+            Characters, support cards, skills, scenarios and release dates (Global and JP servers) are imported from the public data files of
+            <a class="text-uma-primary hover:underline" href="https://gametora.com/umamusume" target="_blank" rel="noopener noreferrer">GameTora</a>
+            with <code>scripts/import-gametora.mjs</code>. Items that are not yet available on the Global server are marked “JP only”.
+            Latest announcement headlines link to <a class="text-uma-primary hover:underline" href="https://umamusume.gg/" target="_blank" rel="noopener noreferrer">umamusume.gg</a>.
+          </p>
+        </section>
+
+        <section class="bg-white rounded-xl p-5 border border-uma-primary/10">
+          <h2 class="text-lg font-bold flex items-center gap-2">
+            <Database className="w-5 h-5 text-uma-secondary" />
+            Formulas used in our tools
+          </h2>
+          <p class="text-sm text-gray-700 mt-2">
+            The training, spark-inheritance and skill-hint formulas are community-measured (Cygames does not publish them). Sources:
+            <a class="text-uma-primary hover:underline" href="https://uma.guide/guides/career-mechanics" target="_blank" rel="noopener noreferrer">uma.guide</a>,
+            <a class="text-uma-primary hover:underline" href="https://www.umareference.com/" target="_blank" rel="noopener noreferrer">umareference.com</a> and
+            <a class="text-uma-primary hover:underline" href="https://kamigame.jp/umamusume/" target="_blank" rel="noopener noreferrer">KamiGame</a>.
+          </p>
+        </section>
+
+        <section class="bg-white rounded-xl p-5 border border-uma-primary/10">
+          <h2 class="text-lg font-bold flex items-center gap-2">
+            <Database className="w-5 h-5 text-uma-primary" />
             Wikidata (CC0) — real racehorse facts
           </h2>
           <p class="text-sm text-gray-700 mt-2">
@@ -48,7 +74,7 @@ import { ExternalLink, ShieldCheck, Database, Scale } from 'lucide-react';
             Fan-curated game data
           </h2>
           <p class="text-sm text-gray-700 mt-2">
-            Character/support card/skill data on this site is curated for gameplay reference (filters, tools, cross-links, etc.).
+            Data on this site is organised for gameplay reference (filters, tools, cross-links, etc.).
             We avoid hosting or distributing copyrighted game assets and do not claim ownership of any official content.
           </p>
         </section>

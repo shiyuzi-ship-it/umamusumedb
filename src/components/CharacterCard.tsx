@@ -30,6 +30,10 @@ export default function CharacterCard({ character, tier, localePrefix }: Charact
         </div>
       )}
       
+      {character.server === 'jp' && (
+        <div className="absolute top-2 left-2 z-20 px-2 py-0.5 rounded-full bg-gray-800/80 text-white text-[10px] font-semibold">JP only</div>
+      )}
+
       {/* Character Image */}
       <div className="relative h-64 overflow-hidden bg-gradient-to-br from-uma-primary/10 to-uma-secondary/10">
         {character.image_url ? (

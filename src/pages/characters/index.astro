@@ -3,7 +3,16 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import CharacterCard from '@/components/CharacterCard';
-import { characters } from '@/lib/static-content';
+import { characters as allCharacters } from '@/lib/static-content';
+
+// Newest releases first (Global-released outfits first on the English site, JP date order on the Japanese site)
+const releaseKey = (c: any) => 'en' === 'ja' ? (c.release_date_jp ?? '') : (c.release_date_global ?? '') + '|' + (c.release_date_jp ?? '');
+const characters = [...allCharacters]
+  .sort((a: any, b: any) => releaseKey(b).localeCompare(releaseKey(a)) || (b.card_id ?? 0) - (a.card_id ?? 0))
+  .map((c: any) => ({
+    id: c.id, name_en: c.name_en, name_jp: c.name_jp, rarity: c.rarity, attributes: c.initial_stats,
+    skills: (c.awakening_skills ?? []).slice(0, 4), image_url: c.image_url, server: c.server, aptitudes: c.aptitudes,
+  }));
 import { Search } from 'lucide-react';
 
 // Group characters by rarity
@@ -74,6 +83,9 @@ const charactersByRarity = characters.reduce((acc, char) => {
           <option value="dirt">Dirt</option>
         </select>
 
+        <select id="server-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
+          <option value="all">All Servers</option><option value="global">Released in Global</option><option value="jp">JP server only</option>
+        </select>
       </div>
     </div>
 
@@ -101,6 +113,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
                      data-name={character.name_en.toLowerCase()} 
                      data-search={`${character.name_en} ${character.name_jp}`.toLowerCase()}
                      data-rarity={character.rarity}
+                     data-server={character.server}
                      data-aptitudes={JSON.stringify(character.aptitudes)}>
                   <CharacterCard character={character} client:load />
                 </div>
@@ -124,6 +137,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
     const distanceFilter = document.getElementById('distance-filter') as HTMLSelectElement;
     const runningStyleFilter = document.getElementById('running-style-filter') as HTMLSelectElement;
     const surfaceFilter = document.getElementById('surface-filter') as HTMLSelectElement;
+    const serverFilter = document.getElementById('server-filter') as HTMLSelectElement;
     const container = document.getElementById('characters-container');
     const noResults = document.getElementById('no-results');
 
@@ -144,6 +158,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
 
         const matchesSearch = name.includes(searchTerm);
         const matchesRarity = selectedRarity === 'all' || rarity === selectedRarity;
+        const matchesServer = (serverFilter?.value || 'all') === 'all' || item.getAttribute('data-server') === serverFilter?.value;
         const matchesDistance = selectedDistance === 'all' ||
           (aptitudes[selectedDistance] && ['S', 'A', 'B'].includes(aptitudes[selectedDistance]));
         const matchesRunningStyle = selectedRunningStyle === 'all' ||
@@ -151,7 +166,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
         const matchesSurface = selectedSurface === 'all' ||
           (aptitudes[selectedSurface] && ['S', 'A', 'B'].includes(aptitudes[selectedSurface]));
 
-        if (matchesSearch && matchesRarity && matchesDistance && matchesRunningStyle && matchesSurface) {
+        if (matchesSearch && matchesRarity && matchesServer && matchesDistance && matchesRunningStyle && matchesSurface) {
           (item as HTMLElement).style.display = '';
           hasResults = true;
         } else {
@@ -177,6 +192,7 @@ const charactersByRarity = characters.reduce((acc, char) => {
     // Event listeners
     searchInput?.addEventListener('input', filterCharacters);
     rarityFilter?.addEventListener('change', filterCharacters);
+    serverFilter?.addEventListener('change', filterCharacters);
     distanceFilter?.addEventListener('change', filterCharacters);
     runningStyleFilter?.addEventListener('change', filterCharacters);
     surfaceFilter?.addEventListener('change', filterCharacters);

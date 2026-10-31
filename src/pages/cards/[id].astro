@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import { supportCards, skills } from '@/lib/static-content';
 import { createSkillIndex, findSkillIdByName } from '@/lib/skill-lookup';
+import { effectAtMax, effectLabel, effectSuffix, maxLevelFor, serverLabel } from '@/lib/game-format';
 import { Star, Zap, Heart, Brain, Shield, Sparkles, Users, TrendingUp, Award } from 'lucide-react';
 
 export function getStaticPaths() {
@@ -22,7 +23,8 @@ const typeConfig = {
   power: { color: 'bg-orange-500', icon: Sparkles, label: 'Power' },
   guts: { color: 'bg-purple-500', icon: Star, label: 'Guts' },
   wisdom: { color: 'bg-blue-500', icon: Brain, label: 'Wisdom' },
-  friend: { color: 'bg-pink-500', icon: Users, label: 'Friend' }
+  friend: { color: 'bg-pink-500', icon: Users, label: 'Friend' },
+  group: { color: 'bg-teal-500', icon: Users, label: 'Group' }
 };
 
 const config = typeConfig[card.type as keyof typeof typeConfig] || typeConfig.speed;
@@ -35,17 +37,10 @@ const rarityColors = {
   R: 'bg-gradient-to-r from-gray-400 to-gray-600'
 };
 
-const extractEffectValue = (value: any) => {
-  if (typeof value === 'number') return value;
-  if (typeof value === 'string') {
-    const numeric = Number(value.replace(/[^0-9.-]/g, ''));
-    return Number.isFinite(numeric) ? numeric : 0;
-  }
-  if (value && typeof value === 'object') {
-    return value.lv50 ?? value.lv45 ?? value.lv40 ?? value.lv35 ?? value.lv30 ?? value.lv1 ?? 0;
-  }
-  return 0;
-};
+const maxLevel = maxLevelFor(card);
+const toMap = (v: any): Record<string, number> => v;
+const extractEffectValue = (value: any) => effectAtMax(value, maxLevel);
+const skillByName = new Map(skills.map((sk) => [sk.name_en, sk]));
 
 const effectHighlights = Object.entries(card.effects || {})
   .map(([key, value]) => ({
@@ -60,7 +55,7 @@ const effectHighlights = Object.entries(card.effects || {})
 
 <Layout
   title={`${card.name_en} (${card.rarity} ${config.label}) - Support Card Guide | UmamusumeDB`}
-  description={`${card.name_en} support card skills, training effects and recommended usage for Uma Musume Pretty Derby. Review bonuses, events and best character pairings.`}
+  description={`${card.name_en} (${card.rarity} ${config.label}) support card for Uma Musume Pretty Derby: effects by level, hint skills and release dates (JP ${card.release_date_jp ?? 'n/a'} / Global ${card.release_date_global ?? 'not yet released'}).`}
   image={card.image_url || 'https://umamusumedb.com/og-image.png'}
   structuredDataType="supportCard"
   structuredData={{
@@ -137,6 +132,12 @@ const effectHighlights = Object.entries(card.effects || {})
                 {card.rarity}
               </div>
             </div>
+            <dl class="text-xs text-gray-600 space-y-1">
+              <div class="flex justify-between"><dt>Server</dt><dd class="font-medium">{serverLabel(card.server)}</dd></div>
+              {card.release_date_jp && <div class="flex justify-between"><dt>JP release</dt><dd>{card.release_date_jp}</dd></div>}
+              {card.release_date_global && <div class="flex justify-between"><dt>Global release</dt><dd>{card.release_date_global}</dd></div>}
+              <div class="flex justify-between"><dt>Max level</dt><dd>Lv.{maxLevel} (LB4)</dd></div>
+            </dl>
           </div>
         </div>
       </div>
@@ -148,8 +149,8 @@ const effectHighlights = Object.entries(card.effects || {})
             {effectHighlights.map(({ key, display }) => (
               <div class="bg-white rounded-lg shadow-sm border border-uma-primary/10 p-4">
                 <div class="text-xs uppercase tracking-wide text-gray-500">Key Effect</div>
-                <div class="text-sm font-semibold text-gray-800 mt-1">{key.replace(/_/g, ' ')}</div>
-                <div class="text-2xl font-bold text-uma-primary mt-2">+{display}</div>
+                <div class="text-sm font-semibold text-gray-800 mt-1">{effectLabel(key)}</div>
+                <div class="text-2xl font-bold text-uma-primary mt-2">+{display}{effectSuffix(key)}</div>
               </div>
             ))}
           </div>
@@ -164,53 +165,38 @@ const effectHighlights = Object.entries(card.effects || {})
           
           <div class="grid md:grid-cols-2 gap-4">
             {Object.entries(card.effects || {}).map(([key, value]) => {
-              // Check if value is an object with level data
-              const isLevelData = typeof value === 'object' && value !== null && 'lv1' in value;
-              const displayValue = isLevelData ? value.lv50 : value;
+              const levels = Object.keys(toMap(value))
+                .map((k) => Number(k.replace('lv', '')))
+                .sort((x, y) => x - y);
+              const displayValue = extractEffectValue(value);
+              const suffix = effectSuffix(key);
 
               return (
                 <div class="bg-white rounded-lg p-4">
                   <div class="flex justify-between items-center mb-2">
-                    <span class="text-sm text-gray-600 capitalize">
-                      {key.replace(/_/g, ' ')}
-                    </span>
-                    <span class="text-lg font-bold text-uma-primary">
-                      +{displayValue}
-                    </span>
+                    <span class="text-sm text-gray-600">{effectLabel(key)}</span>
+                    <span class="text-lg font-bold text-uma-primary">+{displayValue}{suffix}</span>
                   </div>
-                  {isLevelData && (
-                    <div class="text-xs text-gray-500 space-y-1">
+                  <div class="text-xs text-gray-500 space-y-1">
+                    {levels.map((lv) => (
                       <div class="flex justify-between">
-                        <span>Lv.1:</span>
-                        <span>+{value.lv1}</span>
+                        <span>Lv.{lv}:</span>
+                        <span class={lv === maxLevel ? 'font-bold text-uma-primary' : ''}>+{toMap(value)[`lv${lv}`]}{suffix}</span>
                       </div>
-                      <div class="flex justify-between">
-                        <span>Lv.30:</span>
-                        <span>+{value.lv30}</span>
-                      </div>
-                      <div class="flex justify-between">
-                        <span>Lv.50:</span>
-                        <span class="font-bold text-uma-primary">+{value.lv50}</span>
-                      </div>
-                    </div>
-                  )}
-                  <div class="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div
-                      class="h-full bg-gradient-to-r from-uma-primary to-uma-secondary transition-all duration-500"
-                      style={{width: `${Math.min(Number(displayValue) * 2, 100)}%`}}
-                    />
+                    ))}
                   </div>
                 </div>
               );
             })}
           </div>
+          <p class="mt-4 text-xs text-gray-500">Values include the card's unique effect from the level it unlocks. Intermediate levels are interpolated the same way the game does.</p>
         </div>
 
         <!-- Skills Section -->
         <div class="glass rounded-xl p-6">
           <h2 class="text-xl font-display mb-4 flex items-center gap-2">
             <Zap className="w-5 h-5 text-uma-primary" />
-            Available Skills
+            Skills &amp; Hints
           </h2>
           
           <div class="grid gap-3">
@@ -231,10 +217,10 @@ const effectHighlights = Object.entries(card.effects || {})
                       skillName
                     )}
                   </h3>
-                  <p class="text-sm text-gray-600">Skill effect will be applied during training</p>
+                  <p class="text-sm text-gray-600">{skillByName.get(skillName)?.description_en || ''}</p>
                 </div>
                 <div class="text-xs px-2 py-1 bg-gray-100 rounded-full">
-                  Lv.1
+                  {(card.event_skills ?? []).includes(skillName) ? 'Event' : 'Hint'}
                 </div>
               </div>
               );
@@ -268,51 +254,6 @@ const effectHighlights = Object.entries(card.effects || {})
           </div>
         )}
 
-        <!-- Usage Tips -->
-        <div class="glass rounded-xl p-6">
-          <h2 class="text-xl font-display mb-4 flex items-center gap-2">
-            <Shield className="w-5 h-5 text-uma-primary" />
-            Usage Tips
-          </h2>
-          
-          <div class="prose prose-sm max-w-none text-gray-600">
-            <p>This {card.rarity} {config.label} support card provides excellent training bonuses:</p>
-            <ul>
-              <li>Best paired with <strong>{config.label}-focused</strong> Uma Musume characters</li>
-              <li>Provides significant <strong>{Object.keys(card.effects || {})[0]?.replace(/_/g, ' ')}</strong> bonuses</li>
-              <li>Unlock all {card.skills?.length || 0} skills for maximum effectiveness</li>
-              <li>{card.events?.length ? `Features ${card.events.length} unique events for extra bonuses` : 'Standard training bonuses apply'}</li>
-              <li>Recommended for {card.rarity === 'SSR' ? 'competitive' : card.rarity === 'SR' ? 'balanced' : 'budget'} team compositions</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Recommended Pairings -->
-        <div class="glass rounded-xl p-6">
-          <h2 class="text-xl font-display mb-4 flex items-center gap-2">
-            <Users className="w-5 h-5 text-uma-primary" />
-            Recommended Character Pairings
-          </h2>
-          
-          <div class="grid md:grid-cols-2 gap-3">
-            <div class="bg-white rounded-lg p-3">
-              <h4 class="font-semibold text-sm mb-1">Special Week</h4>
-              <p class="text-xs text-gray-600">Excellent synergy with speed training</p>
-            </div>
-            <div class="bg-white rounded-lg p-3">
-              <h4 class="font-semibold text-sm mb-1">Silence Suzuka</h4>
-              <p class="text-xs text-gray-600">Maximizes speed potential</p>
-            </div>
-            <div class="bg-white rounded-lg p-3">
-              <h4 class="font-semibold text-sm mb-1">Tokai Teio</h4>
-              <p class="text-xs text-gray-600">Balanced stat growth</p>
-            </div>
-            <div class="bg-white rounded-lg p-3">
-              <h4 class="font-semibold text-sm mb-1">Mejiro McQueen</h4>
-              <p class="text-xs text-gray-600">Long distance specialist</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </main>

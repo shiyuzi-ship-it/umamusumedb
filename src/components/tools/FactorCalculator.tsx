@@ -1,329 +1,193 @@
-import React, { useState, useMemo } from 'react';
-import { Calculator, Star, Sparkles, TrendingUp, Heart, Zap } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
+import { Calculator, Plus, X } from 'lucide-react';
 
-interface Factor {
-  type: 'stat' | 'aptitude' | 'scenario' | 'unique';
-  name: string;
-  stars: number;
-  parent: 'parent1' | 'parent2' | 'grandparent';
+/**
+ * Spark (factor) inheritance calculator.
+ *
+ * Mechanics (sources: uma.guide/guides/parenting-in-umamusume, uma.guide/guides/sparks,
+ * umareference.com/guide/legacies/chance-of-inheriting-sparks):
+ *  - Every parent and grandparent rolls each of their sparks separately at the Inspiration events.
+ *  - Base chance at 0 affinity depends on the spark type and its stars:
+ *      Blue 70/80/90%, Pink 2/3/5%, Green (unique) 5/10/15%, Race 1/2/3%, White skill & scenario 3/6/9%.
+ *  - Affinity scales the base chance: chance = base × (1 + affinity / 100). Each legacy has its own affinity value.
+ */
+
+type SparkType = 'blue' | 'pink' | 'green' | 'race' | 'white';
+
+const BASE_RATES: Record<SparkType, [number, number, number]> = {
+  blue: [70, 80, 90],
+  pink: [2, 3, 5],
+  green: [5, 10, 15],
+  race: [1, 2, 3],
+  white: [3, 6, 9],
+};
+
+const TYPE_LABEL: Record<SparkType, string> = {
+  blue: 'Blue (stat)',
+  pink: 'Pink (aptitude)',
+  green: 'Green (unique skill)',
+  race: 'White – race',
+  white: 'White – skill / scenario',
+};
+
+const SOURCES = ['Parent 1', 'Parent 2', 'Grandparent 1', 'Grandparent 2', 'Grandparent 3', 'Grandparent 4'];
+
+interface Entry {
+  id: number;
+  source: string;
+  type: SparkType;
+  stars: 1 | 2 | 3;
+  affinity: number;
 }
-
-interface InheritanceResult {
-  factor: string;
-  probability: number;
-  stars: number;
-}
-
-const FACTOR_TYPES = {
-  stat: ['Speed', 'Stamina', 'Power', 'Guts', 'Wisdom'],
-  aptitude: [
-    'Turf',
-    'Dirt',
-    'Sprint',
-    'Mile',
-    'Medium',
-    'Long',
-    'Front Runner (逃げ)',
-    'Pace Chaser (先行)',
-    'Late Surger (差し)',
-    'End Closer (追込)'
-  ],
-  scenario: [
-    'URA Finals',
-    'Aoharu Cup (アオハル杯)',
-    'Make a New Track (新設)',
-    'Grand Live (グラライ)',
-    'Grand Masters (グラマス)',
-    'Project L\'Arc (LArc)'
-  ],
-  unique: ['Character Unique Factor']
-};
-
-// Realistic inheritance rates based on community research (GameWith, UmaDB)
-// Parent factors: ~35% for 1★, ~20% for 2★, ~10% for 3★
-// Grandparent factors: ~15% for 1★, ~10% for 2★, ~5% for 3★
-const INHERITANCE_RATES = {
-  parent1: { 1: 0.35, 2: 0.20, 3: 0.10 },
-  parent2: { 1: 0.35, 2: 0.20, 3: 0.10 },
-  grandparent: { 1: 0.15, 2: 0.10, 3: 0.05 }
-};
-
-// Star upgrade probability when factor is inherited
-// 1★ → 2★: ~8%, 2★ → 3★: ~5%
-const UPGRADE_RATES = {
-  1: 0.08, // 1★ can upgrade to 2★
-  2: 0.05, // 2★ can upgrade to 3★
-  3: 0.00  // 3★ cannot upgrade further
-};
-
-const COMPATIBILITY_BONUS = {
-  '◎': 1.20,  // Best compatibility: +20%
-  '○': 1.10,  // Good compatibility: +10%
-  '△': 1.00,  // Neutral: no bonus
-  '×': 0.85   // Bad compatibility: -15%
-};
 
 export default function FactorCalculator() {
-  const [parent1Factors, setParent1Factors] = useState<Factor[]>([]);
-  const [parent2Factors, setParent2Factors] = useState<Factor[]>([]);
-  const [grandparentFactors, setGrandparentFactors] = useState<Factor[]>([]);
-  const [compatibility, setCompatibility] = useState<'◎' | '○' | '△' | '×'>('○');
-  const [showingAddFactor, setShowingAddFactor] = useState<'parent1' | 'parent2' | 'grandparent' | null>(null);
+  const [entries, setEntries] = useState<Entry[]>([
+    { id: 1, source: 'Parent 1', type: 'white', stars: 3, affinity: 30 },
+  ]);
+  const [nextId, setNextId] = useState(2);
 
-  const calculateInheritance = useMemo(() => {
-    const results: InheritanceResult[] = [];
-    const compatBonus = COMPATIBILITY_BONUS[compatibility];
+  const rows = useMemo(
+    () =>
+      entries.map((e) => {
+        const base = BASE_RATES[e.type][e.stars - 1];
+        return { ...e, base, chance: Math.min(100, base * (1 + Math.max(0, e.affinity) / 100)) };
+      }),
+    [entries]
+  );
 
-    const allFactors = [
-      ...parent1Factors.map(f => ({ ...f, source: 'parent1' as const })),
-      ...parent2Factors.map(f => ({ ...f, source: 'parent2' as const })),
-      ...grandparentFactors.map(f => ({ ...f, source: 'grandparent' as const }))
-    ];
+  const combined = useMemo(() => {
+    if (!rows.length) return 0;
+    return (1 - rows.reduce((acc, r) => acc * (1 - r.chance / 100), 1)) * 100;
+  }, [rows]);
 
-    const factorMap = new Map<string, { probability: number; stars: number }>();
+  const update = (id: number, patch: Partial<Entry>) =>
+    setEntries((prev) => prev.map((e) => (e.id === id ? { ...e, ...patch } : e)));
 
-    allFactors.forEach(factor => {
-      const baseRate = INHERITANCE_RATES[factor.source][factor.stars as 1 | 2 | 3] || 0;
-      const probability = Math.min(baseRate * compatBonus, 1.0);
-      
-      const key = `${factor.type}-${factor.name}`;
-      const existing = factorMap.get(key);
-      
-      if (existing) {
-        factorMap.set(key, {
-          probability: 1 - (1 - existing.probability) * (1 - probability),
-          stars: Math.max(existing.stars, factor.stars)
-        });
-      } else {
-        factorMap.set(key, { probability, stars: factor.stars });
-      }
-    });
-
-    factorMap.forEach((value, key) => {
-      const [type, name] = key.split('-');
-      results.push({
-        factor: name,
-        probability: value.probability * 100,
-        stars: value.stars
-      });
-    });
-
-    return results.sort((a, b) => b.probability - a.probability);
-  }, [parent1Factors, parent2Factors, grandparentFactors, compatibility]);
-
-  const addFactor = (parent: 'parent1' | 'parent2' | 'grandparent', type: 'stat' | 'aptitude' | 'unique', name: string, stars: number) => {
-    const newFactor: Factor = { type, name, stars, parent };
-    
-    if (parent === 'parent1') {
-      setParent1Factors([...parent1Factors, newFactor]);
-    } else if (parent === 'parent2') {
-      setParent2Factors([...parent2Factors, newFactor]);
-    } else {
-      setGrandparentFactors([...grandparentFactors, newFactor]);
-    }
-    
-    setShowingAddFactor(null);
-  };
-
-  const removeFactor = (parent: 'parent1' | 'parent2' | 'grandparent', index: number) => {
-    if (parent === 'parent1') {
-      setParent1Factors(parent1Factors.filter((_, i) => i !== index));
-    } else if (parent === 'parent2') {
-      setParent2Factors(parent2Factors.filter((_, i) => i !== index));
-    } else {
-      setGrandparentFactors(grandparentFactors.filter((_, i) => i !== index));
-    }
-  };
-
-  const FactorInput = ({ parent, factors }: { parent: 'parent1' | 'parent2' | 'grandparent'; factors: Factor[] }) => {
-    const parentLabels = {
-      parent1: 'Parent 1',
-      parent2: 'Parent 2',
-      grandparent: 'Grandparents'
-    };
-
-    return (
-      <div className="bg-white rounded-lg shadow p-4">
-        <h3 className="font-semibold mb-3 flex items-center gap-2">
-          {parent === 'grandparent' ? <Heart className="w-4 h-4 text-pink-500" /> : <Sparkles className="w-4 h-4 text-blue-500" />}
-          {parentLabels[parent]}
-        </h3>
-        
-        <div className="space-y-2 mb-3">
-          {factors.map((factor, index) => (
-            <div key={index} className="flex items-center justify-between bg-gray-50 rounded p-2">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium">{factor.name}</span>
-                <div className="flex">
-                  {[...Array(factor.stars)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-              </div>
-              <button
-                onClick={() => removeFactor(parent, index)}
-                className="text-red-500 hover:text-red-700 text-sm"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {showingAddFactor === parent ? (
-          <div className="border rounded-lg p-3 space-y-2">
-            <select 
-              className="w-full border rounded p-2"
-              onChange={(e) => {
-                const [type, name, stars] = e.target.value.split('|');
-                if (type && name && stars) {
-                  addFactor(parent, type as any, name, parseInt(stars));
-                }
-              }}
-            >
-              <option value="">Select Factor</option>
-              <optgroup label="Stat Factors">
-                {FACTOR_TYPES.stat.map(stat => (
-                  [1, 2, 3].map(star => (
-                    <option key={`${stat}-${star}`} value={`stat|${stat}|${star}`}>
-                      {stat} ★{star}
-                    </option>
-                  ))
-                )).flat()}
-              </optgroup>
-              <optgroup label="Aptitude Factors">
-                {FACTOR_TYPES.aptitude.map(apt => (
-                  [1, 2, 3].map(star => (
-                    <option key={`${apt}-${star}`} value={`aptitude|${apt}|${star}`}>
-                      {apt} ★{star}
-                    </option>
-                  ))
-                )).flat()}
-              </optgroup>
-              <optgroup label="Scenario Factors">
-                {FACTOR_TYPES.scenario.map(scenario => (
-                  [1, 2, 3].map(star => (
-                    <option key={`${scenario}-${star}`} value={`scenario|${scenario}|${star}`}>
-                      {scenario} ★{star}
-                    </option>
-                  ))
-                )).flat()}
-              </optgroup>
-              <optgroup label="Unique Factors">
-                {FACTOR_TYPES.unique.map(unique => (
-                  [1, 2, 3].map(star => (
-                    <option key={`${unique}-${star}`} value={`unique|${unique}|${star}`}>
-                      {unique} ★{star}
-                    </option>
-                  ))
-                )).flat()}
-              </optgroup>
-            </select>
-            <button
-              onClick={() => setShowingAddFactor(null)}
-              className="w-full text-sm text-gray-500 hover:text-gray-700"
-            >
-              Cancel
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => setShowingAddFactor(parent)}
-            className="w-full text-sm bg-blue-500 text-white rounded py-2 hover:bg-blue-600 transition"
-          >
-            + Add Factor
-          </button>
-        )}
-      </div>
-    );
+  const add = () => {
+    setEntries((prev) => [...prev, { id: nextId, source: 'Parent 2', type: 'blue', stars: 3, affinity: 0 }]);
+    setNextId(nextId + 1);
   };
 
   return (
     <div className="space-y-6">
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
-        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Calculator className="w-5 h-5" />
-          Factor Setup
-        </h2>
-        
-        <div className="grid md:grid-cols-3 gap-4 mb-4">
-          <FactorInput parent="parent1" factors={parent1Factors} />
-          <FactorInput parent="parent2" factors={parent2Factors} />
-          <FactorInput parent="grandparent" factors={grandparentFactors} />
+      <div className="bg-white rounded-lg shadow p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-bold flex items-center gap-2">
+            <Calculator className="w-5 h-5 text-purple-600" />
+            Spark inheritance chance
+          </h2>
+          <button onClick={add} className="flex items-center gap-1 text-sm px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700">
+            <Plus className="w-4 h-4" /> Add spark
+          </button>
         </div>
 
-        <div className="bg-white rounded-lg p-4">
-          <h3 className="font-semibold mb-2">Compatibility</h3>
-          <div className="flex gap-2">
-            {(['◎', '○', '△', '×'] as const).map(level => (
-              <button
-                key={level}
-                onClick={() => setCompatibility(level)}
-                className={`px-4 py-2 rounded-lg font-bold transition ${
-                  compatibility === level 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-gray-100 hover:bg-gray-200'
-                }`}
-              >
-                {level} {(COMPATIBILITY_BONUS[level] * 100 - 100).toFixed(0)}%
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <TrendingUp className="w-5 h-5 text-green-500" />
-          Inheritance Probability
-        </h2>
-        
-        {calculateInheritance.length === 0 ? (
-          <p className="text-gray-500 text-center py-8">Add factors above to see inheritance probabilities</p>
-        ) : (
-          <div className="space-y-3">
-            {calculateInheritance.map((result, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <Zap className="w-4 h-4 text-yellow-500" />
-                  <span className="font-medium">{result.factor}</span>
-                  <div className="flex">
-                    {[...Array(result.stars)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-32 bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"
-                      style={{ width: `${result.probability}%` }}
-                    />
-                  </div>
-                  <span className="font-bold text-sm w-12 text-right">
-                    {result.probability.toFixed(1)}%
-                  </span>
-                </div>
+        <div className="space-y-3">
+          {rows.map((r) => (
+            <div key={r.id} className="grid grid-cols-2 md:grid-cols-6 gap-2 items-end p-3 bg-gray-50 rounded">
+              <label className="text-xs text-gray-600">
+                Who has it
+                <select value={r.source} onChange={(e) => update(r.id, { source: e.target.value })} className="block w-full border rounded px-2 py-1 text-sm">
+                  {SOURCES.map((s) => (
+                    <option key={s}>{s}</option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-xs text-gray-600">
+                Spark type
+                <select value={r.type} onChange={(e) => update(r.id, { type: e.target.value as SparkType })} className="block w-full border rounded px-2 py-1 text-sm">
+                  {(Object.keys(TYPE_LABEL) as SparkType[]).map((t) => (
+                    <option key={t} value={t}>
+                      {TYPE_LABEL[t]}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="text-xs text-gray-600">
+                Stars
+                <select value={r.stars} onChange={(e) => update(r.id, { stars: parseInt(e.target.value) as 1 | 2 | 3 })} className="block w-full border rounded px-2 py-1 text-sm">
+                  <option value={1}>★1</option>
+                  <option value={2}>★2</option>
+                  <option value={3}>★3</option>
+                </select>
+              </label>
+              <label className="text-xs text-gray-600">
+                Affinity with this legacy
+                <input
+                  type="number"
+                  min={0}
+                  max={400}
+                  value={r.affinity}
+                  onChange={(e) => update(r.id, { affinity: parseInt(e.target.value) || 0 })}
+                  className="block w-full border rounded px-2 py-1 text-sm"
+                />
+              </label>
+              <div className="text-sm">
+                <div className="text-xs text-gray-500">Base {r.base}%</div>
+                <div className="font-bold text-purple-700">{r.chance.toFixed(1)}%</div>
               </div>
-            ))}
-            
-            <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-              <h4 className="font-semibold mb-2 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-blue-500" />
-                Breeding Tips
-              </h4>
-              <ul className="text-sm text-gray-700 space-y-1">
-                <li>• <strong>1★ factors:</strong> ~35% from parents, ~15% from grandparents</li>
-                <li>• <strong>2★ factors:</strong> ~20% from parents, ~10% from grandparents</li>
-                <li>• <strong>3★ factors:</strong> ~10% from parents, ~5% from grandparents</li>
-                <li>• <strong>Star upgrade:</strong> Inherited factors have ~5-8% chance to upgrade (1★→2★, 2★→3★)</li>
-                <li>• <strong>Compatibility:</strong> ◎ +20%, ○ +10%, △ ±0%, × -15%</li>
-                <li>• Same factors from multiple sources stack (1 - product of miss rates)</li>
-                <li>• <strong>Pro tip:</strong> For 3★ blue factors, use parents with matching 3★ factors from both sides</li>
-              </ul>
+              <button onClick={() => setEntries((prev) => prev.filter((e) => e.id !== r.id))} className="text-red-500 hover:text-red-700 justify-self-end" aria-label="Remove">
+                <X className="w-4 h-4" />
+              </button>
             </div>
+          ))}
+          {rows.length === 0 && <div className="text-center py-6 text-gray-400">Add a spark to calculate its chance.</div>}
+        </div>
+
+        {rows.length > 0 && (
+          <div className="mt-4 p-4 bg-purple-50 rounded">
+            <div className="text-sm text-gray-700">
+              Chance that at least one of the listed sparks is inherited in one Inspiration roll (rolls are independent):
+            </div>
+            <div className="text-3xl font-bold text-purple-700">{combined.toFixed(1)}%</div>
           </div>
         )}
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg shadow p-6 text-sm">
+          <h3 className="font-semibold mb-2">Base chance at 0 affinity</h3>
+          <table className="w-full text-left">
+            <thead>
+              <tr className="text-xs text-gray-500">
+                <th className="py-1">Spark</th>
+                <th>★1</th>
+                <th>★2</th>
+                <th>★3</th>
+              </tr>
+            </thead>
+            <tbody>
+              {(Object.keys(TYPE_LABEL) as SparkType[]).map((t) => (
+                <tr key={t} className="border-t">
+                  <td className="py-1">{TYPE_LABEL[t]}</td>
+                  {BASE_RATES[t].map((v, i) => (
+                    <td key={i}>{v}%</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p className="text-xs text-gray-500 mt-3">
+            Final chance = base × (1 + affinity / 100). Each parent and grandparent has its own affinity value and is rolled separately.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-lg shadow p-6 text-sm">
+          <h3 className="font-semibold mb-2">Which stars does a legacy get?</h3>
+          <p className="text-xs text-gray-600 mb-2">Blue spark stars depend on the stat total (1★ / 2★ / 3★):</p>
+          <ul className="text-xs text-gray-700 space-y-0.5 mb-3">
+            <li>• Stat under 600: 90% / 10% / 0%</li>
+            <li>• Stat 600–1100: 45% / 50% / 5%</li>
+            <li>• Stat over 1100: 20% / 70% / 10%</li>
+          </ul>
+          <p className="text-xs text-gray-600 mb-2">Pink sparks (from A or S aptitudes): 20% / 70% / 10%.</p>
+          <p className="text-xs text-gray-600 mb-2">
+            White and green sparks depend on the final rank: B to SS (6500–17499) 45% / 50% / 5%; SS to UE (17500–28799) 20% / 70% / 10%;
+            UE and above (28800+) 17.5% / 70% / 12.5%.
+          </p>
+          <p className="text-xs text-gray-500">
+            Sources: uma.guide (Sparks &amp; Inheritance, Parenting in Umamusume) and umareference.com. These are community-measured rates, not published by Cygames.
+          </p>
+        </div>
       </div>
     </div>
   );

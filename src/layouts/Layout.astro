@@ -17,6 +17,7 @@ export interface Props {
   image?: string;
   structuredDataType?: 'website' | 'character' | 'supportCard' | 'tool';
   structuredData?: any;
+  noindex?: boolean;
 }
 
 const { 
@@ -24,7 +25,8 @@ const {
   description = 'Comprehensive database and tools for Uma Musume Pretty Derby - Characters, Support Cards, Tier Lists, Training Calculators', 
   image = 'https://umamusumedb.com/og-image.png',
   structuredDataType = 'website',
-  structuredData
+  structuredData,
+  noindex = false
 } = Astro.props;
 
 const locale: Locale = getLocaleFromPathname(Astro.url.pathname);
@@ -76,6 +78,7 @@ const feedbackSubtitle =
       canonicalURL={canonicalURL}
       locale={locale}
       alternates={alternates}
+      noindex={noindex}
     />
     
     <!-- Structured Data -->

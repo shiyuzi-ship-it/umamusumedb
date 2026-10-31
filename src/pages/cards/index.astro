@@ -3,7 +3,16 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import SupportCardCard from '@/components/SupportCardCard';
-import { supportCards } from '@/lib/static-content';
+import { supportCards as allCards } from '@/lib/static-content';
+
+const releaseKey = (c: any) => 'en' === 'ja' ? (c.release_date_jp ?? '') : (c.release_date_global ?? '') + '|' + (c.release_date_jp ?? '');
+const supportCards = [...allCards]
+  .sort((a: any, b: any) => releaseKey(b).localeCompare(releaseKey(a)) || (b.support_id ?? 0) - (a.support_id ?? 0))
+  .map((c: any) => ({
+    id: c.id, name_en: c.name_en, name_jp: c.name_jp, type: c.type, rarity: c.rarity, max_level: c.max_level, server: c.server,
+    effects: Object.fromEntries(Object.entries(c.effects ?? {}).slice(0, 4)), skills: (c.skills ?? []).slice(0, 4),
+    character_image_url: c.character_image_url, image_url: c.image_url, events: [],
+  }));
 import { Filter, Search, Zap, Heart, Brain, Star, Sparkles, Users } from 'lucide-react';
 
 // Group cards by rarity
@@ -98,8 +107,12 @@ const typeCount = supportCards.reduce((acc, card) => {
           <option value="guts">Guts</option>
           <option value="wisdom">Wisdom</option>
           <option value="friend">Friend</option>
+          <option value="group">Group</option>
         </select>
 
+        <select id="server-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
+          <option value="all">All Servers</option><option value="global">Released in Global</option><option value="jp">JP server only</option>
+        </select>
       </div>
     </div>
 
@@ -127,6 +140,7 @@ const typeCount = supportCards.reduce((acc, card) => {
                      data-name={card.name_en.toLowerCase()} 
                      data-search={`${card.name_en} ${card.name_jp}`.toLowerCase()}
                      data-rarity={card.rarity}
+                     data-server={card.server}
                      data-type={card.type}>
                   <SupportCardCard card={card} client:load />
                 </div>
@@ -149,6 +163,7 @@ const typeCount = supportCards.reduce((acc, card) => {
     const searchInput = document.getElementById('card-search') as HTMLInputElement;
     const rarityFilter = document.getElementById('rarity-filter') as HTMLSelectElement;
     const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
+    const serverFilter = document.getElementById('server-filter') as HTMLSelectElement;
     const container = document.getElementById('cards-container');
     const noResults = document.getElementById('no-results');
 
@@ -167,9 +182,10 @@ const typeCount = supportCards.reduce((acc, card) => {
         
         const matchesSearch = name.includes(searchTerm);
         const matchesRarity = selectedRarity === 'all' || rarity === selectedRarity;
+        const matchesServer = (serverFilter?.value || 'all') === 'all' || item.getAttribute('data-server') === serverFilter?.value;
         const matchesType = selectedType === 'all' || type === selectedType;
         
-        if (matchesSearch && matchesRarity && matchesType) {
+        if (matchesSearch && matchesRarity && matchesServer && matchesType) {
           (item as HTMLElement).style.display = '';
           hasResults = true;
         } else {
@@ -196,6 +212,7 @@ const typeCount = supportCards.reduce((acc, card) => {
     // Event listeners
     searchInput?.addEventListener('input', filterCards);
     rarityFilter?.addEventListener('change', filterCards);
+    serverFilter?.addEventListener('change', filterCards);
     typeFilter?.addEventListener('change', filterCards);
   </script>
 </Layout>

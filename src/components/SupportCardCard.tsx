@@ -2,6 +2,7 @@ import React from 'react';
 import { Star, Zap, Heart, Brain, Users, Sparkles } from 'lucide-react';
 import PlaceholderImage from './PlaceholderImage';
 import type { SupportCard } from '@/types';
+import { effectAtMax, effectLabel, effectSuffix, maxLevelFor } from '@/lib/game-format';
 
 interface SupportCardCardProps {
   card: SupportCard;
@@ -22,7 +23,8 @@ export default function SupportCardCard({ card, localePrefix }: SupportCardCardP
     power: 'bg-orange-500',
     guts: 'bg-purple-500',
     wisdom: 'bg-blue-500',
-    friend: 'bg-pink-500'
+    friend: 'bg-pink-500',
+    group: 'bg-teal-500'
   };
 
   const typeIcons = {
@@ -31,10 +33,11 @@ export default function SupportCardCard({ card, localePrefix }: SupportCardCardP
     power: Sparkles,
     guts: Star,
     wisdom: Brain,
-    friend: Users
+    friend: Users,
+    group: Users
   };
 
-  const TypeIcon = typeIcons[card.type];
+  const TypeIcon = typeIcons[card.type] ?? Users;
 
   const rarityColors = {
     SSR: 'rarity-ssr',
@@ -48,6 +51,9 @@ export default function SupportCardCard({ card, localePrefix }: SupportCardCardP
       <div className={`absolute top-2 left-2 z-20 px-3 py-1 rounded-full text-white font-bold text-sm ${rarityColors[card.rarity]}`}>
         {card.rarity}
       </div>
+      {card.server === 'jp' && (
+        <div className="absolute top-12 left-2 z-20 px-2 py-0.5 rounded-full bg-gray-800/80 text-white text-[10px] font-semibold">JP only</div>
+      )}
 
       {/* Type Badge */}
       <div className={`absolute top-2 right-2 z-20 w-10 h-10 rounded-full ${typeColors[card.type]} flex items-center justify-center`}>
@@ -84,18 +90,14 @@ export default function SupportCardCard({ card, localePrefix }: SupportCardCardP
 
       {/* Effects */}
       <div className="p-4 border-b border-gray-100">
-        <h4 className="font-semibold text-sm text-gray-700 mb-2">Effects</h4>
+        <h4 className="font-semibold text-sm text-gray-700 mb-2">Effects (max level)</h4>
         <div className="grid grid-cols-2 gap-2 text-xs">
           {Object.entries(card.effects).slice(0, 4).map(([key, value]) => {
-            // Handle nested effect values (like lv1, lv30, etc.)
-            const displayValue = typeof value === 'object' && value !== null 
-              ? (value.lv50 || value.lv45 || value.lv40 || value.lv35 || value.lv30 || value.lv1 || '—')
-              : value;
-            
+            const displayValue = effectAtMax(value, maxLevelFor(card));
             return (
               <div key={key} className="flex justify-between">
-                <span className="text-gray-600 capitalize">{key.replace(/_/g, ' ')}:</span>
-                <span className="font-semibold text-uma-primary">+{displayValue}</span>
+                <span className="text-gray-600">{effectLabel(key, localePrefix?.includes('ja') ? 'ja' : 'en')}:</span>
+                <span className="font-semibold text-uma-primary">+{displayValue}{effectSuffix(key)}</span>
               </div>
             );
           })}

@@ -1,0 +1,220 @@
+[
+  {
+    "id": 1,
+    "name_en": "Ura Finale",
+    "name_en_full": "The Beginning: URA Finale",
+    "name_jp": "新設！URAファイナルズ",
+    "start_jp": "2021-02-24",
+    "start_global": "2025-06-26",
+    "linked_characters": [
+      "Aoi Kiryuin"
+    ]
+  },
+  {
+    "id": 2,
+    "name_en": "Unity Cup",
+    "name_en_full": "Unity Cup: Shine On, Team Spirit!",
+    "name_jp": "アオハル杯～輝け、チームの絆～",
+    "start_jp": "2021-08-30",
+    "start_global": "2025-11-06",
+    "linked_characters": [
+      "Taiki Shuttle",
+      "Rice Shower",
+      "Haru Urara",
+      "Matikanefukukitaru",
+      "Riko Kashimoto"
+    ]
+  },
+  {
+    "id": 4,
+    "name_en": "Trackblazer",
+    "name_en_full": "Trackblazer: Start of the Climax",
+    "name_jp": "Make a new track!!～クライマックス開幕～",
+    "start_jp": "2022-02-24",
+    "start_global": "2026-03-12",
+    "linked_characters": []
+  },
+  {
+    "id": 3,
+    "name_en": "Brighter Together Our Grand Concert",
+    "name_en_full": "Brighter Together Our Grand Concert",
+    "name_jp": "つなげ、照らせ、ひかれ。私たちのグランドライブ",
+    "start_jp": "2022-08-24",
+    "start_global": "2026-07-22",
+    "linked_characters": [
+      "Smart Falcon",
+      "Agnes Tachyon",
+      "Silence Suzuka",
+      "Mihono Bourbon",
+      "Light Hello"
+    ]
+  },
+  {
+    "id": 5,
+    "name_en": "Grandmasters Legacies Immortal",
+    "name_en_full": "Grandmasters Legacies Immortal",
+    "name_jp": "グランドマスターズ-継ぐ者達へ-",
+    "start_jp": "2023-02-24",
+    "start_global": null,
+    "linked_characters": [
+      "Darley Arabian"
+    ]
+  },
+  {
+    "id": 6,
+    "name_en_full": null,
+    "name_jp": "Reach for the starsプロジェクトL'Arc",
+    "start_jp": "2023-08-24",
+    "start_global": null,
+    "linked_characters": [
+      "Gold Ship",
+      "El Condor Pasa",
+      "Manhattan Cafe",
+      "Nakayama Festa",
+      "Satono Diamond",
+      "Sirius Symboli",
+      "Tap Dance City",
+      "Orfevre",
+      "Blast Onepiece",
+      "Chrono Genesis",
+      "Kiseki",
+      "Victoire Pisa",
+      "Mei Satake"
+    ]
+  },
+  {
+    "id": 7,
+    "name_en_full": null,
+    "name_jp": "U.A.F. Ready GO! ～アスリートのキラメキ～",
+    "start_jp": "2024-02-24",
+    "start_global": null,
+    "linked_characters": [
+      "Winning Ticket",
+      "Mejiro Ryan",
+      "Yaeno Muteki",
+      "Narita Top Road",
+      "Tosen Jordan",
+      "Ryoka Tsurugi"
+    ]
+  },
+  {
+    "id": 8,
+    "name_en_full": null,
+    "name_jp": "収穫ッ！満腹ッ！大豊食祭",
+    "start_jp": "2024-06-26",
+    "start_global": null,
+    "linked_characters": [
+      "Special Week",
+      "Hishi Akebono",
+      "Rice Shower",
+      "Nishino Flower",
+      "Katsuragi Ace",
+      "Yayoi Akikawa"
+    ]
+  },
+  {
+    "id": 9,
+    "name_en_full": null,
+    "name_jp": "走れ！メカウマ娘-夢繋ぐ発明-",
+    "start_jp": "2024-10-29",
+    "start_global": null,
+    "linked_characters": [
+      "Biwa Hayahide",
+      "Narita Taishin",
+      "Air Shakur",
+      "Symboli Kris S",
+      "Tanino Gimlet"
+    ]
+  },
+  {
+    "id": 10,
+    "name_en_full": null,
+    "name_jp": "The Twinkle Legends",
+    "start_jp": "2025-02-24",
+    "start_global": null,
+    "linked_characters": [
+      "Smart Falcon",
+      "Sirius Symboli",
+      "Mejiro Ramonu",
+      "Orfevre",
+      "Gentildonna",
+      "Speed Symboli"
+    ]
+  },
+  {
+    "id": 11,
+    "name_en_full": null,
+    "name_jp": "無人島へようこそ-DESIGN YOUR ISLAND-",
+    "start_jp": "2025-06-27",
+    "start_global": null,
+    "linked_characters": [
+      "Tamamo Cross",
+      "Mejiro Ryan",
+      "Ines Fujin",
+      "Gold City",
+      "Sakura Chiyono O",
+      "Tucker Bryne"
+    ]
+  },
+  {
+    "id": 12,
+    "name_en_full": null,
+    "name_jp": "ごくらく♪ゆこま温泉郷",
+    "start_jp": "2025-10-29",
+    "start_global": null,
+    "linked_characters": [
+      "Tokai Teio",
+      "Mihono Bourbon",
+      "Transcend",
+      "Hokko Tarumae",
+      "Wonder Acute",
+      "Kiyoko Hoshina"
+    ]
+  },
+  {
+    "id": 13,
+    "name_en_full": null,
+    "name_jp": "Beyond Dreams共に前へ、共に光を",
+    "start_jp": "2026-02-24",
+    "start_global": null,
+    "linked_characters": [
+      "Espoir City",
+      "Loves Only You",
+      "Red Desire",
+      "Forever Young",
+      "Casino Drive",
+      "Marche Lorraine"
+    ]
+  },
+  {
+    "id": 14,
+    "name_en_full": null,
+    "name_jp": "らっしゃい！トレセン軒！～恩返し、始めました～",
+    "start_jp": "2026-06-29",
+    "start_global": null,
+    "linked_characters": [
+      "Fine Motion",
+      "Meisho Doto",
+      "Nice Nature",
+      "Narita Top Road",
+      "Calstone Light O",
+      "Tazuna Hayakawa",
+      "Light Hello"
+    ]
+  },
+  {
+    "id": 15,
+    "name_en_full": null,
+    "name_jp": "朋、史解き―午式駿大祭―",
+    "start_jp": "2026-10-26",
+    "start_global": null,
+    "linked_characters": [
+      "Daiwa Scarlet",
+      "Mayano Top Gun",
+      "Yukino Bijin",
+      "No Reason",
+      "Blast Onepiece",
+      "Azuma"
+    ]
+  }
+]
