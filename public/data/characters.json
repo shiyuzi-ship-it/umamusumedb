@@ -26,7 +26,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100101-special-week",
-    "image_url": "https://img.umamusumedb.com/characters/special_week_2025.png"
+    "image_url": "/img/characters/100101.webp"
   },
   {
     "id": "special_week_hoppn_happy_heart",
@@ -55,7 +55,7 @@
     "release_date_global": "2025-10-14",
     "obtained": "gacha",
     "gt_url_name": "100102-special-week",
-    "image_url": "https://img.umamusumedb.com/characters/special_week_2025.png"
+    "image_url": "/img/characters/100102.webp"
   },
   {
     "id": "special_week_ruler_of_japan",
@@ -84,7 +84,7 @@
     "release_date_global": "2026-06-25",
     "obtained": "main_story",
     "gt_url_name": "100103-special-week",
-    "image_url": "https://img.umamusumedb.com/characters/special_week_2025.png"
+    "image_url": "/img/characters/100103.webp"
   },
   {
     "id": "silence_suzuka_innocent_silence",
@@ -113,7 +113,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100201-silence-suzuka",
-    "image_url": "https://img.umamusumedb.com/characters/silence_suzuka_2025.png"
+    "image_url": "/img/characters/100201.webp"
   },
   {
     "id": "silence_suzuka_emerald_tidings",
@@ -142,7 +142,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100202-silence-suzuka",
-    "image_url": "https://img.umamusumedb.com/characters/silence_suzuka_2025.png"
+    "image_url": "/img/characters/100202.webp"
   },
   {
     "id": "tokai_teio_peak_joy",
@@ -171,7 +171,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100301-tokai-teio",
-    "image_url": "https://img.umamusumedb.com/characters/tokai_teio_2025.png"
+    "image_url": "/img/characters/100301.webp"
   },
   {
     "id": "tokai_teio_beyond_the_horizon",
@@ -200,7 +200,7 @@
     "release_date_global": "2025-07-16",
     "obtained": "gacha",
     "gt_url_name": "100302-tokai-teio",
-    "image_url": "https://img.umamusumedb.com/characters/tokai_teio_2025.png"
+    "image_url": "/img/characters/100302.webp"
   },
   {
     "id": "tokai_teio_100303",
@@ -229,7 +229,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100303-tokai-teio",
-    "image_url": "https://img.umamusumedb.com/characters/tokai_teio_2025.png"
+    "image_url": "/img/characters/100303.webp"
   },
   {
     "id": "maruzensky_formula_r",
@@ -257,7 +257,8 @@
     "release_date_jp": "2021-02-24",
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
-    "gt_url_name": "100401-maruzensky"
+    "gt_url_name": "100401-maruzensky",
+    "image_url": "/img/characters/100401.webp"
   },
   {
     "id": "maruzensky_hot_summer_night",
@@ -285,7 +286,8 @@
     "release_date_jp": "2021-07-29",
     "release_date_global": "2025-10-14",
     "obtained": "gacha",
-    "gt_url_name": "100402-maruzensky"
+    "gt_url_name": "100402-maruzensky",
+    "image_url": "/img/characters/100402.webp"
   },
   {
     "id": "maruzensky_100403",
@@ -313,7 +315,8 @@
     "release_date_jp": "2025-01-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "100403-maruzensky"
+    "gt_url_name": "100403-maruzensky",
+    "image_url": "/img/characters/100403.webp"
   },
   {
     "id": "fuji_kiseki_shooting_star_revue",
@@ -341,7 +344,8 @@
     "release_date_jp": "2021-07-12",
     "release_date_global": "2025-10-02",
     "obtained": "gacha",
-    "gt_url_name": "100501-fuji-kiseki"
+    "gt_url_name": "100501-fuji-kiseki",
+    "image_url": "/img/characters/100501.webp"
   },
   {
     "id": "fuji_kiseki_succes_etoile",
@@ -369,7 +373,8 @@
     "release_date_jp": "2022-03-29",
     "release_date_global": "2026-04-05",
     "obtained": "gacha",
-    "gt_url_name": "100502-fuji-kiseki"
+    "gt_url_name": "100502-fuji-kiseki",
+    "image_url": "/img/characters/100502.webp"
   },
   {
     "id": "fuji_kiseki_100503",
@@ -397,7 +402,8 @@
     "release_date_jp": "2026-04-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "100503-fuji-kiseki"
+    "gt_url_name": "100503-fuji-kiseki",
+    "image_url": "/img/characters/100503.webp"
   },
   {
     "id": "oguri_cap_starlight_beat",
@@ -426,7 +432,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100601-oguri-cap",
-    "image_url": "https://img.umamusumedb.com/characters/oguri_cap_starlight.png"
+    "image_url": "/img/characters/100601.webp"
   },
   {
     "id": "oguri_cap_ashen_miracle",
@@ -455,7 +461,7 @@
     "release_date_global": "2026-01-05",
     "obtained": "gacha",
     "gt_url_name": "100602-oguri-cap",
-    "image_url": "https://img.umamusumedb.com/characters/oguri_cap_starlight.png"
+    "image_url": "/img/characters/100602.webp"
   },
   {
     "id": "oguri_cap_100603",
@@ -484,7 +490,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100603-oguri-cap",
-    "image_url": "https://img.umamusumedb.com/characters/oguri_cap_starlight.png"
+    "image_url": "/img/characters/100603.webp"
   },
   {
     "id": "gold_ship_red_strife",
@@ -513,7 +519,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100701-gold-ship",
-    "image_url": "https://img.umamusumedb.com/characters/gold_ship_2025.png"
+    "image_url": "/img/characters/100701.webp"
   },
   {
     "id": "gold_ship_run_ruin_launcher",
@@ -542,7 +548,7 @@
     "release_date_global": "2026-07-02",
     "obtained": "gacha",
     "gt_url_name": "100702-gold-ship",
-    "image_url": "https://img.umamusumedb.com/characters/gold_ship_2025.png"
+    "image_url": "/img/characters/100702.webp"
   },
   {
     "id": "gold_ship_100703",
@@ -571,7 +577,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100703-gold-ship",
-    "image_url": "https://img.umamusumedb.com/characters/gold_ship_2025.png"
+    "image_url": "/img/characters/100703.webp"
   },
   {
     "id": "vodka_wild_top_gear",
@@ -600,7 +606,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100801-vodka",
-    "image_url": "https://img.umamusumedb.com/characters/vodka_2025.png"
+    "image_url": "/img/characters/100801.webp"
   },
   {
     "id": "vodka_fiery_aqua_vitae",
@@ -629,7 +635,7 @@
     "release_date_global": "2026-09-28",
     "obtained": "gacha",
     "gt_url_name": "100802-vodka",
-    "image_url": "https://img.umamusumedb.com/characters/vodka_2025.png"
+    "image_url": "/img/characters/100802.webp"
   },
   {
     "id": "daiwa_scarlet_peak_blue",
@@ -658,7 +664,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "100901-daiwa-scarlet",
-    "image_url": "https://img.umamusumedb.com/characters/daiwa_scarlet_2025.png"
+    "image_url": "/img/characters/100901.webp"
   },
   {
     "id": "daiwa_scarlet_nuit_etoilee_de_scarlet",
@@ -687,7 +693,7 @@
     "release_date_global": "2026-09-28",
     "obtained": "gacha",
     "gt_url_name": "100902-daiwa-scarlet",
-    "image_url": "https://img.umamusumedb.com/characters/daiwa_scarlet_2025.png"
+    "image_url": "/img/characters/100902.webp"
   },
   {
     "id": "daiwa_scarlet_100903",
@@ -716,7 +722,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "100903-daiwa-scarlet",
-    "image_url": "https://img.umamusumedb.com/characters/daiwa_scarlet_2025.png"
+    "image_url": "/img/characters/100903.webp"
   },
   {
     "id": "taiki_shuttle_wild_frontier",
@@ -745,7 +751,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101001-taiki-shuttle",
-    "image_url": "https://img.umamusumedb.com/characters/taiki_shuttle_2025.png"
+    "image_url": "/img/characters/101001.webp"
   },
   {
     "id": "taiki_shuttle_bubblegum_memories",
@@ -774,7 +780,7 @@
     "release_date_global": "2026-06-11",
     "obtained": "gacha",
     "gt_url_name": "101002-taiki-shuttle",
-    "image_url": "https://img.umamusumedb.com/characters/taiki_shuttle_2025.png"
+    "image_url": "/img/characters/101002.webp"
   },
   {
     "id": "taiki_shuttle_101003",
@@ -803,7 +809,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101003-taiki-shuttle",
-    "image_url": "https://img.umamusumedb.com/characters/taiki_shuttle_2025.png"
+    "image_url": "/img/characters/101003.webp"
   },
   {
     "id": "grass_wonder_stone_piercing_blue",
@@ -832,7 +838,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101101-grass-wonder",
-    "image_url": "https://img.umamusumedb.com/characters/grass_wonder_2025.png"
+    "image_url": "/img/characters/101101.webp"
   },
   {
     "id": "grass_wonder_saintly_jade_cleric",
@@ -861,7 +867,7 @@
     "release_date_global": "2025-09-21",
     "obtained": "gacha",
     "gt_url_name": "101102-grass-wonder",
-    "image_url": "https://img.umamusumedb.com/characters/grass_wonder_2025.png"
+    "image_url": "/img/characters/101102.webp"
   },
   {
     "id": "grass_wonder_101103",
@@ -890,7 +896,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101103-grass-wonder",
-    "image_url": "https://img.umamusumedb.com/characters/grass_wonder_2025.png"
+    "image_url": "/img/characters/101103.webp"
   },
   {
     "id": "hishi_amazon_azure_amazon",
@@ -918,7 +924,8 @@
     "release_date_jp": "2021-06-21",
     "release_date_global": "2025-09-17",
     "obtained": "gacha",
-    "gt_url_name": "101201-hishi-amazon"
+    "gt_url_name": "101201-hishi-amazon",
+    "image_url": "/img/characters/101201.webp"
   },
   {
     "id": "hishi_amazon_hungry_veil",
@@ -946,7 +953,8 @@
     "release_date_jp": "2023-05-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "101202-hishi-amazon"
+    "gt_url_name": "101202-hishi-amazon",
+    "image_url": "/img/characters/101202.webp"
   },
   {
     "id": "mejiro_mcqueen_frontline_elegance",
@@ -975,7 +983,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101301-mejiro-mcqueen",
-    "image_url": "https://img.umamusumedb.com/characters/mejiro_mcqueen_2025.png"
+    "image_url": "/img/characters/101301.webp"
   },
   {
     "id": "mejiro_mcqueen_end_of_the_skies",
@@ -1004,7 +1012,7 @@
     "release_date_global": "2025-07-16",
     "obtained": "gacha",
     "gt_url_name": "101302-mejiro-mcqueen",
-    "image_url": "https://img.umamusumedb.com/characters/mejiro_mcqueen_2025.png"
+    "image_url": "/img/characters/101302.webp"
   },
   {
     "id": "mejiro_mcqueen_fair_lady_of_the_waves",
@@ -1033,7 +1041,7 @@
     "release_date_global": "2026-07-02",
     "obtained": "gacha",
     "gt_url_name": "101303-mejiro-mcqueen",
-    "image_url": "https://img.umamusumedb.com/characters/mejiro_mcqueen_2025.png"
+    "image_url": "/img/characters/101303.webp"
   },
   {
     "id": "el_condor_pasa_el_numero_1",
@@ -1062,7 +1070,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101401-el-condor-pasa",
-    "image_url": "https://img.umamusumedb.com/characters/el_condor_pasa_2025.png"
+    "image_url": "/img/characters/101401.webp"
   },
   {
     "id": "el_condor_pasa_kukulkan_warrior",
@@ -1091,7 +1099,7 @@
     "release_date_global": "2025-09-21",
     "obtained": "gacha",
     "gt_url_name": "101402-el-condor-pasa",
-    "image_url": "https://img.umamusumedb.com/characters/el_condor_pasa_2025.png"
+    "image_url": "/img/characters/101402.webp"
   },
   {
     "id": "tm_opera_o_o_sole_suo",
@@ -1119,7 +1127,8 @@
     "release_date_jp": "2021-03-02",
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
-    "gt_url_name": "101501-tm-opera-o"
+    "gt_url_name": "101501-tm-opera-o",
+    "image_url": "/img/characters/101501.webp"
   },
   {
     "id": "tm_opera_o_new_year_same_radiance",
@@ -1147,7 +1156,8 @@
     "release_date_jp": "2021-12-31",
     "release_date_global": "2026-01-29",
     "obtained": "gacha",
-    "gt_url_name": "101502-tm-opera-o"
+    "gt_url_name": "101502-tm-opera-o",
+    "image_url": "/img/characters/101502.webp"
   },
   {
     "id": "narita_brian_maverick",
@@ -1176,7 +1186,7 @@
     "release_date_global": "2025-08-20",
     "obtained": "gacha",
     "gt_url_name": "101601-narita-brian",
-    "image_url": "https://img.umamusumedb.com/characters/narita_brian_2025.png"
+    "image_url": "/img/characters/101601.webp"
   },
   {
     "id": "narita_brian_ravenous_wolf",
@@ -1205,7 +1215,7 @@
     "release_date_global": "2026-10-14",
     "obtained": "gacha",
     "gt_url_name": "101602-narita-brian",
-    "image_url": "https://img.umamusumedb.com/characters/narita_brian_2025.png"
+    "image_url": "/img/characters/101602.webp"
   },
   {
     "id": "symboli_rudolf_emperors_path",
@@ -1234,7 +1244,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101701-symboli-rudolf",
-    "image_url": "https://img.umamusumedb.com/characters/symboli_rudolf_2025.png"
+    "image_url": "/img/characters/101701.webp"
   },
   {
     "id": "symboli_rudolf_archer_by_moonlight",
@@ -1263,7 +1273,7 @@
     "release_date_global": "2025-12-14",
     "obtained": "gacha",
     "gt_url_name": "101702-symboli-rudolf",
-    "image_url": "https://img.umamusumedb.com/characters/symboli_rudolf_2025.png"
+    "image_url": "/img/characters/101702.webp"
   },
   {
     "id": "symboli_rudolf_101703",
@@ -1292,7 +1302,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101703-symboli-rudolf",
-    "image_url": "https://img.umamusumedb.com/characters/symboli_rudolf_2025.png"
+    "image_url": "/img/characters/101703.webp"
   },
   {
     "id": "air_groove_empress_road",
@@ -1321,7 +1331,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "101801-air-groove",
-    "image_url": "https://img.umamusumedb.com/characters/air_groove_2025.png"
+    "image_url": "/img/characters/101801.webp"
   },
   {
     "id": "air_groove_quercus_civilis",
@@ -1350,7 +1360,7 @@
     "release_date_global": "2025-08-28",
     "obtained": "gacha",
     "gt_url_name": "101802-air-groove",
-    "image_url": "https://img.umamusumedb.com/characters/air_groove_2025.png"
+    "image_url": "/img/characters/101802.webp"
   },
   {
     "id": "air_groove_101803",
@@ -1379,7 +1389,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "101803-air-groove",
-    "image_url": "https://img.umamusumedb.com/characters/air_groove_2025.png"
+    "image_url": "/img/characters/101803.webp"
   },
   {
     "id": "agnes_digital_full_color_fangirling",
@@ -1408,7 +1418,7 @@
     "release_date_global": "2025-11-19",
     "obtained": "gacha",
     "gt_url_name": "101901-agnes-digital",
-    "image_url": "https://img.umamusumedb.com/characters/agnes_digital_2025.png"
+    "image_url": "/img/characters/101901.webp"
   },
   {
     "id": "agnes_digital_fanatic_jiangshi",
@@ -1437,7 +1447,7 @@
     "release_date_global": "2026-08-18",
     "obtained": "gacha",
     "gt_url_name": "101902-agnes-digital",
-    "image_url": "https://img.umamusumedb.com/characters/agnes_digital_2025.png"
+    "image_url": "/img/characters/101902.webp"
   },
   {
     "id": "seiun_sky_reeling_in_the_big_one",
@@ -1466,7 +1476,7 @@
     "release_date_global": "2025-09-07",
     "obtained": "gacha",
     "gt_url_name": "102001-seiun-sky",
-    "image_url": "https://img.umamusumedb.com/characters/seiun_sky_reeling.png"
+    "image_url": "/img/characters/102001.webp"
   },
   {
     "id": "seiun_sky_soiree_des_chatons",
@@ -1495,7 +1505,7 @@
     "release_date_global": "2026-04-05",
     "obtained": "gacha",
     "gt_url_name": "102002-seiun-sky",
-    "image_url": "https://img.umamusumedb.com/characters/seiun_sky_reeling.png"
+    "image_url": "/img/characters/102002.webp"
   },
   {
     "id": "seiun_sky_102003",
@@ -1524,7 +1534,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102003-seiun-sky",
-    "image_url": "https://img.umamusumedb.com/characters/seiun_sky_reeling.png"
+    "image_url": "/img/characters/102003.webp"
   },
   {
     "id": "tamamo_cross_fast_as_lightning",
@@ -1553,7 +1563,7 @@
     "release_date_global": "2026-01-22",
     "obtained": "gacha",
     "gt_url_name": "102101-tamamo-cross",
-    "image_url": "https://img.umamusumedb.com/characters/tamamo_cross_2025.png"
+    "image_url": "/img/characters/102101.webp"
   },
   {
     "id": "tamamo_cross_raging_thunder",
@@ -1582,7 +1592,7 @@
     "release_date_global": "2026-09-07",
     "obtained": "gacha",
     "gt_url_name": "102102-tamamo-cross",
-    "image_url": "https://img.umamusumedb.com/characters/tamamo_cross_2025.png"
+    "image_url": "/img/characters/102102.webp"
   },
   {
     "id": "fine_motion_noble_seamair",
@@ -1610,7 +1620,8 @@
     "release_date_jp": "2021-12-14",
     "release_date_global": "2026-01-15",
     "obtained": "gacha",
-    "gt_url_name": "102201-fine-motion"
+    "gt_url_name": "102201-fine-motion",
+    "image_url": "/img/characters/102201.webp"
   },
   {
     "id": "fine_motion_titania",
@@ -1638,7 +1649,8 @@
     "release_date_jp": "2022-05-30",
     "release_date_global": "2026-05-18",
     "obtained": "gacha",
-    "gt_url_name": "102202-fine-motion"
+    "gt_url_name": "102202-fine-motion",
+    "image_url": "/img/characters/102202.webp"
   },
   {
     "id": "fine_motion_102203",
@@ -1666,7 +1678,8 @@
     "release_date_jp": "2026-07-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "102203-fine-motion"
+    "gt_url_name": "102203-fine-motion",
+    "image_url": "/img/characters/102203.webp"
   },
   {
     "id": "biwa_hayahide_pf_winning_equation",
@@ -1695,7 +1708,7 @@
     "release_date_global": "2025-07-10",
     "obtained": "gacha",
     "gt_url_name": "102301-biwa-hayahide",
-    "image_url": "https://img.umamusumedb.com/characters/biwa_hayahide_2025.png"
+    "image_url": "/img/characters/102301.webp"
   },
   {
     "id": "biwa_hayahide_rouge_caroler",
@@ -1724,7 +1737,7 @@
     "release_date_global": "2026-01-05",
     "obtained": "gacha",
     "gt_url_name": "102302-biwa-hayahide",
-    "image_url": "https://img.umamusumedb.com/characters/biwa_hayahide_2025.png"
+    "image_url": "/img/characters/102302.webp"
   },
   {
     "id": "biwa_hayahide_102303",
@@ -1753,7 +1766,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102303-biwa-hayahide",
-    "image_url": "https://img.umamusumedb.com/characters/biwa_hayahide_2025.png"
+    "image_url": "/img/characters/102303.webp"
   },
   {
     "id": "mayano_top_gun_scramble_zone",
@@ -1782,7 +1795,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "102401-mayano-top-gun",
-    "image_url": "https://img.umamusumedb.com/characters/mayano_topgun_2025.png"
+    "image_url": "/img/characters/102401.webp"
   },
   {
     "id": "mayano_top_gun_sunlight_bouquet",
@@ -1811,7 +1824,7 @@
     "release_date_global": "2025-08-28",
     "obtained": "gacha",
     "gt_url_name": "102402-mayano-top-gun",
-    "image_url": "https://img.umamusumedb.com/characters/mayano_topgun_2025.png"
+    "image_url": "/img/characters/102402.webp"
   },
   {
     "id": "mayano_top_gun_102403",
@@ -1840,7 +1853,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102403-mayano-top-gun",
-    "image_url": "https://img.umamusumedb.com/characters/mayano_topgun_2025.png"
+    "image_url": "/img/characters/102403.webp"
   },
   {
     "id": "manhattan_cafe_creeping_shadow",
@@ -1869,7 +1882,7 @@
     "release_date_global": "2025-12-08",
     "obtained": "gacha",
     "gt_url_name": "102501-manhattan-cafe",
-    "image_url": "https://img.umamusumedb.com/characters/manhattan_cafe_2025.png"
+    "image_url": "/img/characters/102501.webp"
   },
   {
     "id": "manhattan_cafe_102502",
@@ -1898,7 +1911,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102502-manhattan-cafe",
-    "image_url": "https://img.umamusumedb.com/characters/manhattan_cafe_2025.png"
+    "image_url": "/img/characters/102502.webp"
   },
   {
     "id": "manhattan_cafe_102503",
@@ -1927,7 +1940,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102503-manhattan-cafe",
-    "image_url": "https://img.umamusumedb.com/characters/manhattan_cafe_2025.png"
+    "image_url": "/img/characters/102503.webp"
   },
   {
     "id": "mihono_bourbon_mb_19890425",
@@ -1956,7 +1969,7 @@
     "release_date_global": "2025-07-02",
     "obtained": "gacha",
     "gt_url_name": "102601-mihono-bourbon",
-    "image_url": "https://img.umamusumedb.com/characters/mihono_bourbon_2025.png"
+    "image_url": "/img/characters/102601.webp"
   },
   {
     "id": "mihono_bourbon_code_icing",
@@ -1985,7 +1998,7 @@
     "release_date_global": "2026-02-18",
     "obtained": "gacha",
     "gt_url_name": "102602-mihono-bourbon",
-    "image_url": "https://img.umamusumedb.com/characters/mihono_bourbon_2025.png"
+    "image_url": "/img/characters/102602.webp"
   },
   {
     "id": "mejiro_ryan_down_the_line",
@@ -2013,7 +2026,8 @@
     "release_date_jp": "2021-02-24",
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
-    "gt_url_name": "102701-mejiro-ryan"
+    "gt_url_name": "102701-mejiro-ryan",
+    "image_url": "/img/characters/102701.webp"
   },
   {
     "id": "mejiro_ryan_marguerite_latte",
@@ -2041,7 +2055,8 @@
     "release_date_jp": "2023-01-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "102702-mejiro-ryan"
+    "gt_url_name": "102702-mejiro-ryan",
+    "image_url": "/img/characters/102702.webp"
   },
   {
     "id": "hishi_akebono_buono_alla_moda",
@@ -2070,7 +2085,7 @@
     "release_date_global": "2025-11-11",
     "obtained": "gacha",
     "gt_url_name": "102801-hishi-akebono",
-    "image_url": "https://img.umamusumedb.com/characters/hishi_akebono_2025.png"
+    "image_url": "/img/characters/102801.webp"
   },
   {
     "id": "hishi_akebono_102802",
@@ -2099,7 +2114,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102802-hishi-akebono",
-    "image_url": "https://img.umamusumedb.com/characters/hishi_akebono_2025.png"
+    "image_url": "/img/characters/102802.webp"
   },
   {
     "id": "yukino_bijin_darln_snowflake",
@@ -2128,7 +2143,7 @@
     "release_date_global": "2026-08-05",
     "obtained": "gacha",
     "gt_url_name": "102901-yukino-bijin",
-    "image_url": "https://img.umamusumedb.com/characters/yukino_bijin_2025.png"
+    "image_url": "/img/characters/102901.webp"
   },
   {
     "id": "yukino_bijin_102902",
@@ -2157,7 +2172,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "102902-yukino-bijin",
-    "image_url": "https://img.umamusumedb.com/characters/yukino_bijin_2025.png"
+    "image_url": "/img/characters/102902.webp"
   },
   {
     "id": "rice_shower_rosy_dreams",
@@ -2186,7 +2201,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "103001-rice-shower",
-    "image_url": "https://img.umamusumedb.com/characters/rice_shower_2025.png"
+    "image_url": "/img/characters/103001.webp"
   },
   {
     "id": "rice_shower_vampire_makeover",
@@ -2215,7 +2230,7 @@
     "release_date_global": "2025-11-24",
     "obtained": "gacha",
     "gt_url_name": "103002-rice-shower",
-    "image_url": "https://img.umamusumedb.com/characters/rice_shower_2025.png"
+    "image_url": "/img/characters/103002.webp"
   },
   {
     "id": "rice_shower_103003",
@@ -2244,7 +2259,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103003-rice-shower",
-    "image_url": "https://img.umamusumedb.com/characters/rice_shower_2025.png"
+    "image_url": "/img/characters/103003.webp"
   },
   {
     "id": "ines_fujin_always_electrifying",
@@ -2272,7 +2287,8 @@
     "release_date_jp": "2022-05-10",
     "release_date_global": "2026-04-30",
     "obtained": "gacha",
-    "gt_url_name": "103101-ines-fujin"
+    "gt_url_name": "103101-ines-fujin",
+    "image_url": "/img/characters/103101.webp"
   },
   {
     "id": "ines_fujin_melt_your_heart",
@@ -2300,7 +2316,8 @@
     "release_date_jp": "2023-01-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "103102-ines-fujin"
+    "gt_url_name": "103102-ines-fujin",
+    "image_url": "/img/characters/103102.webp"
   },
   {
     "id": "ines_fujin_103103",
@@ -2328,7 +2345,8 @@
     "release_date_jp": "2025-07-11",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "103103-ines-fujin"
+    "gt_url_name": "103103-ines-fujin",
+    "image_url": "/img/characters/103103.webp"
   },
   {
     "id": "agnes_tachyon_tach_nology",
@@ -2357,7 +2375,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "103201-agnes-tachyon",
-    "image_url": "https://img.umamusumedb.com/characters/agnes_tachyon_tachnology.png"
+    "image_url": "/img/characters/103201.webp"
   },
   {
     "id": "agnes_tachyon_lunatic_lab",
@@ -2386,7 +2404,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103202-agnes-tachyon",
-    "image_url": "https://img.umamusumedb.com/characters/agnes_tachyon_tachnology.png"
+    "image_url": "/img/characters/103202.webp"
   },
   {
     "id": "agnes_tachyon_103203",
@@ -2415,7 +2433,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103203-agnes-tachyon",
-    "image_url": "https://img.umamusumedb.com/characters/agnes_tachyon_tachnology.png"
+    "image_url": "/img/characters/103203.webp"
   },
   {
     "id": "admire_vega_starry_nocturne",
@@ -2444,7 +2462,7 @@
     "release_date_global": "2026-03-05",
     "obtained": "gacha",
     "gt_url_name": "103301-admire-vega",
-    "image_url": "https://img.umamusumedb.com/characters/admire_vega_2025.png"
+    "image_url": "/img/characters/103301.webp"
   },
   {
     "id": "admire_vega_103302",
@@ -2473,7 +2491,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103302-admire-vega",
-    "image_url": "https://img.umamusumedb.com/characters/admire_vega_2025.png"
+    "image_url": "/img/characters/103302.webp"
   },
   {
     "id": "inari_one_edomurasaki",
@@ -2502,7 +2520,7 @@
     "release_date_global": "2026-05-28",
     "obtained": "gacha",
     "gt_url_name": "103401-inari-one",
-    "image_url": "https://img.umamusumedb.com/characters/inari_one_2025.png"
+    "image_url": "/img/characters/103401.webp"
   },
   {
     "id": "inari_one_golden_dream",
@@ -2531,7 +2549,7 @@
     "release_date_global": "2026-09-07",
     "obtained": "gacha",
     "gt_url_name": "103402-inari-one",
-    "image_url": "https://img.umamusumedb.com/characters/inari_one_2025.png"
+    "image_url": "/img/characters/103402.webp"
   },
   {
     "id": "winning_ticket_get_to_winning",
@@ -2560,7 +2578,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "103501-winning-ticket",
-    "image_url": "https://img.umamusumedb.com/characters/winning_ticket_2025.png"
+    "image_url": "/img/characters/103501.webp"
   },
   {
     "id": "winning_ticket_dream_deliverer",
@@ -2589,7 +2607,7 @@
     "release_date_global": "2026-07-27",
     "obtained": "gacha",
     "gt_url_name": "103502-winning-ticket",
-    "image_url": "https://img.umamusumedb.com/characters/winning_ticket_2025.png"
+    "image_url": "/img/characters/103502.webp"
   },
   {
     "id": "winning_ticket_103503",
@@ -2618,7 +2636,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103503-winning-ticket",
-    "image_url": "https://img.umamusumedb.com/characters/winning_ticket_2025.png"
+    "image_url": "/img/characters/103503.webp"
   },
   {
     "id": "air_shakur_unsigned",
@@ -2646,7 +2664,8 @@
     "release_date_jp": "2022-07-11",
     "release_date_global": "2026-06-18",
     "obtained": "gacha",
-    "gt_url_name": "103601-air-shakur"
+    "gt_url_name": "103601-air-shakur",
+    "image_url": "/img/characters/103601.webp"
   },
   {
     "id": "air_shakur_103602",
@@ -2674,7 +2693,8 @@
     "release_date_jp": "2023-09-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "103602-air-shakur"
+    "gt_url_name": "103602-air-shakur",
+    "image_url": "/img/characters/103602.webp"
   },
   {
     "id": "eishin_flash_meisterschaft",
@@ -2703,7 +2723,7 @@
     "release_date_global": "2025-10-30",
     "obtained": "gacha",
     "gt_url_name": "103701-eishin-flash",
-    "image_url": "https://img.umamusumedb.com/characters/eishin_flash_2025.png"
+    "image_url": "/img/characters/103701.webp"
   },
   {
     "id": "eishin_flash_precise_chocolatier",
@@ -2732,7 +2752,7 @@
     "release_date_global": "2026-02-18",
     "obtained": "gacha",
     "gt_url_name": "103702-eishin-flash",
-    "image_url": "https://img.umamusumedb.com/characters/eishin_flash_2025.png"
+    "image_url": "/img/characters/103702.webp"
   },
   {
     "id": "eishin_flash_103703",
@@ -2761,7 +2781,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103703-eishin-flash",
-    "image_url": "https://img.umamusumedb.com/characters/eishin_flash_2025.png"
+    "image_url": "/img/characters/103703.webp"
   },
   {
     "id": "curren_chan_fille_eclair",
@@ -2790,7 +2810,7 @@
     "release_date_global": "2025-07-27",
     "obtained": "gacha",
     "gt_url_name": "103801-curren-chan",
-    "image_url": "https://img.umamusumedb.com/characters/curren_chan.png"
+    "image_url": "/img/characters/103801.webp"
   },
   {
     "id": "curren_chan_ma_cherie_of_the_new_moon",
@@ -2819,7 +2839,7 @@
     "release_date_global": "2026-05-18",
     "obtained": "gacha",
     "gt_url_name": "103802-curren-chan",
-    "image_url": "https://img.umamusumedb.com/characters/curren_chan.png"
+    "image_url": "/img/characters/103802.webp"
   },
   {
     "id": "kawakami_princess_princess_of_pink",
@@ -2848,7 +2868,7 @@
     "release_date_global": "2025-12-01",
     "obtained": "gacha",
     "gt_url_name": "103901-kawakami-princess",
-    "image_url": "https://img.umamusumedb.com/characters/kawakami_princess_2025.png"
+    "image_url": "/img/characters/103901.webp"
   },
   {
     "id": "kawakami_princess_103902",
@@ -2877,7 +2897,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "103902-kawakami-princess",
-    "image_url": "https://img.umamusumedb.com/characters/kawakami_princess_2025.png"
+    "image_url": "/img/characters/103902.webp"
   },
   {
     "id": "gold_city_authentic_1928",
@@ -2906,7 +2926,7 @@
     "release_date_global": "2025-10-07",
     "obtained": "gacha",
     "gt_url_name": "104001-gold-city",
-    "image_url": "https://img.umamusumedb.com/characters/gold_city_2025.png"
+    "image_url": "/img/characters/104001.webp"
   },
   {
     "id": "gold_city_autumn_cosmos",
@@ -2935,7 +2955,7 @@
     "release_date_global": "2025-12-14",
     "obtained": "gacha",
     "gt_url_name": "104002-gold-city",
-    "image_url": "https://img.umamusumedb.com/characters/gold_city_2025.png"
+    "image_url": "/img/characters/104002.webp"
   },
   {
     "id": "gold_city_104003",
@@ -2964,7 +2984,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104003-gold-city",
-    "image_url": "https://img.umamusumedb.com/characters/gold_city_2025.png"
+    "image_url": "/img/characters/104003.webp"
   },
   {
     "id": "sakura_bakushin_o_blossom_in_learning",
@@ -2993,7 +3013,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "104101-sakura-bakushin-o",
-    "image_url": "https://img.umamusumedb.com/characters/sakura_bakushin_o.png"
+    "image_url": "/img/characters/104101.webp"
   },
   {
     "id": "sakura_bakushin_o_red_hot_leader",
@@ -3022,7 +3042,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104102-sakura-bakushin-o",
-    "image_url": "https://img.umamusumedb.com/characters/sakura_bakushin_o.png"
+    "image_url": "/img/characters/104102.webp"
   },
   {
     "id": "sakura_bakushin_o_104103",
@@ -3051,7 +3071,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104103-sakura-bakushin-o",
-    "image_url": "https://img.umamusumedb.com/characters/sakura_bakushin_o.png"
+    "image_url": "/img/characters/104103.webp"
   },
   {
     "id": "seeking_the_pearl_rocket_star",
@@ -3080,7 +3100,7 @@
     "release_date_global": "2026-08-12",
     "obtained": "gacha",
     "gt_url_name": "104201-seeking-the-pearl",
-    "image_url": "https://img.umamusumedb.com/characters/seeking_the_pearl_2025.png"
+    "image_url": "/img/characters/104201.webp"
   },
   {
     "id": "seeking_the_pearl_104202",
@@ -3109,7 +3129,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104202-seeking-the-pearl",
-    "image_url": "https://img.umamusumedb.com/characters/seeking_the_pearl_2025.png"
+    "image_url": "/img/characters/104202.webp"
   },
   {
     "id": "shinko_windy_wicked_punk",
@@ -3137,7 +3157,8 @@
     "release_date_jp": "2023-02-13",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "104301-shinko-windy"
+    "gt_url_name": "104301-shinko-windy",
+    "image_url": "/img/characters/104301.webp"
   },
   {
     "id": "shinko_windy_104302",
@@ -3165,7 +3186,8 @@
     "release_date_jp": "2026-08-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "104302-shinko-windy"
+    "gt_url_name": "104302-shinko-windy",
+    "image_url": "/img/characters/104302.webp"
   },
   {
     "id": "sweep_tosho_platanus_witch",
@@ -3194,7 +3216,7 @@
     "release_date_global": "2026-06-04",
     "obtained": "gacha",
     "gt_url_name": "104401-sweep-tosho",
-    "image_url": "https://img.umamusumedb.com/characters/sweep_tosho_2025.png"
+    "image_url": "/img/characters/104401.webp"
   },
   {
     "id": "sweep_tosho_104402",
@@ -3223,7 +3245,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104402-sweep-tosho",
-    "image_url": "https://img.umamusumedb.com/characters/sweep_tosho_2025.png"
+    "image_url": "/img/characters/104402.webp"
   },
   {
     "id": "super_creek_murmuring_stream",
@@ -3251,7 +3273,8 @@
     "release_date_jp": "2021-02-24",
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
-    "gt_url_name": "104501-super-creek"
+    "gt_url_name": "104501-super-creek",
+    "image_url": "/img/characters/104501.webp"
   },
   {
     "id": "super_creek_chiffon_wrapped_mummy",
@@ -3279,7 +3302,8 @@
     "release_date_jp": "2021-09-29",
     "release_date_global": "2025-11-24",
     "obtained": "gacha",
-    "gt_url_name": "104502-super-creek"
+    "gt_url_name": "104502-super-creek",
+    "image_url": "/img/characters/104502.webp"
   },
   {
     "id": "super_creek_104503",
@@ -3307,7 +3331,8 @@
     "release_date_jp": "2024-04-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "104503-super-creek"
+    "gt_url_name": "104503-super-creek",
+    "image_url": "/img/characters/104503.webp"
   },
   {
     "id": "smart_falcon_love_4ever",
@@ -3336,7 +3361,7 @@
     "release_date_global": "2025-08-11",
     "obtained": "gacha",
     "gt_url_name": "104601-smart-falcon",
-    "image_url": "https://img.umamusumedb.com/characters/smart_falcon.png"
+    "image_url": "/img/characters/104601.webp"
   },
   {
     "id": "smart_falcon_twilight_triumph",
@@ -3365,7 +3390,7 @@
     "release_date_global": "2026-07-22",
     "obtained": "gacha",
     "gt_url_name": "104602-smart-falcon",
-    "image_url": "https://img.umamusumedb.com/characters/smart_falcon.png"
+    "image_url": "/img/characters/104602.webp"
   },
   {
     "id": "smart_falcon_104603",
@@ -3394,7 +3419,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104603-smart-falcon",
-    "image_url": "https://img.umamusumedb.com/characters/smart_falcon.png"
+    "image_url": "/img/characters/104603.webp"
   },
   {
     "id": "zenno_rob_roy_heroic_author",
@@ -3423,7 +3448,7 @@
     "release_date_global": "2026-10-07",
     "obtained": "gacha",
     "gt_url_name": "104701-zenno-rob-roy",
-    "image_url": "https://img.umamusumedb.com/characters/zenno_rob_roy_2025.png"
+    "image_url": "/img/characters/104701.webp"
   },
   {
     "id": "zenno_rob_roy_104702",
@@ -3452,7 +3477,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104702-zenno-rob-roy",
-    "image_url": "https://img.umamusumedb.com/characters/zenno_rob_roy_2025.png"
+    "image_url": "/img/characters/104702.webp"
   },
   {
     "id": "tosen_jordan_jokester_vibes",
@@ -3480,7 +3505,8 @@
     "release_date_jp": "2021-11-08",
     "release_date_global": "2025-12-18",
     "obtained": "gacha",
-    "gt_url_name": "104801-tosen-jordan"
+    "gt_url_name": "104801-tosen-jordan",
+    "image_url": "/img/characters/104801.webp"
   },
   {
     "id": "tosen_jordan_aurore_vacances",
@@ -3508,7 +3534,8 @@
     "release_date_jp": "2023-06-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "104802-tosen-jordan"
+    "gt_url_name": "104802-tosen-jordan",
+    "image_url": "/img/characters/104802.webp"
   },
   {
     "id": "tosen_jordan_104803",
@@ -3536,7 +3563,8 @@
     "release_date_jp": "2025-10-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "104803-tosen-jordan"
+    "gt_url_name": "104803-tosen-jordan",
+    "image_url": "/img/characters/104803.webp"
   },
   {
     "id": "nakayama_festa_desperate_measures",
@@ -3565,7 +3593,7 @@
     "release_date_global": "2026-09-15",
     "obtained": "gacha",
     "gt_url_name": "104901-nakayama-festa",
-    "image_url": "https://img.umamusumedb.com/characters/nakayama_festa_2025.png"
+    "image_url": "/img/characters/104901.webp"
   },
   {
     "id": "nakayama_festa_104902",
@@ -3594,7 +3622,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "104902-nakayama-festa",
-    "image_url": "https://img.umamusumedb.com/characters/nakayama_festa_2025.png"
+    "image_url": "/img/characters/104902.webp"
   },
   {
     "id": "narita_taishin_nevertheless",
@@ -3623,7 +3651,7 @@
     "release_date_global": "2025-08-03",
     "obtained": "gacha",
     "gt_url_name": "105001-narita-taishin",
-    "image_url": "https://img.umamusumedb.com/characters/narita_taishin_nevertheless.png"
+    "image_url": "/img/characters/105001.webp"
   },
   {
     "id": "narita_taishin_difference_engineer",
@@ -3652,7 +3680,7 @@
     "release_date_global": "2026-07-27",
     "obtained": "gacha",
     "gt_url_name": "105002-narita-taishin",
-    "image_url": "https://img.umamusumedb.com/characters/narita_taishin_nevertheless.png"
+    "image_url": "/img/characters/105002.webp"
   },
   {
     "id": "narita_taishin_105003",
@@ -3681,7 +3709,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105003-narita-taishin",
-    "image_url": "https://img.umamusumedb.com/characters/narita_taishin_nevertheless.png"
+    "image_url": "/img/characters/105003.webp"
   },
   {
     "id": "nishino_flower_layered_petals",
@@ -3709,7 +3737,8 @@
     "release_date_jp": "2022-04-11",
     "release_date_global": "2026-04-12",
     "obtained": "gacha",
-    "gt_url_name": "105101-nishino-flower"
+    "gt_url_name": "105101-nishino-flower",
+    "image_url": "/img/characters/105101.webp"
   },
   {
     "id": "nishino_flower_sweet_juneberry",
@@ -3737,7 +3766,8 @@
     "release_date_jp": "2023-05-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "105102-nishino-flower"
+    "gt_url_name": "105102-nishino-flower",
+    "image_url": "/img/characters/105102.webp"
   },
   {
     "id": "haru_urara_bestest_prize",
@@ -3766,7 +3796,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "105201-haru-urara",
-    "image_url": "https://img.umamusumedb.com/characters/haru_urara_2025.png"
+    "image_url": "/img/characters/105201.webp"
   },
   {
     "id": "haru_urara_new_year_new_urara",
@@ -3795,7 +3825,7 @@
     "release_date_global": "2026-01-29",
     "obtained": "gacha",
     "gt_url_name": "105202-haru-urara",
-    "image_url": "https://img.umamusumedb.com/characters/haru_urara_2025.png"
+    "image_url": "/img/characters/105202.webp"
   },
   {
     "id": "bamboo_memory_iron_ambition",
@@ -3823,7 +3853,8 @@
     "release_date_jp": "2022-08-10",
     "release_date_global": "2026-07-07",
     "obtained": "gacha",
-    "gt_url_name": "105301-bamboo-memory"
+    "gt_url_name": "105301-bamboo-memory",
+    "image_url": "/img/characters/105301.webp"
   },
   {
     "id": "bamboo_memory_ultra_marine",
@@ -3851,7 +3882,8 @@
     "release_date_jp": "2023-06-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "105302-bamboo-memory"
+    "gt_url_name": "105302-bamboo-memory",
+    "image_url": "/img/characters/105302.webp"
   },
   {
     "id": "biko_pegasus_105401",
@@ -3879,7 +3911,8 @@
     "release_date_jp": "2024-02-14",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "105401-biko-pegasus"
+    "gt_url_name": "105401-biko-pegasus",
+    "image_url": "/img/characters/105401.webp"
   },
   {
     "id": "marvelous_sunday_super_marvel_tastic",
@@ -3907,7 +3940,8 @@
     "release_date_jp": "2023-06-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "105501-marvelous-sunday"
+    "gt_url_name": "105501-marvelous-sunday",
+    "image_url": "/img/characters/105501.webp"
   },
   {
     "id": "marvelous_sunday_105502",
@@ -3935,7 +3969,8 @@
     "release_date_jp": "2025-09-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "105502-marvelous-sunday"
+    "gt_url_name": "105502-marvelous-sunday",
+    "image_url": "/img/characters/105502.webp"
   },
   {
     "id": "matikanefukukitaru_rising_fortune",
@@ -3964,7 +3999,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "105601-matikanefukukitaru",
-    "image_url": "https://img.umamusumedb.com/characters/matikane_fukukitaru_2025.png"
+    "image_url": "/img/characters/105601.webp"
   },
   {
     "id": "matikanefukukitaru_lucky_tidings",
@@ -3993,7 +4028,7 @@
     "release_date_global": "2025-11-06",
     "obtained": "gacha",
     "gt_url_name": "105602-matikanefukukitaru",
-    "image_url": "https://img.umamusumedb.com/characters/matikane_fukukitaru_2025.png"
+    "image_url": "/img/characters/105602.webp"
   },
   {
     "id": "mr_c_b_clear_bliss",
@@ -4022,7 +4057,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105701-mr-cb",
-    "image_url": "https://img.umamusumedb.com/characters/mr_cb_2025.png"
+    "image_url": "/img/characters/105701.webp"
   },
   {
     "id": "mr_c_b_105702",
@@ -4051,7 +4086,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "105702-mr-cb",
-    "image_url": "https://img.umamusumedb.com/characters/mr_cb_2025.png"
+    "image_url": "/img/characters/105702.webp"
   },
   {
     "id": "meisho_doto_turbulent_blue",
@@ -4079,7 +4114,8 @@
     "release_date_jp": "2021-08-11",
     "release_date_global": "2025-10-21",
     "obtained": "gacha",
-    "gt_url_name": "105801-meisho-doto"
+    "gt_url_name": "105801-meisho-doto",
+    "image_url": "/img/characters/105801.webp"
   },
   {
     "id": "meisho_doto_dot_o_lantern",
@@ -4107,7 +4143,8 @@
     "release_date_jp": "2022-09-29",
     "release_date_global": "2026-08-18",
     "obtained": "gacha",
-    "gt_url_name": "105802-meisho-doto"
+    "gt_url_name": "105802-meisho-doto",
+    "image_url": "/img/characters/105802.webp"
   },
   {
     "id": "mejiro_dober_off_the_line",
@@ -4136,7 +4173,7 @@
     "release_date_global": "2025-12-28",
     "obtained": "gacha",
     "gt_url_name": "105901-mejiro-dober",
-    "image_url": "https://img.umamusumedb.com/characters/mejiro_dober_2025.png"
+    "image_url": "/img/characters/105901.webp"
   },
   {
     "id": "mejiro_dober_sapphire_sojourn",
@@ -4165,7 +4202,7 @@
     "release_date_global": "2026-06-11",
     "obtained": "gacha",
     "gt_url_name": "105902-mejiro-dober",
-    "image_url": "https://img.umamusumedb.com/characters/mejiro_dober_2025.png"
+    "image_url": "/img/characters/105902.webp"
   },
   {
     "id": "nice_nature_poinsettia_ribbon",
@@ -4194,7 +4231,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "106001-nice-nature",
-    "image_url": "https://img.umamusumedb.com/characters/nice_nature_2025.png"
+    "image_url": "/img/characters/106001.webp"
   },
   {
     "id": "nice_nature_run_and_win",
@@ -4223,7 +4260,7 @@
     "release_date_global": "2026-04-26",
     "obtained": "gacha",
     "gt_url_name": "106002-nice-nature",
-    "image_url": "https://img.umamusumedb.com/characters/nice_nature_2025.png"
+    "image_url": "/img/characters/106002.webp"
   },
   {
     "id": "nice_nature_106003",
@@ -4252,7 +4289,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106003-nice-nature",
-    "image_url": "https://img.umamusumedb.com/characters/nice_nature_2025.png"
+    "image_url": "/img/characters/106003.webp"
   },
   {
     "id": "king_halo_king_of_emeralds",
@@ -4281,7 +4318,7 @@
     "release_date_global": "2025-06-26",
     "obtained": "gacha",
     "gt_url_name": "106101-king-halo",
-    "image_url": "https://img.umamusumedb.com/characters/king_halo_2025.png"
+    "image_url": "/img/characters/106101.webp"
   },
   {
     "id": "king_halo_cheerleader_in_noble_white",
@@ -4310,7 +4347,7 @@
     "release_date_global": "2026-04-26",
     "obtained": "gacha",
     "gt_url_name": "106102-king-halo",
-    "image_url": "https://img.umamusumedb.com/characters/king_halo_2025.png"
+    "image_url": "/img/characters/106102.webp"
   },
   {
     "id": "king_halo_106103",
@@ -4339,7 +4376,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106103-king-halo",
-    "image_url": "https://img.umamusumedb.com/characters/king_halo_2025.png"
+    "image_url": "/img/characters/106103.webp"
   },
   {
     "id": "matikanetannhauser_clippety_tippety_clop",
@@ -4367,7 +4404,8 @@
     "release_date_jp": "2022-02-24",
     "release_date_global": "2026-03-12",
     "obtained": "gacha",
-    "gt_url_name": "106201-matikanetannhauser"
+    "gt_url_name": "106201-matikanetannhauser",
+    "image_url": "/img/characters/106201.webp"
   },
   {
     "id": "matikanetannhauser_blue_turbulence",
@@ -4395,7 +4433,8 @@
     "release_date_jp": "2023-04-28",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "106202-matikanetannhauser"
+    "gt_url_name": "106202-matikanetannhauser",
+    "image_url": "/img/characters/106202.webp"
   },
   {
     "id": "ikuno_dictus_106301",
@@ -4424,7 +4463,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106301-ikuno-dictus",
-    "image_url": "https://img.umamusumedb.com/characters/ikuno_dictus_2025.png"
+    "image_url": "/img/characters/106301.webp"
   },
   {
     "id": "ikuno_dictus_106302",
@@ -4453,7 +4492,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106302-ikuno-dictus",
-    "image_url": "https://img.umamusumedb.com/characters/ikuno_dictus_2025.png"
+    "image_url": "/img/characters/106302.webp"
   },
   {
     "id": "mejiro_palmer_line_breakthrough",
@@ -4481,7 +4520,8 @@
     "release_date_jp": "2022-05-20",
     "release_date_global": "2026-05-10",
     "obtained": "gacha",
-    "gt_url_name": "106401-mejiro-palmer"
+    "gt_url_name": "106401-mejiro-palmer",
+    "image_url": "/img/characters/106401.webp"
   },
   {
     "id": "mejiro_palmer_106402",
@@ -4509,7 +4549,8 @@
     "release_date_jp": "2023-11-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "106402-mejiro-palmer"
+    "gt_url_name": "106402-mejiro-palmer",
+    "image_url": "/img/characters/106402.webp"
   },
   {
     "id": "daitaku_helios_fun_fun_party_night",
@@ -4537,7 +4578,8 @@
     "release_date_jp": "2023-01-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "106501-daitaku-helios"
+    "gt_url_name": "106501-daitaku-helios",
+    "image_url": "/img/characters/106501.webp"
   },
   {
     "id": "daitaku_helios_106502",
@@ -4565,7 +4607,8 @@
     "release_date_jp": "2024-03-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "106502-daitaku-helios"
+    "gt_url_name": "106502-daitaku-helios",
+    "image_url": "/img/characters/106502.webp"
   },
   {
     "id": "twin_turbo_turbo_engine_full_throttle",
@@ -4594,7 +4637,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106601-twin-turbo",
-    "image_url": "https://img.umamusumedb.com/characters/twin_turbo_2025.png"
+    "image_url": "/img/characters/106601.webp"
   },
   {
     "id": "satono_diamond_natural_brilliance",
@@ -4623,7 +4666,7 @@
     "release_date_global": "2026-03-22",
     "obtained": "gacha",
     "gt_url_name": "106701-satono-diamond",
-    "image_url": "https://img.umamusumedb.com/characters/satono_diamond_2025.png"
+    "image_url": "/img/characters/106701.webp"
   },
   {
     "id": "satono_diamond_jades_prosperity",
@@ -4652,7 +4695,7 @@
     "release_date_global": "2026-10-20",
     "obtained": "gacha",
     "gt_url_name": "106702-satono-diamond",
-    "image_url": "https://img.umamusumedb.com/characters/satono_diamond_2025.png"
+    "image_url": "/img/characters/106702.webp"
   },
   {
     "id": "satono_diamond_106703",
@@ -4681,7 +4724,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106703-satono-diamond",
-    "image_url": "https://img.umamusumedb.com/characters/satono_diamond_2025.png"
+    "image_url": "/img/characters/106703.webp"
   },
   {
     "id": "kitasan_black_gilded_shrine_to_glory",
@@ -4710,7 +4753,7 @@
     "release_date_global": "2026-03-12",
     "obtained": "gacha",
     "gt_url_name": "106801-kitasan-black",
-    "image_url": "https://img.umamusumedb.com/characters/kitasan_black_2025.png"
+    "image_url": "/img/characters/106801.webp"
   },
   {
     "id": "kitasan_black_cranes_ambition",
@@ -4739,7 +4782,7 @@
     "release_date_global": "2026-10-20",
     "obtained": "gacha",
     "gt_url_name": "106802-kitasan-black",
-    "image_url": "https://img.umamusumedb.com/characters/kitasan_black_2025.png"
+    "image_url": "/img/characters/106802.webp"
   },
   {
     "id": "kitasan_black_106803",
@@ -4768,7 +4811,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "106803-kitasan-black",
-    "image_url": "https://img.umamusumedb.com/characters/kitasan_black_2025.png"
+    "image_url": "/img/characters/106803.webp"
   },
   {
     "id": "sakura_chiyono_o_strength_in_full_bloom",
@@ -4796,7 +4839,8 @@
     "release_date_jp": "2022-01-20",
     "release_date_global": "2026-02-11",
     "obtained": "gacha",
-    "gt_url_name": "106901-sakura-chiyono-o"
+    "gt_url_name": "106901-sakura-chiyono-o",
+    "image_url": "/img/characters/106901.webp"
   },
   {
     "id": "sakura_chiyono_o_fleur_enneigee",
@@ -4824,7 +4868,8 @@
     "release_date_jp": "2023-03-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "106902-sakura-chiyono-o"
+    "gt_url_name": "106902-sakura-chiyono-o",
+    "image_url": "/img/characters/106902.webp"
   },
   {
     "id": "sirius_symboli_feroce",
@@ -4852,7 +4897,8 @@
     "release_date_jp": "2023-07-21",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107001-sirius-symboli"
+    "gt_url_name": "107001-sirius-symboli",
+    "image_url": "/img/characters/107001.webp"
   },
   {
     "id": "sirius_symboli_107002",
@@ -4880,7 +4926,8 @@
     "release_date_jp": "2025-04-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107002-sirius-symboli"
+    "gt_url_name": "107002-sirius-symboli",
+    "image_url": "/img/characters/107002.webp"
   },
   {
     "id": "mejiro_ardan_crystalline",
@@ -4908,7 +4955,8 @@
     "release_date_jp": "2022-02-08",
     "release_date_global": "2026-02-25",
     "obtained": "gacha",
-    "gt_url_name": "107101-mejiro-ardan"
+    "gt_url_name": "107101-mejiro-ardan",
+    "image_url": "/img/characters/107101.webp"
   },
   {
     "id": "mejiro_ardan_neige_emeraude",
@@ -4936,7 +4984,8 @@
     "release_date_jp": "2023-03-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107102-mejiro-ardan"
+    "gt_url_name": "107102-mejiro-ardan",
+    "image_url": "/img/characters/107102.webp"
   },
   {
     "id": "yaeno_muteki_blazed_head_covered_fists",
@@ -4965,7 +5014,7 @@
     "release_date_global": "2026-04-20",
     "obtained": "gacha",
     "gt_url_name": "107201-yaeno-muteki",
-    "image_url": "https://img.umamusumedb.com/characters/yaeno_muteki_2025.png"
+    "image_url": "/img/characters/107201.webp"
   },
   {
     "id": "yaeno_muteki_107202",
@@ -4994,7 +5043,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "107202-yaeno-muteki",
-    "image_url": "https://img.umamusumedb.com/characters/yaeno_muteki_2025.png"
+    "image_url": "/img/characters/107202.webp"
   },
   {
     "id": "tsurumaru_tsuyoshi_107301",
@@ -5022,7 +5071,8 @@
     "release_date_jp": "2025-02-14",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107301-tsurumaru-tsuyoshi"
+    "gt_url_name": "107301-tsurumaru-tsuyoshi",
+    "image_url": "/img/characters/107301.webp"
   },
   {
     "id": "mejiro_bright_brunissage_line",
@@ -5050,7 +5100,8 @@
     "release_date_jp": "2022-03-18",
     "release_date_global": "2026-03-26",
     "obtained": "gacha",
-    "gt_url_name": "107401-mejiro-bright"
+    "gt_url_name": "107401-mejiro-bright",
+    "image_url": "/img/characters/107401.webp"
   },
   {
     "id": "mejiro_bright_107402",
@@ -5078,7 +5129,8 @@
     "release_date_jp": "2023-11-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107402-mejiro-bright"
+    "gt_url_name": "107402-mejiro-bright",
+    "image_url": "/img/characters/107402.webp"
   },
   {
     "id": "mejiro_bright_107403",
@@ -5106,7 +5158,8 @@
     "release_date_jp": "2026-07-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107403-mejiro-bright"
+    "gt_url_name": "107403-mejiro-bright",
+    "image_url": "/img/characters/107403.webp"
   },
   {
     "id": "sakura_laurel_saisir_le_reve",
@@ -5134,7 +5187,8 @@
     "release_date_jp": "2023-04-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107601-sakura-laurel"
+    "gt_url_name": "107601-sakura-laurel",
+    "image_url": "/img/characters/107601.webp"
   },
   {
     "id": "sakura_laurel_107602",
@@ -5162,7 +5216,8 @@
     "release_date_jp": "2025-12-26",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107602-sakura-laurel"
+    "gt_url_name": "107602-sakura-laurel",
+    "image_url": "/img/characters/107602.webp"
   },
   {
     "id": "narita_top_road_107701",
@@ -5190,7 +5245,8 @@
     "release_date_jp": "2023-08-24",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107701-narita-top-road"
+    "gt_url_name": "107701-narita-top-road",
+    "image_url": "/img/characters/107701.webp"
   },
   {
     "id": "narita_top_road_107702",
@@ -5218,7 +5274,8 @@
     "release_date_jp": "2024-11-28",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107702-narita-top-road"
+    "gt_url_name": "107702-narita-top-road",
+    "image_url": "/img/characters/107702.webp"
   },
   {
     "id": "narita_top_road_107703",
@@ -5246,7 +5303,8 @@
     "release_date_jp": "2026-06-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107703-narita-top-road"
+    "gt_url_name": "107703-narita-top-road",
+    "image_url": "/img/characters/107703.webp"
   },
   {
     "id": "yamanin_zephyr_fluttertail_spirit",
@@ -5274,7 +5332,8 @@
     "release_date_jp": "2022-10-19",
     "release_date_global": "2026-09-01",
     "obtained": "gacha",
-    "gt_url_name": "107801-yamanin-zephyr"
+    "gt_url_name": "107801-yamanin-zephyr",
+    "image_url": "/img/characters/107801.webp"
   },
   {
     "id": "yamanin_zephyr_107802",
@@ -5302,7 +5361,8 @@
     "release_date_jp": "2025-01-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107802-yamanin-zephyr"
+    "gt_url_name": "107802-yamanin-zephyr",
+    "image_url": "/img/characters/107802.webp"
   },
   {
     "id": "furioso_107901",
@@ -5330,7 +5390,8 @@
     "release_date_jp": "2025-01-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "107901-furioso"
+    "gt_url_name": "107901-furioso",
+    "image_url": "/img/characters/107901.webp"
   },
   {
     "id": "transcend_108001",
@@ -5358,7 +5419,8 @@
     "release_date_jp": "2024-03-12",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108001-transcend"
+    "gt_url_name": "108001-transcend",
+    "image_url": "/img/characters/108001.webp"
   },
   {
     "id": "transcend_108002",
@@ -5386,7 +5448,8 @@
     "release_date_jp": "2025-10-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108002-transcend"
+    "gt_url_name": "108002-transcend",
+    "image_url": "/img/characters/108002.webp"
   },
   {
     "id": "espoir_city_108101",
@@ -5414,7 +5477,8 @@
     "release_date_jp": "2025-09-09",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108101-espoir-city"
+    "gt_url_name": "108101-espoir-city",
+    "image_url": "/img/characters/108101.webp"
   },
   {
     "id": "north_flight_108201",
@@ -5442,7 +5506,8 @@
     "release_date_jp": "2024-05-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108201-north-flight"
+    "gt_url_name": "108201-north-flight",
+    "image_url": "/img/characters/108201.webp"
   },
   {
     "id": "north_flight_108202",
@@ -5470,7 +5535,8 @@
     "release_date_jp": "2026-03-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108202-north-flight"
+    "gt_url_name": "108202-north-flight",
+    "image_url": "/img/characters/108202.webp"
   },
   {
     "id": "symboli_kris_s_onyx_soldier",
@@ -5498,7 +5564,8 @@
     "release_date_jp": "2023-03-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108301-symboli-kris-s"
+    "gt_url_name": "108301-symboli-kris-s",
+    "image_url": "/img/characters/108301.webp"
   },
   {
     "id": "symboli_kris_s_108302",
@@ -5526,7 +5593,8 @@
     "release_date_jp": "2023-09-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108302-symboli-kris-s"
+    "gt_url_name": "108302-symboli-kris-s",
+    "image_url": "/img/characters/108302.webp"
   },
   {
     "id": "tanino_gimlet_mantle_of_keravnos",
@@ -5554,7 +5622,8 @@
     "release_date_jp": "2023-05-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108401-tanino-gimlet"
+    "gt_url_name": "108401-tanino-gimlet",
+    "image_url": "/img/characters/108401.webp"
   },
   {
     "id": "tanino_gimlet_108402",
@@ -5582,7 +5651,8 @@
     "release_date_jp": "2025-03-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108402-tanino-gimlet"
+    "gt_url_name": "108402-tanino-gimlet",
+    "image_url": "/img/characters/108402.webp"
   },
   {
     "id": "daiichi_ruby_opulent_gem",
@@ -5610,7 +5680,8 @@
     "release_date_jp": "2023-03-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108501-daiichi-ruby"
+    "gt_url_name": "108501-daiichi-ruby",
+    "image_url": "/img/characters/108501.webp"
   },
   {
     "id": "daiichi_ruby_108502",
@@ -5638,7 +5709,8 @@
     "release_date_jp": "2024-03-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108502-daiichi-ruby"
+    "gt_url_name": "108502-daiichi-ruby",
+    "image_url": "/img/characters/108502.webp"
   },
   {
     "id": "mejiro_ramonu_108601",
@@ -5666,7 +5738,8 @@
     "release_date_jp": "2023-10-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108601-mejiro-ramonu"
+    "gt_url_name": "108601-mejiro-ramonu",
+    "image_url": "/img/characters/108601.webp"
   },
   {
     "id": "mejiro_ramonu_108602",
@@ -5694,7 +5767,8 @@
     "release_date_jp": "2025-05-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108602-mejiro-ramonu"
+    "gt_url_name": "108602-mejiro-ramonu",
+    "image_url": "/img/characters/108602.webp"
   },
   {
     "id": "aston_machan_flare",
@@ -5722,7 +5796,8 @@
     "release_date_jp": "2022-10-11",
     "release_date_global": "2026-08-25",
     "obtained": "gacha",
-    "gt_url_name": "108701-aston-machan"
+    "gt_url_name": "108701-aston-machan",
+    "image_url": "/img/characters/108701.webp"
   },
   {
     "id": "aston_machan_108702",
@@ -5750,7 +5825,8 @@
     "release_date_jp": "2025-01-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108702-aston-machan"
+    "gt_url_name": "108702-aston-machan",
+    "image_url": "/img/characters/108702.webp"
   },
   {
     "id": "satono_crown_108801",
@@ -5778,7 +5854,8 @@
     "release_date_jp": "2023-12-11",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108801-satono-crown"
+    "gt_url_name": "108801-satono-crown",
+    "image_url": "/img/characters/108801.webp"
   },
   {
     "id": "satono_crown_108802",
@@ -5806,7 +5883,8 @@
     "release_date_jp": "2025-07-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108802-satono-crown"
+    "gt_url_name": "108802-satono-crown",
+    "image_url": "/img/characters/108802.webp"
   },
   {
     "id": "cheval_grand_108901",
@@ -5834,7 +5912,8 @@
     "release_date_jp": "2023-12-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108901-cheval-grand"
+    "gt_url_name": "108901-cheval-grand",
+    "image_url": "/img/characters/108901.webp"
   },
   {
     "id": "cheval_grand_108902",
@@ -5862,7 +5941,8 @@
     "release_date_jp": "2025-07-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "108902-cheval-grand"
+    "gt_url_name": "108902-cheval-grand",
+    "image_url": "/img/characters/108902.webp"
   },
   {
     "id": "verxina_109001",
@@ -5890,7 +5970,8 @@
     "release_date_jp": "2025-05-12",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109001-verxina"
+    "gt_url_name": "109001-verxina",
+    "image_url": "/img/characters/109001.webp"
   },
   {
     "id": "vivlos_109101",
@@ -5918,7 +5999,8 @@
     "release_date_jp": "2024-01-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109101-vivlos"
+    "gt_url_name": "109101-vivlos",
+    "image_url": "/img/characters/109101.webp"
   },
   {
     "id": "vivlos_109102",
@@ -5946,7 +6028,8 @@
     "release_date_jp": "2025-08-14",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109102-vivlos"
+    "gt_url_name": "109102-vivlos",
+    "image_url": "/img/characters/109102.webp"
   },
   {
     "id": "dantsu_flame_109201",
@@ -5974,7 +6057,8 @@
     "release_date_jp": "2025-10-18",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109201-dantsu-flame"
+    "gt_url_name": "109201-dantsu-flame",
+    "image_url": "/img/characters/109201.webp"
   },
   {
     "id": "k_s_miracle_109301",
@@ -6002,7 +6086,8 @@
     "release_date_jp": "2023-09-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109301-ksmiracle"
+    "gt_url_name": "109301-ksmiracle",
+    "image_url": "/img/characters/109301.webp"
   },
   {
     "id": "k_s_miracle_109302",
@@ -6030,7 +6115,8 @@
     "release_date_jp": "2025-08-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109302-ksmiracle"
+    "gt_url_name": "109302-ksmiracle",
+    "image_url": "/img/characters/109302.webp"
   },
   {
     "id": "jungle_pocket_109401",
@@ -6058,7 +6144,8 @@
     "release_date_jp": "2024-06-13",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109401-jungle-pocket"
+    "gt_url_name": "109401-jungle-pocket",
+    "image_url": "/img/characters/109401.webp"
   },
   {
     "id": "jungle_pocket_109402",
@@ -6086,7 +6173,8 @@
     "release_date_jp": "2026-04-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109402-jungle-pocket"
+    "gt_url_name": "109402-jungle-pocket",
+    "image_url": "/img/characters/109402.webp"
   },
   {
     "id": "believe_109501",
@@ -6114,7 +6202,8 @@
     "release_date_jp": "2025-09-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109501-believe"
+    "gt_url_name": "109501-believe",
+    "image_url": "/img/characters/109501.webp"
   },
   {
     "id": "no_reason_109601",
@@ -6142,7 +6231,8 @@
     "release_date_jp": "2025-03-21",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109601-no-reason"
+    "gt_url_name": "109601-no-reason",
+    "image_url": "/img/characters/109601.webp"
   },
   {
     "id": "still_in_love_109701",
@@ -6170,7 +6260,8 @@
     "release_date_jp": "2025-08-24",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109701-still-in-love"
+    "gt_url_name": "109701-still-in-love",
+    "image_url": "/img/characters/109701.webp"
   },
   {
     "id": "copano_rickey_eightfold_fortune",
@@ -6198,7 +6289,8 @@
     "release_date_jp": "2022-08-19",
     "release_date_global": "2026-07-16",
     "obtained": "gacha",
-    "gt_url_name": "109801-copano-rickey"
+    "gt_url_name": "109801-copano-rickey",
+    "image_url": "/img/characters/109801.webp"
   },
   {
     "id": "copano_rickey_109802",
@@ -6226,7 +6318,8 @@
     "release_date_jp": "2025-04-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109802-copano-rickey"
+    "gt_url_name": "109802-copano-rickey",
+    "image_url": "/img/characters/109802.webp"
   },
   {
     "id": "hokko_tarumae_starry_lightship",
@@ -6254,7 +6347,8 @@
     "release_date_jp": "2023-01-10",
     "release_date_global": "2026-10-24",
     "obtained": "gacha",
-    "gt_url_name": "109901-hokko-tarumae"
+    "gt_url_name": "109901-hokko-tarumae",
+    "image_url": "/img/characters/109901.webp"
   },
   {
     "id": "hokko_tarumae_109902",
@@ -6282,7 +6376,8 @@
     "release_date_jp": "2024-07-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "109902-hokko-tarumae"
+    "gt_url_name": "109902-hokko-tarumae",
+    "image_url": "/img/characters/109902.webp"
   },
   {
     "id": "wonder_acute_butterfly_sting",
@@ -6310,7 +6405,8 @@
     "release_date_jp": "2022-11-17",
     "release_date_global": "2026-09-24",
     "obtained": "gacha",
-    "gt_url_name": "110001-wonder-acute"
+    "gt_url_name": "110001-wonder-acute",
+    "image_url": "/img/characters/110001.webp"
   },
   {
     "id": "wonder_acute_110002",
@@ -6338,7 +6434,8 @@
     "release_date_jp": "2025-11-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110002-wonder-acute"
+    "gt_url_name": "110002-wonder-acute",
+    "image_url": "/img/characters/110002.webp"
   },
   {
     "id": "sounds_of_earth_110201",
@@ -6366,7 +6463,8 @@
     "release_date_jp": "2024-04-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110201-sounds-of-earth"
+    "gt_url_name": "110201-sounds-of-earth",
+    "image_url": "/img/characters/110201.webp"
   },
   {
     "id": "sounds_of_earth_110202",
@@ -6394,7 +6492,8 @@
     "release_date_jp": "2026-01-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110202-sounds-of-earth"
+    "gt_url_name": "110202-sounds-of-earth",
+    "image_url": "/img/characters/110202.webp"
   },
   {
     "id": "royce_and_royce_110301",
@@ -6422,7 +6521,8 @@
     "release_date_jp": "2026-02-14",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110301-royce-and-royce"
+    "gt_url_name": "110301-royce-and-royce",
+    "image_url": "/img/characters/110301.webp"
   },
   {
     "id": "katsuragi_ace_dragon_rising",
@@ -6450,7 +6550,8 @@
     "release_date_jp": "2023-07-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110401-katsuragi-ace"
+    "gt_url_name": "110401-katsuragi-ace",
+    "image_url": "/img/characters/110401.webp"
   },
   {
     "id": "katsuragi_ace_110402",
@@ -6478,7 +6579,8 @@
     "release_date_jp": "2024-12-27",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110402-katsuragi-ace"
+    "gt_url_name": "110402-katsuragi-ace",
+    "image_url": "/img/characters/110402.webp"
   },
   {
     "id": "neo_universe_universe_naut",
@@ -6506,7 +6608,8 @@
     "release_date_jp": "2023-04-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110501-neo-universe"
+    "gt_url_name": "110501-neo-universe",
+    "image_url": "/img/characters/110501.webp"
   },
   {
     "id": "neo_universe_110502",
@@ -6534,7 +6637,8 @@
     "release_date_jp": "2024-08-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110502-neo-universe"
+    "gt_url_name": "110502-neo-universe",
+    "image_url": "/img/characters/110502.webp"
   },
   {
     "id": "hishi_miracle_miracle_maker",
@@ -6562,7 +6666,8 @@
     "release_date_jp": "2023-05-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110601-hishi-miracle"
+    "gt_url_name": "110601-hishi-miracle",
+    "image_url": "/img/characters/110601.webp"
   },
   {
     "id": "hishi_miracle_110602",
@@ -6590,7 +6695,8 @@
     "release_date_jp": "2025-08-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110602-hishi-miracle"
+    "gt_url_name": "110602-hishi-miracle",
+    "image_url": "/img/characters/110602.webp"
   },
   {
     "id": "tap_dance_city_110701",
@@ -6618,7 +6724,8 @@
     "release_date_jp": "2023-11-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110701-tap-dance-city"
+    "gt_url_name": "110701-tap-dance-city",
+    "image_url": "/img/characters/110701.webp"
   },
   {
     "id": "tap_dance_city_110702",
@@ -6646,7 +6753,8 @@
     "release_date_jp": "2025-03-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110702-tap-dance-city"
+    "gt_url_name": "110702-tap-dance-city",
+    "image_url": "/img/characters/110702.webp"
   },
   {
     "id": "duramente_110801",
@@ -6674,7 +6782,8 @@
     "release_date_jp": "2024-02-24",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110801-duramente"
+    "gt_url_name": "110801-duramente",
+    "image_url": "/img/characters/110801.webp"
   },
   {
     "id": "duramente_110802",
@@ -6702,7 +6811,8 @@
     "release_date_jp": "2026-10-13",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110802-duramente"
+    "gt_url_name": "110802-duramente",
+    "image_url": "/img/characters/110802.webp"
   },
   {
     "id": "rhein_kraft_110901",
@@ -6730,7 +6840,8 @@
     "release_date_jp": "2024-03-21",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "110901-rhein-kraft"
+    "gt_url_name": "110901-rhein-kraft",
+    "image_url": "/img/characters/110901.webp"
   },
   {
     "id": "rhein_kraft_110902",
@@ -6758,7 +6869,8 @@
     "release_date_jp": "2025-07-22",
     "release_date_global": null,
     "obtained": "main_story",
-    "gt_url_name": "110902-rhein-kraft"
+    "gt_url_name": "110902-rhein-kraft",
+    "image_url": "/img/characters/110902.webp"
   },
   {
     "id": "cesario_111001",
@@ -6786,7 +6898,8 @@
     "release_date_jp": "2024-09-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111001-cesario"
+    "gt_url_name": "111001-cesario",
+    "image_url": "/img/characters/111001.webp"
   },
   {
     "id": "cesario_111002",
@@ -6814,7 +6927,8 @@
     "release_date_jp": "2025-05-30",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111002-cesario"
+    "gt_url_name": "111002-cesario",
+    "image_url": "/img/characters/111002.webp"
   },
   {
     "id": "air_messiah_111101",
@@ -6842,7 +6956,8 @@
     "release_date_jp": "2024-11-18",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111101-air-messiah"
+    "gt_url_name": "111101-air-messiah",
+    "image_url": "/img/characters/111101.webp"
   },
   {
     "id": "daring_heart_111201",
@@ -6870,7 +6985,8 @@
     "release_date_jp": "2026-05-11",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111201-daring-heart"
+    "gt_url_name": "111201-daring-heart",
+    "image_url": "/img/characters/111201.webp"
   },
   {
     "id": "fusaichi_pandora_111301",
@@ -6898,7 +7014,8 @@
     "release_date_jp": "2025-07-22",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111301-fusaichi-pandora"
+    "gt_url_name": "111301-fusaichi-pandora",
+    "image_url": "/img/characters/111301.webp"
   },
   {
     "id": "fusaichi_pandora_111302",
@@ -6926,7 +7043,8 @@
     "release_date_jp": "2026-08-14",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111302-fusaichi-pandora"
+    "gt_url_name": "111302-fusaichi-pandora",
+    "image_url": "/img/characters/111302.webp"
   },
   {
     "id": "buena_vista_111401",
@@ -6954,7 +7072,8 @@
     "release_date_jp": "2025-11-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111401-buena-vista"
+    "gt_url_name": "111401-buena-vista",
+    "image_url": "/img/characters/111401.webp"
   },
   {
     "id": "orfevre_111501",
@@ -6982,7 +7101,8 @@
     "release_date_jp": "2025-02-24",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111501-orfevre"
+    "gt_url_name": "111501-orfevre",
+    "image_url": "/img/characters/111501.webp"
   },
   {
     "id": "gentildonna_111601",
@@ -7010,7 +7130,8 @@
     "release_date_jp": "2024-08-24",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111601-gentildonna"
+    "gt_url_name": "111601-gentildonna",
+    "image_url": "/img/characters/111601.webp"
   },
   {
     "id": "gentildonna_111602",
@@ -7038,7 +7159,8 @@
     "release_date_jp": "2026-05-29",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111602-gentildonna"
+    "gt_url_name": "111602-gentildonna",
+    "image_url": "/img/characters/111602.webp"
   },
   {
     "id": "win_variation_111701",
@@ -7066,7 +7188,8 @@
     "release_date_jp": "2024-12-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111701-win-variation"
+    "gt_url_name": "111701-win-variation",
+    "image_url": "/img/characters/111701.webp"
   },
   {
     "id": "admire_groove_111801",
@@ -7094,7 +7217,8 @@
     "release_date_jp": "2026-04-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111801-admire-groove"
+    "gt_url_name": "111801-admire-groove",
+    "image_url": "/img/characters/111801.webp"
   },
   {
     "id": "dream_journey_111901",
@@ -7122,7 +7246,8 @@
     "release_date_jp": "2024-06-26",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111901-dream-journey"
+    "gt_url_name": "111901-dream-journey",
+    "image_url": "/img/characters/111901.webp"
   },
   {
     "id": "dream_journey_111902",
@@ -7150,7 +7275,8 @@
     "release_date_jp": "2025-11-28",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "111902-dream-journey"
+    "gt_url_name": "111902-dream-journey",
+    "image_url": "/img/characters/111902.webp"
   },
   {
     "id": "calstone_light_o_112001",
@@ -7178,7 +7304,8 @@
     "release_date_jp": "2024-07-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "112001-calstone-light-o"
+    "gt_url_name": "112001-calstone-light-o",
+    "image_url": "/img/characters/112001.webp"
   },
   {
     "id": "durandal_112101",
@@ -7206,7 +7333,8 @@
     "release_date_jp": "2024-09-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "112101-durandal"
+    "gt_url_name": "112101-durandal",
+    "image_url": "/img/characters/112101.webp"
   },
   {
     "id": "bubble_gum_fellow_112401",
@@ -7234,7 +7362,8 @@
     "release_date_jp": "2024-10-11",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "112401-bubble-gum-fellow"
+    "gt_url_name": "112401-bubble-gum-fellow",
+    "image_url": "/img/characters/112401.webp"
   },
   {
     "id": "bubble_gum_fellow_112402",
@@ -7262,7 +7391,8 @@
     "release_date_jp": "2026-01-08",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "112402-bubble-gum-fellow"
+    "gt_url_name": "112402-bubble-gum-fellow",
+    "image_url": "/img/characters/112402.webp"
   },
   {
     "id": "fenomeno_112701",
@@ -7290,7 +7420,8 @@
     "release_date_jp": "2025-04-21",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "112701-fenomeno"
+    "gt_url_name": "112701-fenomeno",
+    "image_url": "/img/characters/112701.webp"
   },
   {
     "id": "fenomeno_112702",
@@ -7318,7 +7449,8 @@
     "release_date_jp": "2026-08-31",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "112702-fenomeno"
+    "gt_url_name": "112702-fenomeno",
+    "image_url": "/img/characters/112702.webp"
   },
   {
     "id": "almond_eye_112901",
@@ -7347,7 +7479,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "112901-almond-eye",
-    "image_url": "https://img.umamusumedb.com/characters/almond_eye_2025.png"
+    "image_url": "/img/characters/112901.webp"
   },
   {
     "id": "lucky_lilac_113001",
@@ -7375,7 +7507,8 @@
     "release_date_jp": "2026-04-10",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "113001-lucky-lilac"
+    "gt_url_name": "113001-lucky-lilac",
+    "image_url": "/img/characters/113001.webp"
   },
   {
     "id": "gran_alegria_113101",
@@ -7404,7 +7537,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113101-gran-alegria",
-    "image_url": "https://img.umamusumedb.com/characters/gran_alegria_2025.png"
+    "image_url": "/img/characters/113101.webp"
   },
   {
     "id": "loves_only_you_113201",
@@ -7433,7 +7566,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113201-loves-only-you",
-    "image_url": "https://img.umamusumedb.com/characters/loves_only_you_2025.png"
+    "image_url": "/img/characters/113201.webp"
   },
   {
     "id": "loves_only_you_113202",
@@ -7462,7 +7595,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113202-loves-only-you",
-    "image_url": "https://img.umamusumedb.com/characters/loves_only_you_2025.png"
+    "image_url": "/img/characters/113202.webp"
   },
   {
     "id": "chrono_genesis_113301",
@@ -7491,7 +7624,7 @@
     "release_date_global": null,
     "obtained": "gacha",
     "gt_url_name": "113301-chrono-genesis",
-    "image_url": "https://img.umamusumedb.com/characters/chrono_genesis_2025.png"
+    "image_url": "/img/characters/113301.webp"
   },
   {
     "id": "curren_bouquetdor_113401",
@@ -7519,7 +7652,8 @@
     "release_date_jp": "2026-06-15",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "113401-curren-bouquetdor"
+    "gt_url_name": "113401-curren-bouquetdor",
+    "image_url": "/img/characters/113401.webp"
   },
   {
     "id": "stay_gold_113501",
@@ -7547,7 +7681,8 @@
     "release_date_jp": "2025-12-21",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "113501-stay-gold"
+    "gt_url_name": "113501-stay-gold",
+    "image_url": "/img/characters/113501.webp"
   },
   {
     "id": "red_desire_113601",
@@ -7575,7 +7710,8 @@
     "release_date_jp": "2026-05-20",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "113601-red-desire"
+    "gt_url_name": "113601-red-desire",
+    "image_url": "/img/characters/113601.webp"
   },
   {
     "id": "kiseki_113701",
@@ -7603,7 +7739,8 @@
     "release_date_jp": "2026-01-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "113701-kiseki"
+    "gt_url_name": "113701-kiseki",
+    "image_url": "/img/characters/113701.webp"
   },
   {
     "id": "epiphaneia_114101",
@@ -7631,7 +7768,8 @@
     "release_date_jp": "2026-08-24",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "114101-epiphaneia"
+    "gt_url_name": "114101-epiphaneia",
+    "image_url": "/img/characters/114101.webp"
   },
   {
     "id": "victoire_pisa_114301",
@@ -7659,7 +7797,8 @@
     "release_date_jp": "2026-03-19",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "114301-victoire-pisa"
+    "gt_url_name": "114301-victoire-pisa",
+    "image_url": "/img/characters/114301.webp"
   },
   {
     "id": "rose_kingdom_114401",
@@ -7687,7 +7826,8 @@
     "release_date_jp": "2026-09-18",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "114401-rose-kingdom"
+    "gt_url_name": "114401-rose-kingdom",
+    "image_url": "/img/characters/114401.webp"
   },
   {
     "id": "rulership_114501",
@@ -7715,7 +7855,8 @@
     "release_date_jp": "2026-07-21",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "114501-rulership"
+    "gt_url_name": "114501-rulership",
+    "image_url": "/img/characters/114501.webp"
   },
   {
     "id": "phalaenopsis_114901",
@@ -7743,6 +7884,7 @@
     "release_date_jp": "2026-09-11",
     "release_date_global": null,
     "obtained": "gacha",
-    "gt_url_name": "114901-phalaenopsis"
+    "gt_url_name": "114901-phalaenopsis",
+    "image_url": "/img/characters/114901.webp"
   }
 ]

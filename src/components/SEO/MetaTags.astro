@@ -65,8 +65,8 @@ const hrefZh = alternates?.zh;
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
+{image.endsWith('og-image.png') && <meta property="og:image:width" content="1200" />}
+{image.endsWith('og-image.png') && <meta property="og:image:height" content="630" />}
 <meta property="og:site_name" content="UmamusumeDB" />
 <meta property="og:locale" content={ogLocale} />
 {ogAlternates.map((alt) => (
@@ -74,7 +74,7 @@ const hrefZh = alternates?.zh;
 ))}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:card" content={image.endsWith('og-image.png') ? 'summary_large_image' : 'summary'} />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={fullTitle} />
 <meta property="twitter:description" content={description} />

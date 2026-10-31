@@ -29,6 +29,7 @@ const {
   noindex = false
 } = Astro.props;
 
+const imageAbs = image.startsWith('/') ? `https://umamusumedb.com${image}` : image;
 const locale: Locale = getLocaleFromPathname(Astro.url.pathname);
 const basePath = stripLocaleFromPathname(Astro.url.pathname);
 const canonicalPath = localizePathname(basePath, locale);
@@ -74,7 +75,7 @@ const feedbackSubtitle =
     <MetaTags 
       title={title}
       description={description}
-      image={image}
+      image={imageAbs}
       canonicalURL={canonicalURL}
       locale={locale}
       alternates={alternates}
@@ -90,10 +91,10 @@ const feedbackSubtitle =
     />
     
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content={imageAbs.endsWith('og-image.png') ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={imageAbs} />
     
     <!-- PWA -->
     <meta name="theme-color" content="#FF6B9D" />

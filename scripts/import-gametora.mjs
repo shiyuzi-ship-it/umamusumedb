@@ -15,6 +15,7 @@
  * (so existing URLs and image links keep working).
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { syncImages } from './fetch-images.mjs';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -180,6 +181,7 @@ async function main() {
     return {
       id: `${slug(name) || 'skill'}_${s.id}`,
       gt_id: s.id,
+      icon_id: s.iconid,
       name_en: name,
       name_jp: skillNameJp(s) ?? name,
       description_en: desc,
@@ -327,14 +329,6 @@ async function main() {
     else legacy.removed.skills.push(o.id);
   }
 
-  // Images: the old site only has one portrait per character (nothing outfit-specific), so reuse that portrait for the
-  // character's cards. The old support-card images were generated placeholders with invented titles -> dropped.
-  const portraitByCharId = alreadyImported
-    ? new Map(oldChars.filter((c) => c.image_url).map((c) => [c.char_id, c.image_url]))
-    : new Map([...portraitByJpName.values()].map((v) => [v.char_id, v.url]));
-  for (const rec of charOut) if (portraitByCharId.has(rec.char_id)) rec.image_url = portraitByCharId.get(rec.char_id);
-  for (const rec of supOut) if (portraitByCharId.has(rec.char_id)) rec.character_image_url = portraitByCharId.get(rec.char_id);
-
   // ---------- scenarios + release timeline ----------
   const iso = (t) => (t ? new Date(t * 1000).toISOString().slice(0, 10) : null);
   const scenOut = scenarios.map((s) => ({
@@ -357,36 +351,37 @@ async function main() {
   }
   releases.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
+  const write = (f, d) => writeFile(resolve(dataDir, f), JSON.stringify(d, null, 2) + '\n', 'utf-8');
+  await write('characters.json', charOut);
+  await write('supportCards.json', supOut);
+  await write('skills.json', skillOut);
+  await write('scenarios.json', scenOut);
+  await write('releases.json', { generatedAt: new Date().toISOString(), source: 'GameTora data files (gametora.com)', releases });
+  await mkdir(resolve(root, 'data'), { recursive: true });
+  await syncImages();
   // slim skill list for the client-side Skill Builder (purchasable skills + unique/evolved info)
-  const lite = skillOut
+  const lite = JSON.parse(await readFile(resolve(dataDir, 'skills.json'), 'utf-8'))
     .filter((sk) => sk.cost || sk.rarity === 'unique')
     .map((sk) => ({
       id: sk.id, name_en: sk.name_en, name_jp: sk.name_jp, rarity: sk.rarity, skill_type: sk.skill_type, cost: sk.cost,
       effect: sk.effect, phases: sk.phases, distance: sk.distance, style: sk.style, location: sk.location,
-      effect_type: sk.effect_type, server: sk.server,
+      effect_type: sk.effect_type, server: sk.server, icon_url: sk.icon_url ?? null,
     }));
 
   // slim support card list for the client-side Support Deck Builder (values at the card's max level only)
-  const supLite = supOut.map((c) => {
+  const supLite = JSON.parse(await readFile(resolve(dataDir, 'supportCards.json'), 'utf-8')).map((c) => {
     const effects = JSON.parse(c.effects);
     const slimEffects = Object.fromEntries(
       Object.entries(effects).map(([k, v]) => [k, { [`lv${c.max_level}`]: v[`lv${c.max_level}`] }])
     );
     return {
       id: c.id, name_en: c.name_en, name_jp: c.name_jp, type: c.type, rarity: c.rarity, max_level: c.max_level,
-      server: c.server, effects: slimEffects, skills: JSON.parse(c.skills).slice(0, 6), character_image_url: c.character_image_url ?? null,
+      server: c.server, effects: slimEffects, skills: JSON.parse(c.skills).slice(0, 6), image_url: c.image_url ?? null,
     };
   });
 
-  const write = (f, d) => writeFile(resolve(dataDir, f), JSON.stringify(d, null, 2) + '\n', 'utf-8');
-  await write('characters.json', charOut);
-  await write('supportCards.json', supOut);
-  await write('skills.json', skillOut);
   await writeFile(resolve(dataDir, 'skills-lite.json'), JSON.stringify(lite) + '\n', 'utf-8');
   await writeFile(resolve(dataDir, 'support-cards-lite.json'), JSON.stringify(supLite) + '\n', 'utf-8');
-  await write('scenarios.json', scenOut);
-  await write('releases.json', { generatedAt: new Date().toISOString(), source: 'GameTora data files (gametora.com)', releases });
-  await mkdir(resolve(root, 'data'), { recursive: true });
   await writeFile(resolve(root, 'data', 'legacy-id-map.json'), JSON.stringify(legacy, null, 2) + '\n');
   console.log(`[import-gametora] characters=${charOut.length} supportCards=${supOut.length} skills=${skillOut.length} scenarios=${scenOut.length} releases=${releases.length}`);
   console.log(`[import-gametora] legacy kept: chars ${Object.keys(legacy.characters).length}/${oldChars.length}, cards ${Object.keys(legacy.supportCards).length}/${oldSup.length}, skills ${Object.keys(legacy.skills).length}/${oldSkills.length}`);

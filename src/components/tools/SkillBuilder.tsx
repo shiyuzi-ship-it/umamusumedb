@@ -24,6 +24,7 @@ interface LiteSkill {
   location: string;
   effect_type: string;
   server: 'global' | 'jp';
+  icon_url?: string | null;
 }
 
 // Hint level -> discount (%) of the base cost
@@ -189,6 +190,7 @@ export default function SkillBuilder() {
                   <div key={skill.id} className="flex items-center justify-between p-2 bg-gray-50 rounded">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
+                        {skill.icon_url && <img src={skill.icon_url} alt="" width={20} height={20} className="w-5 h-5" />}
                         <span className="font-medium text-sm">{skill.name_en}</span>
                         <span className={`text-xs px-1.5 py-0.5 rounded ${RARITY_COLORS[skill.rarity]}`}>{skill.rarity}</span>
                       </div>
@@ -308,6 +310,7 @@ export default function SkillBuilder() {
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
+                        {skill.icon_url && <img src={skill.icon_url} alt="" width={20} height={20} className="w-5 h-5" loading="lazy" />}
                         <span className="font-medium text-sm">{skill.name_en}</span>
                         <span className={`text-xs px-1.5 py-0.5 rounded ${RARITY_COLORS[skill.rarity]}`}>{skill.rarity}</span>
                         {tags(skill).map((t) => (
