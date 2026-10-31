@@ -129,7 +129,8 @@ Nothing depends on GitHub Actions; run these steps from a checkout of `shiyuzi-s
 ```bash
 npm ci                              # first time / after dependency changes
 node scripts/import-gametora.mjs    # characters, supportCards, skills, scenarios, releases, *-lite.json, i18n names (ko / zh-TW / zh-CN), images
-node scripts/fetch-news.mjs         # Global announcement headlines (umamusume.gg RSS) -> public/data/news.json
+node scripts/import-events.mjs      # story / training events (names, choices, outcomes) -> public/data/training-events.json (GT_CACHE=/dir reuses downloads)
+node scripts/fetch-news.mjs         # Global headlines (umamusume.gg RSS) -> news.json; official JP news (umamusume.jp) -> news-ja.json
 ```
 - `import-gametora.mjs` also calls `scripts/fetch-images.mjs`: real GameTora artwork is downloaded only for ids that have no file yet
   (`public/img/characters/{card_id}.webp`, `public/img/cards/{support_id}.webp`, `public/img/skills/{icon_id}.webp`; webp via sharp) and
@@ -137,7 +138,17 @@ node scripts/fetch-news.mjs         # Global announcement headlines (umamusume.g
 - Every character / card / skill gets `i18n: { ko, zh_tw, zh }` (official Korean text and Taiwan-server text from GameTora). **Simplified Chinese
   is derived from the Traditional text with `opencc-js` (character conversion, not CN-server text)** — say so on `/data-sources/`. Missing translations
   fall back (ko -> English, zh/zh-tw -> Japanese) in `src/lib/localized.js`, so new JP-only items still show their real names.
-- Not imported on purpose: story/training events (GameTora serves them obfuscated) and anything without a verifiable source.
+- Story events (`import-events.mjs`): GameTora's event files are compact (numeric ids, XOR+base64 strings, reward dictionary); the script decodes them
+  exactly as GameTora's own page script does in every visitor's browser, fully understood events only (stat / energy / mood / bond / skill-hint / skill /
+  status-effect / fans rewards). Skipped on purpose: secret events, events with conditions / random alternates / scenario-linked effects, scenario events.
+  The script prints imported-vs-skipped counts. If GameTora changes the format the script will fail or skip events — fix the decoder, never hand-edit. The
+  events render from `src/lib/events.ts` + `src/components/l10n/EventsSection.astro` on card / character pages (phrases in `src/lib/event-phrases.json`,
+  from GameTora's own localized event text). Credit GameTora on `/data-sources/` (the page shows the live imported count).
+- Scenarios carry official ko / zh-tw names from GameTora (`i18n`); zh is OpenCC of zh-tw; missing ones fall back to Japanese.
+- News: `/ja/updates/` shows official Japanese headlines (`news-ja.json`, from umamusume.jp's own `/api/ajax/pr_info_index`, same endpoint its news page
+  uses; the microCMS key is not used). en / zh / zh-tw / ko show the English Global headlines with a note (official KR / TW news hosts were unreachable).
+- `npm run build` runs `scripts/build-lite-i18n.mjs` first: localized `skills-lite.<loc>.json` / `support-cards-lite.<loc>.json` for the tools (do not commit-edit).
+- Not imported on purpose: anything without a verifiable source (e.g. the Training Goals checklist is the site's legacy, unsourced content — only its UI is localized).
   Known gaps: ~8 skill icon ids that GameTora has no image for (shown without icon); a few newest support cards use GameTora's small
   `support_card_s_{id}.png` fallback art.
 - Never edit `public/data/*.json` by hand — fix the importer instead. New game ids appear automatically on all five locales (pages are generated from the JSON).
@@ -179,10 +190,15 @@ Uses the Cloudflare MCP (`execute` tool) and an upload JWT; the JWT is written t
 
 ### Notes
 - Formulas in the tools (training gain, spark inheritance, hint discounts) are community-measured; sources are cited in the tool components and `/data-sources/`.
-  Tool component bodies are English-only in every locale (the localized wrapper pages say so).
+- Tool UIs are localized (en / ja / zh / zh-tw / ko): label dictionaries in `src/lib/tool-strings/common.ts` (`[en, ja, zh(=TW text via OpenCC), ko]` tuples; zh-tw is
+  converted at build with `src/lib/tw-fix.ts` corrections), served by `toolLabels(locale, group)` and passed to each React island as `labels` (`src/components/tools/tool-i18n.ts`).
+  Add a tool string once in `common.ts`, then `t('key')` in the component. Tool pages: `src/pages/tools/*`, `src/pages/ja/tools/*`, `src/pages/[lang]/tools/*`.
+- Legal / info pages (privacy, terms, data sources, guides) are data-driven in all five locales: content in `src/lib/legal/{privacy,terms,guides,sources}.ts`
+  (en / ja / zh / ko authored; zh-tw = OpenCC of zh + `twFixLegal`), rendered by `src/components/l10n/DocPage.astro`. `{L}` = locale URL prefix, `{EVENTS}` = imported event count.
+  Keep the privacy policy truthful about what the site does (Google Analytics, Google AdSense cookies, localStorage in tools) whenever code changes. There is no separate "about" page.
 - The old `collect-*` / `export-to-json` / R2 scripts and `database/` no longer feed the site.
 - AdSense (auto ads script) and GA live in `src/layouts/Layout.astro`; the AdSense script is intentionally not loaded on `noindex` pages. Keep the ad code intact.
-- `/guides/`, `/privacy-policy/`, `/terms-of-service/`, `/data-sources/` exist in English and Japanese only; `/tools/character-comparison/` has no Japanese page.
+- `/guides/`, `/privacy-policy/`, `/terms-of-service/`, `/data-sources/` and every tool (incl. `/tools/character-comparison/`) exist in all five locales.
 
 ## Common Issues and Solutions
 

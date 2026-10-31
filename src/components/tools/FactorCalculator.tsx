@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Calculator, Plus, X } from 'lucide-react';
+import { makeT, type Labels } from './tool-i18n';
 
 /**
  * Spark (factor) inheritance calculator.
@@ -22,15 +23,17 @@ const BASE_RATES: Record<SparkType, [number, number, number]> = {
   white: [3, 6, 9],
 };
 
-const TYPE_LABEL: Record<SparkType, string> = {
-  blue: 'Blue (stat)',
-  pink: 'Pink (aptitude)',
-  green: 'Green (unique skill)',
-  race: 'White – race',
-  white: 'White – skill / scenario',
+const TYPE_KEY: Record<SparkType, string> = {
+  blue: 'fc_t_blue',
+  pink: 'fc_t_pink',
+  green: 'fc_t_green',
+  race: 'fc_t_race',
+  white: 'fc_t_white',
 };
+const TYPES = Object.keys(TYPE_KEY) as SparkType[];
 
 const SOURCES = ['Parent 1', 'Parent 2', 'Grandparent 1', 'Grandparent 2', 'Grandparent 3', 'Grandparent 4'];
+const SOURCE_KEY: Record<string, string> = { 'Parent 1': 'fc_p1', 'Parent 2': 'fc_p2', 'Grandparent 1': 'fc_g1', 'Grandparent 2': 'fc_g2', 'Grandparent 3': 'fc_g3', 'Grandparent 4': 'fc_g4' };
 
 interface Entry {
   id: number;
@@ -40,7 +43,9 @@ interface Entry {
   affinity: number;
 }
 
-export default function FactorCalculator() {
+export default function FactorCalculator({ labels }: { labels?: Labels }) {
+  const t = makeT(labels);
+  const TYPE_LABEL: Record<SparkType, string> = { blue: t(TYPE_KEY.blue), pink: t(TYPE_KEY.pink), green: t(TYPE_KEY.green), race: t(TYPE_KEY.race), white: t(TYPE_KEY.white) };
   const [entries, setEntries] = useState<Entry[]>([
     { id: 1, source: 'Parent 1', type: 'white', stars: 3, affinity: 30 },
   ]);
@@ -74,10 +79,10 @@ export default function FactorCalculator() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <Calculator className="w-5 h-5 text-purple-600" />
-            Spark inheritance chance
+            {t('fc_title')}
           </h2>
           <button onClick={add} className="flex items-center gap-1 text-sm px-3 py-1 bg-purple-600 text-white rounded hover:bg-purple-700">
-            <Plus className="w-4 h-4" /> Add spark
+            <Plus className="w-4 h-4" /> {t('fc_add')}
           </button>
         </div>
 
@@ -85,25 +90,25 @@ export default function FactorCalculator() {
           {rows.map((r) => (
             <div key={r.id} className="grid grid-cols-2 md:grid-cols-6 gap-2 items-end p-3 bg-gray-50 rounded">
               <label className="text-xs text-gray-600">
-                Who has it
+                {t('fc_who')}
                 <select value={r.source} onChange={(e) => update(r.id, { source: e.target.value })} className="block w-full border rounded px-2 py-1 text-sm">
                   {SOURCES.map((s) => (
-                    <option key={s}>{s}</option>
+                    <option key={s} value={s}>{t(SOURCE_KEY[s])}</option>
                   ))}
                 </select>
               </label>
               <label className="text-xs text-gray-600">
-                Spark type
+                {t('fc_type')}
                 <select value={r.type} onChange={(e) => update(r.id, { type: e.target.value as SparkType })} className="block w-full border rounded px-2 py-1 text-sm">
-                  {(Object.keys(TYPE_LABEL) as SparkType[]).map((t) => (
-                    <option key={t} value={t}>
-                      {TYPE_LABEL[t]}
+                  {TYPES.map((ty) => (
+                    <option key={ty} value={ty}>
+                      {TYPE_LABEL[ty]}
                     </option>
                   ))}
                 </select>
               </label>
               <label className="text-xs text-gray-600">
-                Stars
+                {t('fc_stars')}
                 <select value={r.stars} onChange={(e) => update(r.id, { stars: parseInt(e.target.value) as 1 | 2 | 3 })} className="block w-full border rounded px-2 py-1 text-sm">
                   <option value={1}>★1</option>
                   <option value={2}>★2</option>
@@ -111,7 +116,7 @@ export default function FactorCalculator() {
                 </select>
               </label>
               <label className="text-xs text-gray-600">
-                Affinity with this legacy
+                {t('fc_affinity')}
                 <input
                   type="number"
                   min={0}
@@ -122,21 +127,21 @@ export default function FactorCalculator() {
                 />
               </label>
               <div className="text-sm">
-                <div className="text-xs text-gray-500">Base {r.base}%</div>
+                <div className="text-xs text-gray-500">{t('fc_base', { n: r.base })}</div>
                 <div className="font-bold text-purple-700">{r.chance.toFixed(1)}%</div>
               </div>
-              <button onClick={() => setEntries((prev) => prev.filter((e) => e.id !== r.id))} className="text-red-500 hover:text-red-700 justify-self-end" aria-label="Remove">
+              <button onClick={() => setEntries((prev) => prev.filter((e) => e.id !== r.id))} className="text-red-500 hover:text-red-700 justify-self-end" aria-label={t('fc_remove')}>
                 <X className="w-4 h-4" />
               </button>
             </div>
           ))}
-          {rows.length === 0 && <div className="text-center py-6 text-gray-400">Add a spark to calculate its chance.</div>}
+          {rows.length === 0 && <div className="text-center py-6 text-gray-400">{t('fc_empty')}</div>}
         </div>
 
         {rows.length > 0 && (
           <div className="mt-4 p-4 bg-purple-50 rounded">
             <div className="text-sm text-gray-700">
-              Chance that at least one of the listed sparks is inherited in one Inspiration roll (rolls are independent):
+              {t('fc_combined')}
             </div>
             <div className="text-3xl font-bold text-purple-700">{combined.toFixed(1)}%</div>
           </div>
@@ -145,21 +150,21 @@ export default function FactorCalculator() {
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white rounded-lg shadow p-6 text-sm">
-          <h3 className="font-semibold mb-2">Base chance at 0 affinity</h3>
+          <h3 className="font-semibold mb-2">{t('fc_base_title')}</h3>
           <table className="w-full text-left">
             <thead>
               <tr className="text-xs text-gray-500">
-                <th className="py-1">Spark</th>
+                <th className="py-1">{t('fc_spark')}</th>
                 <th>★1</th>
                 <th>★2</th>
                 <th>★3</th>
               </tr>
             </thead>
             <tbody>
-              {(Object.keys(TYPE_LABEL) as SparkType[]).map((t) => (
-                <tr key={t} className="border-t">
-                  <td className="py-1">{TYPE_LABEL[t]}</td>
-                  {BASE_RATES[t].map((v, i) => (
+              {TYPES.map((ty) => (
+                <tr key={ty} className="border-t">
+                  <td className="py-1">{TYPE_LABEL[ty]}</td>
+                  {BASE_RATES[ty].map((v, i) => (
                     <td key={i}>{v}%</td>
                   ))}
                 </tr>
@@ -167,25 +172,24 @@ export default function FactorCalculator() {
             </tbody>
           </table>
           <p className="text-xs text-gray-500 mt-3">
-            Final chance = base × (1 + affinity / 100). Each parent and grandparent has its own affinity value and is rolled separately.
+            {t('fc_final')}
           </p>
         </div>
 
         <div className="bg-white rounded-lg shadow p-6 text-sm">
-          <h3 className="font-semibold mb-2">Which stars does a legacy get?</h3>
-          <p className="text-xs text-gray-600 mb-2">Blue spark stars depend on the stat total (1★ / 2★ / 3★):</p>
+          <h3 className="font-semibold mb-2">{t('fc_which')}</h3>
+          <p className="text-xs text-gray-600 mb-2">{t('fc_blue_stars')}</p>
           <ul className="text-xs text-gray-700 space-y-0.5 mb-3">
-            <li>• Stat under 600: 90% / 10% / 0%</li>
-            <li>• Stat 600–1100: 45% / 50% / 5%</li>
-            <li>• Stat over 1100: 20% / 70% / 10%</li>
+            <li>• {t('fc_stat_lt600')}: 90% / 10% / 0%</li>
+            <li>• {t('fc_stat_mid')}: 45% / 50% / 5%</li>
+            <li>• {t('fc_stat_gt1100')}: 20% / 70% / 10%</li>
           </ul>
-          <p className="text-xs text-gray-600 mb-2">Pink sparks (from A or S aptitudes): 20% / 70% / 10%.</p>
+          <p className="text-xs text-gray-600 mb-2">{t('fc_pink_stars')}</p>
           <p className="text-xs text-gray-600 mb-2">
-            White and green sparks depend on the final rank: B to SS (6500–17499) 45% / 50% / 5%; SS to UE (17500–28799) 20% / 70% / 10%;
-            UE and above (28800+) 17.5% / 70% / 12.5%.
+            {t('fc_white_stars')}
           </p>
           <p className="text-xs text-gray-500">
-            Sources: uma.guide (Sparks &amp; Inheritance, Parenting in Umamusume) and umareference.com. These are community-measured rates, not published by Cygames.
+            {t('fc_sources')}
           </p>
         </div>
       </div>

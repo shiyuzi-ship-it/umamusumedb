@@ -1,5 +1,7 @@
 ---
 import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
+import EventsSection from '@/components/l10n/EventsSection.astro';
+import { cardBlocks as __cardBlocks, charBlocks as __charBlocks } from '@/lib/events';
 import { t as __t } from '@/lib/ui-strings';
 import { charName as __cn, cardName as __kn } from '@/lib/localized.js';
 import { otherOutfits as __outfits, cardsOfCharacter as __cardsOf, otherCardsOfCharacter as __otherCards, characterOfCard as __ownerOf } from '@/lib/related';
@@ -265,6 +267,9 @@ const __relCards = __otherCards(card).map((c: any) => ({ href: __lp(`/cards/${c.
         )}
 
       </div>
+    </div>
+    <div class="mt-8">
+      <EventsSection locale={__loc} blocks={__cardBlocks(card, __loc)} charId={card.char_id} />
     </div>
     <div class="mt-8 space-y-6">
       <RelatedLinks title={__t(__loc, 'characterOutfits')} items={__relOwner} />

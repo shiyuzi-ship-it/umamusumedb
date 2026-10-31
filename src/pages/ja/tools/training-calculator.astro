@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import TrainingCalculator from '@/components/tools/TrainingCalculator';
+import { toolLabels } from '@/lib/tool-strings';
 ---
 
 <Layout
@@ -27,7 +28,7 @@ import TrainingCalculator from '@/components/tools/TrainingCalculator';
       </p>
     </div>
 
-    <TrainingCalculator client:load />
+    <TrainingCalculator labels={toolLabels('ja','tc')} client:load />
   </main>
 </Layout>
 

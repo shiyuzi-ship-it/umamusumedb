@@ -2,6 +2,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Plus, X, Star, TrendingUp, Users, Sparkles, AlertTriangle, Check, Lock, Unlock, Zap, Award, Lightbulb, RotateCcw } from 'lucide-react';
 import PlaceholderImage from '../PlaceholderImage';
 import type { SupportCard } from '@/types';
+import { makeT, type Labels } from './tool-i18n';
+
+// Support cards in the lite files carry a localized display name (`name`) next to the English one.
+const cardLabel = (c: SupportCard) => (c as any).name || c.name_en;
+type Rec = { key: string; vars?: Record<string, string | number> };
 
 interface DeckSlot {
   card: SupportCard | null;
@@ -25,7 +30,7 @@ interface CardScore {
 interface DeckAnalysis {
   totalBonus: { [key: string]: number };
   typeBalance: { [key: string]: number };
-  recommendations: string[];
+  recommendations: Rec[];
   missingTypes: string[];
   duplicateCards: string[];
   rarityCount: { SSR: number; SR: number; R: number };
@@ -94,7 +99,7 @@ function CardImage({ card, className = '' }: CardImageProps) {
     return (
       <PlaceholderImage
         type="card"
-        name={card.name_en}
+        name={cardLabel(card)}
         rarity={card.rarity}
         className={className}
       />
@@ -105,7 +110,7 @@ function CardImage({ card, className = '' }: CardImageProps) {
     <>
       <img 
         src={imageUrl}
-        alt={card.name_en}
+        alt={cardLabel(card)}
         className={`${className} object-cover opacity-90`}
         crossOrigin="anonymous"
         referrerPolicy="no-referrer"
@@ -122,7 +127,7 @@ function CardImage({ card, className = '' }: CardImageProps) {
       <div className="absolute inset-0 -z-10">
         <PlaceholderImage
           type="card"
-          name={card.name_en}
+          name={cardLabel(card)}
           rarity={card.rarity}
           className="w-full h-full"
         />
@@ -135,6 +140,7 @@ function CardImage({ card, className = '' }: CardImageProps) {
 const DECK_TEMPLATES = [
   {
     name: 'Speed Focus',
+    key: 'speed',
     description: 'Maximize speed growth for sprint/mile',
     composition: { speed: 3, power: 1, wisdom: 1, friend: 1 },
     targetStats: ['speed', 'power'],
@@ -142,6 +148,7 @@ const DECK_TEMPLATES = [
   },
   {
     name: 'Balanced',
+    key: 'balanced',
     description: 'Well-rounded for any distance',
     composition: { speed: 1, stamina: 1, power: 1, guts: 1, wisdom: 1, friend: 1 },
     targetStats: ['speed', 'stamina', 'power', 'guts', 'wisdom'],
@@ -149,6 +156,7 @@ const DECK_TEMPLATES = [
   },
   {
     name: 'Long Distance',
+    key: 'long',
     description: 'Stamina-heavy for long races',
     composition: { stamina: 3, speed: 1, wisdom: 1, friend: 1 },
     targetStats: ['stamina', 'guts'],
@@ -156,6 +164,7 @@ const DECK_TEMPLATES = [
   },
   {
     name: 'Sprint Power',
+    key: 'sprint',
     description: 'Speed + Power combo',
     composition: { speed: 2, power: 2, wisdom: 1, friend: 1 },
     targetStats: ['speed', 'power'],
@@ -163,6 +172,7 @@ const DECK_TEMPLATES = [
   },
   {
     name: 'Wisdom Support',
+    key: 'wisdom',
     description: 'Skill point and wisdom focus',
     composition: { wisdom: 3, speed: 1, power: 1, friend: 1 },
     targetStats: ['wisdom'],
@@ -170,6 +180,7 @@ const DECK_TEMPLATES = [
   },
   {
     name: 'Guts Build',
+    key: 'guts',
     description: 'High guts for aggressive racing',
     composition: { guts: 3, speed: 1, power: 1, friend: 1 },
     targetStats: ['guts', 'power'],
@@ -237,12 +248,12 @@ function generateRecommendations(
   deck: DeckSlot[],
   availableCards: SupportCard[],
   selectedTemplate: typeof DECK_TEMPLATES[0] | null
-): string[] {
-  const recommendations: string[] = [];
+): Rec[] {
+  const recommendations: Rec[] = [];
   const filledSlots = deck.filter(s => s.card).length;
   
   if (filledSlots === 0) {
-    recommendations.push('Start by selecting a template above, or add cards manually');
+    recommendations.push({ key: 'db_rec_start' });
     return recommendations;
   }
 
@@ -258,14 +269,14 @@ function generateRecommendations(
       const current = typeCount[type] || 0;
       if (current < count) {
         const needed = count - current;
-        recommendations.push(`Add ${needed} more ${type} card(s) for "${selectedTemplate.name}" template`);
+        recommendations.push({ key: 'db_rec_add', vars: { n: needed, type, tpl: selectedTemplate.key } });
       }
     });
   }
 
   // General recommendations
   if (!typeCount.friend && filledSlots >= 4) {
-    recommendations.push('Consider adding a Friend card for event bonuses and training variety');
+    recommendations.push({ key: 'db_rec_friend' });
   }
 
   const missingTypes = Object.entries(typeCount)
@@ -274,7 +285,7 @@ function generateRecommendations(
     .map(([type]) => type);
   
   if (missingTypes.length > 3 && filledSlots >= 4) {
-    recommendations.push('Your deck lacks type diversity - consider a more balanced composition');
+    recommendations.push({ key: 'db_rec_diverse' });
   }
 
   // Score recommendations
@@ -284,13 +295,16 @@ function generateRecommendations(
   
   const lowTierCards = scores.filter(s => s.tier === 'C' || s.tier === 'B');
   if (lowTierCards.length >= 2 && filledSlots >= 4) {
-    recommendations.push(`${lowTierCards.length} cards have below-average ratings - consider upgrading to SSR cards`);
+    recommendations.push({ key: 'db_rec_low', vars: { n: lowTierCards.length } });
   }
 
   return recommendations;
 }
 
-export default function SupportDeckBuilder() {
+export default function SupportDeckBuilder({ labels, locale = 'en' }: { labels?: Labels; locale?: string }) {
+  const t = makeT(labels);
+  const typeName = (ty: string) => t('db_type_' + ty);
+  const dataUrl = `/data/support-cards-lite${locale === 'en' ? '' : '.' + locale}.json`;
   const [availableCards, setAvailableCards] = useState<SupportCard[]>([]);
   const [deck, setDeck] = useState<DeckSlot[]>(
     Array.from({ length: 6 }, (_, i) => ({ card: null, position: i, lb: 0 }))
@@ -308,7 +322,7 @@ export default function SupportDeckBuilder() {
   useEffect(() => {
     // Slim card list (values at max level) generated by scripts/import-gametora.mjs
     let cancelled = false;
-    fetch('/data/support-cards-lite.json')
+    fetch(dataUrl)
       .then((r) => r.json())
       .then((data: SupportCard[]) => {
         if (!cancelled) setAvailableCards(data);
@@ -402,7 +416,7 @@ export default function SupportDeckBuilder() {
 
     analysis.duplicateCards = Array.from(duplicateCounter.entries())
       .filter(([, count]) => count > 1)
-      .map(([cardId]) => deck.find(slot => slot.card?.id === cardId)?.card?.name_en || cardId);
+      .map(([cardId]) => deck.find(slot => slot.card?.id === cardId)?.card ? cardLabel(deck.find(slot => slot.card?.id === cardId)!.card!) : cardId);
 
     // Calculate final score
     const totalLB = deck.reduce((sum, slot) => sum + (slot.card ? slot.lb : 0), 0);
@@ -525,10 +539,10 @@ export default function SupportDeckBuilder() {
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
         <h2 className="text-lg font-bold mb-3 flex items-center gap-2">
           <Lightbulb className="w-5 h-5 text-yellow-500" />
-          Quick Templates
+          {t('db_templates')}
         </h2>
         <p className="text-sm text-gray-600 mb-4">
-          Choose a template to auto-fill your deck with recommended cards. Lock slots to keep specific cards.
+          {t('db_templates_desc')}
         </p>
         <div className="flex flex-wrap gap-2">
           {DECK_TEMPLATES.map(template => (
@@ -541,9 +555,9 @@ export default function SupportDeckBuilder() {
                   : 'bg-white hover:bg-blue-50 border border-blue-200'
               }`}
             >
-              <div className="font-semibold">{template.name}</div>
+              <div className="font-semibold">{t('db_tpl_' + template.key)}</div>
               <div className={`text-xs ${selectedTemplate?.name === template.name ? 'text-blue-100' : 'text-gray-500'}`}>
-                {template.description}
+                {t('db_tpl_' + template.key + '_d')}
               </div>
             </button>
           ))}
@@ -552,7 +566,7 @@ export default function SupportDeckBuilder() {
             className="px-3 py-2 rounded-lg text-sm bg-gray-200 hover:bg-gray-300 transition flex items-center gap-1"
           >
             <RotateCcw className="w-4 h-4" />
-            Reset
+            {t('reset')}
           </button>
         </div>
       </div>
@@ -561,7 +575,7 @@ export default function SupportDeckBuilder() {
       <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-lg p-6">
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
           <Users className="w-5 h-5" />
-          Current Deck
+          {t('db_deck')}
         </h2>
         
         <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-4">
@@ -598,10 +612,10 @@ export default function SupportDeckBuilder() {
                     </div>
                     <div className="relative z-10 p-2 h-full flex flex-col bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                       <div className="text-xs font-bold text-white uppercase drop-shadow">
-                        {slot.card.type}
+                        {typeName(slot.card.type)}
                       </div>
                       <div className="text-xs font-semibold mt-1 line-clamp-2 text-white drop-shadow">
-                        {slot.card.name_en}
+                        {cardLabel(slot.card)}
                       </div>
                       <div className="mt-auto">
                         <div className="flex items-center justify-between">
@@ -643,7 +657,7 @@ export default function SupportDeckBuilder() {
               ) : (
                 <div className="h-full flex flex-col items-center justify-center text-gray-400 hover:text-gray-600 transition">
                   <Plus className="w-8 h-8" />
-                  <span className="text-xs mt-1">Click to add</span>
+                  <span className="text-xs mt-1">{t('db_click_add')}</span>
                 </div>
               )}
             </div>
@@ -656,26 +670,26 @@ export default function SupportDeckBuilder() {
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="font-semibold mb-4 flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-green-500" />
-            Deck Analysis
+            {t('db_analysis')}
           </h3>
           
           <div className="grid md:grid-cols-3 gap-6 mb-6">
             {/* Score Display */}
             <div className="md:col-span-1">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 text-center">
-                <div className="text-sm text-gray-600 mb-1">Overall Score</div>
+                <div className="text-sm text-gray-600 mb-1">{t('db_overall')}</div>
                 <div className={`text-4xl font-bold ${getScoreColor(analyzeDeck.score)}`}>
                   {analyzeDeck.score}
                 </div>
-                <div className="text-xs text-gray-500 mt-1">out of 100</div>
+                <div className="text-xs text-gray-500 mt-1">{t('db_out_of')}</div>
                 
                 <div className="mt-4 space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Card Quality</span>
+                    <span className="text-gray-600">{t('db_quality')}</span>
                     <span className="font-medium">{analyzeDeck.potentialScore}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Synergy</span>
+                    <span className="text-gray-600">{t('db_synergy')}</span>
                     <span className="font-medium">{analyzeDeck.synergyScore}</span>
                   </div>
                 </div>
@@ -684,16 +698,16 @@ export default function SupportDeckBuilder() {
 
             {/* Bonuses */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-600 mb-2">Total Bonuses</h4>
+              <h4 className="text-sm font-semibold text-gray-600 mb-2">{t('db_bonuses')}</h4>
               <div className="space-y-2">
                 {Object.entries(analyzeDeck.totalBonus).map(([key, value]) => (
                   <div key={key} className="flex items-center justify-between">
-                    <span className="text-sm capitalize">{key.replace(/([A-Z])/g, ' $1')}</span>
+                    <span className="text-sm">{t('db_b_' + key)}</span>
                     <span className="font-bold">+{value}%</span>
                   </div>
                 ))}
                 <div className="flex items-center justify-between pt-2 border-t border-dashed border-gray-200">
-                  <span className="text-sm text-gray-600">Rarity Mix</span>
+                  <span className="text-sm text-gray-600">{t('db_rarity_mix')}</span>
                   <span className="font-bold text-purple-600">
                     {analyzeDeck.rarityCount.SSR} SSR / {analyzeDeck.rarityCount.SR} SR / {analyzeDeck.rarityCount.R} R
                   </span>
@@ -703,11 +717,11 @@ export default function SupportDeckBuilder() {
             
             {/* Type Distribution */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-600 mb-2">Type Distribution</h4>
+              <h4 className="text-sm font-semibold text-gray-600 mb-2">{t('db_type_dist')}</h4>
               <div className="space-y-2">
                 {Object.entries(analyzeDeck.typeBalance).map(([type, count]) => (
                   <div key={type} className="flex items-center gap-2">
-                    <span className="text-xs w-16 capitalize">{type}</span>
+                    <span className="text-xs w-16">{typeName(type)}</span>
                     <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                       <div 
                         className={`h-full ${getTypeColorClasses(type).split(' ')[0]}`}
@@ -720,7 +734,7 @@ export default function SupportDeckBuilder() {
               </div>
               {analyzeDeck.missingTypes.length > 0 && (
                 <div className="mt-3 text-xs text-orange-600">
-                  Missing: {analyzeDeck.missingTypes.join(', ')}
+                  {t('db_missing')}: {analyzeDeck.missingTypes.map(typeName).join(', ')}
                 </div>
               )}
             </div>
@@ -730,21 +744,21 @@ export default function SupportDeckBuilder() {
           <div className="p-4 bg-blue-50 rounded-lg">
             <div className="flex items-center gap-2 mb-3">
               <Award className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold text-blue-900">Recommendations</span>
+              <span className="font-semibold text-blue-900">{t('db_recs')}</span>
             </div>
             {analyzeDeck.recommendations.length > 0 ? (
               <div className="space-y-2">
                 {analyzeDeck.recommendations.map((rec, i) => (
                   <div key={i} className="flex items-start gap-2 text-sm text-blue-800">
                     <AlertTriangle className="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" />
-                    <span>{rec}</span>
+                    <span>{rec.key === 'db_rec_add' ? t(rec.key, { n: rec.vars!.n, type: typeName(String(rec.vars!.type)), tpl: t('db_tpl_' + rec.vars!.tpl) }) : t(rec.key, rec.vars)}</span>
                   </div>
                 ))}
               </div>
             ) : (
               <div className="flex items-center gap-2 text-sm text-green-600">
                 <Check className="w-4 h-4" />
-                <span>Excellent deck composition! Ready for training.</span>
+                <span>{t('db_excellent')}</span>
               </div>
             )}
           </div>
@@ -754,27 +768,28 @@ export default function SupportDeckBuilder() {
       {/* Available Cards */}
       <div id="available-cards" className="bg-white rounded-lg shadow p-6">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-          <h3 className="font-semibold">Available Cards</h3>
+          <h3 className="font-semibold">{t('db_available')}</h3>
           <div className="flex flex-wrap gap-2">
             <select
               value={filterType}
               onChange={(e) => setFilterType(e.target.value)}
               className="text-sm border rounded px-2 py-1"
             >
-              <option value="all">All Types</option>
-              <option value="speed">Speed</option>
-              <option value="stamina">Stamina</option>
-              <option value="power">Power</option>
-              <option value="guts">Guts</option>
-              <option value="wisdom">Wisdom</option>
-              <option value="friend">Friend</option>
+              <option value="all">{t('db_all_types')}</option>
+              <option value="speed">{typeName('speed')}</option>
+              <option value="stamina">{typeName('stamina')}</option>
+              <option value="power">{typeName('power')}</option>
+              <option value="guts">{typeName('guts')}</option>
+              <option value="wisdom">{typeName('wisdom')}</option>
+              <option value="friend">{typeName('friend')}</option>
+              <option value="group">{typeName('group')}</option>
             </select>
             <select
               value={filterRarity}
               onChange={(e) => setFilterRarity(e.target.value)}
               className="text-sm border rounded px-2 py-1"
             >
-              <option value="all">All Rarities</option>
+              <option value="all">{t('db_all_rarities')}</option>
               <option value="SSR">SSR</option>
               <option value="SR">SR</option>
               <option value="R">R</option>
@@ -788,7 +803,7 @@ export default function SupportDeckBuilder() {
               }`}
             >
               <Zap className="w-3 h-3 inline mr-1" />
-              Sort by Score
+              {t('db_sort')}
             </button>
             <button
               onClick={() => setShowCardRatings(!showCardRatings)}
@@ -799,7 +814,7 @@ export default function SupportDeckBuilder() {
               }`}
             >
               <Award className="w-3 h-3 inline mr-1" />
-              Show Ratings
+              {t('db_ratings')}
             </button>
           </div>
         </div>
@@ -839,10 +854,10 @@ export default function SupportDeckBuilder() {
                   </div>
                   <div className="relative z-10 p-2 h-full flex flex-col bg-gradient-to-t from-black/80 via-black/40 to-transparent">
                     <div className="text-xs font-bold text-white uppercase drop-shadow">
-                      {card.type}
+                      {typeName(card.type)}
                     </div>
                     <div className="text-xs font-semibold mt-1 line-clamp-2 text-white drop-shadow">
-                      {card.name_en}
+                      {cardLabel(card)}
                     </div>
                     <div className="mt-auto flex items-center justify-between">
                       <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${getRarityColorClasses(card.rarity)}`}>
@@ -850,7 +865,7 @@ export default function SupportDeckBuilder() {
                       </span>
                       {showCardRatings && scoredCard && (
                         <span className="text-xs text-white font-bold drop-shadow">
-                          {scoredCard.score}pts
+                          {t('db_pts', { n: scoredCard.score })}
                         </span>
                       )}
                     </div>
@@ -863,7 +878,7 @@ export default function SupportDeckBuilder() {
         
         {filteredCards.length === 0 && (
           <div className="text-center py-8 text-gray-500">
-            No cards match your filters
+            {t('db_none')}
           </div>
         )}
       </div>
@@ -871,31 +886,31 @@ export default function SupportDeckBuilder() {
       {/* Legend */}
       {showCardRatings && (
         <div className="bg-gray-50 rounded-lg p-4 text-sm">
-          <div className="font-medium mb-2">Card Rating Tiers</div>
+          <div className="font-medium mb-2">{t('db_tiers')}</div>
           <div className="flex flex-wrap gap-4 text-xs">
             <div className="flex items-center gap-1">
               <span className="px-1.5 py-0.5 rounded bg-red-100 text-red-700 border border-red-200 font-bold">SS</span>
-              <span className="text-gray-600">Elite (70+ pts) - Top tier support</span>
+              <span className="text-gray-600">{t('db_tier_ss')}</span>
             </div>
             <div className="flex items-center gap-1">
               <span className="px-1.5 py-0.5 rounded bg-orange-100 text-orange-700 border border-orange-200 font-bold">S</span>
-              <span className="text-gray-600">Excellent (55-69 pts) - Great choice</span>
+              <span className="text-gray-600">{t('db_tier_s')}</span>
             </div>
             <div className="flex items-center gap-1">
               <span className="px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 border border-blue-200 font-bold">A</span>
-              <span className="text-gray-600">Good (40-54 pts) - Solid option</span>
+              <span className="text-gray-600">{t('db_tier_a')}</span>
             </div>
             <div className="flex items-center gap-1">
               <span className="px-1.5 py-0.5 rounded bg-gray-100 text-gray-700 border border-gray-200 font-bold">B</span>
-              <span className="text-gray-600">Average (25-39 pts) - Decent filler</span>
+              <span className="text-gray-600">{t('db_tier_b')}</span>
             </div>
             <div className="flex items-center gap-1">
               <span className="px-1.5 py-0.5 rounded bg-gray-50 text-gray-500 border border-gray-200 font-bold">C</span>
-              <span className="text-gray-600">Below Average (&lt;25 pts)</span>
+              <span className="text-gray-600">{t('db_tier_c')}</span>
             </div>
           </div>
           <div className="mt-3 text-xs text-gray-500">
-            Scores based on: Rarity + Friendship Bonus + Training Bonus + Skill Points + Motivation Bonus
+            {t('db_score_basis')}
           </div>
         </div>
       )}

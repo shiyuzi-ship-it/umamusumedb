@@ -349,6 +349,10 @@ async function main() {
     name_en: s.name_en,
     name_en_full: s.name_en_full ?? null,
     name_jp: s.name_ja,
+    // official Korean / Taiwan-server names; zh (Simplified) = OpenCC conversion of the Taiwan name; missing -> Japanese name
+    name_ko: s.name_ko ?? null,
+    name_zh_tw: s.name_zh_tw ?? null,
+    name_zh: s.name_zh_tw ? toCn(s.name_zh_tw) : null,
     start_jp: iso(s.start_ja),
     start_global: iso(s.start_en),
     linked_characters: (s.scenario_linked_characters ?? []).map((c) => c.name_en),

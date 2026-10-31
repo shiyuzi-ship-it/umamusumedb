@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Target, Check, AlertCircle, Trophy, Calendar, ChevronDown, ChevronUp, Loader2 } from 'lucide-react';
+import { makeT, type Labels } from './tool-i18n';
 
 interface Goal {
   id: string;
@@ -106,14 +107,17 @@ const FALLBACK_CHARACTER_GOALS: CharacterGoals[] = [
   }
 ];
 
-export default function TrainingGoals() {
+export default function TrainingGoals({ labels, locale = 'en' }: { labels?: Labels; locale?: string }) {
+  const t = makeT(labels);
+  const YEAR_KEY: Record<string, string> = { Junior: 'tg_junior', Classic: 'tg_classic', Senior: 'tg_senior' };
+  const HALF_KEY: Record<string, string> = { 'First Half': 'tg_first_half', 'Second Half': 'tg_second_half' };
   const [characterGoals, setCharacterGoals] = useState<CharacterGoals[]>(FALLBACK_CHARACTER_GOALS);
   const [selectedCharacter, setSelectedCharacter] = useState<CharacterGoals | null>(null);
   const [completedGoals, setCompletedGoals] = useState<Set<string>>(new Set());
   const [expandedGoals, setExpandedGoals] = useState<Set<string>>(new Set());
   const [showTips, setShowTips] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [showJapanese, setShowJapanese] = useState(false);
+  const [showJapanese, setShowJapanese] = useState(locale === 'ja');
 
   // Load training goals from JSON
   useEffect(() => {
@@ -192,7 +196,7 @@ export default function TrainingGoals() {
     return (
       <div className="flex items-center justify-center py-12">
         <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-        <span className="ml-2 text-gray-600">Loading training goals...</span>
+        <span className="ml-2 text-gray-600">{t('tg_loading')}</span>
       </div>
     );
   }
@@ -200,7 +204,7 @@ export default function TrainingGoals() {
   if (!selectedCharacter) {
     return (
       <div className="text-center py-12 text-gray-500">
-        No training goals available
+        {t('tg_none')}
       </div>
     );
   }
@@ -229,7 +233,7 @@ export default function TrainingGoals() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold flex items-center gap-2">
             <Trophy className="w-5 h-5 text-yellow-500" />
-            Select Character
+            {t('tg_select')}
           </h2>
           <div className="flex items-center gap-4 flex-wrap">
             <label className="flex items-center gap-2">
@@ -248,7 +252,7 @@ export default function TrainingGoals() {
                 onChange={(e) => setShowTips(e.target.checked)}
                 className="rounded"
               />
-              <span className="text-sm">Show Tips</span>
+              <span className="text-sm">{t('tg_tips')}</span>
             </label>
             <button
               onClick={() => {
@@ -257,7 +261,7 @@ export default function TrainingGoals() {
               }}
               className="text-sm text-red-500 hover:text-red-700"
             >
-              Reset All
+              {t('tg_reset')}
             </button>
           </div>
         </div>
@@ -275,7 +279,7 @@ export default function TrainingGoals() {
             >
               <div className="font-medium text-sm">{getCharacterName(character)}</div>
               <div className="text-xs text-gray-500 mt-1">
-                {character.goals.filter(g => completedGoals.has(g.id)).length}/{character.goals.length} completed
+                {t('tg_completed', { done: character.goals.filter(g => completedGoals.has(g.id)).length, total: character.goals.length })}
               </div>
             </button>
           ))}
@@ -284,9 +288,9 @@ export default function TrainingGoals() {
 
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
         <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
-          <h3 className="text-xl font-bold">{getCharacterName(selectedCharacter)} Training Goals</h3>
+          <h3 className="text-xl font-bold">{t('tg_goals_of', { name: getCharacterName(selectedCharacter) })}</h3>
           <div className="flex items-center gap-2">
-            <div className="text-sm text-gray-600">Progress:</div>
+            <div className="text-sm text-gray-600">{t('tg_progress')}</div>
             <div className="w-32 bg-gray-200 rounded-full h-2">
               <div
                 className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all"
@@ -322,17 +326,17 @@ export default function TrainingGoals() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
                         <span className={`text-xs px-2 py-1 rounded-full text-white ${getYearColor(goal.year)}`}>
-                          {goal.year}
+                          {YEAR_KEY[goal.year] ? t(YEAR_KEY[goal.year]) : goal.year}
                         </span>
-                        <span className="text-xs text-gray-500">{goal.half}</span>
+                        <span className="text-xs text-gray-500">{HALF_KEY[goal.half] ? t(HALF_KEY[goal.half]) : goal.half}</span>
                         <span className={`text-xs px-2 py-1 rounded ${getDifficultyColor(goal.difficulty)}`}>
-                          {goal.difficulty}
+                          {t('tg_d_' + goal.difficulty)}
                         </span>
                       </div>
                       
                       <div className="flex items-center justify-between">
                         <p className={`font-medium ${completedGoals.has(goal.id) ? 'line-through text-gray-500' : ''}`}>
-                          Goal {index + 1}: {getGoalDescription(goal)}
+                          {t('tg_goal', { n: index + 1 })}: {getGoalDescription(goal)}
                         </p>
                         
                         {goal.tips.length > 0 && showTips && (
@@ -370,20 +374,20 @@ export default function TrainingGoals() {
         <div className="mt-6 p-4 bg-yellow-50 rounded-lg">
           <h4 className="font-semibold mb-2 flex items-center gap-2">
             <Calendar className="w-4 h-4 text-yellow-600" />
-            Training Schedule Overview
+            {t('tg_overview')}
           </h4>
           <div className="grid grid-cols-3 gap-4 text-sm">
             <div>
-              <div className="font-medium text-blue-600">Junior Year</div>
-              <div className="text-gray-600">Foundation building, debut race</div>
+              <div className="font-medium text-blue-600">{t('tg_junior_year')}</div>
+              <div className="text-gray-600">{t('tg_junior_desc')}</div>
             </div>
             <div>
-              <div className="font-medium text-purple-600">Classic Year</div>
-              <div className="text-gray-600">Triple Crown races, peak performance</div>
+              <div className="font-medium text-purple-600">{t('tg_classic_year')}</div>
+              <div className="text-gray-600">{t('tg_classic_desc')}</div>
             </div>
             <div>
-              <div className="font-medium text-orange-600">Senior Year</div>
-              <div className="text-gray-600">Final challenges, legacy races</div>
+              <div className="font-medium text-orange-600">{t('tg_senior_year')}</div>
+              <div className="text-gray-600">{t('tg_senior_desc')}</div>
             </div>
           </div>
         </div>

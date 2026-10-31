@@ -2,6 +2,7 @@
 import releasesData from '../../public/data/releases.json';
 import scenariosData from '../../public/data/scenarios.json';
 import newsData from '../../public/data/news.json';
+import newsJa from '../../public/data/news-ja.json';
 
 import { localizePathname, type Locale } from '@/lib/i18n';
 import { t as tr } from '@/lib/ui-strings';
@@ -46,7 +47,7 @@ function group(list: any[]) {
 const globalGroups = group(globalRecent);
 const jpGroups = group(jpOnly);
 const scenarios = scenariosData as any[];
-const news = (newsData as any).items as any[];
+const news = ((ja ? newsJa : newsData) as any).items as any[];
 const name = (e: any) => {
   const rec: any = e.kind === 'character' ? charById.get(e.id) : cardById.get(e.id);
   if (!rec) return ja ? e.name_jp || e.name_en : e.name_en;
@@ -56,7 +57,7 @@ const name = (e: any) => {
 
 <section class="mb-10">
   <h2 class="text-2xl font-display mb-2">{t.news}</h2>
-  <p class="text-sm text-gray-500 mb-4">{t.newsNote} (<a href="https://umamusume.gg/" rel="noopener" class="underline">umamusume.gg</a>)</p>
+  <p class="text-sm text-gray-500 mb-4">{t.newsNote} {!ja && <>(<a href="https://umamusume.gg/" rel="noopener" class="underline">umamusume.gg</a>)</>}</p>
   <ul class="glass rounded-xl divide-y divide-gray-100">
     {news.map((n) => (
       <li class="p-3 flex gap-3 items-baseline">
@@ -119,7 +120,7 @@ const name = (e: any) => {
       <tbody>
         {scenarios.map((s) => (
           <tr class="border-t border-gray-100">
-            <td class="p-3">{ja || locale === 'zh' || locale === 'zh-tw' ? s.name_jp : s.name_en_full || s.name_en || s.name_jp}</td>
+            <td class="p-3">{locale === 'ja' ? s.name_jp : locale === 'ko' ? s.name_ko || s.name_jp : locale === 'zh-tw' ? s.name_zh_tw || s.name_jp : locale === 'zh' ? s.name_zh || s.name_jp : s.name_en_full || s.name_en || s.name_jp}</td>
             <td class="p-3">{s.start_jp ?? '-'}</td>
             <td class="p-3">{s.start_global ?? t.notYet}</td>
           </tr>

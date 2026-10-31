@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import SkillBuilder from '@/components/tools/SkillBuilder';
+import { toolLabels } from '@/lib/tool-strings';
 ---
 
 <Layout
@@ -27,7 +28,7 @@ import SkillBuilder from '@/components/tools/SkillBuilder';
       </p>
     </div>
 
-    <SkillBuilder client:load />
+    <SkillBuilder labels={toolLabels('ja','sb')} locale="ja" client:load />
   </main>
 </Layout>
 

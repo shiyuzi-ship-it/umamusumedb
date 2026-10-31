@@ -13,6 +13,7 @@ import SkillBuilder from '@/components/tools/SkillBuilder';
 import SupportDeckBuilder from '@/components/tools/SupportDeckBuilder';
 import TrainingGoals from '@/components/tools/TrainingGoals';
 import CharacterComparisonTool from '@/components/tools/CharacterComparisonTool';
+import { toolLabels } from '@/lib/tool-strings';
 
 interface Props { locale: Locale; tool: string }
 const { locale: loc, tool } = Astro.props;
@@ -21,6 +22,7 @@ const KEYS: Record<string, string> = {
   'support-deck': 'toolDeck', 'training-goals': 'toolGoals', 'character-comparison': 'toolCompare',
 };
 const key = KEYS[tool];
+const L = toolLabels(loc, 'cc');
 const name = t(loc, key);
 const desc = t(loc, key + 'Desc');
 const characters = allCharacters.map((c: any) => ({
@@ -37,11 +39,44 @@ const characters = allCharacters.map((c: any) => ({
       <p class="text-gray-600">{desc}</p>
       <p class="text-xs text-gray-500 mt-2">{t(loc, 'toolNote')}</p>
     </div>
-    {tool === 'training-calculator' && <TrainingCalculator client:load />}
-    {tool === 'factor-calculator' && <FactorCalculator client:load />}
-    {tool === 'skill-builder' && <SkillBuilder client:load />}
-    {tool === 'support-deck' && <SupportDeckBuilder client:load />}
-    {tool === 'training-goals' && <TrainingGoals client:load />}
-    {tool === 'character-comparison' && <CharacterComparisonTool characters={characters} client:load />}
+    {tool === 'training-calculator' && <TrainingCalculator labels={toolLabels(loc, 'tc')} client:load />}
+    {tool === 'factor-calculator' && <FactorCalculator labels={toolLabels(loc, 'fc')} client:load />}
+    {tool === 'skill-builder' && <SkillBuilder labels={toolLabels(loc, 'sb')} locale={loc} client:load />}
+    {tool === 'support-deck' && <SupportDeckBuilder labels={toolLabels(loc, 'db')} locale={loc} client:load />}
+    {tool === 'training-goals' && <TrainingGoals labels={toolLabels(loc, 'tg')} locale={loc} client:load />}
+    {tool === 'character-comparison' && <CharacterComparisonTool characters={characters} labels={toolLabels(loc, 'cc')} client:load />}
+    {tool === 'character-comparison' && (
+      <>
+        <div class="mt-8 glass rounded-xl p-6">
+          <h2 class="text-lg font-semibold mb-3">{L.ccp_how}</h2>
+          <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-700">
+            {[['ccp_s1', 'ccp_s1d'], ['ccp_s2', 'ccp_s2d'], ['ccp_s3', 'ccp_s3d']].map(([a, b]) => (<div><div class="font-medium text-uma-primary mb-1">{L[a]}</div><p>{L[b]}</p></div>))}
+          </div>
+        </div>
+        <div class="mt-6 glass rounded-xl p-6">
+          <h2 class="text-lg font-semibold mb-3">{L.ccp_data}</h2>
+          <div class="grid md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h3 class="font-medium mb-2 text-gray-800">{L.ccp_apt}</h3>
+              <div class="space-y-1 text-gray-600">
+                <div class="flex items-center gap-2"><span class="w-6 h-6 flex items-center justify-center rounded bg-red-100 text-red-700 font-bold text-xs">S</span> <span>{L.ccp_apt_s}</span></div>
+                <div class="flex items-center gap-2"><span class="w-6 h-6 flex items-center justify-center rounded bg-orange-100 text-orange-700 font-bold text-xs">A</span> <span>{L.ccp_apt_a}</span></div>
+                <div class="flex items-center gap-2"><span class="w-6 h-6 flex items-center justify-center rounded bg-yellow-100 text-yellow-700 font-bold text-xs">B</span> <span>{L.ccp_apt_b}</span></div>
+                <div class="flex items-center gap-2"><span class="w-6 h-6 flex items-center justify-center rounded bg-gray-100 text-gray-600 font-bold text-xs">C-F</span> <span>{L.ccp_apt_c}</span></div>
+              </div>
+            </div>
+            <div>
+              <h3 class="font-medium mb-2 text-gray-800">{L.ccp_growth}</h3>
+              <div class="space-y-1 text-gray-600">
+                <div class="flex items-center gap-2"><span class="text-green-600 font-bold">20%+</span> <span>{L.ccp_g20}</span></div>
+                <div class="flex items-center gap-2"><span class="text-blue-600 font-bold">10-20%</span> <span>{L.ccp_g10}</span></div>
+                <div class="flex items-center gap-2"><span class="text-yellow-600 font-bold">0-10%</span> <span>{L.ccp_g0}</span></div>
+                <div class="flex items-center gap-2"><span class="text-gray-500 font-bold">&lt;0%</span> <span>{L.ccp_gneg}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )}
   </main>
 </Layout>

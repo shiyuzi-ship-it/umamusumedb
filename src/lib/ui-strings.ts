@@ -52,7 +52,7 @@ const en: Dict = {
   toolDeck: 'Support Deck Builder', toolDeckDesc: 'Build a six-card support deck and compare effects.',
   toolGoals: 'Training Goals', toolGoalsDesc: 'Race objective checklist for popular characters.',
   toolCompare: 'Character Comparison', toolCompareDesc: 'Compare stats, aptitudes and growth of up to four characters.',
-  toolNote: 'The calculator itself is shown in English.',
+  toolNote: 'Costs come from game data; formulas and rates are community-measured estimates, not official Cygames values.',
   footerTagline: 'Fan-made database and tools for Uma Musume Pretty Derby.', footerNotAffiliated: 'Not affiliated with Cygames, Inc. All trademarks belong to their owners.',
   footerLinks: 'Links', footerLegal: 'Legal', privacy: 'Privacy Policy', terms: 'Terms of Service', dataSources: 'Data Sources & Licensing',
   breadcrumb: 'Breadcrumb', imageAlt: 'artwork',
@@ -63,6 +63,8 @@ const en: Dict = {
   releasedOn: 'Released {date}',
   specialtyNote: 'Values shown at each listed level.',
   effectLabelFriendship_bonus: 'Friendship Bonus',
+  eventsTitle: 'Training events', eventsChain: 'Chain events', eventsRandom: 'Random events', eventsDates: 'Outing events', eventsTrainee: 'Character events', eventsOuting: 'Outing events', eventsOutfit: 'Outfit events', eventsShared: 'Events shared with this character\'s support cards',
+  eventsNote: 'Event names, choices and outcomes from GameTora. Events with conditions, random alternate outcomes or secret triggers are not listed.', eventsCount: '{n} events',
 };
 
 const ja: Dict = {
@@ -98,18 +100,20 @@ const ja: Dict = {
   statSpeed: 'スピード', statStamina: 'スタミナ', statPower: 'パワー', statGuts: '根性', statWisdom: '賢さ',
   turf: '芝', dirt: 'ダート', sprint: '短距離', mile: 'マイル', medium: '中距離', long: '長距離', escape: '逃げ', lead: '先行', between: '差し', chase: '追込',
   updatesTitle: '更新情報・実装タイムライン', updatesDesc: 'ウマ娘のグローバル版お知らせ、日本版・グローバル版の新規ウマ娘とサポートカード、育成シナリオの一覧。', updatesH1: '更新情報', updatesSub: 'お知らせ、新規実装、シナリオの最新情報。',
-  news: '公式お知らせ(グローバル版)', newsNote: '見出しとリンクのみを掲載しています。詳細は各記事をご覧ください。',
+  news: '公式お知らせ(日本版)', newsNote: '見出しとリンクのみを掲載しています。詳細は各記事をご覧ください。出典: ウマ娘 プリティーダービー 公式ポータルサイト (umamusume.jp)。',
   recentGlobal: 'グローバル版の新規実装', recentJp: '日本版の新規実装(グローバル未実装)',
   scenarios: '育成シナリオ', scenario: 'シナリオ', jpStart: '日本版開始', glStart: 'グローバル版開始', notYet: '未実装', kindCharacter: 'ウマ娘', kindSupport: 'サポートカード', dataSource: 'データ出典',
   toolsTitle: 'ウマ娘ツール', toolsDesc: '育成計算、因子継承、スキルPt、サポートデッキ編成の無料ツール。', toolsH1: 'ツール',
   toolFactor: '因子計算', toolFactorDesc: '親・祖父母の因子継承確率。', toolTraining: 'トレーニング計算', toolTrainingDesc: '実際の計算式でトレーニング上昇値を算出(URAファイナルズ・アオハル杯)。',
   toolSkill: 'スキルビルダー', toolSkillDesc: '実際の必要Ptとヒント割引でスキル習得を計画。', toolDeck: 'サポートデッキ', toolDeckDesc: '6枚のデッキを組んで効果を比較。', toolGoals: '育成目標', toolGoalsDesc: '人気キャラの目標レースチェックリスト。', toolCompare: 'キャラ比較', toolCompareDesc: '最大4人のステータス・適性・成長率を比較。',
-  toolNote: '計算ツール本体は英語表示です。',
+  toolNote: 'スキルPtなどはゲームデータに基づきます。計算式・確率はコミュニティによる実測値で、Cygames公式の値ではありません。',
   footerTagline: 'ウマ娘 プリティーダービーのファンメイドのデータベースとツール。', footerNotAffiliated: '株式会社Cygamesとは無関係です。商標は各権利者に帰属します。',
   footerLinks: 'リンク', footerLegal: '法的情報', privacy: 'プライバシーポリシー', terms: '利用規約', dataSources: 'データ出典とライセンス', imageAlt: 'イラスト',
   detailTitleChar: '{name} - ステータス・適性・スキル', detailTitleCard: '{name} - サポートカード効果', detailTitleSkill: '{name} - スキル効果・必要Pt',
   detailDescChar: '{name}の基礎ステータス、適性、成長率、スキル、実装日(日本版・グローバル版)。',
   detailDescCard: '{name}:{rarity} {type}サポートカード。各レベルの効果、ヒントスキル、実装日。', releasedOn: '{date}実装',
+  eventsTitle: '育成イベント', eventsChain: '連続イベント', eventsRandom: 'ランダムイベント', eventsDates: 'お出かけイベント', eventsTrainee: 'ウマ娘イベント', eventsOuting: 'お出かけイベント', eventsOutfit: '勝負服イベント', eventsShared: 'このキャラのサポートカード共通イベント',
+  eventsNote: 'イベント名・選択肢・結果は GameTora のデータです。発生条件付き・結果が分岐するイベント・シークレットイベントは掲載していません。', eventsCount: '{n}件',
 };
 
 const zh: Dict = {
@@ -143,20 +147,22 @@ const zh: Dict = {
   rarityNormal: '普通', rarityGold: '金', rarityUnique: '固有', rarityEvolved: '进化',
   typeSpeed: '速度', typeStamina: '耐力', typePower: '力量', typeGuts: '毅力', typeWisdom: '智力', typeFriend: '友人', typeGroup: '团队',
   statSpeed: '速度', statStamina: '耐力', statPower: '力量', statGuts: '毅力', statWisdom: '智力',
-  turf: '芝', dirt: '泥地', sprint: '短距离', mile: '英里', medium: '中距离', long: '长距离', escape: '逃马', lead: '先行', between: '差行', chase: '追马',
+  turf: '草地', dirt: '沙地', sprint: '短距离', mile: '一哩', medium: '中距离', long: '长距离', escape: '领头', lead: '前列', between: '居中', chase: '后追',
   updatesTitle: '更新与实装时间线', updatesDesc: '赛马娘国际服最新公告、国际服与日服新实装的角色和支援卡,以及育成剧本。', updatesH1: '更新', updatesSub: '赛马娘最新动态:公告、新实装与剧本。',
-  news: '国际服最新公告', newsNote: '仅列出标题与链接,详情请打开原文。',
+  news: '国际服最新公告', newsNote: '仅列出标题与链接,详情请打开原文。标题为国际服官方公告的英文原文(暂无可用的官方中文公告源)。',
   recentGlobal: '近期实装 – 国际服', recentJp: '近期实装 – 日服(国际服尚未实装)',
   scenarios: '育成剧本', scenario: '剧本', jpStart: '日服开始', glStart: '国际服开始', notYet: '尚未', kindCharacter: '角色', kindSupport: '支援卡', dataSource: '数据来源',
   toolsTitle: '赛马娘工具', toolsDesc: '免费赛马娘计算工具:训练收益、因子继承、技能点和支援卡组编成。', toolsH1: '工具',
   toolFactor: '因子计算器', toolFactorDesc: '计算亲代与祖代因子的继承概率。', toolTraining: '训练计算器', toolTrainingDesc: '用真实公式计算训练属性收益(URA 剧本与 Unity Cup)。',
   toolSkill: '技能构建器', toolSkillDesc: '按真实技能点消耗与提示折扣规划技能购买。', toolDeck: '支援卡组编成', toolDeckDesc: '组建 6 张卡的支援卡组并比较效果。', toolGoals: '育成目标', toolGoalsDesc: '热门角色的目标赛事清单。', toolCompare: '角色对比', toolCompareDesc: '对比最多四名角色的属性、适性与成长率。',
-  toolNote: '计算器界面本身为英文。',
+  toolNote: '技能点等数据来自游戏数据;公式与概率为社区实测的估算值,并非 Cygames 官方数值。',
   footerTagline: '赛马娘 Pretty Derby 的粉丝制作数据库与工具。', footerNotAffiliated: '与 Cygames, Inc. 无关联。所有商标归其所有者所有。',
   footerLinks: '链接', footerLegal: '法律信息', privacy: '隐私政策', terms: '服务条款', dataSources: '数据来源与授权', imageAlt: '立绘',
   detailTitleChar: '{name} - 属性、适性与技能', detailTitleCard: '{name} - 支援卡效果', detailTitleSkill: '{name} - 技能效果与消耗',
   detailDescChar: '{name}:初始属性、适性、成长率、技能与实装日期(国际服与日服)。',
   detailDescCard: '{name}:{rarity} {type}支援卡。各等级效果、提示技能与实装日期。', releasedOn: '{date} 实装',
+  eventsTitle: '育成事件', eventsChain: '连锁事件', eventsRandom: '随机事件', eventsDates: '外出事件', eventsTrainee: '赛马娘事件', eventsOuting: '外出事件', eventsOutfit: '服装专属事件', eventsShared: '该角色支援卡共通事件',
+  eventsNote: '事件名称、选项与结果来自 GameTora。带有触发条件、结果随机分歧或隐藏触发的事件未收录。', eventsCount: '{n} 个事件',
 };
 
 // Traditional Chinese: character conversion of the Simplified strings (Taiwan phrases), then fix a few game terms.
@@ -203,20 +209,26 @@ const ko: Dict = {
   statSpeed: '스피드', statStamina: '스태미나', statPower: '파워', statGuts: '근성', statWisdom: '지능',
   turf: '잔디', dirt: '더트', sprint: '단거리', mile: '마일', medium: '중거리', long: '장거리', escape: '도주', lead: '선행', between: '선입', chase: '추입',
   updatesTitle: '업데이트 및 출시 타임라인', updatesDesc: '우마무스메 글로벌 최신 공지, 글로벌·일본 서버 신규 캐릭터와 서포트 카드, 육성 시나리오.', updatesH1: '업데이트', updatesSub: '공지, 신규 출시, 시나리오 최신 소식.',
-  news: '글로벌 최신 공지', newsNote: '제목과 링크만 표시합니다. 자세한 내용은 원문을 확인하세요.',
+  news: '글로벌 최신 공지', newsNote: '제목과 링크만 표시합니다. 자세한 내용은 원문을 확인하세요. 제목은 글로벌 공식 공지의 영어 원문입니다(이용 가능한 한국어 공식 공지 소스가 없음).',
   recentGlobal: '최근 출시 – 글로벌 서버', recentJp: '최근 출시 – 일본 서버(글로벌 미출시)',
   scenarios: '육성 시나리오', scenario: '시나리오', jpStart: '일본 시작', glStart: '글로벌 시작', notYet: '미정', kindCharacter: '캐릭터', kindSupport: '서포트 카드', dataSource: '데이터 출처',
   toolsTitle: '우마무스메 도구', toolsDesc: '육성 능력치, 인자 계승, 스킬 Pt, 서포트 덱 편성을 위한 무료 계산기.', toolsH1: '도구',
   toolFactor: '인자 계산기', toolFactorDesc: '부모·조부모 인자의 계승 확률.', toolTraining: '트레이닝 계산기', toolTrainingDesc: '실제 공식으로 트레이닝 능력치 상승량 계산(URA 파이널즈, 유니티 컵).',
   toolSkill: '스킬 빌더', toolSkillDesc: '실제 스킬 Pt 비용과 힌트 할인으로 스킬 구매 계획.', toolDeck: '서포트 덱 빌더', toolDeckDesc: '6장 덱을 구성하고 효과를 비교.', toolGoals: '육성 목표', toolGoalsDesc: '인기 캐릭터의 목표 레이스 체크리스트.', toolCompare: '캐릭터 비교', toolCompareDesc: '최대 4명의 능력치·적성·성장률 비교.',
-  toolNote: '계산기 화면은 영어로 표시됩니다.',
+  toolNote: '스킬 Pt 등은 게임 데이터를 기준으로 하며, 공식과 확률은 커뮤니티가 실측한 추정치로 Cygames 공식 수치가 아닙니다.',
   footerTagline: '우마무스메 프리티 더비 팬 제작 데이터베이스 및 도구.', footerNotAffiliated: 'Cygames, Inc.와 관련이 없습니다. 모든 상표는 각 소유자에게 있습니다.',
   footerLinks: '링크', footerLegal: '법적 고지', privacy: '개인정보처리방침', terms: '이용약관', dataSources: '데이터 출처 및 라이선스', imageAlt: '일러스트',
   detailTitleChar: '{name} - 능력치·적성·스킬', detailTitleCard: '{name} - 서포트 카드 효과', detailTitleSkill: '{name} - 스킬 효과·비용',
   detailDescChar: '{name}: 기본 능력치, 적성, 성장률, 스킬, 출시일(글로벌·일본).',
   detailDescCard: '{name}: {rarity} {type} 서포트 카드. 레벨별 효과, 힌트 스킬, 출시일.', releasedOn: '{date} 출시',
+  eventsTitle: '육성 이벤트', eventsChain: '연속 이벤트', eventsRandom: '랜덤 이벤트', eventsDates: '외출 이벤트', eventsTrainee: '우마무스메 이벤트', eventsOuting: '외출 이벤트', eventsOutfit: '의상 전용 이벤트', eventsShared: '이 캐릭터 서포트 카드 공통 이벤트',
+  eventsNote: '이벤트 이름·선택지·결과는 GameTora 데이터입니다. 발생 조건이 있거나 결과가 갈리는 이벤트, 시크릿 이벤트는 수록하지 않았습니다.', eventsCount: '이벤트 {n}개',
 };
 
+// zh follows the Taiwan-server terminology (zh = OpenCC conversion of the TW text): Stamina = 持久力, Guts = 意志力.
+import { twFix } from './tw-fix';
+const twTerms = twFix;
+for (const d of [zh, zhTw]) for (const k of Object.keys(d)) d[k] = twTerms(d[k]);
 export const STRINGS: Record<Locale, Dict> = { en, ja, zh, 'zh-tw': zhTw, ko };
 
 export function t(locale: Locale, key: string, vars: Record<string, string | number> = {}): string {
@@ -261,6 +273,7 @@ const EFFECTS: Record<string, Partial<Record<Locale, string>>> = {
 export function effectLabelL(key: string, locale: Locale, enJa: { en: string; ja: string } | undefined): string {
   if (locale === 'en') return enJa?.en ?? key.replace(/_/g, ' ');
   if (locale === 'ja') return enJa?.ja ?? key.replace(/_/g, ' ');
-  if (locale === 'zh-tw') return toTw(EFFECTS[key]?.zh ?? enJa?.en ?? key);
+  if (locale === 'zh-tw') return twTerms(toTw(EFFECTS[key]?.zh ?? enJa?.en ?? key));
+  if (locale === 'zh') return twTerms(EFFECTS[key]?.zh ?? enJa?.en ?? key.replace(/_/g, ' '));
   return EFFECTS[key]?.[locale] ?? enJa?.en ?? key.replace(/_/g, ' ');
 }

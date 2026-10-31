@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import TrainingGoals from '@/components/tools/TrainingGoals';
+import { toolLabels } from '@/lib/tool-strings';
 ---
 
 <Layout
@@ -28,7 +29,7 @@ import TrainingGoals from '@/components/tools/TrainingGoals';
     </div>
 
     <p class="text-xs text-gray-600 bg-yellow-50 border border-yellow-200 rounded p-3 mb-4">注意: この目標とヒントは一部キャラクターについての要約で、ゲームの更新ごとには更新していません。正確な最新の目標はゲーム内でご確認ください。</p>
-    <TrainingGoals client:load />
+    <TrainingGoals labels={toolLabels('ja','tg')} locale="ja" client:load />
   </main>
 </Layout>
 

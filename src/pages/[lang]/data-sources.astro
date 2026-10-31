@@ -1,0 +1,7 @@
+---
+import DocPage from '@/components/l10n/DocPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() { return NEW_LOCALES.map((lang) => ({ params: { lang } })); }
+const { lang } = Astro.params;
+---
+<DocPage locale={lang as any} kind="sources" />

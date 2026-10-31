@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
+import EventsSection from '@/components/l10n/EventsSection.astro';
+import { cardBlocks as cardBlocks, charBlocks as charBlocks } from '@/lib/events';
 import type { Locale } from '@/lib/i18n';
 import { t } from '@/lib/ui-strings';
 import { charName, charBaseName, cardName, skillName, skillDesc } from '@/lib/localized.js';
@@ -128,6 +130,8 @@ const statTable: [string, any][] = [['3★', stats3], ...(stats4 ? [['4★', sta
             </section>
           )
         ))}
+
+        <EventsSection locale={loc} blocks={charBlocks(character, loc)} />
 
         <RelatedLinks title={t(loc, 'relatedCards')} items={cards} />
         <RelatedLinks title={t(loc, 'otherOutfits')} items={outfits} />

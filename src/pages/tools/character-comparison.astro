@@ -10,6 +10,7 @@ const characters = allCharacters.map((c: any) => ({
   id: c.id, name_en: c.name_en, name_jp: c.name_jp, rarity: c.rarity, image_url: c.image_url, server: c.server,
   aptitudes: c.aptitudes, growth_rates: c.growth_rates, max_stats: c.max_stats, initial_stats: c.initial_stats,
 }));
+import { toolLabels } from '@/lib/tool-strings';
 ---
 
 <Layout
@@ -30,7 +31,7 @@ const characters = allCharacters.map((c: any) => ({
     </div>
 
     <!-- Comparison Tool -->
-    <CharacterComparisonTool characters={characters} client:load />
+    <CharacterComparisonTool characters={characters} labels={toolLabels('en','cc')} client:load />
 
     <!-- Usage Guide -->
     <div class="mt-8 glass rounded-xl p-6">

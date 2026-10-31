@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import FactorCalculator from '@/components/tools/FactorCalculator';
+import { toolLabels } from '@/lib/tool-strings';
 ---
 
 <Layout
@@ -27,6 +28,6 @@ import FactorCalculator from '@/components/tools/FactorCalculator';
       </p>
     </div>
 
-    <FactorCalculator client:load />
+    <FactorCalculator labels={toolLabels('en','fc')} client:load />
   </main>
 </Layout>

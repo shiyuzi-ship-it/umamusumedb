@@ -61,7 +61,6 @@ export const getHreflang = (locale: Locale) => LOCALE_META[locale].hreflang;
  * 'none' = evolved skill (noindex everywhere, no alternates).
  */
 const ALL: Locale[] = ['en', 'ja', 'zh', 'zh-tw', 'ko'];
-const EN_JA: Locale[] = ['en', 'ja'];
 const NEW_ONLY_EN: Locale[] = ['en'];
 
 export function availableLocalesFor(basePath: string, opts: { skillClass?: Map<string, 'all' | 'jp' | 'none'> } = {}): Locale[] {
@@ -74,8 +73,8 @@ export function availableLocalesFor(basePath: string, opts: { skillClass?: Map<s
     return cls === 'all' ? ALL : cls === 'jp' ? ['ja'] : [];
   }
   if (/^\/tools\/(factor-calculator|skill-builder|support-deck|training-calculator|training-goals)\/$/.test(p)) return ALL;
-  if (p === '/tools/character-comparison/') return ['en', 'zh', 'zh-tw', 'ko'];
-  if (p === '/data-sources/' || p === '/privacy-policy/' || p === '/terms-of-service/' || p === '/guides/') return EN_JA;
+  if (p === '/tools/character-comparison/') return ALL;
+  if (p === '/data-sources/' || p === '/privacy-policy/' || p === '/terms-of-service/' || p === '/guides/') return ALL;
   return NEW_ONLY_EN;
 }
 

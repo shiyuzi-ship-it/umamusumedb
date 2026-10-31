@@ -2,9 +2,11 @@ import React, { useState, useMemo } from 'react';
 import { Plus, X, Search, TrendingUp, Zap, Activity, Heart, Brain, Target, ChevronDown, ChevronUp, BarChart3 } from 'lucide-react';
 import type { Character, CharacterStats, CharacterAptitudes } from '@/types';
 import PlaceholderImage from '../PlaceholderImage';
+import { makeT, type Labels } from './tool-i18n';
 
 interface CharacterComparisonToolProps {
   characters: Character[];
+  labels?: Labels;
 }
 
 interface ComparisonSlot {
@@ -71,7 +73,8 @@ function formatAptitude(rating: string | undefined): string {
   return rating || 'G';
 }
 
-export default function CharacterComparisonTool({ characters }: CharacterComparisonToolProps) {
+export default function CharacterComparisonTool({ characters, labels }: CharacterComparisonToolProps) {
+  const t = makeT(labels);
   const [slots, setSlots] = useState<ComparisonSlot[]>([
     { character: null, id: 'slot-0' },
     { character: null, id: 'slot-1' },
@@ -169,18 +172,18 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-uma-primary" />
-            Select Characters to Compare
+            {t('cc_select_title')}
           </h2>
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600">
-              {selectedCharacters.length}/{MAX_SLOTS} selected
+              {t('cc_selected', { n: selectedCharacters.length, max: MAX_SLOTS })}
             </span>
             {selectedCharacters.length > 0 && (
               <button
                 onClick={clearAll}
                 className="text-sm text-red-600 hover:text-red-700 px-3 py-1 rounded hover:bg-red-50 transition"
               >
-                Clear All
+                {t('cc_clear')}
               </button>
             )}
           </div>
@@ -224,7 +227,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                       />
                     )}
                     <div className="text-sm font-semibold line-clamp-1">{slot.character.name_en}</div>
-                    <div className="text-xs text-gray-500 line-clamp-1">{slot.character.name_jp}</div>
+                    {slot.character.name_jp !== slot.character.name_en && <div className="text-xs text-gray-500 line-clamp-1">{slot.character.name_jp}</div>}
                     <div className="flex gap-0.5 mt-1">
                       {Array.from({ length: slot.character.rarity || 1 }, (_, i) => (
                         <span key={i} className="text-uma-accent text-xs">★</span>
@@ -238,7 +241,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                   className="w-full h-full min-h-[120px] flex flex-col items-center justify-center text-gray-400 hover:text-uma-primary transition p-3"
                 >
                   <Plus className="w-8 h-8 mb-1" />
-                  <span className="text-xs">Add Character</span>
+                  <span className="text-xs">{t('cc_add')}</span>
                 </button>
               )}
             </div>
@@ -251,7 +254,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] flex flex-col">
             <div className="p-4 border-b flex items-center justify-between">
-              <h3 className="font-semibold">Select Character</h3>
+              <h3 className="font-semibold">{t('cc_pick')}</h3>
               <button
                 onClick={() => {
                   setActiveSlotIndex(null);
@@ -267,7 +270,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search characters..."
+                  placeholder={t('cc_search')}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:border-uma-primary"
@@ -303,7 +306,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                       )}
                       <div className="min-w-0">
                         <div className="text-sm font-medium truncate">{character.name_en}</div>
-                        <div className="text-xs text-gray-500 truncate">{character.name_jp}</div>
+                        {character.name_jp !== character.name_en && <div className="text-xs text-gray-500 truncate">{character.name_jp}</div>}
                         <div className="flex gap-0.5 mt-0.5">
                           {Array.from({ length: character.rarity || 1 }, (_, i) => (
                             <span key={i} className="text-uma-accent text-[10px]">★</span>
@@ -316,7 +319,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
               </div>
               {filteredCharacters.length === 0 && (
                 <div className="text-center py-8 text-gray-500">
-                  No characters found matching your search
+                  {t('cc_not_found')}
                 </div>
               )}
             </div>
@@ -330,9 +333,9 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
           {/* Tab Navigation */}
           <div className="flex gap-2 border-b">
             {[
-              { id: 'stats', label: 'Base & Max Stats', icon: BarChart3 },
-              { id: 'aptitudes', label: 'Aptitudes', icon: Target },
-              { id: 'growth', label: 'Growth Rates', icon: TrendingUp }
+              { id: 'stats', label: t('cc_tab_stats'), icon: BarChart3 },
+              { id: 'aptitudes', label: t('cc_tab_apt'), icon: Target },
+              { id: 'growth', label: t('cc_tab_growth'), icon: TrendingUp }
             ].map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
@@ -354,12 +357,12 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
             <div className="glass rounded-xl p-4 overflow-x-auto">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-blue-500" />
-                Initial Stats Comparison
+                {t('cc_initial')}
               </h3>
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 px-2 font-medium text-gray-600">Stat</th>
+                    <th className="text-left py-2 px-2 font-medium text-gray-600">{t('cc_stat')}</th>
                     {selectedCharacters.map((char) => (
                       <th key={char.id} className="text-center py-2 px-2 min-w-[100px]">
                         <div className="text-sm font-semibold">{char.name_en}</div>
@@ -369,11 +372,11 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 </thead>
                 <tbody>
                   {[
-                    { key: 'speed', label: 'Speed', icon: Zap, color: 'text-blue-500' },
-                    { key: 'stamina', label: 'Stamina', icon: Heart, color: 'text-red-500' },
-                    { key: 'power', label: 'Power', icon: Activity, color: 'text-orange-500' },
-                    { key: 'guts', label: 'Guts', icon: Target, color: 'text-purple-500' },
-                    { key: 'wisdom', label: 'Wisdom', icon: Brain, color: 'text-green-500' }
+                    { key: 'speed', label: t('stat_speed'), icon: Zap, color: 'text-blue-500' },
+                    { key: 'stamina', label: t('stat_stamina'), icon: Heart, color: 'text-red-500' },
+                    { key: 'power', label: t('stat_power'), icon: Activity, color: 'text-orange-500' },
+                    { key: 'guts', label: t('stat_guts'), icon: Target, color: 'text-purple-500' },
+                    { key: 'wisdom', label: t('stat_wisdom'), icon: Brain, color: 'text-green-500' }
                   ].map(({ key, label, icon: Icon, color }) => (
                     <tr key={key} className="border-b last:border-b-0 hover:bg-gray-50">
                       <td className="py-3 px-2">
@@ -396,7 +399,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                     </tr>
                   ))}
                   <tr className="bg-blue-50 font-semibold">
-                    <td className="py-3 px-2">Total</td>
+                    <td className="py-3 px-2">{t('cc_total')}</td>
                     {selectedCharacters.map((char) => {
                       const stats = char.initial_stats || DEFAULT_STATS;
                       const total = Object.values(stats).reduce((a, b) => a + b, 0);
@@ -416,12 +419,12 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
 
               <h3 className="font-semibold mb-4 mt-6 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-purple-500" />
-                Max Stats Comparison
+                {t('cc_max')}
               </h3>
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 px-2 font-medium text-gray-600">Stat</th>
+                    <th className="text-left py-2 px-2 font-medium text-gray-600">{t('cc_stat')}</th>
                     {selectedCharacters.map((char) => (
                       <th key={char.id} className="text-center py-2 px-2 min-w-[100px]">
                         <div className="text-sm font-semibold">{char.name_en}</div>
@@ -431,11 +434,11 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 </thead>
                 <tbody>
                   {[
-                    { key: 'speed', label: 'Speed', icon: Zap, color: 'text-blue-500' },
-                    { key: 'stamina', label: 'Stamina', icon: Heart, color: 'text-red-500' },
-                    { key: 'power', label: 'Power', icon: Activity, color: 'text-orange-500' },
-                    { key: 'guts', label: 'Guts', icon: Target, color: 'text-purple-500' },
-                    { key: 'wisdom', label: 'Wisdom', icon: Brain, color: 'text-green-500' }
+                    { key: 'speed', label: t('stat_speed'), icon: Zap, color: 'text-blue-500' },
+                    { key: 'stamina', label: t('stat_stamina'), icon: Heart, color: 'text-red-500' },
+                    { key: 'power', label: t('stat_power'), icon: Activity, color: 'text-orange-500' },
+                    { key: 'guts', label: t('stat_guts'), icon: Target, color: 'text-purple-500' },
+                    { key: 'wisdom', label: t('stat_wisdom'), icon: Brain, color: 'text-green-500' }
                   ].map(({ key, label, icon: Icon, color }) => (
                     <tr key={key} className="border-b last:border-b-0 hover:bg-gray-50">
                       <td className="py-3 px-2">
@@ -458,7 +461,7 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                     </tr>
                   ))}
                   <tr className="bg-purple-50 font-semibold">
-                    <td className="py-3 px-2">Total</td>
+                    <td className="py-3 px-2">{t('cc_total')}</td>
                     {selectedCharacters.map((char) => {
                       const stats = char.max_stats || DEFAULT_STATS;
                       const total = Object.values(stats).reduce((a, b) => a + b, 0);
@@ -483,12 +486,12 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
             <div className="glass rounded-xl p-4 overflow-x-auto">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
                 <Target className="w-5 h-5 text-red-500" />
-                Distance Aptitudes
+                {t('cc_apt_distance')}
               </h3>
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 px-2 font-medium text-gray-600">Distance</th>
+                    <th className="text-left py-2 px-2 font-medium text-gray-600">{t('cc_distance')}</th>
                     {selectedCharacters.map((char) => (
                       <th key={char.id} className="text-center py-2 px-2 min-w-[100px]">
                         <div className="text-sm font-semibold">{char.name_en}</div>
@@ -498,10 +501,10 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 </thead>
                 <tbody>
                   {[
-                    { key: 'sprint', label: 'Sprint (短距離)' },
-                    { key: 'mile', label: 'Mile (マイル)' },
-                    { key: 'medium', label: 'Medium (中距離)' },
-                    { key: 'long', label: 'Long (長距離)' }
+                    { key: 'sprint', label: t('sb_d_sprint') },
+                    { key: 'mile', label: t('sb_d_mile') },
+                    { key: 'medium', label: t('sb_d_medium') },
+                    { key: 'long', label: t('sb_d_long') }
                   ].map(({ key, label }) => (
                     <tr key={key} className="border-b last:border-b-0 hover:bg-gray-50">
                       <td className="py-3 px-2 font-medium">{label}</td>
@@ -524,12 +527,12 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
 
               <h3 className="font-semibold mb-4 mt-6 flex items-center gap-2">
                 <Target className="w-5 h-5 text-blue-500" />
-                Running Style Aptitudes
+                {t('cc_apt_style')}
               </h3>
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 px-2 font-medium text-gray-600">Style</th>
+                    <th className="text-left py-2 px-2 font-medium text-gray-600">{t('cc_style')}</th>
                     {selectedCharacters.map((char) => (
                       <th key={char.id} className="text-center py-2 px-2 min-w-[100px]">
                         <div className="text-sm font-semibold">{char.name_en}</div>
@@ -539,10 +542,10 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 </thead>
                 <tbody>
                   {[
-                    { key: 'escape', label: 'Front Runner (逃げ)' },
-                    { key: 'lead', label: 'Pace Chaser (先行)' },
-                    { key: 'between', label: 'Late Surger (差し)' },
-                    { key: 'chase', label: 'End Closer (追込)' }
+                    { key: 'escape', label: t('sb_s_escape') },
+                    { key: 'lead', label: t('sb_s_lead') },
+                    { key: 'between', label: t('sb_s_between') },
+                    { key: 'chase', label: t('sb_s_chase') }
                   ].map(({ key, label }) => (
                     <tr key={key} className="border-b last:border-b-0 hover:bg-gray-50">
                       <td className="py-3 px-2 font-medium">{label}</td>
@@ -565,12 +568,12 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
 
               <h3 className="font-semibold mb-4 mt-6 flex items-center gap-2">
                 <Target className="w-5 h-5 text-green-500" />
-                Surface Aptitudes
+                {t('cc_apt_surface')}
               </h3>
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 px-2 font-medium text-gray-600">Surface</th>
+                    <th className="text-left py-2 px-2 font-medium text-gray-600">{t('cc_surface')}</th>
                     {selectedCharacters.map((char) => (
                       <th key={char.id} className="text-center py-2 px-2 min-w-[100px]">
                         <div className="text-sm font-semibold">{char.name_en}</div>
@@ -580,8 +583,8 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 </thead>
                 <tbody>
                   {[
-                    { key: 'turf', label: 'Turf (芝)' },
-                    { key: 'dirt', label: 'Dirt (ダート)' }
+                    { key: 'turf', label: t('cc_turf') },
+                    { key: 'dirt', label: t('cc_dirt') }
                   ].map(({ key, label }) => (
                     <tr key={key} className="border-b last:border-b-0 hover:bg-gray-50">
                       <td className="py-3 px-2 font-medium">{label}</td>
@@ -609,15 +612,15 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
             <div className="glass rounded-xl p-4 overflow-x-auto">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-green-500" />
-                Growth Rate Comparison (%)
+                {t('cc_growth_title')}
               </h3>
               <p className="text-sm text-gray-600 mb-4">
-                Higher growth rates mean faster stat gains during training. This affects how quickly stats increase when training that specific attribute.
+                {t('cc_growth_note')}
               </p>
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b">
-                    <th className="text-left py-2 px-2 font-medium text-gray-600">Stat</th>
+                    <th className="text-left py-2 px-2 font-medium text-gray-600">{t('cc_stat')}</th>
                     {selectedCharacters.map((char) => (
                       <th key={char.id} className="text-center py-2 px-2 min-w-[100px]">
                         <div className="text-sm font-semibold">{char.name_en}</div>
@@ -627,11 +630,11 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                 </thead>
                 <tbody>
                   {[
-                    { key: 'speed', label: 'Speed Growth', icon: Zap, color: 'text-blue-500' },
-                    { key: 'stamina', label: 'Stamina Growth', icon: Heart, color: 'text-red-500' },
-                    { key: 'power', label: 'Power Growth', icon: Activity, color: 'text-orange-500' },
-                    { key: 'guts', label: 'Guts Growth', icon: Target, color: 'text-purple-500' },
-                    { key: 'wisdom', label: 'Wisdom Growth', icon: Brain, color: 'text-green-500' }
+                    { key: 'speed', label: t('cc_growth_of', { stat: t('stat_speed') }), icon: Zap, color: 'text-blue-500' },
+                    { key: 'stamina', label: t('cc_growth_of', { stat: t('stat_stamina') }), icon: Heart, color: 'text-red-500' },
+                    { key: 'power', label: t('cc_growth_of', { stat: t('stat_power') }), icon: Activity, color: 'text-orange-500' },
+                    { key: 'guts', label: t('cc_growth_of', { stat: t('stat_guts') }), icon: Target, color: 'text-purple-500' },
+                    { key: 'wisdom', label: t('cc_growth_of', { stat: t('stat_wisdom') }), icon: Brain, color: 'text-green-500' }
                   ].map(({ key, label, icon: Icon, color }) => {
                     const rates = selectedCharacters.map(char => char.growth_rates?.[key] || 0);
                     const maxRate = Math.max(...rates);
@@ -676,23 +679,23 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
                   <h4 className="font-semibold text-sm mb-3">{char.name_en}</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Initial Total</span>
+                      <span className="text-gray-600">{t('cc_init_total')}</span>
                       <span className="font-medium">{totalInitStats}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Max Total</span>
+                      <span className="text-gray-600">{t('cc_max_total')}</span>
                       <span className="font-medium">{totalMaxStats}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">S Aptitudes</span>
+                      <span className="text-gray-600">{t('cc_s_apt')}</span>
                       <span className="font-medium text-red-600">{sCount}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">A Aptitudes</span>
+                      <span className="text-gray-600">{t('cc_a_apt')}</span>
                       <span className="font-medium text-orange-600">{aCount}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Growth Bonus</span>
+                      <span className="text-gray-600">{t('cc_growth_bonus')}</span>
                       <span className="font-medium text-green-600">
                         +{Object.values(char.growth_rates || {}).reduce((a, b) => a + (b || 0), 0)}%
                       </span>
@@ -709,10 +712,10 @@ export default function CharacterComparisonTool({ characters }: CharacterCompari
       {selectedCharacters.length === 0 && (
         <div className="glass rounded-xl p-12 text-center">
           <BarChart3 className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-lg font-semibold text-gray-600 mb-2">No Characters Selected</h3>
-          <p className="text-gray-500 mb-4">Click "Add Character" above to start comparing Uma Musume</p>
+          <h3 className="text-lg font-semibold text-gray-600 mb-2">{t('cc_empty_title')}</h3>
+          <p className="text-gray-500 mb-4">{t('cc_empty_desc')}</p>
           <div className="text-sm text-gray-400">
-            You can compare up to 4 characters side by side
+            {t('cc_empty_max', { max: MAX_SLOTS })}
           </div>
         </div>
       )}

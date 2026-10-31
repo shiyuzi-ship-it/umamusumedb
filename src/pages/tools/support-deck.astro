@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import SupportDeckBuilder from '@/components/tools/SupportDeckBuilder';
+import { toolLabels } from '@/lib/tool-strings';
 ---
 
 <Layout
@@ -27,6 +28,6 @@ import SupportDeckBuilder from '@/components/tools/SupportDeckBuilder';
       </p>
     </div>
 
-    <SupportDeckBuilder client:load />
+    <SupportDeckBuilder labels={toolLabels('en','db')} locale="en" client:load />
   </main>
 </Layout>
