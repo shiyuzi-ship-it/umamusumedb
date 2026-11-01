@@ -208,6 +208,7 @@ Uses the Cloudflare MCP (`execute` tool) and an upload JWT; the JWT is written t
   Keep the privacy policy truthful about what the site does (Google Analytics, Google AdSense cookies, localStorage in tools) whenever code changes. There is no separate "about" page.
 - The old `collect-*` / `export-to-json` / R2 scripts and `database/` no longer feed the site.
 - AdSense (auto ads script) and GA live in `src/layouts/Layout.astro`; the AdSense script is intentionally not loaded on `noindex` pages. Keep the ad code intact.
+- `/links/` (all 5 locales; content in `src/lib/legal/links.ts`, rendered by `DocPage` kind `links`) is the friends / link-exchange page (contact hello@umamusumedb.com). Partner links are plain followed links (`rel="noopener"` only; we never sell links). Footer has the entry in every locale; the `ja` footer also links the partner directly (ウマ娘うまぴょい速報). Add a partner by editing `links.ts` (all four authored locales) and, if wanted, `Footer.astro`.
 - `/guides/`, `/privacy-policy/`, `/terms-of-service/`, `/data-sources/` and every tool (incl. `/tools/character-comparison/`) exist in all five locales.
 
 ## Common Issues and Solutions
