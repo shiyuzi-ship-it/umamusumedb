@@ -172,6 +172,8 @@ npx vitest run
 - UI strings for all locales: `src/lib/ui-strings.ts` (add a key to `en`; `ja`, `zh`, `ko` need their own; `zh-tw` is converted from `zh`).
   New-locale templates: `src/components/l10n/` + `src/pages/[lang]/`; en/ja keep their own pages (`src/pages/*`, `src/pages/ja/*`).
 
+- `public/_redirects`: keep wildcard / `:splat` rules at the END of the file. Cloudflare Pages silently stops honouring the static rules listed after the first dynamic rule once ~100 rules are reached (found 2026-11-01: only the first 104 of 298 rules worked). Never use a status other than 301/302/307/308/200 (`... 404` lines are invalid). After a deploy, spot-check an old redirect near the end of the file (e.g. `/tier-list/` -> 301).
+
 ### 3. Commit and push
 ```bash
 git add -A && git commit -m "Data update YYYY-MM-DD" && git push origin main
