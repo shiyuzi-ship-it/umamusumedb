@@ -2,7 +2,9 @@
 import ScheduleLink from '@/components/ScheduleLink.astro';
 import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
 import { t as __t } from '@/lib/ui-strings';
-import { charName as __cn, cardName as __kn } from '@/lib/localized.js';
+import { charName as __cn, cardName as __kn, skillName as __sn, skillDesc as __sd } from '@/lib/localized.js';
+import { findSkill as __findSkill } from '@/lib/related';
+import { formatBirthday as __fb } from '@/lib/page-helpers';
 import { otherOutfits as __outfits, cardsOfCharacter as __cardsOf, otherCardsOfCharacter as __otherCards, characterOfCard as __ownerOf } from '@/lib/related';
 import { localizePathname as __lp } from '@/lib/i18n';
 import { t as tr } from '@/lib/ui-strings';
@@ -26,6 +28,10 @@ const baseNameEn = stripVariantName(character.name_en);
 const prototypeHorse = realHorses?.horsesByNameEn?.[baseNameEn] ?? null;
 
 const skillIndex = createSkillIndex(skills);
+// Skill names / texts in Japanese (original text) from the skill records; unknown names are kept as they are.
+const jaSkillName = (n: string) => { const s = __findSkill(n); return s ? __sn(s, 'ja') : n; };
+const uniqueRec = character.unique_skill ? __findSkill(character.unique_skill.name_en || character.unique_skill.name_jp) : null;
+const uniqueDesc = (uniqueRec && __sd(uniqueRec, 'ja')) || character.unique_skill?.effect || '—';
 const uniqueSkillId =
   (character.unique_skill?.name_en && findSkillIdByName(skillIndex, character.unique_skill.name_en)) ||
   (character.unique_skill?.name_jp && findSkillIdByName(skillIndex, character.unique_skill.name_jp)) ||
@@ -180,7 +186,7 @@ const __relOutfits = __outfits(character).map((o: any) => ({ href: __lp(`/charac
             <!-- Birthday -->
             <div class="flex items-center gap-2">
               <span class="text-sm text-gray-600">誕生日:</span>
-              <span class="font-medium">{character.birthday || '不明'}</span>
+              <span class="font-medium">{character.birthday ? __fb(character.birthday, 'ja') : '不明'}</span>
             </div>
 
             <!-- CV -->
@@ -216,7 +222,7 @@ const __relOutfits = __outfits(character).map((o: any) => ({ href: __lp(`/charac
             )}
             {character.innate_skills && character.innate_skills.length > 0 && (
               <div class="text-xs text-gray-600 pt-1">
-                <span class="font-medium text-gray-700">所持スキル（初期）:</span> {character.innate_skills.join('、')}
+                <span class="font-medium text-gray-700">所持スキル（初期）:</span> {character.innate_skills.map(jaSkillName).join('、')}
               </div>
             )}
           </div>
@@ -386,7 +392,7 @@ const __relOutfits = __outfits(character).map((o: any) => ({ href: __lp(`/charac
                     character.unique_skill.name_jp || character.unique_skill.name_en || '固有スキル'
                   )}
                 </h3>
-                <p class="text-sm text-gray-600 mt-1">{character.unique_skill.effect || '—'}</p>
+                <p class="text-sm text-gray-600 mt-1">{uniqueDesc}</p>
               </div>
             </div>
           </div>
@@ -412,10 +418,10 @@ const __relOutfits = __outfits(character).map((o: any) => ({ href: __lp(`/charac
                       <h3 class="font-semibold">
                         {skillId ? (
                           <a href={`/ja/skills/${skillId}/`} class="text-uma-primary hover:underline">
-                            {skillName}
+                            {jaSkillName(skillName)}
                           </a>
                         ) : (
-                          skillName
+                          jaSkillName(skillName)
                         )}
                       </h3>
                     </div>

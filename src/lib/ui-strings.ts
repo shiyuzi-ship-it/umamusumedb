@@ -82,7 +82,7 @@ const ja: Dict = {
   newestChars: '新着ウマ娘', newestCards: '新着SSRサポートカード', latestReleases: 'グローバル版の新規実装', viewAll: 'すべて見る', allUpdates: '更新情報をすべて見る',
   toolsHeading: '育成ツール', viewAllTools: 'ツール一覧',
   serverNote: '日本版とグローバル版を収録。グローバル版に未実装のものは「JP only」と表示します。',
-  jpOnly: 'JP only', global: 'グローバル', releasedGlobal: 'グローバル版配信中', jpOnlyFull: '日本版のみ(グローバル未実装)',
+  jpOnly: 'JPのみ', global: 'グローバル', releasedGlobal: 'グローバル版配信中', jpOnlyFull: '日本版のみ(グローバル未実装)',
   charactersTitle: 'ウマ娘一覧(全キャラ・勝負服)', charactersDesc: '全{n}人のウマ娘と勝負服の基礎ステータス・適性・スキル。日本版とグローバル版。',
   charactersH1: 'ウマ娘', charactersIntro: '{n}人(勝負服含む)、新しい順。',
   cardsTitle: 'サポートカード一覧', cardsDesc: '全{n}枚のサポートカード(SSR・SR・R)の各レベル効果、ヒントスキル、実装日。',

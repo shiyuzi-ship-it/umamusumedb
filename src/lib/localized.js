@@ -17,8 +17,12 @@ export function charName(c, loc) {
   if (loc === 'en') return c.name_en;
   if (loc === 'ja') return c.name_jp;
   const t = i18nOf(c, loc);
-  if (t?.name) return t.title ? `${t.name} (${t.title})` : t.name;
+  if (t?.name) { const ti = titleOrOriginal(c, t); return ti ? `${t.name} (${ti})` : t.name; }
   return charName(c, FALLBACK[loc]);
+}
+/** Outfit title for zh / ko pages: the localized title, else the original Japanese title (never an invented translation). */
+function titleOrOriginal(rec, t) {
+  return t?.title || rec.title_jp || '';
 }
 export function charBaseName(c, loc) {
   if (loc === 'en') return c.base_name_en ?? c.name_en;
@@ -30,14 +34,14 @@ export function charTitle(c, loc) {
   if (loc === 'en') return c.title_en ?? c.title_jp ?? '';
   if (loc === 'ja') return c.title_jp ?? '';
   const t = i18nOf(c, loc);
-  return t?.name ? t.title ?? '' : charTitle(c, FALLBACK[loc]);
+  return t?.name ? titleOrOriginal(c, t) : charTitle(c, FALLBACK[loc]);
 }
 /** Support card: "Name [Title]" */
 export function cardName(c, loc) {
   if (loc === 'en') return c.name_en;
   if (loc === 'ja') return c.name_jp;
   const t = i18nOf(c, loc);
-  if (t?.name) return t.title ? `${t.name} [${t.title}]` : t.name;
+  if (t?.name) { const ti = titleOrOriginal(c, t); return ti ? `${t.name} [${ti}]` : t.name; }
   return cardName(c, FALLBACK[loc]);
 }
 export function cardCharName(c, loc) {
@@ -50,13 +54,19 @@ export function skillName(s, loc) {
   if (loc === 'en') return s.name_en;
   if (loc === 'ja') return s.name_jp || s.name_en;
   const t = i18nOf(s, loc);
-  return t?.name || skillName(s, FALLBACK[loc]);
+  if (t?.name) return t.name;
+  // JP-only skills without a translation keep their original Japanese name (the English one is a fan translation).
+  if (loc === 'ko' && s.server === 'jp' && s.name_jp) return s.name_jp;
+  return skillName(s, FALLBACK[loc]);
 }
 export function skillDesc(s, loc) {
   if (loc === 'en') return s.description_en || s.effect || '';
   if (loc === 'ja') return s.description_jp || s.description_en || '';
   const t = i18nOf(s, loc);
-  return t?.desc || s.description_en || '';
+  if (t?.desc) return t.desc;
+  // JP-only skills without a translation keep the original Japanese text instead of the fan-translated English one.
+  if (s.server === 'jp' && s.description_jp) return s.description_jp;
+  return s.description_en || '';
 }
 /** Every known name of an entity (for search haystacks). */
 export function allNames(rec) {
