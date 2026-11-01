@@ -1,0 +1,76 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import type { Locale } from '@/lib/i18n';
+import { t } from '@/lib/ui-strings';
+import { typeLabel, path } from '@/lib/page-helpers';
+import { buildEntityEntries, type EntityKind } from '@/lib/entity-lists';
+import { renderTile } from '@/lib/entity-list-render';
+import { pageSlice, pagerHtml, totalPages, ENTITY_PAGE_SIZE } from '@/lib/pagination';
+
+interface Props { locale: Locale; kind: EntityKind; page?: number }
+const { locale: loc, kind, page = 1 } = Astro.props;
+const entries = buildEntityEntries(kind, loc);
+const n = entries.length;
+const pages = totalPages(n, ENTITY_PAGE_SIZE);
+const prefix = loc === 'en' ? '' : `/${loc}`;
+const slice = pageSlice(entries, page, ENTITY_PAGE_SIZE);
+const opts = { kind, prefix, jpLabel: t(loc, 'jpOnly'), scoreLabel: t(loc, 'scoreWord') };
+const html = slice.map((e, i) => renderTile(e, opts, i)).join('');
+const base = path(`/${kind}/`, loc);
+const pager = pagerHtml(base, page, pages, { aria: t(loc, 'pagesAria'), prev: t(loc, 'pagePrev'), next: t(loc, 'pageNext'), page: t(loc, 'pageWord') }, 'entity-pager');
+const pageOf = page > 1 ? t(loc, 'pageOf', { p: page, n: pages }) : '';
+const title = t(loc, `${kind}Title`, { n }) + (pageOf ? ` (${pageOf})` : '');
+const description = t(loc, `${kind}Desc`, { n }) + (pageOf ? ` ${pageOf}` : '');
+const itemList = slice.slice(0, 50).map((e) => ({ name: e.n, url: `${prefix}/${kind}/${e.i}/`, image: e.im }));
+const rarities = kind === 'cards' ? ['SSR', 'SR', 'R'] : ['3', '2', '1'];
+const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom', 'friend', 'group'] : [];
+const sorts = kind === 'cards'
+  ? [['new', 'sortNew'], ['old', 'sortOld'], ['score', 'sortScore'], ['name', 'sortName']]
+  : [['new', 'sortNew'], ['old', 'sortOld'], ['stars', 'sortStars'], ['name', 'sortName']];
+---
+
+<Layout title={title} description={description} itemList={itemList}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: t(loc, kind === 'cards' ? 'navCards' : 'navCharacters') }]} />
+    <div class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-2">{t(loc, `${kind}H1`)}</h1>
+      <p class="text-gray-600">{t(loc, `${kind}Intro`, { n })}{pageOf && ` ${pageOf}`}</p>
+      {kind === 'cards' && <a href={path('/support-card-rankings/', loc)} class="inline-block mt-2 text-sm text-uma-primary hover:underline">{t(loc, 'navRankings')} →</a>}
+    </div>
+
+    <div class="glass rounded-xl p-4 mb-6 flex flex-wrap gap-3 items-center" id="filters">
+      <input id="f-q" type="search" placeholder={t(loc, 'filterSearch')} class="flex-1 min-w-[12rem] px-3 py-2 rounded-lg border border-uma-primary/20 bg-white" />
+      <select id="f-server" class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+        <option value="">{t(loc, 'filterServer')}: {t(loc, 'filterAll')}</option>
+        <option value="global">{t(loc, 'global')}</option>
+        <option value="jp">{t(loc, 'jpOnly')}</option>
+      </select>
+      <select id="f-rarity" class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+        <option value="">{t(loc, 'filterRarity')}: {t(loc, 'filterAll')}</option>
+        {rarities.map((r) => <option value={r}>{kind === 'cards' ? r : '★'.repeat(Number(r))}</option>)}
+      </select>
+      {types.length > 0 && (
+        <select id="f-type" class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+          <option value="">{t(loc, 'filterType')}: {t(loc, 'filterAll')}</option>
+          {types.map((r) => <option value={r}>{typeLabel(loc, r)}</option>)}
+        </select>
+      )}
+      <select id="f-sort" aria-label={t(loc, 'sortLabel')} class="px-3 py-2 rounded-lg border border-uma-primary/20 bg-white">
+        {sorts.map(([v, k]) => <option value={v}>{t(loc, 'sortLabel')}: {t(loc, k)}</option>)}
+      </select>
+      <span id="f-count" class="text-sm text-gray-500"></span>
+    </div>
+
+    <ul id="entity-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"
+      data-json={`/${kind}-data/${loc}.json`} data-kind={kind} data-prefix={prefix} data-jp-label={t(loc, 'jpOnly')} data-score-label={t(loc, 'scoreWord')} data-more-label={t(loc, 'showMore')} data-step={ENTITY_PAGE_SIZE} set:html={html}></ul>
+    <Fragment set:html={pager} />
+    <p id="none" class="hidden text-center text-gray-500 py-8">{t(loc, 'noMatches')}</p>
+  </main>
+</Layout>
+
+<script>
+  import '@/lib/entity-list-client';
+</script>

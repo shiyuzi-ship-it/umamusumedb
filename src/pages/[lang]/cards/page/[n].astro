@@ -1,0 +1,12 @@
+---
+import EntityListPage from '@/components/l10n/EntityListPage.astro';
+import { buildEntityEntries } from '@/lib/entity-lists';
+import { NEW_LOCALES } from '@/lib/new-locales';
+import { totalPages, pageNumbers, ENTITY_PAGE_SIZE } from '@/lib/pagination';
+export function getStaticPaths() {
+  return NEW_LOCALES.flatMap((lang) => pageNumbers(totalPages(buildEntityEntries('cards', lang).length, ENTITY_PAGE_SIZE)).map((n) => ({ params: { lang, n: String(n) }, props: { page: n } })));
+}
+const { lang } = Astro.params;
+const { page } = Astro.props;
+---
+<EntityListPage locale={lang as any} kind="cards" page={page} />

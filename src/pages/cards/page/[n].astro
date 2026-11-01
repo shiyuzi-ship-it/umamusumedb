@@ -1,0 +1,10 @@
+---
+import EntityListPage from '@/components/l10n/EntityListPage.astro';
+import { buildEntityEntries } from '@/lib/entity-lists';
+import { totalPages, pageNumbers, ENTITY_PAGE_SIZE } from '@/lib/pagination';
+export function getStaticPaths() {
+  return pageNumbers(totalPages(buildEntityEntries('cards', 'en').length, ENTITY_PAGE_SIZE)).map((n) => ({ params: { n: String(n) }, props: { page: n } }));
+}
+const { page } = Astro.props;
+---
+<EntityListPage locale="en" kind="cards" page={page} />

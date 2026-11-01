@@ -69,6 +69,7 @@ export function availableLocalesFor(basePath: string, opts: AvailOpts = {}): Loc
   const p = ensureTrailingSlash(basePath);
   if (p === '/' || p === '/characters/' || p === '/cards/' || p === '/skills/' || p === '/skills/category/' || p === '/updates/' || p === '/tools/' || p === '/global-release-schedule/' || p === '/support-card-rankings/') return ALL;
   if (/^\/(characters|cards)\/[^/]+\/$/.test(p)) return ALL;
+  if (/^\/(characters|cards)\/page\/\d+\/$/.test(p)) return ALL; // every locale lists the same entries, so the same number of pages
   const cat = p.match(/^\/skills\/category\/([^/]+)\/$/);
   if (cat) return opts.categoryLocales?.get(cat[1]) ?? [];
   const skill = p.match(/^\/skills\/([^/]+)\/$/);

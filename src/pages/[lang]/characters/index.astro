@@ -1,7 +1,7 @@
 ---
-import ListPage from '@/components/l10n/ListPage.astro';
+import EntityListPage from '@/components/l10n/EntityListPage.astro';
 import { NEW_LOCALES } from '@/lib/new-locales';
 export function getStaticPaths() { return NEW_LOCALES.map((lang) => ({ params: { lang } })); }
 const { lang } = Astro.params;
 ---
-<ListPage locale={lang as any} kind="characters" />
+<EntityListPage locale={lang as any} kind="characters" page={1} />
