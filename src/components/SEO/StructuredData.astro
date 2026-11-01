@@ -2,7 +2,7 @@
 import { LOCALE_META, type Locale } from '@/lib/i18n';
 
 export interface Props {
-  type?: 'website' | 'character' | 'supportCard' | 'skill' | 'tool';
+  type?: 'website' | 'character' | 'supportCard' | 'skill' | 'tool' | 'webpage';
   /** name / description / image_url / url (+ legacy name_en, name_ja) */
   data?: any;
   pageUrl?: string;
@@ -51,6 +51,20 @@ if ((type === 'character' || type === 'supportCard' || type === 'skill') && name
       ...(description ? { description } : {}),
       ...(abs(data.image_url) ? { image: abs(data.image_url) } : {}),
     },
+  });
+}
+
+if (type === 'webpage' && name) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: data.title ?? name,
+    description: data.description,
+    url: abs(data.url) ?? pageUrl,
+    inLanguage,
+    ...(data.dateModified ? { dateModified: data.dateModified } : {}),
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    ...(data.about ? { about: { '@type': 'Thing', name: data.about } } : {}),
   });
 }
 

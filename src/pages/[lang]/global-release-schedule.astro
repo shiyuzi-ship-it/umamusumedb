@@ -1,0 +1,7 @@
+---
+import ReleaseSchedulePage from '@/components/l10n/ReleaseSchedulePage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() { return NEW_LOCALES.map((lang) => ({ params: { lang } })); }
+const { lang } = Astro.params;
+---
+<ReleaseSchedulePage locale={lang as any} />

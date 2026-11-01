@@ -1,0 +1,8 @@
+---
+import type { Locale } from '@/lib/i18n';
+import { st } from '@/lib/schedule-strings';
+import { path } from '@/lib/page-helpers';
+interface Props { locale: Locale; pending?: boolean; class?: string }
+const { locale, pending = false, class: cls = 'block mt-2 text-xs text-uma-primary hover:underline' } = Astro.props;
+---
+<a href={path('/global-release-schedule/', locale)} class={cls}>{st(locale, pending ? 'linkScheduleEst' : 'linkSchedule')}</a>

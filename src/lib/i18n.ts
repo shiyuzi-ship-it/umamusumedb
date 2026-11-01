@@ -65,7 +65,7 @@ const NEW_ONLY_EN: Locale[] = ['en'];
 
 export function availableLocalesFor(basePath: string, opts: { skillClass?: Map<string, 'all' | 'jp' | 'none'> } = {}): Locale[] {
   const p = ensureTrailingSlash(basePath);
-  if (p === '/' || p === '/characters/' || p === '/cards/' || p === '/skills/' || p === '/updates/' || p === '/tools/') return ALL;
+  if (p === '/' || p === '/characters/' || p === '/cards/' || p === '/skills/' || p === '/updates/' || p === '/tools/' || p === '/global-release-schedule/') return ALL;
   if (/^\/(characters|cards)\/[^/]+\/$/.test(p)) return ALL;
   const skill = p.match(/^\/skills\/([^/]+)\/$/);
   if (skill) {

@@ -1,4 +1,5 @@
 ---
+import ScheduleLink from '@/components/ScheduleLink.astro';
 import RelatedLinks from '@/components/l10n/RelatedLinks.astro';
 import { t as __t } from '@/lib/ui-strings';
 import { charName as __cn, cardName as __kn } from '@/lib/localized.js';
@@ -148,6 +149,7 @@ const __relCards = __otherCards(card).map((c: any) => ({ href: __lp(`/cards/${c.
               {card.release_date_global && <div class="flex justify-between"><dt>Global release</dt><dd>{card.release_date_global}</dd></div>}
               <div class="flex justify-between"><dt>Max level</dt><dd>Lv.{maxLevel} (LB4)</dd></div>
             </dl>
+            <ScheduleLink locale="en" pending={!card.release_date_global} class="block mt-2 text-xs text-uma-primary hover:underline" />
           </div>
         </div>
       </div>

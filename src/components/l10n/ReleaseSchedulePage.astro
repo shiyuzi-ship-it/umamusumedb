@@ -1,0 +1,165 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import type { Locale } from '@/lib/i18n';
+import { SITE_ORIGIN } from '@/lib/i18n';
+import { st } from '@/lib/schedule-strings';
+import { schedule as S, scheduleUpdated } from '@/lib/release-schedule-data';
+import { PAD_DAYS } from '@/lib/release-schedule';
+import { charName, cardName } from '@/lib/localized.js';
+import { path } from '@/lib/page-helpers';
+
+interface Props { locale: Locale }
+const { locale: loc } = Astro.props;
+const itemName = (i: any) => (i.kind === 'character' ? charName(i.rec, loc) : cardName(i.rec, loc));
+const itemHref = (i: any) => path(`/${i.kind === 'character' ? 'characters' : 'cards'}/${i.id}/`, loc);
+const tag = (i: any) => (i.kind === 'character' ? '★'.repeat(i.rec.rarity ?? 0) : String(i.rec.rarity ?? ''));
+const fmt = (n: number, d = 2) => n.toFixed(d);
+const next = S.pending.find((g) => g.est);
+const launch = S.released.find((g) => g.launch);
+const rest = S.released.filter((g) => !g.launch);
+const launchC = launch ? launch.items.filter((i) => i.kind === 'character').length : 0;
+const launchK = launch ? launch.items.length - launchC : 0;
+const gapRange = (g: any) => (g.gapMin === g.gapMax ? String(g.gapMin) : `${g.gapMin}–${g.gapMax}`);
+const jpRange = (g: any) => (g.jpMin === g.jpMax ? g.jpMin : `${g.jpMin} → ${g.jpMax}`);
+const title = st(loc, 'title');
+const description = st(loc, 'description');
+const pageUrl = `${SITE_ORIGIN}${path('/global-release-schedule/', loc)}`;
+const itemList = S.pending.filter((g) => g.est).slice(0, 10).flatMap((g) => g.items.slice(0, 5)).slice(0, 25).map((i) => ({ name: itemName(i), url: itemHref(i), image: i.rec.image_url }));
+const yrs = S.gap ? (S.gap.median / 365.25).toFixed(1) : '';
+---
+
+<Layout title={title} description={description} structuredDataType="webpage" structuredData={{ name: title, title, description, dateModified: scheduleUpdated, about: 'Uma Musume Pretty Derby Global server release schedule', url: pageUrl }} itemList={itemList}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: st(loc, 'nav') }]} />
+    <div class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-3">{st(loc, 'h1')}</h1>
+      <p class="text-gray-600 max-w-3xl">{st(loc, 'intro')}</p>
+    </div>
+
+    <section class="glass rounded-xl p-5 mb-6">
+      <ul class="space-y-1.5 text-sm sm:text-base text-gray-700 list-disc pl-5">
+        <li>{st(loc, 'sumLive', { c: S.counts.chars, k: S.counts.cards })}</li>
+        <li>{st(loc, 'sumLaunch', { d: S.launchDate })}</li>
+        {S.anchor && <li>{st(loc, 'sumLatest', { d: S.anchor.gl, jp: S.anchor.jp })}</li>}
+        {S.gap && <li>{st(loc, 'sumGap', { min: S.gap.min, max: S.gap.max, med: S.gap.median, yrs })}</li>}
+        {S.pace && <li>{st(loc, 'sumPace', { lo: fmt(1 / S.pace.slow, 1), hi: fmt(1 / S.pace.fast, 1) })}</li>}
+        <li>{st(loc, 'sumPending', { c: S.counts.pendingChars, k: S.counts.pendingCards })}</li>
+      </ul>
+    </section>
+
+    {next && next.est && (
+      <section class="rounded-xl border border-uma-primary/30 bg-white p-5 mb-6" id="next">
+        <h2 class="text-xl font-display mb-2">{st(loc, 'nextTitle')} <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 align-middle">{st(loc, 'estBadge')}</span></h2>
+        <p class="text-sm text-gray-600 mb-1">{st(loc, 'nextIntro')}</p>
+        <p class="font-semibold mb-2">{st(loc, 'nextLine', { jp: next.jp, from: next.est.from, to: next.est.to, mid: next.est.mid })}</p>
+        <ul class="flex flex-wrap gap-2 text-sm">
+          {next.items.map((i) => <li><a href={itemHref(i)} class="underline text-uma-primary">{itemName(i)}</a></li>)}
+        </ul>
+      </section>
+    )}
+
+    <div class="rounded-xl border border-amber-300 bg-amber-50 p-4 mb-8 text-sm text-amber-900" role="note">
+      <strong>{st(loc, 'warnTitle')}{['ja', 'zh', 'zh-tw'].includes(loc) ? '。' : '.'}</strong> {st(loc, 'warn')}
+    </div>
+
+    <section class="mb-10" id="jp-only">
+      <h2 class="text-2xl font-display mb-1">{st(loc, 'pendingTitle')}</h2>
+      <p class="text-sm text-gray-500 mb-3">{st(loc, 'pendingIntro')}</p>
+      <div class="overflow-x-auto rounded-xl bg-white shadow">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-left text-gray-600"><tr>
+            <th class="px-3 py-2 whitespace-nowrap">{st(loc, 'colJp')}</th>
+            <th class="px-3 py-2 whitespace-nowrap">{st(loc, 'colEst')}</th>
+            <th class="px-3 py-2">{st(loc, 'colItems')}</th>
+          </tr></thead>
+          <tbody>
+            {S.pending.map((g) => (
+              <tr class="border-t border-gray-100 align-top">
+                <td class="px-3 py-2 whitespace-nowrap font-medium">{g.jp}</td>
+                <td class="px-3 py-2 whitespace-nowrap">
+                  {g.est ? (<><span>{g.est.from} → {g.est.to}</span> <span class="ml-1 text-[10px] px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800">{st(loc, 'estBadge')}</span></>) : (<span class="text-gray-500" title={st(loc, 'skippedNote')}>{st(loc, 'noEstimate')}*</span>)}
+                </td>
+                <td class="px-3 py-2">
+                  <ul class="flex flex-wrap gap-x-3 gap-y-1">
+                    {g.items.map((i) => <li><a href={itemHref(i)} class="text-uma-primary hover:underline">{itemName(i)}</a> <span class="text-[10px] text-gray-400">{tag(i)}</span></li>)}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {S.counts.pendingNoEstimate > 0 && <p class="text-xs text-gray-500 mt-2">* {st(loc, 'skippedNote')}</p>}
+    </section>
+
+    <section class="mb-10" id="on-global">
+      <h2 class="text-2xl font-display mb-1">{st(loc, 'releasedTitle')}</h2>
+      <p class="text-sm text-gray-500 mb-3">{st(loc, 'releasedIntro')}</p>
+      <div class="overflow-x-auto rounded-xl bg-white shadow">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-left text-gray-600"><tr>
+            <th class="px-3 py-2 whitespace-nowrap">{st(loc, 'colGlobal')}</th>
+            <th class="px-3 py-2 whitespace-nowrap">{st(loc, 'colJp')}</th>
+            <th class="px-3 py-2 whitespace-nowrap">{st(loc, 'colGap')}</th>
+            <th class="px-3 py-2">{st(loc, 'colItems')}</th>
+          </tr></thead>
+          <tbody>
+            {rest.map((g) => (
+              <tr class="border-t border-gray-100 align-top">
+                <td class="px-3 py-2 whitespace-nowrap font-medium">{g.date}</td>
+                <td class="px-3 py-2 whitespace-nowrap">{jpRange(g)}</td>
+                <td class="px-3 py-2 whitespace-nowrap">{gapRange(g)}</td>
+                <td class="px-3 py-2">
+                  <ul class="flex flex-wrap gap-x-3 gap-y-1">
+                    {g.items.map((i) => <li><a href={itemHref(i)} class="text-uma-primary hover:underline">{itemName(i)}</a> <span class="text-[10px] text-gray-400">{tag(i)}</span></li>)}
+                  </ul>
+                </td>
+              </tr>
+            ))}
+            {launch && (
+              <tr class="border-t border-gray-100 align-top">
+                <td class="px-3 py-2 whitespace-nowrap font-medium">{launch.date}<div class="text-xs font-normal text-gray-500">{st(loc, 'launchLabel')}</div></td>
+                <td class="px-3 py-2 whitespace-nowrap">{jpRange(launch)}</td>
+                <td class="px-3 py-2 whitespace-nowrap">{gapRange(launch)}</td>
+                <td class="px-3 py-2">
+                  <details>
+                    <summary class="cursor-pointer text-uma-primary">{st(loc, 'launchShow', { c: launchC, k: launchK })}</summary>
+                    <ul class="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+                      {launch.items.map((i) => <li><a href={itemHref(i)} class="text-uma-primary hover:underline">{itemName(i)}</a> <span class="text-[10px] text-gray-400">{tag(i)}</span></li>)}
+                    </ul>
+                  </details>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="glass rounded-xl p-5 mb-8" id="method">
+      <h2 class="text-xl font-display mb-3">{st(loc, 'methodTitle')}</h2>
+      <ol class="space-y-2 text-sm text-gray-700 list-decimal pl-5">
+        <li>{st(loc, 'm1')}</li>
+        <li>{st(loc, 'm2')}</li>
+        {S.pace && <li>{st(loc, 'm3', { n: S.sampleSize, fast: fmt(S.pace.fast), slow: fmt(S.pace.slow) })}</li>}
+        <li>{st(loc, 'm4', { pad: PAD_DAYS })}</li>
+        {S.backtest && <li>{st(loc, 'm5', { hit: S.backtest.hit, n: S.backtest.n, h: S.backtest.horizon })}</li>}
+        <li>{st(loc, 'm6')}</li>
+      </ol>
+      <p class="text-xs text-gray-500 mt-3">{st(loc, 'updated', { d: scheduleUpdated })}</p>
+    </section>
+
+    <nav class="text-sm" aria-label={st(loc, 'related')}>
+      <h2 class="font-semibold mb-2">{st(loc, 'related')}</h2>
+      <ul class="flex flex-wrap gap-x-4 gap-y-1">
+        <li><a class="text-uma-primary hover:underline" href={path('/updates/', loc)}>{st(loc, 'relUpdates')}</a></li>
+        <li><a class="text-uma-primary hover:underline" href={path('/characters/', loc)}>{st(loc, 'relChars')}</a></li>
+        <li><a class="text-uma-primary hover:underline" href={path('/cards/', loc)}>{st(loc, 'relCards')}</a></li>
+        <li><a class="text-uma-primary hover:underline" href={path('/data-sources/', loc)}>{st(loc, 'relSources')}</a></li>
+      </ul>
+    </nav>
+  </main>
+</Layout>
