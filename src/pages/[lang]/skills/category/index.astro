@@ -1,0 +1,7 @@
+---
+import SkillCategoryHub from '@/components/l10n/SkillCategoryHub.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() { return NEW_LOCALES.map((lang) => ({ params: { lang } })); }
+const { lang } = Astro.params;
+---
+<SkillCategoryHub locale={lang as any} />

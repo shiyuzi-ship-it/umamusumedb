@@ -1,4 +1,5 @@
 ---
+import SkillCategoryLinks from '@/components/SkillCategoryLinks.astro';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
@@ -6,7 +7,6 @@ import type { Locale } from '@/lib/i18n';
 import { t } from '@/lib/ui-strings';
 import { characters, supportCards, skills } from '@/lib/static-content';
 import { charName, cardName, skillName, skillDesc, allNames } from '@/lib/localized.js';
-import { newLocaleSkillIds } from '@/lib/skill-class';
 import { typeLabel, skillRarityLabel, cardRarityClass, path } from '@/lib/page-helpers';
 
 import { buildSkillEntries } from '@/lib/skills-list-data';
@@ -45,6 +45,7 @@ const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom',
     <div class="mb-6">
       <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-2">{t(loc, `${key}H1`)}</h1>
       <p class="text-gray-600">{t(loc, `${key}Intro`, { n })}{pageOf && ` ${pageOf}`}</p>
+      {kind === 'skills' && <div class="mt-4"><SkillCategoryLinks locale={loc} /></div>}
       {kind === 'cards' && <a href={path('/support-card-rankings/', loc)} class="inline-block mt-2 text-sm text-uma-primary hover:underline">{t(loc, 'navRankings')} →</a>}
     </div>
 

@@ -8,7 +8,7 @@ import type { Locale } from '@/lib/i18n';
 import { t } from '@/lib/ui-strings';
 import { charName, charBaseName, cardName, skillName, skillDesc } from '@/lib/localized.js';
 import { findSkill, otherOutfits, cardsOfCharacter } from '@/lib/related';
-import { skillClass } from '@/lib/skill-class';
+import { skillLocales } from '@/lib/skill-class';
 import { STAT_KEYS, statLabel, gradeClass, path, formatBirthday } from '@/lib/page-helpers';
 
 interface Props { locale: Locale; character: any }
@@ -29,7 +29,7 @@ const skillRow = (n: string) => {
   return {
     name: skillName(s, loc),
     desc: skillDesc(s, loc),
-    href: skillClass.get(s.id) === 'all' ? path(`/skills/${s.id}/`, loc) : '',
+    href: skillLocales.get(s.id)?.includes(loc) ? path(`/skills/${s.id}/`, loc) : '',
   };
 };
 const unique = character.unique_skill ? skillRow(character.unique_skill.name_en || character.unique_skill.name_jp) : null;

@@ -1,4 +1,5 @@
 ---
+import SkillCategoryChips from '@/components/SkillCategoryChips.astro';
 import { realSkillIcon } from '@/lib/skill-icon';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
@@ -51,5 +52,6 @@ if (cleanSeconds(skill.cooldown)) rows.push([t(loc, 'cooldown'), cleanSeconds(sk
       <RelatedLinks title={t(loc, 'taughtBy')} items={cards} />
       <RelatedLinks title={t(loc, 'relatedSkills')} items={related} limit={9} />
     </div>
+    <SkillCategoryChips locale={loc} skillId={skill.id} />
   </main>
 </Layout>

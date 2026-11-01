@@ -1,11 +1,12 @@
 ---
+import SkillCategoryChips from '@/components/SkillCategoryChips.astro';
 import { realSkillIcon } from '@/lib/skill-icon';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
 import { characters, supportCards, skills } from '@/lib/static-content';
 import type { Skill } from '@/types';
-import { skillClass, duplicateSkillNameEn } from '@/lib/skill-class';
+import { skillLocales, duplicateSkillNameEn } from '@/lib/skill-class';
 import { Sparkles, Info, Zap, Users } from 'lucide-react';
 
 export function getStaticPaths() {
@@ -38,7 +39,7 @@ const linkedCharacters = characters.filter((c) => {
 ---
 
 <Layout
-  noindex={skillClass.get(skill.id) !== 'all'}
+  noindex={!skillLocales.get(skill.id)?.includes('en')}
   title={`${skill.name_en}${duplicateSkillNameEn.has(skill.name_en) && skill.name_jp ? ` (${skill.name_jp})` : ''} - Skill Effect & Cost | UmamusumeDB`}
   description={`${skill.name_en}${skill.name_jp ? ` (${skill.name_jp})` : ''}: ${String(skill.description_en || skill.effect || 'Uma Musume skill details').slice(0, 150)}`}
   image={realSkillIcon(skill.icon_url)}
@@ -161,6 +162,7 @@ const linkedCharacters = characters.filter((c) => {
         </div>
       </div>
     </div>
+    <SkillCategoryChips locale="en" skillId={skill.id} />
   </main>
 </Layout>
 

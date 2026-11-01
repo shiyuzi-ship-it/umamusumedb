@@ -1,0 +1,21 @@
+---
+import type { Locale } from '@/lib/i18n';
+import { categories } from '@/lib/skill-categories';
+import { cs, categoryAdj } from '@/lib/skill-category-strings';
+import { path } from '@/lib/page-helpers';
+interface Props { locale: Locale; limit?: number }
+const { locale: loc, limit = 14 } = Astro.props;
+const list = categories
+  .filter((c) => c.locales.includes(loc) && c.parts.length <= 2)
+  .filter((c) => c.scope === 'global' || loc !== 'en')
+  .sort((a, b) => Number(b.scope === 'global') - Number(a.scope === 'global') || (b.ids[loc]?.length ?? 0) - (a.ids[loc]?.length ?? 0))
+  .filter((c) => c.parts.length === 1 && c.slug !== 'evolved')
+  .slice(0, limit);
+---
+<nav class="mb-6" aria-label={cs(loc, 'navSkillGroups')}>
+  <h2 class="text-base font-semibold mb-2">{cs(loc, 'navSkillGroups')}</h2>
+  <ul class="flex flex-wrap gap-2">
+    {list.map((c) => <li><a href={path(`/skills/category/${c.slug}/`, loc)} class="inline-block px-3 py-1 rounded-full bg-white shadow-sm text-sm text-uma-primary hover:shadow">{categoryAdj(loc, c)}</a></li>)}
+    <li><a href={path('/skills/category/', loc)} class="inline-block px-3 py-1 rounded-full bg-uma-primary/10 text-sm text-uma-primary">{cs(loc, 'hubLink')} →</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,10 @@
+---
+import SkillCategoryPage from '@/components/l10n/SkillCategoryPage.astro';
+import { categories } from '@/lib/skill-categories';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() {
+  return NEW_LOCALES.flatMap((lang) => categories.filter((c) => c.locales.includes(lang)).map((c) => ({ params: { lang, slug: c.slug } })));
+}
+const { lang, slug } = Astro.params;
+---
+<SkillCategoryPage locale={lang as any} slug={slug as string} />

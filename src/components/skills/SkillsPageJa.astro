@@ -1,4 +1,5 @@
 ---
+import SkillCategoryLinks from '@/components/SkillCategoryLinks.astro';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
@@ -39,6 +40,8 @@ const rarities = [
         全 {skills.length} 件。英/日名称、発動条件、効果テキストで検索できます。{page > 1 && `（${page}/${pages}ページ）`}
       </p>
     </div>
+
+    <SkillCategoryLinks locale="ja" />
 
     <!-- Filters and Search -->
     <div class="glass rounded-xl p-4 mb-8">

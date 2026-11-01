@@ -1,6 +1,6 @@
 // Build the compact skill entries for a locale (used by the list pages and by /skills-data/{locale}.json).
 import { skills } from '@/lib/static-content';
-import { newLocaleSkillIds } from '@/lib/skill-class';
+import { skillIdsFor } from '@/lib/skill-class';
 import { allNames, skillName, skillDesc } from '@/lib/localized.js';
 import { skillRarityLabel } from '@/lib/page-helpers';
 import type { Locale } from '@/lib/i18n';
@@ -15,7 +15,7 @@ const clean = <T extends Record<string, any>>(o: T): T => {
 
 export function buildSkillEntries(loc: Locale, withSearch = false): SkillEntry[] {
   const kind = skillKindFor(loc);
-  const ok = new Set(newLocaleSkillIds);
+  const ok = new Set(skillIdsFor(loc));
   const list = kind === 'l10n' ? (skills as any[]).filter((s) => ok.has(s.id)) : (skills as any[]);
   return list.map((s: any) => {
     const base = { i: s.id as string, ic: s.icon_url ?? undefined, r: s.rarity || undefined, v: s.server || undefined, t: (s.skill_type || '').toLowerCase() || undefined };

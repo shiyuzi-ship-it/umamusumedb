@@ -4,13 +4,13 @@ import {
   LOCALE_META, SUPPORTED_LOCALES, availableLocalesFor, getLocaleFromPathname, hrefFor, localizePathname,
   stripLocaleFromPathname, type Locale,
 } from '@/lib/i18n';
-import { skillClass } from '@/lib/skill-class';
+import { seoOpts } from '@/lib/skill-class';
 import { t } from '@/lib/ui-strings';
 
 const pathname = Astro.url.pathname;
 const locale: Locale = getLocaleFromPathname(pathname);
 const basePath = stripLocaleFromPathname(pathname);
-const avail = new Set<Locale>([...availableLocalesFor(basePath, { skillClass }), locale]);
+const avail = new Set<Locale>([...availableLocalesFor(basePath, seoOpts), locale]);
 const switcher = SUPPORTED_LOCALES.filter((l) => avail.has(l)).map((l) => ({
   locale: l,
   href: localizePathname(basePath, l),

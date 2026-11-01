@@ -5,7 +5,7 @@ import characters from '../../../public/data/characters.json';
 import cards from '../../../public/data/supportCards.json';
 import skills from '../../../public/data/skills.json';
 import { SUPPORTED_LOCALES, availableLocalesFor, localizePathname, type Locale } from '@/lib/i18n';
-import { skillClass } from '@/lib/skill-class';
+import { skillLocales } from '@/lib/skill-class';
 import { t } from '@/lib/ui-strings';
 import { allNames, cardName, charName, skillName } from '@/lib/localized.js';
 
@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const PAGES: [string, string][] = [
-  ['/characters/', 'navCharacters'], ['/cards/', 'navCards'], ['/skills/', 'navSkills'], ['/updates/', 'navUpdates'], ['/global-release-schedule/', 'navSchedule'], ['/support-card-rankings/', 'navRankings'], ['/tools/', 'navTools'],
+  ['/characters/', 'navCharacters'], ['/cards/', 'navCards'], ['/skills/', 'navSkills'], ['/updates/', 'navUpdates'], ['/global-release-schedule/', 'navSchedule'], ['/support-card-rankings/', 'navRankings'], ['/skills/category/', 'navSkillGroups'], ['/tools/', 'navTools'],
   ['/tools/training-calculator/', 'toolTraining'], ['/tools/factor-calculator/', 'toolFactor'], ['/tools/skill-builder/', 'toolSkill'],
   ['/tools/support-deck/', 'toolDeck'], ['/tools/training-goals/', 'toolGoals'], ['/tools/character-comparison/', 'toolCompare'],
 ];
@@ -35,8 +35,7 @@ export const GET: APIRoute = ({ params }) => {
     items.push({ t: 'k', id: c.id, n: cardName(c, loc), s: cardName(c, other), q: allNames(c).join(' '), im: c.image_url });
   }
   for (const s of skills as any[]) {
-    const cls = skillClass.get(s.id);
-    if ((loc !== 'en' && loc !== 'ja') && cls !== 'all') continue;
+    if ((loc !== 'en' && loc !== 'ja') && !skillLocales.get(s.id)?.includes(loc)) continue;
     items.push({ t: 's', id: s.id, n: skillName(s, loc), s: skillName(s, other), q: allNames({ ...s, base_name_en: undefined }).join(' '), im: s.icon_url });
   }
   return new Response(JSON.stringify({ generatedAt: new Date().toISOString(), locale: loc, items }), { headers: { 'Content-Type': 'application/json' } });

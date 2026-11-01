@@ -1,0 +1,102 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { SITE_ORIGIN, type Locale } from '@/lib/i18n';
+import { categories, categoryBySlug, skillById, MAX_ROWS, type Category } from '@/lib/skill-categories';
+import { cs, categoryTexts, categoryAdj } from '@/lib/skill-category-strings';
+import { holdersOf } from '@/lib/related';
+import { skillName, skillDesc, charName, cardName } from '@/lib/localized.js';
+import { t } from '@/lib/ui-strings';
+import { cleanSeconds, path } from '@/lib/page-helpers';
+
+interface Props { locale: Locale; slug: string }
+const { locale: loc, slug } = Astro.props;
+const cat = categoryBySlug.get(slug) as Category;
+const tx = categoryTexts(loc, cat);
+const ids = cat.ids[loc] ?? [];
+const shown = ids.slice(0, MAX_ROWS).map((id) => skillById.get(id)!);
+const rows = shown.map((s) => {
+  const h = holdersOf(s.id);
+  return {
+    s,
+    name: skillName(s, loc),
+    desc: skillDesc(s, loc),
+    dur: cleanSeconds(s.duration),
+    chars: h.chars.slice(0, 2).map((c: any) => ({ href: path(`/characters/${c.id}/`, loc), name: charName(c, loc) })),
+    cards: h.cards.slice(0, 2).map((c: any) => ({ href: path(`/cards/${c.id}/`, loc), name: cardName(c, loc) })),
+  };
+});
+const related = categories
+  .filter((c) => c !== cat && c.scope === cat.scope && c.locales.includes(loc) && c.parts.some(([k, v]) => cat.parts.some(([k2, v2]) => k === k2 && v === v2)))
+  .sort((a, b) => (b.ids[loc]?.length ?? 0) - (a.ids[loc]?.length ?? 0))
+  .slice(0, 16);
+const pageUrl = `${SITE_ORIGIN}${path(`/skills/category/${slug}/`, loc)}`;
+const itemList = rows.map((r) => ({ name: r.name, url: path(`/skills/${r.s.id}/`, loc), image: r.s.icon_url }));
+const defs = cat.parts.map(([k, v]) => cs(loc, `def_${k}`, { v: cs(loc, `adj_${k}_${v}`) }));
+---
+
+<Layout title={tx.title} description={tx.description} structuredDataType="webpage" structuredData={{ name: tx.h1, title: tx.title, description: tx.description, url: pageUrl, about: `Uma Musume Pretty Derby skills: ${tx.adj}` }} itemList={itemList}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: t(loc, 'navSkills'), href: path('/skills/', loc) }, { label: cs(loc, 'navSkillGroups'), href: path('/skills/category/', loc) }, { label: tx.adj }]} />
+    <div class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-3">{tx.h1}</h1>
+      <p class="text-gray-600 max-w-3xl">{tx.intro}</p>
+    </div>
+
+    {ids.length > MAX_ROWS && <p class="text-sm text-gray-500 mb-3">{cs(loc, 'truncated', { max: MAX_ROWS, n: ids.length })}</p>}
+    <div class="overflow-x-auto rounded-xl bg-white shadow mb-8">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-left text-gray-600"><tr>
+          <th class="px-3 py-2">{cs(loc, 'colSkill')}</th>
+          <th class="px-3 py-2">{cs(loc, 'colEffect')}</th>
+          <th class="px-3 py-2 text-right">{cs(loc, 'colCost')}</th>
+          <th class="px-3 py-2">{cs(loc, 'colDuration')}</th>
+          <th class="px-3 py-2">{cs(loc, 'colGivenBy')}</th>
+        </tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr class="border-t border-gray-100 align-top">
+              <td class="px-3 py-2 min-w-[10rem]">
+                <a href={path(`/skills/${r.s.id}/`, loc)} class="flex items-center gap-2 text-uma-primary hover:underline font-medium">
+                  {r.s.icon_url && <img src={r.s.icon_url} alt="" width="28" height="28" loading="lazy" class="w-7 h-7 rounded flex-shrink-0" />}
+                  <span>{r.name}</span>
+                </a>
+              </td>
+              <td class="px-3 py-2 text-gray-700 min-w-[14rem]">{r.desc}</td>
+              <td class="px-3 py-2 text-right">{typeof r.s.cost === 'number' ? r.s.cost : '–'}</td>
+              <td class="px-3 py-2 whitespace-nowrap">{r.dur || '–'}</td>
+              <td class="px-3 py-2 text-xs min-w-[10rem]">
+                {r.chars.length > 0 && <div><span class="text-gray-500">{cs(loc, 'chars')}: </span>{r.chars.map((c, i) => <>{i > 0 && ', '}<a href={c.href} class="text-uma-primary hover:underline">{c.name}</a></>)}</div>}
+                {r.cards.length > 0 && <div><span class="text-gray-500">{cs(loc, 'cards')}: </span>{r.cards.map((c, i) => <>{i > 0 && ', '}<a href={c.href} class="text-uma-primary hover:underline">{c.name}</a></>)}</div>}
+                {r.chars.length + r.cards.length === 0 && '–'}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {related.length > 0 && (
+      <section class="mb-8">
+        <h2 class="text-xl font-display mb-3">{cs(loc, 'moreLists')}</h2>
+        <ul class="flex flex-wrap gap-2">
+          {related.map((c) => (
+            <li><a href={path(`/skills/category/${c.slug}/`, loc)} class="inline-block px-3 py-1.5 rounded-full bg-white shadow-sm text-sm text-uma-primary hover:shadow">{categoryAdj(loc, c)} <span class="text-gray-400">({c.ids[loc]?.length})</span></a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="glass rounded-xl p-5 mb-8">
+      <h2 class="text-lg font-display mb-2">{cs(loc, 'groupNoteTitle')}</h2>
+      <ul class="list-disc pl-5 text-sm text-gray-700 space-y-1">{defs.map((d) => <li>{d}</li>)}</ul>
+    </section>
+
+    <nav class="text-sm flex flex-wrap gap-x-4 gap-y-1">
+      <a class="text-uma-primary hover:underline" href={path('/skills/category/', loc)}>{cs(loc, 'hubLink')}</a>
+      <a class="text-uma-primary hover:underline" href={path('/skills/', loc)}>{cs(loc, 'allSkills')}</a>
+    </nav>
+  </main>
+</Layout>

@@ -10,7 +10,7 @@ import { t, effectLabelL } from '@/lib/ui-strings';
 import { charName, cardName, skillName, skillDesc } from '@/lib/localized.js';
 import { EFFECT_LABELS, effectSuffix } from '@/lib/game-format';
 import { findSkill, otherCardsOfCharacter, characterOfCard } from '@/lib/related';
-import { skillClass } from '@/lib/skill-class';
+import { skillLocales } from '@/lib/skill-class';
 import { typeLabel, cardRarityClass, path, num } from '@/lib/page-helpers';
 
 interface Props { locale: Locale; card: any }
@@ -36,7 +36,7 @@ const skillRows = [...hint, ...evt].map(({ n, kind }: any) => {
     kind,
     name: s ? skillName(s, loc) : n,
     desc: s ? skillDesc(s, loc) : '',
-    href: s && skillClass.get(s.id) === 'all' ? path(`/skills/${s.id}/`, loc) : '',
+    href: s && skillLocales.get(s.id)?.includes(loc) ? path(`/skills/${s.id}/`, loc) : '',
   };
 });
 const owner = characterOfCard(card);

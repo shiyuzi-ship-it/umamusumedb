@@ -11,7 +11,7 @@ import {
   stripLocaleFromPathname,
   type Locale
 } from '@/lib/i18n';
-import { skillClass } from '@/lib/skill-class';
+import { seoOpts } from '@/lib/skill-class';
 
 export interface Props {
   title: string;
@@ -40,7 +40,7 @@ const basePath = stripLocaleFromPathname(Astro.url.pathname);
 const canonicalPath = localizePathname(basePath, locale);
 const canonicalURL = new URL(canonicalPath, Astro.url.origin).toString();
 const alternates: Partial<Record<Locale, string>> = {};
-for (const l of availableLocalesFor(basePath, { skillClass })) {
+for (const l of availableLocalesFor(basePath, seoOpts)) {
   alternates[l] = new URL(localizePathname(basePath, l), Astro.url.origin).toString();
 }
 const htmlLang = LOCALE_META[locale].htmlLang;

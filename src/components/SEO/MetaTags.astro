@@ -38,7 +38,7 @@ const ogAlternates = altEntries.filter(([l]) => l !== locale).map(([l]) => LOCAL
 <link rel="canonical" href={canonicalURL} />
 
 {showHreflang && altEntries.map(([l, url]) => <link rel="alternate" hreflang={LOCALE_META[l].hreflang} href={url} />)}
-{showHreflang && alternates.en && <link rel="alternate" hreflang="x-default" href={alternates.en} />}
+{showHreflang && (alternates.en ?? alternates.ja) && <link rel="alternate" hreflang="x-default" href={(alternates.en ?? alternates.ja) as string} />}
 
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalURL} />

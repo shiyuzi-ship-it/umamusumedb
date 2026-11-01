@@ -63,12 +63,18 @@ export const getHreflang = (locale: Locale) => LOCALE_META[locale].hreflang;
 const ALL: Locale[] = ['en', 'ja', 'zh', 'zh-tw', 'ko'];
 const NEW_ONLY_EN: Locale[] = ['en'];
 
-export function availableLocalesFor(basePath: string, opts: { skillClass?: Map<string, 'all' | 'jp' | 'none'> } = {}): Locale[] {
+export interface AvailOpts { skillClass?: Map<string, 'all' | 'jp' | 'none'>; skillLocales?: Map<string, Locale[]>; categoryLocales?: Map<string, Locale[]> }
+
+export function availableLocalesFor(basePath: string, opts: AvailOpts = {}): Locale[] {
   const p = ensureTrailingSlash(basePath);
-  if (p === '/' || p === '/characters/' || p === '/cards/' || p === '/skills/' || p === '/updates/' || p === '/tools/' || p === '/global-release-schedule/' || p === '/support-card-rankings/') return ALL;
+  if (p === '/' || p === '/characters/' || p === '/cards/' || p === '/skills/' || p === '/skills/category/' || p === '/updates/' || p === '/tools/' || p === '/global-release-schedule/' || p === '/support-card-rankings/') return ALL;
   if (/^\/(characters|cards)\/[^/]+\/$/.test(p)) return ALL;
+  const cat = p.match(/^\/skills\/category\/([^/]+)\/$/);
+  if (cat) return opts.categoryLocales?.get(cat[1]) ?? [];
   const skill = p.match(/^\/skills\/([^/]+)\/$/);
   if (skill) {
+    const sl = opts.skillLocales?.get(skill[1]);
+    if (sl) return sl;
     const cls = opts.skillClass?.get(skill[1]) ?? 'none';
     return cls === 'all' ? ALL : cls === 'jp' ? ['ja'] : [];
   }
@@ -79,6 +85,6 @@ export function availableLocalesFor(basePath: string, opts: { skillClass?: Map<s
 }
 
 /** Link to a path in the given locale, falling back to the English page when that locale has no such page. */
-export function hrefFor(path: string, locale: Locale, opts: { skillClass?: Map<string, 'all' | 'jp' | 'none'> } = {}): string {
+export function hrefFor(path: string, locale: Locale, opts: AvailOpts = {}): string {
   return availableLocalesFor(path, opts).includes(locale) ? localizePathname(path, locale) : localizePathname(path, 'en');
 }

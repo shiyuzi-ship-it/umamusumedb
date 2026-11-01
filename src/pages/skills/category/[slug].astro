@@ -1,0 +1,9 @@
+---
+import SkillCategoryPage from '@/components/l10n/SkillCategoryPage.astro';
+import { categories } from '@/lib/skill-categories';
+export function getStaticPaths() {
+  return categories.filter((c) => c.locales.includes('en')).map((c) => ({ params: { slug: c.slug } }));
+}
+const { slug } = Astro.params;
+---
+<SkillCategoryPage locale="en" slug={slug as string} />

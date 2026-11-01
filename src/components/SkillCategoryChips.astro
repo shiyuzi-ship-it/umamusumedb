@@ -1,0 +1,17 @@
+---
+import type { Locale } from '@/lib/i18n';
+import { categoriesOf } from '@/lib/skill-categories';
+import { cs, categoryAdj } from '@/lib/skill-category-strings';
+import { path } from '@/lib/page-helpers';
+interface Props { locale: Locale; skillId: string }
+const { locale: loc, skillId } = Astro.props;
+const list = categoriesOf(skillId, loc, 6);
+---
+{list.length > 0 && (
+  <section class="mt-6">
+    <h2 class="text-lg font-display mb-2">{cs(loc, 'chipsTitle')}</h2>
+    <ul class="flex flex-wrap gap-2">
+      {list.map((c) => <li><a href={path(`/skills/category/${c.slug}/`, loc)} class="inline-block px-3 py-1 rounded-full bg-white shadow-sm text-sm text-uma-primary hover:shadow">{categoryAdj(loc, c)} {cs(loc, 'skillsWord')}</a></li>)}
+    </ul>
+  </section>
+)}

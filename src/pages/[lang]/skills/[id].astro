@@ -2,10 +2,12 @@
 import SkillPage from '@/components/l10n/SkillPage.astro';
 import { NEW_LOCALES } from '@/lib/new-locales';
 import { skills } from '@/lib/static-content';
-import { newLocaleSkillIds } from '@/lib/skill-class';
+import { skillIdsFor } from '@/lib/skill-class';
 export function getStaticPaths() {
-  const ok = new Set(newLocaleSkillIds);
-  return NEW_LOCALES.flatMap((lang) => skills.filter((s) => ok.has(s.id)).map((skill) => ({ params: { lang, id: skill.id }, props: { skill } })));
+  return NEW_LOCALES.flatMap((lang) => {
+    const ok = new Set(skillIdsFor(lang));
+    return skills.filter((s) => ok.has(s.id)).map((skill) => ({ params: { lang, id: skill.id }, props: { skill } }));
+  });
 }
 const { lang } = Astro.params;
 const { skill } = Astro.props;
