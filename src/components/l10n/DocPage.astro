@@ -74,7 +74,7 @@ const Icon = (k?: string) => k && ICON[k] ? ICON[k] : '';
       ))}
     </main>
   )}
-  {kind === 'sources' && (
+  {(kind === 'sources' || kind === 'links') && (
     <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-4xl">
       <Breadcrumb items={[{ label: doc.h1 }]} />
       <div class="glass rounded-2xl p-6 sm:p-8">

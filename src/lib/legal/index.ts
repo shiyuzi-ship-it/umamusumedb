@@ -7,9 +7,10 @@ import { privacy } from './privacy';
 import { terms } from './terms';
 import { guides } from './guides';
 import { sources } from './sources';
+import { links } from './links';
 
-export type DocKind = 'privacy' | 'terms' | 'guides' | 'sources';
-const ALL: Record<DocKind, Docs> = { privacy, terms, guides, sources };
+export type DocKind = 'privacy' | 'terms' | 'guides' | 'sources' | 'links';
+const ALL: Record<DocKind, Docs> = { privacy, terms, guides, sources, links };
 const toTw = OpenCC.Converter({ from: 'cn', to: 'twp' });
 
 const mapStrings = (v: any, fn: (s: string) => string): any =>

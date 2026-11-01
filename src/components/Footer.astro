@@ -45,6 +45,10 @@ const L = (path: string) => hrefFor(path, locale);
           <li><a href={L('/privacy-policy/')} class="text-gray-600 hover:text-uma-primary transition-colors">{t(locale, 'privacy')}</a></li>
           <li><a href={L('/terms-of-service/')} class="text-gray-600 hover:text-uma-primary transition-colors">{t(locale, 'terms')}</a></li>
           <li><a href={L('/data-sources/')} class="text-gray-600 hover:text-uma-primary transition-colors">{t(locale, 'dataSources')}</a></li>
+          <li><a href={L('/links/')} class="text-gray-600 hover:text-uma-primary transition-colors">{t(locale, 'navFriends')}</a></li>
+          {locale === 'ja' && (
+            <li><a href="https://umamusume-umapyoi.com/" target="_blank" rel="noopener" class="text-gray-600 hover:text-uma-primary transition-colors">ウマ娘うまぴょい速報</a></li>
+          )}
         </ul>
       </div>
     </div>

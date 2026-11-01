@@ -81,7 +81,7 @@ export function availableLocalesFor(basePath: string, opts: AvailOpts = {}): Loc
   }
   if (/^\/tools\/(factor-calculator|skill-builder|support-deck|training-calculator|training-goals)\/$/.test(p)) return ALL;
   if (p === '/tools/character-comparison/') return ALL;
-  if (p === '/data-sources/' || p === '/privacy-policy/' || p === '/terms-of-service/' || p === '/guides/') return ALL;
+  if (p === '/data-sources/' || p === '/links/' || p === '/privacy-policy/' || p === '/terms-of-service/' || p === '/guides/') return ALL;
   return NEW_ONLY_EN;
 }
 
