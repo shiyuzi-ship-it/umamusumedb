@@ -2,6 +2,44 @@
 /sitemap.xml /sitemap-index.xml 301
 /sitemap-0.xml /sitemap-index.xml 301
 
+# Common aliases / wrong locale codes -> real routes (301)
+/zh-cn /zh/ 301
+/zh-cn/ /zh/ 301
+/zh-cn/* /zh/:splat 301
+/zh-hans /zh/ 301
+/zh-hans/ /zh/ 301
+/zh-hans/* /zh/:splat 301
+/zh-hant /zh-tw/ 301
+/zh-hant/ /zh-tw/ 301
+/zh-hant/* /zh-tw/:splat 301
+/cn /zh/ 301
+/cn/ /zh/ 301
+/support-cards /cards/ 301
+/support-cards/ /cards/ 301
+/support-cards/* /cards/:splat 301
+/news /updates/ 301
+/news/ /updates/ 301
+/ja/support-cards /ja/cards/ 301
+/ja/support-cards/ /ja/cards/ 301
+/ja/news /ja/updates/ 301
+/ja/news/ /ja/updates/ 301
+/zh/support-cards /zh/cards/ 301
+/zh/support-cards/ /zh/cards/ 301
+/zh/news /zh/updates/ 301
+/zh/news/ /zh/updates/ 301
+/zh-tw/support-cards /zh-tw/cards/ 301
+/zh-tw/support-cards/ /zh-tw/cards/ 301
+/zh-tw/news /zh-tw/updates/ 301
+/zh-tw/news/ /zh-tw/updates/ 301
+/ko/support-cards /ko/cards/ 301
+/ko/support-cards/ /ko/cards/ 301
+/ko/news /ko/updates/ 301
+/ko/news/ /ko/updates/ 301
+
+# Removed event JSON (compliance) — hard 404, not homepage
+/data/events.json /404.html 404
+/data/training-events.json /404.html 404
+
 # Legacy URL redirects (ids used before the 2026-10 data refresh)
 /characters/oguri_cap_starlight/ /characters/oguri_cap_starlight_beat/ 301
 /characters/agnes_tachyon_tachnology/ /characters/agnes_tachyon_tach_nology/ 301
@@ -267,6 +305,3 @@
 /ja/skills/empress_pride/ /ja/skills/ 301
 /ja/skills/food_fighter/ /ja/skills/ 301
 /ja/tier-list/ /ja/updates/ 301
-
-# Ensure trailing slashes work correctly
-/* /:splat 200

@@ -8,9 +8,12 @@ import { characters, supportCards, skills } from '@/lib/static-content';
 import releasesData from '../../../public/data/releases.json';
 import { Search, Users, Star, Trophy, ChevronRight, Sparkles, Newspaper } from 'lucide-react';
 
-// 日本版の最新実装を先頭から表示(リストは新しい順)
-const featuredCharacters = characters.slice(0, 6);
-const featuredCards = supportCards.filter(card => card.rarity === 'SSR').slice(0, 6);
+// 日本版の最新実装を先頭から表示（データ配列は id 順なので日付で並べ直す）
+const byJpRelease = (a: any, b: any) =>
+  String(b.release_date_jp ?? '').localeCompare(String(a.release_date_jp ?? '')) ||
+  (b.card_id ?? b.support_id ?? 0) - (a.card_id ?? a.support_id ?? 0);
+const featuredCharacters = [...characters].sort(byJpRelease).slice(0, 6);
+const featuredCards = supportCards.filter(card => card.rarity === 'SSR').sort(byJpRelease).slice(0, 6);
 const latestReleases = ((releasesData as any).releases as any[]).slice(0, 12);
 ---
 

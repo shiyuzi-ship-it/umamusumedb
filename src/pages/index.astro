@@ -11,9 +11,12 @@ import { Search, Users, Sparkles, Star, Calculator, TrendingUp, Newspaper } from
 const releases = (releasesData as any).releases as any[];
 const latestGlobal = releases.filter((r) => r.server === 'global').slice(0, 12);
 const globalOnly = (item: any) => item.server !== 'jp';
-// Newest Global-server items first (lists are already sorted newest-first)
-const newestCharacters = characters.filter(globalOnly).slice(0, 12);
-const newestCards = supportCards.filter((c: any) => globalOnly(c) && c.rarity === 'SSR').slice(0, 12);
+// Newest by Global release date (characters.json / supportCards.json are ordered by id, not date)
+const byGlobalRelease = (a: any, b: any) =>
+  String(b.release_date_global ?? '').localeCompare(String(a.release_date_global ?? '')) ||
+  (b.card_id ?? b.support_id ?? 0) - (a.card_id ?? a.support_id ?? 0);
+const newestCharacters = characters.filter(globalOnly).sort(byGlobalRelease).slice(0, 12);
+const newestCards = supportCards.filter((c: any) => globalOnly(c) && c.rarity === 'SSR').sort(byGlobalRelease).slice(0, 12);
 const globalCharacterCount = characters.filter(globalOnly).length;
 const globalCardCount = supportCards.filter(globalOnly).length;
 const dataDate = (releasesData as any).generatedAt.slice(0, 10);

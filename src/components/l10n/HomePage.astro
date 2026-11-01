@@ -13,8 +13,11 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const loc = locale;
 const globalOnly = (x: any) => x.server !== 'jp';
-const newChars = characters.filter(globalOnly).slice(0, 12);
-const newCards = supportCards.filter((c: any) => globalOnly(c) && c.rarity === 'SSR').slice(0, 12);
+const byGlobalRelease = (a: any, b: any) =>
+  String(b.release_date_global ?? '').localeCompare(String(a.release_date_global ?? '')) ||
+  (b.card_id ?? b.support_id ?? 0) - (a.card_id ?? a.support_id ?? 0);
+const newChars = characters.filter(globalOnly).sort(byGlobalRelease).slice(0, 12);
+const newCards = supportCards.filter((c: any) => globalOnly(c) && c.rarity === 'SSR').sort(byGlobalRelease).slice(0, 12);
 const releases = ((releasesData as any).releases as any[]).filter((r) => r.server === 'global').slice(0, 10);
 const byId = (list: any[]) => new Map(list.map((x) => [x.id, x]));
 const charById = byId(characters as any[]);
