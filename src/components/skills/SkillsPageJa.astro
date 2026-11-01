@@ -1,0 +1,95 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { skills } from '@/lib/static-content';
+import { Search } from 'lucide-react';
+import { buildSkillEntries } from '@/lib/skills-list-data';
+import { renderSkillCard } from '@/lib/skill-list-render';
+import { pageSlice, pagerHtml, totalPages, PAGE_SIZE } from '@/lib/pagination';
+
+interface Props { page?: number }
+const page = Astro.props.page ?? 1;
+const entries = buildSkillEntries('ja');
+const pages = totalPages(entries.length);
+const pageHtml = pageSlice(entries, page).map((e) => renderSkillCard('ja', e, { prefix: '/ja', jpLabel: '日本版のみ' })).join('');
+const pager = pagerHtml('/ja/skills/', page, pages, { aria: 'スキル一覧のページ', prev: '前へ', next: '次へ', page: 'ページ' });
+const pageSuffix = page > 1 ? `（${page}/${pages}ページ）` : '';
+
+const rarities = [
+  { value: 'normal', label: '通常（白）' },
+  { value: 'gold', label: 'レア（金）' },
+  { value: 'unique', label: '固有' },
+  { value: 'evolved', label: '進化' }
+] as const;
+---
+
+<Layout
+  title={`スキル${pageSuffix} - UmamusumeDB`}
+  description={`ウマ娘のスキル一覧。効果・発動条件・レアリティを確認し、キャラ/サポカとの相互リンクも参照できます。${page > 1 ? `${page}/${pages}ページ。` : ''}`}
+>
+  <Header />
+
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: 'スキル' }]} />
+
+    <div class="mb-6 sm:mb-8">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-3 sm:mb-4">スキル</h1>
+      <p class="text-sm sm:text-base text-gray-600">
+        全 {skills.length} 件。英/日名称、発動条件、効果テキストで検索できます。{page > 1 && `（${page}/${pages}ページ）`}
+      </p>
+    </div>
+
+    <!-- Filters and Search -->
+    <div class="glass rounded-xl p-4 mb-8">
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-1 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="text"
+            id="skill-search"
+            placeholder="スキルを検索..."
+            class="w-full pl-10 pr-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50 focus:outline-none focus:border-uma-primary"
+          />
+        </div>
+
+        <select id="rarity-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
+          <option value="all">全レアリティ</option>
+          {rarities.map((r) => (
+            <option value={r.value}>{r.label}</option>
+          ))}
+        </select>
+
+        <select id="type-filter" class="px-4 py-2 rounded-lg border border-uma-primary/20 bg-white/50">
+          <option value="all">全タイプ</option>
+          <option value="unique">固有</option>
+          <option value="common">通常・レア</option>
+          <option value="evolved">進化</option>
+        </select>
+      </div>
+    </div>
+
+    <div
+      id="skills-container"
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6"
+      data-skills-json="/skills-data/ja.json" data-kind="ja" data-prefix="/ja" data-jp-label="日本版のみ" data-more-label="もっと見る" data-step={PAGE_SIZE}
+      set:html={pageHtml}
+    ></div>
+    <Fragment set:html={pager} />
+
+    <div id="no-results" class="hidden text-center py-12">
+      <p class="text-xl text-gray-500">条件に一致するスキルが見つかりません</p>
+    </div>
+  </main>
+
+  <script>
+    import '@/lib/skills-list-client';
+  </script>
+</Layout>
+
+
+
+
+
+
+

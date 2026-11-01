@@ -9,8 +9,12 @@ import { charName, cardName, skillName, skillDesc, allNames } from '@/lib/locali
 import { newLocaleSkillIds } from '@/lib/skill-class';
 import { typeLabel, skillRarityLabel, cardRarityClass, path } from '@/lib/page-helpers';
 
-interface Props { locale: Locale; kind: 'characters' | 'cards' | 'skills' }
-const { locale, kind } = Astro.props;
+import { buildSkillEntries } from '@/lib/skills-list-data';
+import { renderSkillCard } from '@/lib/skill-list-render';
+import { pageSlice, pagerHtml, totalPages, PAGE_SIZE } from '@/lib/pagination';
+
+interface Props { locale: Locale; kind: 'characters' | 'cards' | 'skills'; page?: number }
+const { locale, kind, page = 1 } = Astro.props;
 const loc = locale;
 
 let entries: any[] = [];
@@ -18,15 +22,18 @@ if (kind === 'characters') {
   entries = characters.map((c: any) => ({ href: path(`/characters/${c.id}/`, loc), name: charName(c, loc), image: c.image_url, q: allNames(c).join(' '), server: c.server, sub: '★'.repeat(c.rarity) }));
 } else if (kind === 'cards') {
   entries = supportCards.map((c: any) => ({ href: path(`/cards/${c.id}/`, loc), name: cardName(c, loc), image: c.image_url, q: allNames(c).join(' '), server: c.server, rarity: c.rarity, type: c.type, sub: `${c.rarity} · ${typeLabel(loc, c.type)}` }));
-} else {
-  const ok = new Set(newLocaleSkillIds);
-  entries = skills.filter((s: any) => ok.has(s.id)).map((s: any) => ({ href: path(`/skills/${s.id}/`, loc), name: skillName(s, loc), image: s.icon_url, q: allNames({ ...s, base_name_en: undefined }).join(' '), server: s.server, rarity: s.rarity, desc: skillDesc(s, loc), sub: skillRarityLabel(loc, s.rarity) }));
 }
-const n = entries.length;
+const skillEntries = kind === 'skills' ? buildSkillEntries(loc) : [];
+const n = kind === 'skills' ? skillEntries.length : entries.length;
 const key = { characters: 'characters', cards: 'cards', skills: 'skills' }[kind];
-const title = t(loc, `${key}Title`, { n });
-const description = t(loc, `${key}Desc`, { n });
-const itemList = entries.slice(0, 50).map((e) => ({ name: e.name, url: e.href, image: e.image }));
+// Skills: only one page of cards is in the HTML (crawlable pagination links); search/filters load /skills-data/{locale}.json.
+const pages = kind === 'skills' ? totalPages(skillEntries.length) : 1;
+const pageOf = kind === 'skills' && page > 1 ? t(loc, 'pageOf', { p: page, n: pages }) : '';
+const skillsHtml = kind === 'skills' ? pageSlice(skillEntries, page).map((e) => renderSkillCard('l10n', e, { prefix: loc === 'en' ? '' : `/${loc}`, jpLabel: t(loc, 'jpOnly') })).join('') : '';
+const pager = kind === 'skills' ? pagerHtml(path('/skills/', loc), page, pages, { aria: t(loc, 'pagesAria'), prev: t(loc, 'pagePrev'), next: t(loc, 'pageNext'), page: t(loc, 'pageWord') }) : '';
+const title = t(loc, `${key}Title`, { n }) + (pageOf ? ` (${pageOf})` : '');
+const description = t(loc, `${key}Desc`, { n }) + (pageOf ? ` ${pageOf}` : '');
+const itemList = (kind === 'skills' ? skillEntries.slice((page - 1) * PAGE_SIZE, (page - 1) * PAGE_SIZE + 50).map((e: any) => ({ name: e.n, url: path(`/skills/${e.i}/`, loc), image: e.ic })) : entries.slice(0, 50).map((e) => ({ name: e.name, url: e.href, image: e.image })));
 const rarities = kind === 'cards' ? ['SSR', 'SR', 'R'] : kind === 'skills' ? ['normal', 'gold', 'unique'] : [];
 const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom', 'friend', 'group'] : [];
 ---
@@ -37,7 +44,7 @@ const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom',
     <Breadcrumb items={[{ label: t(loc, `nav${kind === 'characters' ? 'Characters' : kind === 'cards' ? 'Cards' : 'Skills'}`) }]} />
     <div class="mb-6">
       <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-2">{t(loc, `${key}H1`)}</h1>
-      <p class="text-gray-600">{t(loc, `${key}Intro`, { n })}</p>
+      <p class="text-gray-600">{t(loc, `${key}Intro`, { n })}{pageOf && ` ${pageOf}`}</p>
     </div>
 
     <div class="glass rounded-xl p-4 mb-6 flex flex-wrap gap-3 items-center" id="filters">
@@ -62,6 +69,12 @@ const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom',
       <span id="f-count" class="text-sm text-gray-500"></span>
     </div>
 
+    {kind === 'skills' ? (
+      <>
+        <ul id="list" class="grid md:grid-cols-2 gap-3" data-skills-json={`/skills-data/${loc}.json`} data-kind="l10n" data-prefix={`/${loc}`} data-jp-label={t(loc, 'jpOnly')} data-more-label={t(loc, 'showMore')} data-step={PAGE_SIZE} set:html={skillsHtml}></ul>
+        <Fragment set:html={pager} />
+      </>
+    ) : (
     <ul id="list" class={kind === 'skills' ? 'grid md:grid-cols-2 gap-3' : 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3'}>
       {entries.map((e, i) => (
         <li data-q={e.q.toLowerCase()} data-server={e.server ?? ''} data-rarity={e.rarity ?? ''} data-type={e.type ?? ''}>
@@ -86,29 +99,33 @@ const types = kind === 'cards' ? ['speed', 'stamina', 'power', 'guts', 'wisdom',
         </li>
       ))}
     </ul>
+    )}
     <p id="none" class="hidden text-center text-gray-500 py-8">{t(loc, 'noMatches')}</p>
   </main>
 </Layout>
 
 <script>
-  const $ = (id: string) => document.getElementById(id) as HTMLInputElement | null;
-  const items = Array.from(document.querySelectorAll<HTMLElement>('#list > li'));
-  const norm = (s: string) => s.toLowerCase().replace(/[\u30a1-\u30f6]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)).replace(/[\s\-_・·.'’()（）\[\]【】「」]/g, '');
-  const prepared = items.map((li) => ({ li, q: norm(li.dataset.q ?? '') }));
-  function apply() {
-    const q = norm($('f-q')?.value ?? '');
-    const server = $('f-server')?.value ?? '';
-    const rarity = $('f-rarity')?.value ?? '';
-    const type = $('f-type')?.value ?? '';
-    let shown = 0;
-    for (const { li, q: hay } of prepared) {
-      const ok = (!q || hay.includes(q)) && (!server || li.dataset.server === server) && (!rarity || li.dataset.rarity === rarity) && (!type || li.dataset.type === type);
-      li.hidden = !ok;
-      if (ok) shown++;
+  import '@/lib/skills-list-client';
+  if (!document.getElementById('list')?.dataset.skillsJson) {
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement | null;
+    const items = Array.from(document.querySelectorAll<HTMLElement>('#list > li'));
+    const norm = (s: string) => s.toLowerCase().replace(/[\u30a1-\u30f6]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0x60)).replace(/[\s\-_・·.'’()（）\[\]【】「」]/g, '');
+    const prepared = items.map((li) => ({ li, q: norm(li.dataset.q ?? '') }));
+    function apply() {
+      const q = norm($('f-q')?.value ?? '');
+      const server = $('f-server')?.value ?? '';
+      const rarity = $('f-rarity')?.value ?? '';
+      const type = $('f-type')?.value ?? '';
+      let shown = 0;
+      for (const { li, q: hay } of prepared) {
+        const ok = (!q || hay.includes(q)) && (!server || li.dataset.server === server) && (!rarity || li.dataset.rarity === rarity) && (!type || li.dataset.type === type);
+        li.hidden = !ok;
+        if (ok) shown++;
+      }
+      const c = $('f-count'); if (c) c.textContent = String(shown) + ' / ' + String(items.length);
+      $('none')?.classList.toggle('hidden', shown > 0);
     }
-    const c = $('f-count'); if (c) c.textContent = String(shown) + ' / ' + String(items.length);
-    $('none')?.classList.toggle('hidden', shown > 0);
+    ['f-q', 'f-server', 'f-rarity', 'f-type'].forEach((id) => $(id)?.addEventListener('input', apply));
+    apply();
   }
-  ['f-q', 'f-server', 'f-rarity', 'f-type'].forEach((id) => $(id)?.addEventListener('input', apply));
-  apply();
 </script>

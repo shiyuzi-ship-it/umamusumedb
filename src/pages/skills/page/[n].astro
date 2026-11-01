@@ -1,0 +1,10 @@
+---
+import SkillsPageEn from '@/components/skills/SkillsPageEn.astro';
+import { buildSkillEntries } from '@/lib/skills-list-data';
+import { totalPages, pageNumbers } from '@/lib/pagination';
+export function getStaticPaths() {
+  return pageNumbers(totalPages(buildSkillEntries('en').length)).map((n) => ({ params: { n: String(n) }, props: { page: n } }));
+}
+const { page } = Astro.props;
+---
+<SkillsPageEn page={page} />

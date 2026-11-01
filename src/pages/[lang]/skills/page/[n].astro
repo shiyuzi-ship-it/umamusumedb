@@ -1,0 +1,14 @@
+---
+import ListPage from '@/components/l10n/ListPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+import { buildSkillEntries } from '@/lib/skills-list-data';
+import { totalPages, pageNumbers } from '@/lib/pagination';
+export function getStaticPaths() {
+  return NEW_LOCALES.flatMap((lang) =>
+    pageNumbers(totalPages(buildSkillEntries(lang).length)).map((n) => ({ params: { lang, n: String(n) }, props: { page: n } }))
+  );
+}
+const { lang } = Astro.params;
+const { page } = Astro.props;
+---
+<ListPage locale={lang as any} kind="skills" page={page} />

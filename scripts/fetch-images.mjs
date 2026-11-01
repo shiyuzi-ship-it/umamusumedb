@@ -17,6 +17,10 @@ const imgDir = resolve(root, 'public/img');
 const BASE = 'https://gametora.com/images/umamusume';
 const UA = 'Mozilla/5.0 (umamusumedb image sync)';
 
+// Skill icons that GameTora has no image for (e.g. very new JP-only skills) get one shared, site-made placeholder icon
+// (generated here from an SVG; no third-party artwork). `/img/skills/placeholder.webp`
+export const SKILL_ICON_PLACEHOLDER = '/img/skills/placeholder.webp';
+const PLACEHOLDER_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8FB8"/><stop offset="1" stop-color="#C77DFF"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/><path d="M32 12l5.2 14.8L52 32l-14.8 5.2L32 52l-5.2-14.8L12 32l14.8-5.2z" fill="#fff" fill-opacity=".92"/></svg>`;
 const exists = (p) => access(p).then(() => true, () => false);
 
 async function download(url) {
@@ -80,12 +84,19 @@ export async function syncImages() {
 
   for (const c of characters) { c.image_url = have.characters.has(c.card_id) ? `/img/characters/${c.card_id}.webp` : null; }
   for (const c of cards) { c.image_url = have.cards.has(c.support_id) ? `/img/cards/${c.support_id}.webp` : null; delete c.character_image_url; }
-  for (const s of skills) { s.icon_url = have.skills.has(s.icon_id) ? `/img/skills/${s.icon_id}.webp` : null; }
+  const placeholderFile = resolve(imgDir, 'skills', 'placeholder.webp');
+  const missingIcons = icons.filter((id) => !have.skills.has(id));
+  if (missingIcons.length && !(await exists(placeholderFile))) {
+    await mkdir(dirname(placeholderFile), { recursive: true });
+    await sharp(Buffer.from(PLACEHOLDER_SVG)).webp({ quality: 90 }).toFile(placeholderFile);
+  }
+  for (const s of skills) { s.icon_url = have.skills.has(s.icon_id) ? `/img/skills/${s.icon_id}.webp` : s.icon_id ? SKILL_ICON_PLACEHOLDER : null; }
   const w = (f, d) => writeFile(resolve(dataDir, f), JSON.stringify(d, null, 2) + '\n', 'utf-8');
   await w('characters.json', characters);
   await w('supportCards.json', cards);
   await w('skills.json', skills);
   console.log(`[fetch-images] new files: ${stats.added}; characters ${have.characters.size}/${characters.length}, cards ${have.cards.size}/${cards.length}, skill icons ${have.skills.size}/${icons.length}; missing ${stats.missing.length}`);
+  if (missingIcons.length) console.log(`[fetch-images] skill icons without GameTora image (using shared placeholder): ${missingIcons.join(', ')}`);
   if (stats.missing.length) console.log('[fetch-images] no image on GameTora for:', stats.missing.slice(0, 20).join(', '));
   return stats;
 }

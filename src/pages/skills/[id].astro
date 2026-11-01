@@ -1,4 +1,5 @@
 ---
+import { realSkillIcon } from '@/lib/skill-icon';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
@@ -40,7 +41,7 @@ const linkedCharacters = characters.filter((c) => {
   noindex={skillClass.get(skill.id) !== 'all'}
   title={`${skill.name_en}${duplicateSkillNameEn.has(skill.name_en) && skill.name_jp ? ` (${skill.name_jp})` : ''} - Skill Effect & Cost | UmamusumeDB`}
   description={`${skill.name_en}${skill.name_jp ? ` (${skill.name_jp})` : ''}: ${String(skill.description_en || skill.effect || 'Uma Musume skill details').slice(0, 150)}`}
-  image={skill.icon_url}
+  image={realSkillIcon(skill.icon_url)}
 >
   <Header />
 
