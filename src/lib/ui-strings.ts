@@ -63,8 +63,6 @@ const en: Dict = {
   releasedOn: 'Released {date}',
   specialtyNote: 'Values shown at each listed level.',
   effectLabelFriendship_bonus: 'Friendship Bonus',
-  eventsTitle: 'Training events', eventsChain: 'Chain events', eventsRandom: 'Random events', eventsDates: 'Outing events', eventsTrainee: 'Character events', eventsOuting: 'Outing events', eventsOutfit: 'Outfit events', eventsShared: 'Events shared with this character\'s support cards',
-  eventsNote: 'Event names, choices and outcomes from GameTora. Events with conditions, random alternate outcomes or secret triggers are not listed.', eventsCount: '{n} events',
 };
 
 const ja: Dict = {
@@ -112,8 +110,6 @@ const ja: Dict = {
   detailTitleChar: '{name} - ステータス・適性・スキル', detailTitleCard: '{name} - サポートカード効果', detailTitleSkill: '{name} - スキル効果・必要Pt',
   detailDescChar: '{name}の基礎ステータス、適性、成長率、スキル、実装日(日本版・グローバル版)。',
   detailDescCard: '{name}:{rarity} {type}サポートカード。各レベルの効果、ヒントスキル、実装日。', releasedOn: '{date}実装',
-  eventsTitle: '育成イベント', eventsChain: '連続イベント', eventsRandom: 'ランダムイベント', eventsDates: 'お出かけイベント', eventsTrainee: 'ウマ娘イベント', eventsOuting: 'お出かけイベント', eventsOutfit: '勝負服イベント', eventsShared: 'このキャラのサポートカード共通イベント',
-  eventsNote: 'イベント名・選択肢・結果は GameTora のデータです。発生条件付き・結果が分岐するイベント・シークレットイベントは掲載していません。', eventsCount: '{n}件',
 };
 
 const zh: Dict = {
@@ -161,8 +157,6 @@ const zh: Dict = {
   detailTitleChar: '{name} - 属性、适性与技能', detailTitleCard: '{name} - 支援卡效果', detailTitleSkill: '{name} - 技能效果与消耗',
   detailDescChar: '{name}:初始属性、适性、成长率、技能与实装日期(国际服与日服)。',
   detailDescCard: '{name}:{rarity} {type}支援卡。各等级效果、提示技能与实装日期。', releasedOn: '{date} 实装',
-  eventsTitle: '育成事件', eventsChain: '连锁事件', eventsRandom: '随机事件', eventsDates: '外出事件', eventsTrainee: '赛马娘事件', eventsOuting: '外出事件', eventsOutfit: '服装专属事件', eventsShared: '该角色支援卡共通事件',
-  eventsNote: '事件名称、选项与结果来自 GameTora。带有触发条件、结果随机分歧或隐藏触发的事件未收录。', eventsCount: '{n} 个事件',
 };
 
 // Traditional Chinese: character conversion of the Simplified strings (Taiwan phrases), then fix a few game terms.
@@ -221,8 +215,6 @@ const ko: Dict = {
   detailTitleChar: '{name} - 능력치·적성·스킬', detailTitleCard: '{name} - 서포트 카드 효과', detailTitleSkill: '{name} - 스킬 효과·비용',
   detailDescChar: '{name}: 기본 능력치, 적성, 성장률, 스킬, 출시일(글로벌·일본).',
   detailDescCard: '{name}: {rarity} {type} 서포트 카드. 레벨별 효과, 힌트 스킬, 출시일.', releasedOn: '{date} 출시',
-  eventsTitle: '육성 이벤트', eventsChain: '연속 이벤트', eventsRandom: '랜덤 이벤트', eventsDates: '외출 이벤트', eventsTrainee: '우마무스메 이벤트', eventsOuting: '외출 이벤트', eventsOutfit: '의상 전용 이벤트', eventsShared: '이 캐릭터 서포트 카드 공통 이벤트',
-  eventsNote: '이벤트 이름·선택지·결과는 GameTora 데이터입니다. 발생 조건이 있거나 결과가 갈리는 이벤트, 시크릿 이벤트는 수록하지 않았습니다.', eventsCount: '이벤트 {n}개',
 };
 
 // zh follows the Taiwan-server terminology (zh = OpenCC conversion of the TW text): Stamina = 持久力, Guts = 意志力.

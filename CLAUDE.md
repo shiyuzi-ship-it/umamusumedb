@@ -119,6 +119,13 @@ npm run deploy  # Uses wrangler pages deploy
 5. **Simplicity**: Single deployment to Cloudflare Pages
 6. **Scalability**: Can handle millions of requests with CDN
 
+## Compliance baseline (applies to every data source, every update)
+
+- Never use, scrape, mirror or redistribute a source that explicitly refuses citation / scraping / redistribution (terms of service, robots.txt, site notice, or a direct request). If in doubt, leave it out and tell the owner.
+- Never decode, de-obfuscate or reverse-engineer data that a source deliberately obfuscates or encodes to stop bulk reuse, even if the technique is simple. Only use data a source publishes openly as data (public JSON / RSS / API intended for reading).
+- Always credit sources on `/data-sources/`; remove content immediately on a takedown request. Artwork belongs to Cygames, Inc.; the site is an unofficial fan project.
+- Keep these rules when a source changes its format: if a previously open file becomes encoded / blocked, drop that data instead of working around it.
+
 ## Weekly update procedure (since 2026-10) — follow this exactly
 
 The site is static. All data in `public/data/*.json` comes from GameTora's public data files (no SQLite, no hand-written data).
@@ -129,7 +136,6 @@ Nothing depends on GitHub Actions; run these steps from a checkout of `shiyuzi-s
 ```bash
 npm ci                              # first time / after dependency changes
 node scripts/import-gametora.mjs    # characters, supportCards, skills, scenarios, releases, *-lite.json, i18n names (ko / zh-TW / zh-CN), images
-node scripts/import-events.mjs      # story / training events (names, choices, outcomes) -> public/data/training-events.json (GT_CACHE=/dir reuses downloads)
 node scripts/fetch-news.mjs         # Global headlines (umamusume.gg RSS) -> news.json; official JP news (umamusume.jp) -> news-ja.json
 ```
 - `import-gametora.mjs` also calls `scripts/fetch-images.mjs`: real GameTora artwork is downloaded only for ids that have no file yet
@@ -138,12 +144,7 @@ node scripts/fetch-news.mjs         # Global headlines (umamusume.gg RSS) -> new
 - Every character / card / skill gets `i18n: { ko, zh_tw, zh }` (official Korean text and Taiwan-server text from GameTora). **Simplified Chinese
   is derived from the Traditional text with `opencc-js` (character conversion, not CN-server text)** — say so on `/data-sources/`. Missing translations
   fall back (ko -> English, zh/zh-tw -> Japanese) in `src/lib/localized.js`, so new JP-only items still show their real names.
-- Story events (`import-events.mjs`): GameTora's event files are compact (numeric ids, XOR+base64 strings, reward dictionary); the script decodes them
-  exactly as GameTora's own page script does in every visitor's browser, fully understood events only (stat / energy / mood / bond / skill-hint / skill /
-  status-effect / fans rewards). Skipped on purpose: secret events, events with conditions / random alternates / scenario-linked effects, scenario events.
-  The script prints imported-vs-skipped counts. If GameTora changes the format the script will fail or skip events — fix the decoder, never hand-edit. The
-  events render from `src/lib/events.ts` + `src/components/l10n/EventsSection.astro` on card / character pages (phrases in `src/lib/event-phrases.json`,
-  from GameTora's own localized event text). Credit GameTora on `/data-sources/` (the page shows the live imported count).
+- **Training / story events are NOT included (removed 2026-11).** GameTora ships event data deliberately obfuscated (XOR+base64, numeric dictionaries); decoding it for bulk reuse is a compliance risk, so the decoder (`import-events.mjs`), `src/lib/events.ts`, the events UI and `training-events.json` were deleted. Do not re-add them or any equivalent unless an openly licensed / explicitly permitted source exists. `/data-sources/` states this in all locales.
 - Scenarios carry official ko / zh-tw names from GameTora (`i18n`); zh is OpenCC of zh-tw; missing ones fall back to Japanese.
 - News: `/ja/updates/` shows official Japanese headlines (`news-ja.json`, from umamusume.jp's own `/api/ajax/pr_info_index`, same endpoint its news page
   uses; the microCMS key is not used). en / zh / zh-tw / ko show the English Global headlines with a note (official KR / TW news hosts were unreachable).
@@ -194,7 +195,7 @@ Uses the Cloudflare MCP (`execute` tool) and an upload JWT; the JWT is written t
   converted at build with `src/lib/tw-fix.ts` corrections), served by `toolLabels(locale, group)` and passed to each React island as `labels` (`src/components/tools/tool-i18n.ts`).
   Add a tool string once in `common.ts`, then `t('key')` in the component. Tool pages: `src/pages/tools/*`, `src/pages/ja/tools/*`, `src/pages/[lang]/tools/*`.
 - Legal / info pages (privacy, terms, data sources, guides) are data-driven in all five locales: content in `src/lib/legal/{privacy,terms,guides,sources}.ts`
-  (en / ja / zh / ko authored; zh-tw = OpenCC of zh + `twFixLegal`), rendered by `src/components/l10n/DocPage.astro`. `{L}` = locale URL prefix, `{EVENTS}` = imported event count.
+  (en / ja / zh / ko authored; zh-tw = OpenCC of zh + `twFixLegal`), rendered by `src/components/l10n/DocPage.astro`. `{L}` = locale URL prefix.
   Keep the privacy policy truthful about what the site does (Google Analytics, Google AdSense cookies, localStorage in tools) whenever code changes. There is no separate "about" page.
 - The old `collect-*` / `export-to-json` / R2 scripts and `database/` no longer feed the site.
 - AdSense (auto ads script) and GA live in `src/layouts/Layout.astro`; the AdSense script is intentionally not loaded on `noindex` pages. Keep the ad code intact.

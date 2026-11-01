@@ -12,7 +12,7 @@ export const terms: Docs = {
         { p: 'If you do not agree to these Terms, please do not use our Service.' } ] },
       { h: '2. Description of Service', blocks: [
         { p: 'UmamusumeDB is a fan-created, community-driven database and resource website for the game Uma Musume Pretty Derby. We provide:' },
-        { ul: ['Character information and statistics', 'Support card and skill databases, including training events', 'Release timeline and announcement headlines', 'Training calculators and tools', 'Game guides and strategies'] } ] },
+        { ul: ['Character information and statistics', 'Support card and skill databases', 'Release timeline and announcement headlines', 'Training calculators and tools', 'Game guides and strategies'] } ] },
       { h: '3. Disclaimer and Affiliation', blocks: [
         { p: '<strong>UmamusumeDB is NOT affiliated with, endorsed by, or sponsored by:</strong>' },
         { ul: ['Cygames, Inc.', 'Uma Musume Pretty Derby official team', 'Any official game publishers or developers'] },
@@ -55,7 +55,7 @@ export const terms: Docs = {
         { p: '本規約に同意しない場合は、本サービスを利用しないでください。' } ] },
       { h: '2. サービスの内容', blocks: [
         { p: 'UmamusumeDB は、ゲーム『ウマ娘 プリティーダービー』のファンが作成したコミュニティ運営のデータベース・情報サイトです。次の内容を提供します。' },
-        { ul: ['キャラクター情報とステータス', '育成イベントを含むサポートカード・スキルのデータベース', 'リリース年表とお知らせの見出し', '育成計算などのツール', 'ゲームのガイドと攻略'] } ] },
+        { ul: ['キャラクター情報とステータス', 'サポートカード・スキルのデータベース', 'リリース年表とお知らせの見出し', '育成計算などのツール', 'ゲームのガイドと攻略'] } ] },
       { h: '3. 免責事項と関係性について', blocks: [
         { p: '<strong>UmamusumeDB は、次のいずれとも提携・承認・後援の関係にありません。</strong>' },
         { ul: ['株式会社Cygames', '『ウマ娘 プリティーダービー』公式チーム', 'ゲームの公式な発売元・開発元'] },
@@ -98,7 +98,7 @@ export const terms: Docs = {
         { p: '如果您不同意本条款,请不要使用本服务。' } ] },
       { h: '2. 服务说明', blocks: [
         { p: 'UmamusumeDB 是由粉丝制作、社区驱动的《赛马娘 Pretty Derby》数据库与资料网站。我们提供:' },
-        { ul: ['角色信息与能力数据', '支援卡与技能数据库(含育成事件)', '实装时间线与公告标题', '育成计算器等工具', '游戏指南与攻略'] } ] },
+        { ul: ['角色信息与能力数据', '支援卡与技能数据库', '实装时间线与公告标题', '育成计算器等工具', '游戏指南与攻略'] } ] },
       { h: '3. 免责声明与关联关系', blocks: [
         { p: '<strong>UmamusumeDB 与下列各方没有任何关联,也未获得其认可或赞助:</strong>' },
         { ul: ['Cygames, Inc.', '《赛马娘 Pretty Derby》官方团队', '任何官方游戏发行商或开发商'] },
@@ -141,7 +141,7 @@ export const terms: Docs = {
         { p: '약관에 동의하지 않으시면 서비스를 이용하지 마세요.' } ] },
       { h: '2. 서비스 설명', blocks: [
         { p: 'UmamusumeDB는 게임 「우마무스메 프리티 더비」의 팬이 만든 커뮤니티 기반 데이터베이스 및 정보 사이트입니다. 다음을 제공합니다.' },
-        { ul: ['캐릭터 정보와 능력치', '육성 이벤트를 포함한 서포트 카드·스킬 데이터베이스', '출시 연표와 공지 제목', '육성 계산기 등 도구', '게임 가이드와 공략'] } ] },
+        { ul: ['캐릭터 정보와 능력치', '서포트 카드·스킬 데이터베이스', '출시 연표와 공지 제목', '육성 계산기 등 도구', '게임 가이드와 공략'] } ] },
       { h: '3. 면책 및 제휴 관계', blocks: [
         { p: '<strong>UmamusumeDB는 다음 어느 쪽과도 제휴·승인·후원 관계가 없습니다.</strong>' },
         { ul: ['Cygames, Inc.', '「우마무스메 프리티 더비」 공식 팀', '공식 게임 퍼블리셔 또는 개발사'] },
