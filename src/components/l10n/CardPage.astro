@@ -1,4 +1,5 @@
 ---
+import RankingLink from '@/components/RankingLink.astro';
 import ScheduleLink from '@/components/ScheduleLink.astro';
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
@@ -78,7 +79,8 @@ const rows: [string, string][] = [
           <dl class="text-sm space-y-1">
             {rows.map(([k, v]) => (<div class="flex justify-between gap-3"><dt class="text-gray-500">{k}</dt><dd class="font-medium text-right">{v}</dd></div>))}
           </dl>
-          <ScheduleLink locale={loc} pending={!card.release_date_global} class="block mt-3 text-sm text-uma-primary hover:underline" />
+          <RankingLink locale={loc} cardId={card.id} type={card.type} rarity={card.rarity} class="block mt-3 text-sm text-uma-primary hover:underline" />
+          <ScheduleLink locale={loc} pending={!card.release_date_global} class="block mt-1 text-sm text-uma-primary hover:underline" />
         </div>
       </div>
 

@@ -38,6 +38,12 @@ describe('schedule from the real data', () => {
       } else expect(g.jp <= s.anchor!.jp).toBe(true);
     }
   });
+  it('never shows an estimated date before the build day', () => {
+    const t1 = buildSchedule(characters as any[], cards as any[], '2030-01-01');
+    for (const g of t1.pending) if (g.est) { expect(g.est.from >= '2030-01-01').toBe(true); expect(g.est.to >= g.est.from).toBe(true); expect(g.est.mid >= g.est.from && g.est.mid <= g.est.to).toBe(true); }
+    const t0 = buildSchedule(characters as any[], cards as any[], '2000-01-01');
+    expect(t0.pending.find((g) => g.est)!.est!.from).toBe(s.anchor!.gl);
+  });
   it('pending groups are sorted by JP date, released newest first', () => {
     const jp = s.pending.map((g) => g.jp);
     expect([...jp].sort()).toEqual(jp);

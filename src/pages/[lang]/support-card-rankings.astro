@@ -1,0 +1,7 @@
+---
+import RankingsPage from '@/components/l10n/RankingsPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+export function getStaticPaths() { return NEW_LOCALES.map((lang) => ({ params: { lang } })); }
+const { lang } = Astro.params;
+---
+<RankingsPage locale={lang as any} />

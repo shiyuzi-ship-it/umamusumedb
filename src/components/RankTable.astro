@@ -1,0 +1,46 @@
+---
+import type { Locale } from '@/lib/i18n';
+import type { RankedCard } from '@/lib/card-rankings';
+import { cardName } from '@/lib/localized.js';
+import { rs } from '@/lib/ranking-strings';
+import { typeLabel, path } from '@/lib/page-helpers';
+
+interface Props { list: RankedCard[]; type: string; locale: Locale; date?: 'global' | 'jp' }
+const { list, type, locale: loc, date = 'global' } = Astro.props;
+const hasBonus = ['speed', 'stamina', 'power', 'guts', 'wisdom'].includes(type);
+const n = (v: number) => (v ? String(Math.round(v * 10) / 10) : '–');
+---
+<div class="overflow-x-auto rounded-xl bg-white shadow">
+  <table class="w-full text-sm">
+    <thead class="bg-gray-50 text-left text-gray-600"><tr>
+      <th class="px-2 py-2">{rs(loc, 'colRank')}</th>
+      <th class="px-2 py-2">{rs(loc, 'colCard')}</th>
+      <th class="px-2 py-2 text-right">{rs(loc, 'colScore')}</th>
+      <th class="px-2 py-2 text-right">{rs(loc, 'colFr')}</th>
+      <th class="px-2 py-2 text-right">{rs(loc, 'colTr')}</th>
+      {hasBonus && <th class="px-2 py-2 text-right">{rs(loc, 'colBonus', { type: typeLabel(loc, type) })}</th>}
+      <th class="px-2 py-2 text-right">{rs(loc, 'colSpec')}</th>
+      <th class="px-2 py-2 text-right">{rs(loc, 'colBond')}</th>
+      <th class="px-2 py-2 text-right">{rs(loc, 'colInit')}</th>
+      <th class="px-2 py-2 text-right">{rs(loc, 'colHint')}</th>
+      <th class="px-2 py-2 whitespace-nowrap">{date === 'global' ? rs(loc, 'colGl') : rs(loc, 'colJp')}</th>
+    </tr></thead>
+    <tbody>
+      {list.map((r, i) => (
+        <tr class="border-t border-gray-100">
+          <td class="px-2 py-1.5 text-gray-500">{i + 1}</td>
+          <td class="px-2 py-1.5"><a href={path(`/cards/${r.card.id}/`, loc)} class="text-uma-primary hover:underline">{cardName(r.card, loc)}</a></td>
+          <td class="px-2 py-1.5 text-right font-semibold">{r.score}</td>
+          <td class="px-2 py-1.5 text-right">{n(r.fr)}</td>
+          <td class="px-2 py-1.5 text-right">{n(r.tr)}</td>
+          {hasBonus && <td class="px-2 py-1.5 text-right">{n(r.typeBonus)}</td>}
+          <td class="px-2 py-1.5 text-right">{n(r.spec)}</td>
+          <td class="px-2 py-1.5 text-right">{n(r.bond)}</td>
+          <td class="px-2 py-1.5 text-right">{n(r.initStats)}</td>
+          <td class="px-2 py-1.5 text-right">{n(r.hint)}</td>
+          <td class="px-2 py-1.5 whitespace-nowrap text-gray-600">{date === 'global' ? r.glDate : r.jpDate}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

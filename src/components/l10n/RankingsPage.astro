@@ -1,0 +1,140 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import RankTable from '@/components/RankTable.astro';
+import { SITE_ORIGIN, type Locale } from '@/lib/i18n';
+import { rs } from '@/lib/ranking-strings';
+import { rankings as R, rankingsUpdated } from '@/lib/card-rankings-data';
+import { CARD_TYPES, WEIGHTS, WEIGHT_ORDER } from '@/lib/card-rankings';
+import { EFFECT_LABELS } from '@/lib/game-format';
+import { effectLabelL } from '@/lib/ui-strings';
+import { cardName } from '@/lib/localized.js';
+import { typeLabel, path } from '@/lib/page-helpers';
+
+interface Props { locale: Locale }
+const { locale: loc } = Astro.props;
+const TOP = 10, TOP_SR = 5, TOP_JP = 5;
+const title = rs(loc, 'title');
+const description = rs(loc, 'description');
+const pageUrl = `${SITE_ORIGIN}${path('/support-card-rankings/', loc)}`;
+const types = CARD_TYPES.filter((t) => R.global.SSR[t].length > 0);
+const jpTypes = CARD_TYPES.filter((t) => R.jpOnly.SSR[t].length > 0);
+const lvOf = (list: any[]) => list[0]?.maxLv ?? 50;
+const itemList = types.flatMap((t) => R.global.SSR[t].slice(0, 3)).map((r) => ({ name: cardName(r.card, loc), url: path(`/cards/${r.card.id}/`, loc), image: r.card.image_url }));
+const lvSr = lvOf(R.global.SR.speed), lvR = lvOf(R.global.R.speed);
+---
+
+<Layout title={title} description={description} structuredDataType="webpage" structuredData={{ name: title, title, description, dateModified: rankingsUpdated, about: 'Uma Musume Pretty Derby support card rankings by type (calculated from public card values)', url: pageUrl }} itemList={itemList}>
+  <Header />
+  <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+    <Breadcrumb items={[{ label: rs(loc, 'nav') }]} />
+    <div class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-display gradient-text mb-3">{rs(loc, 'h1')}</h1>
+      <p class="text-gray-600 max-w-3xl">{rs(loc, 'intro')}</p>
+    </div>
+
+    <div class="rounded-xl border border-amber-300 bg-amber-50 p-4 mb-8 text-sm text-amber-900" role="note">
+      <strong>{rs(loc, 'noteTitle')}{['ja', 'zh', 'zh-tw'].includes(loc) ? '。' : '.'}</strong> {rs(loc, 'note')}
+    </div>
+
+    <section class="mb-10" id="top">
+      <h2 class="text-2xl font-display mb-3">{rs(loc, 'quickTitle')}</h2>
+      <div class="overflow-x-auto rounded-xl bg-white shadow">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-left text-gray-600"><tr><th class="px-3 py-2">{rs(loc, 'colType')}</th><th class="px-3 py-2">{rs(loc, 'colTop')}</th></tr></thead>
+          <tbody>
+            {types.map((t) => (
+              <tr class="border-t border-gray-100 align-top">
+                <td class="px-3 py-2 font-medium whitespace-nowrap"><a href={`#${t}`} class="text-uma-primary hover:underline">{typeLabel(loc, t)}</a></td>
+                <td class="px-3 py-2">
+                  <ol class="list-decimal pl-5 space-y-0.5">
+                    {R.global.SSR[t].slice(0, 3).map((r) => (
+                      <li><a href={path(`/cards/${r.card.id}/`, loc)} class="text-uma-primary hover:underline">{cardName(r.card, loc)}</a> <span class="text-gray-500">({r.score})</span></li>
+                    ))}
+                  </ol>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {types.map((t) => {
+      const list = R.global.SSR[t];
+      return (
+        <section class="mb-10" id={t}>
+          <h2 class="text-2xl font-display mb-1">{rs(loc, 'sectionSsr', { type: typeLabel(loc, t) })}</h2>
+          <p class="text-sm text-gray-500 mb-3">{rs(loc, 'sectionIntro', { n: Math.min(TOP, list.length), total: list.length, type: typeLabel(loc, t), lv: lvOf(list) })}</p>
+          <RankTable list={list.slice(0, TOP)} type={t} locale={loc} />
+          {list.length > TOP && (
+            <details class="mt-3">
+              <summary class="cursor-pointer text-uma-primary text-sm">{rs(loc, 'showAll', { total: list.length })}</summary>
+              <div class="mt-3"><RankTable list={list} type={t} locale={loc} /></div>
+            </details>
+          )}
+        </section>
+      );
+    })}
+
+    <section class="mb-10" id="sr-r">
+      <h2 class="text-2xl font-display mb-1">{rs(loc, 'srrTitle', { n: TOP_SR })}</h2>
+      <p class="text-sm text-gray-500 mb-4">{rs(loc, 'srrIntro', { sr: lvSr, r: lvR })}</p>
+      <div class="grid lg:grid-cols-2 gap-6">
+        {(['SR', 'R'] as const).flatMap((rar) => CARD_TYPES.filter((t) => R.global[rar][t].length > 0).map((t) => (
+          <div>
+            <h3 class="font-semibold mb-2">{rar} · {typeLabel(loc, t)}</h3>
+            <RankTable list={R.global[rar][t].slice(0, TOP_SR)} type={t} locale={loc} />
+          </div>
+        )))}
+      </div>
+    </section>
+
+    {jpTypes.length > 0 && (
+      <section class="mb-10" id="jp-only">
+        <h2 class="text-2xl font-display mb-1">{rs(loc, 'jpTitle', { n: TOP_JP })}</h2>
+        <p class="text-sm text-gray-500 mb-4">{rs(loc, 'jpIntro').split('{link}')[0]}<a href={path('/global-release-schedule/', loc)} class="text-uma-primary hover:underline">{rs(loc, 'jpLink')}</a>{rs(loc, 'jpIntro').split('{link}')[1]}</p>
+        <div class="grid lg:grid-cols-2 gap-6">
+          {jpTypes.map((t) => (
+            <div>
+              <h3 class="font-semibold mb-2">SSR · {typeLabel(loc, t)}</h3>
+              <RankTable list={R.jpOnly.SSR[t].slice(0, TOP_JP)} type={t} locale={loc} date="jp" />
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="glass rounded-xl p-5 mb-8" id="method">
+      <h2 class="text-xl font-display mb-3">{rs(loc, 'formulaTitle')}</h2>
+      <p class="text-sm text-gray-700 mb-4"><code class="bg-white px-1 rounded">{rs(loc, 'formula')}</code></p>
+      <h3 class="font-semibold text-sm mb-2">{rs(loc, 'weightsHead')}</h3>
+      <div class="overflow-x-auto rounded-xl bg-white shadow max-w-lg mb-5">
+        <table class="w-full text-sm">
+          <thead class="bg-gray-50 text-left text-gray-600"><tr><th class="px-3 py-1.5">{rs(loc, 'colEffect')}</th><th class="px-3 py-1.5 text-right">{rs(loc, 'colWeight')}</th></tr></thead>
+          <tbody>
+            {WEIGHT_ORDER.map((k) => (
+              <tr class="border-t border-gray-100"><td class="px-3 py-1">{effectLabelL(k, loc, EFFECT_LABELS[k])}</td><td class="px-3 py-1 text-right">× {WEIGHTS[k]}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h3 class="font-semibold text-sm mb-2">{rs(loc, 'limitsTitle')}</h3>
+      <ul class="space-y-1.5 text-sm text-gray-700 list-disc pl-5">
+        {['l1', 'l2', 'l3', 'l4', 'l5'].map((k) => <li>{rs(loc, k)}</li>)}
+      </ul>
+      <p class="text-xs text-gray-500 mt-3">{rs(loc, 'updated', { d: rankingsUpdated })}</p>
+    </section>
+
+    <nav class="text-sm" aria-label={rs(loc, 'related')}>
+      <h2 class="font-semibold mb-2">{rs(loc, 'related')}</h2>
+      <ul class="flex flex-wrap gap-x-4 gap-y-1">
+        <li><a class="text-uma-primary hover:underline" href={path('/cards/', loc)}>{rs(loc, 'relCards')}</a></li>
+        <li><a class="text-uma-primary hover:underline" href={path('/global-release-schedule/', loc)}>{rs(loc, 'relSchedule')}</a></li>
+        <li><a class="text-uma-primary hover:underline" href={path('/tools/support-deck/', loc)}>{rs(loc, 'relTools')}</a></li>
+        <li><a class="text-uma-primary hover:underline" href={path('/data-sources/', loc)}>{rs(loc, 'relSources')}</a></li>
+      </ul>
+    </nav>
+  </main>
+</Layout>

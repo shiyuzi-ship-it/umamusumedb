@@ -7,6 +7,7 @@
 //    Lowest and highest of those four slopes give the fast / slow bound.
 //  * anchor = the most recent Global release (its JP date J0, Global date G0). A JP-only item with JP date d > J0 is estimated at
 //    G0 + (d - J0) x pace, shown as a window [G0 + (d-J0) x fast - 14 d, G0 + (d-J0) x slow + 14 d]. 14 days of padding cover the usual weekly jitter.
+//  * windows are cut so that no estimated date lies before the build day.
 //  * JP-only items whose JP date is not after J0 were skipped by Global's order: no estimate is given for them.
 //  * backtest: the same method is re-run from earlier anchors and compared with what really happened (coverage is shown on the page).
 export const PAD_DAYS = 14;
@@ -73,7 +74,7 @@ export function backtest(samples: [number, number][], horizon = BACKTEST_HORIZON
   return n ? { n, hit, horizon, pad } : null;
 }
 
-export function buildSchedule(characters: any[], cards: any[]): Schedule {
+export function buildSchedule(characters: any[], cards: any[], today: string = new Date().toISOString().slice(0, 10)): Schedule {
   const items: ScheduleItem[] = [
     ...characters.map((rec) => ({ kind: 'character' as const, id: rec.id, rec, jp: rec.release_date_jp, gl: rec.release_date_global || undefined })),
     ...cards.map((rec) => ({ kind: 'card' as const, id: rec.id, rec, jp: rec.release_date_jp, gl: rec.release_date_global || undefined })),
@@ -100,7 +101,9 @@ export function buildSchedule(characters: any[], cards: any[]): Schedule {
     its.sort((a, b) => (a.kind === b.kind ? 0 : a.kind === 'character' ? -1 : 1));
     if (!anchor || !pace || jp <= anchor.jp) return { jp, items: its };
     const w = estimateWindow({ jp: toDay(anchor.jp), gl: toDay(anchor.gl) }, pace, toDay(jp));
-    return { jp, items: its, est: { from: fromDay(w.from), to: fromDay(w.to), mid: fromDay(w.mid) } };
+    // never show a predicted date that is already in the past: windows are cut to the build day (still an estimate)
+    const cut = (n: number) => { const d = fromDay(n); return d < today ? today : d; };
+    return { jp, items: its, est: { from: cut(w.from), to: cut(w.to), mid: cut(w.mid) } };
   });
 
   const gaps = post.map((i) => toDay(i.gl!) - toDay(i.jp)).sort((a, b) => a - b);

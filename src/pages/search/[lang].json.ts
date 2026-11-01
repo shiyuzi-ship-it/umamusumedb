@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const PAGES: [string, string][] = [
-  ['/characters/', 'navCharacters'], ['/cards/', 'navCards'], ['/skills/', 'navSkills'], ['/updates/', 'navUpdates'], ['/global-release-schedule/', 'navSchedule'], ['/tools/', 'navTools'],
+  ['/characters/', 'navCharacters'], ['/cards/', 'navCards'], ['/skills/', 'navSkills'], ['/updates/', 'navUpdates'], ['/global-release-schedule/', 'navSchedule'], ['/support-card-rankings/', 'navRankings'], ['/tools/', 'navTools'],
   ['/tools/training-calculator/', 'toolTraining'], ['/tools/factor-calculator/', 'toolFactor'], ['/tools/skill-builder/', 'toolSkill'],
   ['/tools/support-deck/', 'toolDeck'], ['/tools/training-goals/', 'toolGoals'], ['/tools/character-comparison/', 'toolCompare'],
 ];

@@ -148,6 +148,7 @@ const yrs = S.gap ? (S.gap.median / 365.25).toFixed(1) : '';
         <li>{st(loc, 'm4', { pad: PAD_DAYS })}</li>
         {S.backtest && <li>{st(loc, 'm5', { hit: S.backtest.hit, n: S.backtest.n, h: S.backtest.horizon })}</li>}
         <li>{st(loc, 'm6')}</li>
+        <li>{st(loc, 'm7')}</li>
       </ol>
       <p class="text-xs text-gray-500 mt-3">{st(loc, 'updated', { d: scheduleUpdated })}</p>
     </section>

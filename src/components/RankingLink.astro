@@ -1,0 +1,16 @@
+---
+import type { Locale } from '@/lib/i18n';
+import { rs } from '@/lib/ranking-strings';
+import { t } from '@/lib/ui-strings';
+import { typeLabel, path } from '@/lib/page-helpers';
+import { rankings as R } from '@/lib/card-rankings-data';
+interface Props { locale: Locale; cardId: string; type: string; rarity: string; class?: string }
+const { locale, cardId, type, rarity, class: cls = 'block mt-2 text-xs text-uma-primary hover:underline' } = Astro.props;
+const bucket = (R.global as any)[rarity]?.[type]?.some((r: any) => r.card.id === cardId) ? 'global' : 'jpOnly';
+const list = ((R as any)[bucket][rarity]?.[type] ?? []) as any[];
+const idx = list.findIndex((r) => r.card.id === cardId);
+const href = path('/support-card-rankings/', locale) + (rarity === 'SSR' ? `#${bucket === 'global' ? type : 'jp-only'}` : '');
+---
+{idx >= 0
+  ? <a href={href} class={cls}>{rs(locale, 'rankLine', { r: idx + 1, n: list.length, rarity, type: typeLabel(locale, type), scope: t(locale, bucket === 'global' ? 'global' : 'jpOnly'), s: list[idx].score })}</a>
+  : <a href={href} class={cls}>{rs(locale, 'linkRankings')}</a>}

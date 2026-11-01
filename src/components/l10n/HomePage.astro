@@ -84,7 +84,7 @@ const rel = releases.map((r) => {
     </section>
 
     <section class="mb-10">
-      <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'latestReleases')}</h2><span class="flex gap-4 text-sm"><a href={path('/global-release-schedule/', loc)} class="text-uma-primary hover:underline">{t(loc, 'navSchedule')} →</a><a href={path('/updates/', loc)} class="text-uma-primary hover:underline">{t(loc, 'allUpdates')}</a></span></div>
+      <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'latestReleases')}</h2><span class="flex gap-4 text-sm"><a href={path('/support-card-rankings/', loc)} class="text-uma-primary hover:underline">{t(loc, 'navRankings')} →</a><a href={path('/global-release-schedule/', loc)} class="text-uma-primary hover:underline">{t(loc, 'navSchedule')} →</a><a href={path('/updates/', loc)} class="text-uma-primary hover:underline">{t(loc, 'allUpdates')}</a></span></div>
       <ul class="grid md:grid-cols-2 gap-3">
         {rel.map((r) => (
           <li><a href={r.href} class="flex justify-between gap-3 bg-white rounded-lg p-3 hover:shadow text-sm"><span class="font-medium">{r.name}</span><span class="text-xs text-gray-500 whitespace-nowrap">{r.date} · {r.kind}</span></a></li>
