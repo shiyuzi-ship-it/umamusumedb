@@ -1,186 +1,60 @@
-# UmamusumeDB - Uma Musume Pretty Derby Database
+# UmamusumeDB
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Live site](https://img.shields.io/badge/site-umamusumedb.com-brightgreen)](https://umamusumedb.com)
 
-A comprehensive database and tools platform for Uma Musume Pretty Derby, built with modern web technologies and powered by open-source data.
+A free, fan-made database and tool set for **Uma Musume Pretty Derby** (ウマ娘 プリティーダービー / 赛马娘 / 優俊少女 / 우마무스메), covering both the **Global** and **Japanese** servers. Not affiliated with Cygames.
 
-🌐 **Live Site**: [https://umamusumedb.com](https://umamusumedb.com)
+**Live site: <https://umamusumedb.com>** · Languages: English · 日本語 · 简体中文 · 繁體中文 · 한국어
 
-📄 **Japanese README**: [README.ja.md](README.ja.md)
+[日本語 README](README.ja.md)
 
-## Features
+## What is on the site
 
-### Database & Information
-- 📊 **Character Database** - 60+ Uma Musume with detailed stats, growth rates, and aptitudes
-- 🎴 **Support Card Collection** - 119+ support cards with complete skill and bonus data
-- 🎯 **Skill Database** - 47+ skills with exact numerical values, trigger conditions, and durations
-- 🏆 **Tier Lists** - Community-driven rankings for characters and cards
-- 🌍 **Multi-language Support** - English and Japanese interfaces
+- **Database**: characters (with outfits), support cards, skills, scenarios. Content that is not on Global yet is marked "JP only".
+- **Global release schedule** (`/global-release-schedule/`): the real JP→Global release date of everything already out, plus clearly labelled *unofficial* estimate windows for what is still JP-only. The method is published on the page.
+- **Support card rankings** (`/support-card-rankings/`): a calculated ranking (not a tier list). Score = sum of weight × max-level value of each effect, compared only within the same type and rarity. All weights and limitations are listed on the page.
+- **Skill category pages** (`/skills/category/`): gold / white / unique skills by distance, running style and effect.
+- **Tools** (`/tools/`): training calculator, factor inheritance calculator, skill builder, support deck builder, character comparison, training goals.
+- Character and support card lists with search/filter, a Tier List page, JP/Global news headlines, and a `/data-sources/` page that credits every source.
 
-### Training Tools
-- 🧮 **Training Calculator** - Accurate stat calculation using official game formula
-  - Growth rate, mood, and training effectiveness
-  - Support card bonuses and friendship training
-  - Training caps (+100 max, halved above 1200)
-- 🧬 **Factor Calculator** - Inheritance probability calculator
-  - Parent & grandparent factor inheritance rates
-  - Compatibility bonuses
-  - Blue (★3) factor probability
-- 🛠️ **Skill Builder** - Plan your skill setup
-- 📊 **Support Deck Builder** - Optimize your support card deck
-- 🎯 **Training Goals** - Set and track your training targets
+The site is static (no backend), rebuilt from the data in this repo.
 
-### Performance
-- ⚡ **Lightning Fast** - Static site with global CDN (img.umamusumedb.com)
-- 📱 **Mobile Friendly** - Responsive design for all devices
-- 🚀 **Cloudflare Pages** - Edge network deployment
+## Data sources and credits
 
-## Tech Stack
+- Game data (characters, support cards, skills, scenarios, release dates) is imported from **[GameTora](https://gametora.com/umamusume)'s public data files** by `scripts/import-gametora.mjs`.
+- English and Japanese names/descriptions are the official game text. Korean and Traditional Chinese (TW server) come from GameTora's official in-game text. Simplified Chinese is Traditional Chinese converted with OpenCC, so it is **not** the CN server text and some terms may differ from the CN client.
+- Training formulas are community-measured (Cygames has not published them): see [uma.guide](https://uma.guide), [umareference.com](https://umareference.com) and [KamiGame](https://kamigame.jp/umamusume/).
+- Prototype racehorse facts use [Wikidata](https://www.wikidata.org) (CC0).
+- Images and icons are the property of Cygames, Inc. and are used only to identify game content. They are removed on request.
+- Training-event data is deliberately **not** included.
 
-- **Frontend Framework**: [Astro](https://astro.build) (Static Site Generator)
-- **UI Components**: React + TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: SQLite (Development) → Static JSON (Production)
-- **Analytics**: Google Analytics
+Full details: <https://umamusumedb.com/data-sources/>
 
-## Data Sources & Credits
+## Tech stack
 
-This project wouldn't be possible without these amazing open-source projects and community resources:
-
-### Primary Data Sources
-
-- **[UmaMusumeAPI](https://github.com/SimpleSandman/UmaMusumeAPI)** - Community REST API based on Uma Musume: Pretty Derby's master.mdb file
-  - Provides accurate game data including character stats, support cards, and skills
-  - Maintained by SimpleSandman
-
-- **[umamusume-db-translate](https://github.com/FabulousCupcake/umamusume-db-translate)** - Translation database for Uma Musume Pretty Derby
-  - Comprehensive translations for game content
-  - Browser-based master.mdb manipulation tools
-  - Maintained by FabulousCupcake
-
-- **[Game8](https://game8.co/games/Umamusume-Pretty-Derby/)** - Comprehensive English game guide
-  - Training formulas and mechanics
-  - Character and support card evaluations
-
-- **[GameTora](https://gametora.com/umamusume/)** - Japanese community database
-  - Character aptitudes and stats
-  - Support card data
-
-- **[UmaMusume.run](https://umamusume.run/)** - Community tools and calculators
-  - Verified game formulas
-  - Legacy and training calculators
-
-### Formula Accuracy
-
-Our training calculator uses the official game formula verified by the community:
-
-```
-(Base + Stat Bonus) × (1 + Growth Rate) × Mood ×
-(1 + Training Effect) × (1 + Support Count × 0.05) × Friendship Bonus
-```
-
-With accurate implementation of:
-- Motivation bonuses (Great +20%, Good +10%, Normal 0%, Bad -10%, Awful -20%)
-- Friendship training activation at Bond ≥ 80
-- Training caps (+100 max per session, +50 max when stat > 1200)
-
-### Special Thanks
-
-We extend our gratitude to:
-- The Uma Musume Pretty Derby community for continuous support and data verification
-- All contributors to the open-source projects we depend on
-- Cygames for creating this amazing game
-
-## Installation
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-- SQLite3
-
-### Setup
-
-1. Clone the repository:
-```bash
-git clone https://github.com/tianyu19920816/umamusumedb.git
-cd umamusumedb
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Export data to JSON:
-```bash
-node scripts/export-to-json.js
-```
-
-4. Start development server:
-```bash
-npm run dev
-```
+[Astro](https://astro.build) 5 (static output) · React + TypeScript · Tailwind CSS · Cloudflare Pages · Vitest
 
 ## Development
 
-### Project Structure
-
-```
-umamusumedb/
-├── src/
-│   ├── pages/          # Astro pages (static generation)
-│   ├── components/     # React components
-│   ├── layouts/        # Page layouts
-│   ├── lib/           # Utilities and data fetching
-│   └── styles/        # Global styles
-├── public/
-│   └── data/          # Static JSON data files
-├── scripts/           # Data collection and export scripts
-└── dist/             # Build output (static files)
-```
-
-### Available Scripts
+Requires Node.js 18+.
 
 ```bash
-# Development
-npm run dev              # Start dev server
-npm run build           # Build for production
-npm run preview         # Preview production build
-
-# Data Management
-node scripts/export-to-json.js       # Export to JSON files
+git clone https://github.com/shiyuzi-ship-it/umamusumedb.git
+cd umamusumedb
+npm install
+npm run dev        # dev server
+npm run build      # production build (writes dist/ and the sitemaps)
+npm test           # unit tests
+node scripts/check-seo.mjs   # SEO checks on the built site
 ```
+
+Layout: `src/pages` (Astro pages, per-locale routes), `src/components`, `src/lib` (data access), `scripts/` (data import, sitemap and SEO tooling), `public/data` (static JSON).
 
 ## Contributing
 
-We welcome contributions! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## Data Accuracy
-
-We strive to maintain accurate game data by:
-- Using verified open-source data sources
-- Community validation and feedback
-- Regular updates from game data
-
-If you find any data discrepancies, please [open an issue](https://github.com/tianyu19920816/umamusumedb/issues).
+Corrections to data, translations or the ranking weights are very welcome: please [open an issue](https://github.com/shiyuzi-ship-it/umamusumedb/issues) or a pull request. If you maintain a related Uma Musume tool or resource list and think the site belongs there (or something here is wrong), an issue is the best way to reach us.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Disclaimer
-
-This is an unofficial fan-made project. Uma Musume Pretty Derby and all related content are property of Cygames. This project is not affiliated with or endorsed by Cygames.
-
-All game data is sourced from publicly available information and open-source projects. We respect intellectual property rights and will promptly address any concerns.
-
----
-
-Made with ❤️ by the Uma Musume community
+Code is released under the [MIT License](LICENSE). Game data, names, images and trademarks belong to their respective owners (Cygames, Inc. and others); see the data sources above.
