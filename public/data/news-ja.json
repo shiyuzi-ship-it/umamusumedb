@@ -1,7 +1,12 @@
 {
-  "fetchedAt": "2026-10-31T15:07:12.062Z",
+  "fetchedAt": "2026-11-02T02:00:31.524Z",
   "source": "https://umamusume.jp/api/ajax/pr_info_index?format=json",
   "items": [
+    {
+      "title": "アップデートのお知らせ【11/2 11:00公開】",
+      "link": "https://umamusume.jp/news/detail/?id=3533",
+      "date": "2026-11-02"
+    },
     {
       "title": "「そこそこぱかライブTV Vol.56」10月30日(金)19時公開！そこそこなトークをゆるりとお届け！",
       "link": "https://umamusume.jp/news/detail/?id=3532",
@@ -40,11 +45,6 @@
     {
       "title": "【予告】トゥインクルコレクション プリティーダービーガチャとSSR確定賢さガチャ開催決定！",
       "link": "https://umamusume.jp/news/detail/?id=3506",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "「Cygames WebStore」にて新育成シナリオ公開記念商品の販売開始！",
-      "link": "https://umamusume.jp/news/detail/?id=3513",
       "date": "2026-10-26"
     },
     {

@@ -1,7 +1,25 @@
 {
-  "fetchedAt": "2026-10-31T15:07:11.540Z",
+  "fetchedAt": "2026-11-02T02:00:31.009Z",
   "source": "https://umamusume.gg/feed/",
   "items": [
+    {
+      "title": "The story event Happy New Future! A Sentimental Sunrise has ended!",
+      "link": "https://umamusume.gg/the-story-event-happy-new-future-a-sentimental-sunrise-has-ended/",
+      "date": "2026-11-01",
+      "category": "Info"
+    },
+    {
+      "title": "Bonus Star Piece rewards in Career!",
+      "link": "https://umamusume.gg/bonus-star-piece-rewards-in-career-13/",
+      "date": "2026-11-01",
+      "category": "Info"
+    },
+    {
+      "title": "The race event Champions Meeting: Capricorn Cup is here!",
+      "link": "https://umamusume.gg/the-race-event-champions-meeting-capricorn-cup-is-here-2/",
+      "date": "2026-10-31",
+      "category": "Info"
+    },
     {
       "title": "New Year's Race Rally Part 2 now available!",
       "link": "https://umamusume.gg/new-years-race-rally-part-2-now-available/",
@@ -42,24 +60,6 @@
       "title": "Spotlight Support Card Scout coming soon!",
       "link": "https://umamusume.gg/spotlight-support-card-scout-coming-soon/",
       "date": "2026-10-26",
-      "category": "Info"
-    },
-    {
-      "title": "Bonus Star Piece rewards in Career!",
-      "link": "https://umamusume.gg/bonus-star-piece-rewards-in-career-12/",
-      "date": "2026-10-25",
-      "category": "Info"
-    },
-    {
-      "title": "Spotlight Pretty Derby Scout out now!",
-      "link": "https://umamusume.gg/spotlight-pretty-derby-scout-out-now/",
-      "date": "2026-10-24",
-      "category": "Info"
-    },
-    {
-      "title": "Regarding planned 7th EVENT: THE STAGE in LOS ANGELES merchandise sales",
-      "link": "https://umamusume.gg/regarding-planned-7th-event-the-stage-in-los-angeles-merchandise-sales/",
-      "date": "2026-10-23",
       "category": "Info"
     }
   ]

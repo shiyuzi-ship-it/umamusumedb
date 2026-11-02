@@ -4,20 +4,23 @@
     "name_en": "Ura Finale",
     "name_en_full": "The Beginning: URA Finale",
     "name_jp": "新設！URAファイナルズ",
+    "name_ko": "신설! URA 파이널스!!",
+    "name_zh_tw": "新設立！URA決勝系列賽",
+    "name_zh": "新设立！URA决胜系列赛",
     "start_jp": "2021-02-24",
     "start_global": "2025-06-26",
     "linked_characters": [
       "Aoi Kiryuin"
-    ],
-    "name_ko": "신설! URA 파이널스!!",
-    "name_zh_tw": "新設立！URA決勝系列賽",
-    "name_zh": "新设立！URA决胜系列赛"
+    ]
   },
   {
     "id": 2,
     "name_en": "Unity Cup",
     "name_en_full": "Unity Cup: Shine On, Team Spirit!",
     "name_jp": "アオハル杯～輝け、チームの絆～",
+    "name_ko": "아오하루배 ~빛나라 팀의 인연~",
+    "name_zh_tw": "青春盃～閃耀吧，隊伍情誼～",
+    "name_zh": "青春杯～闪耀吧，队伍情谊～",
     "start_jp": "2021-08-30",
     "start_global": "2025-11-06",
     "linked_characters": [
@@ -26,28 +29,28 @@
       "Haru Urara",
       "Matikanefukukitaru",
       "Riko Kashimoto"
-    ],
-    "name_ko": "아오하루배 ~빛나라 팀의 인연~",
-    "name_zh_tw": "青春盃～閃耀吧，隊伍情誼～",
-    "name_zh": "青春杯～闪耀吧，队伍情谊～"
+    ]
   },
   {
     "id": 4,
     "name_en": "Trackblazer",
     "name_en_full": "Trackblazer: Start of the Climax",
     "name_jp": "Make a new track!!～クライマックス開幕～",
-    "start_jp": "2022-02-24",
-    "start_global": "2026-03-12",
-    "linked_characters": [],
     "name_ko": "Make a new track!! ~클라이맥스 개막~",
     "name_zh_tw": "Make a new track!!～巔峰賽開幕～",
-    "name_zh": "Make a new track!!～巅峰赛开幕～"
+    "name_zh": "Make a new track!!～巅峰赛开幕～",
+    "start_jp": "2022-02-24",
+    "start_global": "2026-03-12",
+    "linked_characters": []
   },
   {
     "id": 3,
     "name_en": "Brighter Together Our Grand Concert",
     "name_en_full": "Brighter Together Our Grand Concert",
     "name_jp": "つなげ、照らせ、ひかれ。私たちのグランドライブ",
+    "name_ko": "이어라, 비춰라, 빛나라. 우리의 그랜드 라이브",
+    "name_zh_tw": "連接、照亮、閃耀。我們的繁星演唱會",
+    "name_zh": "连接、照亮、闪耀。我们的繁星演唱会",
     "start_jp": "2022-08-24",
     "start_global": "2026-07-22",
     "linked_characters": [
@@ -56,29 +59,29 @@
       "Silence Suzuka",
       "Mihono Bourbon",
       "Light Hello"
-    ],
-    "name_ko": "이어라, 비춰라, 빛나라. 우리의 그랜드 라이브",
-    "name_zh_tw": "連接、照亮、閃耀。我們的繁星演唱會",
-    "name_zh": "连接、照亮、闪耀。我们的繁星演唱会"
+    ]
   },
   {
     "id": 5,
     "name_en": "Grandmasters Legacies Immortal",
     "name_en_full": "Grandmasters Legacies Immortal",
     "name_jp": "グランドマスターズ-継ぐ者達へ-",
+    "name_ko": "그랜드 마스터즈 -이어가는 자들에게-",
+    "name_zh_tw": "頂尖大師賽—致繼承者們—",
+    "name_zh": "顶尖大师赛—致继承者们—",
     "start_jp": "2023-02-24",
     "start_global": null,
     "linked_characters": [
       "Darley Arabian"
-    ],
-    "name_ko": "그랜드 마스터즈 -이어가는 자들에게-",
-    "name_zh_tw": "頂尖大師賽—致繼承者們—",
-    "name_zh": "顶尖大师赛—致继承者们—"
+    ]
   },
   {
     "id": 6,
     "name_en_full": null,
     "name_jp": "Reach for the starsプロジェクトL'Arc",
+    "name_ko": "Reach for the stars Project L'Arc",
+    "name_zh_tw": "Reach for the starsL'Arc計畫",
+    "name_zh": "Reach for the starsL'Arc计划",
     "start_jp": "2023-08-24",
     "start_global": null,
     "linked_characters": [
@@ -95,15 +98,15 @@
       "Kiseki",
       "Victoire Pisa",
       "Mei Satake"
-    ],
-    "name_ko": "Reach for the stars Project L'Arc",
-    "name_zh_tw": "Reach for the starsL'Arc計畫",
-    "name_zh": "Reach for the starsL'Arc计划"
+    ]
   },
   {
     "id": 7,
     "name_en_full": null,
     "name_jp": "U.A.F. Ready GO! ～アスリートのキラメキ～",
+    "name_ko": "U.A.F. Ready GO!  ~애슬리트의 반짝임~",
+    "name_zh_tw": "U.A.F. Ready GO! ～運動員的閃耀時刻～",
+    "name_zh": "U.A.F. Ready GO! ～运动员的闪耀时刻～",
     "start_jp": "2024-02-24",
     "start_global": null,
     "linked_characters": [
@@ -113,15 +116,15 @@
       "Narita Top Road",
       "Tosen Jordan",
       "Ryoka Tsurugi"
-    ],
-    "name_ko": "U.A.F. Ready GO!  ~애슬리트의 반짝임~",
-    "name_zh_tw": "U.A.F. Ready GO! ～運動員的閃耀時刻～",
-    "name_zh": "U.A.F. Ready GO! ～运动员的闪耀时刻～"
+    ]
   },
   {
     "id": 8,
     "name_en_full": null,
     "name_jp": "収穫ッ！満腹ッ！大豊食祭",
+    "name_ko": "수확! 만복! 대풍식제",
+    "name_zh_tw": "收穫！飽足！大豐食祭",
+    "name_zh": "收获！饱足！大丰食祭",
     "start_jp": "2024-06-26",
     "start_global": null,
     "linked_characters": [
@@ -131,15 +134,15 @@
       "Nishino Flower",
       "Katsuragi Ace",
       "Yayoi Akikawa"
-    ],
-    "name_ko": "수확! 만복! 대풍식제",
-    "name_zh_tw": "收穫！飽足！大豐食祭",
-    "name_zh": "收获！饱足！大丰食祭"
+    ]
   },
   {
     "id": 9,
     "name_en_full": null,
     "name_jp": "走れ！メカウマ娘-夢繋ぐ発明-",
+    "name_ko": "달려라! 메카 우마무스메 -꿈을 잇는 발명-",
+    "name_zh_tw": "奔跑吧！機械賽馬娘—連結夢想的發明—",
+    "name_zh": "奔跑吧！机械赛马娘—连结梦想的发明—",
     "start_jp": "2024-10-29",
     "start_global": null,
     "linked_characters": [
@@ -148,15 +151,15 @@
       "Air Shakur",
       "Symboli Kris S",
       "Tanino Gimlet"
-    ],
-    "name_ko": "달려라! 메카 우마무스메 -꿈을 잇는 발명-",
-    "name_zh_tw": "奔跑吧！機械賽馬娘—連結夢想的發明—",
-    "name_zh": "奔跑吧！机械赛马娘—连结梦想的发明—"
+    ]
   },
   {
     "id": 10,
     "name_en_full": null,
     "name_jp": "The Twinkle Legends",
+    "name_ko": "The Twinkle Legends",
+    "name_zh_tw": "The Twinkle Legends",
+    "name_zh": "The Twinkle Legends",
     "start_jp": "2025-02-24",
     "start_global": null,
     "linked_characters": [
@@ -166,15 +169,15 @@
       "Orfevre",
       "Gentildonna",
       "Speed Symboli"
-    ],
-    "name_ko": "The Twinkle Legends",
-    "name_zh_tw": "The Twinkle Legends",
-    "name_zh": "The Twinkle Legends"
+    ]
   },
   {
     "id": 11,
     "name_en_full": null,
     "name_jp": "無人島へようこそ-DESIGN YOUR ISLAND-",
+    "name_ko": "무인도에 어서 오세요 -DESIGN YOUR ISLAND-",
+    "name_zh_tw": "歡迎來到無人島—DESIGN YOUR ISLAND—",
+    "name_zh": "欢迎来到无人岛—DESIGN YOUR ISLAND—",
     "start_jp": "2025-06-27",
     "start_global": null,
     "linked_characters": [
@@ -184,15 +187,15 @@
       "Gold City",
       "Sakura Chiyono O",
       "Tucker Bryne"
-    ],
-    "name_ko": "무인도에 어서 오세요 -DESIGN YOUR ISLAND-",
-    "name_zh_tw": "歡迎來到無人島—DESIGN YOUR ISLAND—",
-    "name_zh": "欢迎来到无人岛—DESIGN YOUR ISLAND—"
+    ]
   },
   {
     "id": 12,
     "name_en_full": null,
     "name_jp": "ごくらく♪ゆこま温泉郷",
+    "name_ko": "ごくらく♪ゆこま温泉郷",
+    "name_zh_tw": null,
+    "name_zh": null,
     "start_jp": "2025-10-29",
     "start_global": null,
     "linked_characters": [
@@ -202,15 +205,15 @@
       "Hokko Tarumae",
       "Wonder Acute",
       "Kiyoko Hoshina"
-    ],
-    "name_ko": "ごくらく♪ゆこま温泉郷",
-    "name_zh_tw": null,
-    "name_zh": null
+    ]
   },
   {
     "id": 13,
     "name_en_full": null,
     "name_jp": "Beyond Dreams共に前へ、共に光を",
+    "name_ko": "Beyond Dreams 共に前へ、共に光を",
+    "name_zh_tw": null,
+    "name_zh": null,
     "start_jp": "2026-02-24",
     "start_global": null,
     "linked_characters": [
@@ -220,15 +223,15 @@
       "Forever Young",
       "Casino Drive",
       "Marche Lorraine"
-    ],
-    "name_ko": "Beyond Dreams 共に前へ、共に光を",
-    "name_zh_tw": null,
-    "name_zh": null
+    ]
   },
   {
     "id": 14,
     "name_en_full": null,
     "name_jp": "らっしゃい！トレセン軒！～恩返し、始めました～",
+    "name_ko": null,
+    "name_zh_tw": null,
+    "name_zh": null,
     "start_jp": "2026-06-29",
     "start_global": null,
     "linked_characters": [
@@ -239,15 +242,15 @@
       "Calstone Light O",
       "Tazuna Hayakawa",
       "Light Hello"
-    ],
-    "name_ko": null,
-    "name_zh_tw": null,
-    "name_zh": null
+    ]
   },
   {
     "id": 15,
     "name_en_full": null,
     "name_jp": "朋、史解き―午式駿大祭―",
+    "name_ko": null,
+    "name_zh_tw": null,
+    "name_zh": null,
     "start_jp": "2026-10-26",
     "start_global": null,
     "linked_characters": [
@@ -257,9 +260,6 @@
       "No Reason",
       "Blast Onepiece",
       "Azuma"
-    ],
-    "name_ko": null,
-    "name_zh_tw": null,
-    "name_zh": null
+    ]
   }
 ]
