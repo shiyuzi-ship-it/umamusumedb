@@ -1,7 +1,46 @@
 {
-  "generatedAt": "2026-11-02T02:00:30.549Z",
+  "generatedAt": "2026-11-09T02:00:49.606Z",
   "source": "GameTora data files (gametora.com)",
   "releases": [
+    {
+      "date": "2026-11-05",
+      "server": "global",
+      "kind": "character",
+      "id": "daitaku_helios_fun_fun_party_night",
+      "name_en": "Daitaku Helios (Fun☆Fun☆Party Night)",
+      "name_jp": "ダイタクヘリオス（Fun☆Fun☆ぱりない）",
+      "rarity": 3
+    },
+    {
+      "date": "2026-11-05",
+      "server": "global",
+      "kind": "support",
+      "id": "aston_machan_tracen_academy_r",
+      "name_en": "Aston Machan [Tracen Academy]",
+      "name_jp": "アストンマーチャン[トレセン学園]",
+      "rarity": "R",
+      "type": "speed"
+    },
+    {
+      "date": "2026-11-05",
+      "server": "global",
+      "kind": "support",
+      "id": "aston_machan_a_clip_to_keep_your_heart_warm_sr",
+      "name_en": "Aston Machan [A Clip to Keep Your Heart Warm]",
+      "name_jp": "アストンマーチャン[添付ファイル、温めますか？]",
+      "rarity": "SR",
+      "type": "speed"
+    },
+    {
+      "date": "2026-11-05",
+      "server": "global",
+      "kind": "support",
+      "id": "k_s_miracle_to_you_ssr",
+      "name_en": "K.S.Miracle [To You]",
+      "name_jp": "ケイエスミラクル[To you]",
+      "rarity": "SSR",
+      "type": "guts"
+    },
     {
       "date": "2026-10-26",
       "server": "jp",

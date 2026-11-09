@@ -1,50 +1,50 @@
 {
-  "fetchedAt": "2026-11-02T02:00:31.524Z",
+  "fetchedAt": "2026-11-09T02:00:50.602Z",
   "source": "https://umamusume.jp/api/ajax/pr_info_index?format=json",
   "items": [
+    {
+      "title": "イベント「トレーナー技能試験」終了！",
+      "link": "https://umamusume.jp/news/detail/?id=3519",
+      "date": "2026-11-08"
+    },
+    {
+      "title": "レジェンドレース開催！",
+      "link": "https://umamusume.jp/news/detail/?id=3521",
+      "date": "2026-11-06"
+    },
+    {
+      "title": "『7th EVENT in LOS ANGELES』返金等に関するご案内メール送信のお知らせ",
+      "link": "https://umamusume.jp/news/detail/?id=3542",
+      "date": "2026-11-05"
+    },
+    {
+      "title": "レジェンドレース開催決定！",
+      "link": "https://umamusume.jp/news/detail/?id=3520",
+      "date": "2026-11-05"
+    },
+    {
+      "title": "育成シナリオ「駿大祭編」におけるカルストンライトオの一部育成イベントの不具合について",
+      "link": "https://umamusume.jp/news/detail/?id=3538",
+      "date": "2026-11-04"
+    },
+    {
+      "title": "トゥインクルコレクション プリティーダービーガチャとSSR確定賢さガチャ開催！",
+      "link": "https://umamusume.jp/news/detail/?id=3507",
+      "date": "2026-11-02"
+    },
+    {
+      "title": "一部育成ウマ娘に進化スキル追加！",
+      "link": "https://umamusume.jp/news/detail/?id=3531",
+      "date": "2026-11-02"
+    },
     {
       "title": "アップデートのお知らせ【11/2 11:00公開】",
       "link": "https://umamusume.jp/news/detail/?id=3533",
       "date": "2026-11-02"
     },
     {
-      "title": "「そこそこぱかライブTV Vol.56」10月30日(金)19時公開！そこそこなトークをゆるりとお届け！",
-      "link": "https://umamusume.jp/news/detail/?id=3532",
-      "date": "2026-10-28"
-    },
-    {
       "title": "育成シナリオ「朋、史解き　―午式駿大祭―」公開！",
       "link": "https://umamusume.jp/news/detail/?id=3516",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "2600万ダウンロード突破！SSRメイクデビューガチャ第６Rプレゼント！",
-      "link": "https://umamusume.jp/news/detail/?id=3504",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "育成ウマ娘&サポートカード新登場！新育成シナリオ開幕ガチャ開催！",
-      "link": "https://umamusume.jp/news/detail/?id=3511",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "『新育成シナリオ「朋、史解き　―午式駿大祭―」公開記念キャンペーン』開催",
-      "link": "https://umamusume.jp/news/detail/?id=3509",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "ガチャ最大80回分無料！「1日1回10連ガチャ無料キャンペーン」開催！",
-      "link": "https://umamusume.jp/news/detail/?id=3512",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "「★3確定」「SSR確定」新育成シナリオ応援ガチャ開催！",
-      "link": "https://umamusume.jp/news/detail/?id=3508",
-      "date": "2026-10-26"
-    },
-    {
-      "title": "【予告】トゥインクルコレクション プリティーダービーガチャとSSR確定賢さガチャ開催決定！",
-      "link": "https://umamusume.jp/news/detail/?id=3506",
       "date": "2026-10-26"
     },
     {

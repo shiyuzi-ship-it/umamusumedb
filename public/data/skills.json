@@ -26855,7 +26855,7 @@
     "style": "all",
     "location": "any",
     "effect_type": "speed",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/20013.webp",
     "i18n": {
       "ko": {
@@ -26985,7 +26985,7 @@
     "style": "all",
     "location": "any",
     "effect_type": "other",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/10054.webp",
     "i18n": {
       "ko": {
@@ -27027,7 +27027,7 @@
     "style": "all",
     "location": "any",
     "effect_type": "other",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/1010011.webp",
     "i18n": {
       "ko": {
@@ -27071,7 +27071,7 @@
     "style": "all",
     "location": "slope",
     "effect_type": "acceleration",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/20013.webp",
     "i18n": {
       "ko": {
@@ -27115,7 +27115,7 @@
     "style": "all",
     "location": "any",
     "effect_type": "speed",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/20013.webp",
     "i18n": {
       "ko": {
@@ -27157,7 +27157,7 @@
     "style": "escape",
     "location": "corner",
     "effect_type": "speed",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/20012.webp",
     "i18n": {
       "ko": {
@@ -27199,7 +27199,7 @@
     "style": "between",
     "location": "corner",
     "effect_type": "speed",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/20012.webp",
     "i18n": {
       "ko": {
@@ -27241,7 +27241,7 @@
     "style": "all",
     "location": "slope",
     "effect_type": "speed",
-    "server": "jp",
+    "server": "global",
     "icon_url": "/img/skills/20012.webp",
     "i18n": {
       "ko": {
