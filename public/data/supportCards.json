@@ -10292,6 +10292,48 @@
     "image_url": "/img/cards/20101.webp"
   },
   {
+    "id": "stay_gold_20102_sr",
+    "support_id": 20102,
+    "char_id": 1135,
+    "name_en": "Stay Gold [黄昏に馳せる追憶]",
+    "name_jp": "ステイゴールド[黄昏に馳せる追憶]",
+    "character": "Stay Gold",
+    "title_en": null,
+    "title_jp": "黄昏に馳せる追憶",
+    "type": "power",
+    "rarity": "SR",
+    "max_level": 45,
+    "effects": "{\"friendship_bonus\":{\"lv1\":10,\"lv25\":15,\"lv30\":16,\"lv35\":18,\"lv40\":20,\"lv45\":20},\"motivation_bonus\":{\"lv1\":10,\"lv25\":40,\"lv30\":42,\"lv35\":45,\"lv40\":47,\"lv45\":50},\"initial_bond\":{\"lv1\":25,\"lv25\":35,\"lv30\":36,\"lv35\":37,\"lv40\":38,\"lv45\":40},\"specialty_priority\":{\"lv1\":5,\"lv25\":20,\"lv30\":25,\"lv35\":30,\"lv40\":35,\"lv45\":35},\"skill_point_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":1},\"race_bonus\":{\"lv1\":6,\"lv25\":10,\"lv30\":11,\"lv35\":12,\"lv40\":13,\"lv45\":15},\"fan_bonus\":{\"lv1\":1,\"lv25\":15,\"lv30\":16,\"lv35\":17,\"lv40\":18,\"lv45\":20},\"hint_levels\":{\"lv1\":1,\"lv25\":2,\"lv30\":2,\"lv35\":2,\"lv40\":2,\"lv45\":3},\"hint_frequency\":{\"lv1\":5,\"lv25\":40,\"lv30\":42,\"lv35\":45,\"lv40\":47,\"lv45\":50},\"initial_stamina\":{\"lv1\":10,\"lv25\":10,\"lv30\":10,\"lv35\":10,\"lv40\":10,\"lv45\":30},\"initial_power\":{\"lv1\":10,\"lv25\":10,\"lv30\":10,\"lv35\":15,\"lv40\":20,\"lv45\":20}}",
+    "skills": "[\"Exploit the Gap\",\"Straightaway Adept\",\"Fall Runner ○\",\"Slick Surge\",\"Full Throttle\",\"Switch Over Pro\",\"Dynamic Motion\",\"Intrigued\",\"Carefree Step\",\"Grand Fight\",\"Tracking\"]",
+    "hint_skills": "[\"Fall Runner ○\",\"Slick Surge\",\"Full Throttle\",\"Switch Over Pro\",\"Dynamic Motion\",\"Intrigued\",\"Carefree Step\",\"Grand Fight\",\"Tracking\"]",
+    "event_skills": "[\"Exploit the Gap\",\"Straightaway Adept\"]",
+    "events": "[]",
+    "server": "jp",
+    "release_date": "2026-11-10",
+    "release_date_jp": "2026-11-10",
+    "release_date_global": null,
+    "obtained": "gacha",
+    "gt_url_name": "20102-stay-gold",
+    "i18n": {
+      "ko": {
+        "name": "스테이 골드",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "黃金旅程",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "黄金旅程",
+        "title": null,
+        "desc": null
+      }
+    },
+    "image_url": "/img/cards/20102.webp"
+  },
+  {
     "id": "special_week_the_brightest_star_in_japan_ssr",
     "support_id": 30001,
     "char_id": 1001,
@@ -15600,10 +15642,10 @@
     "hint_skills": "[\"Pace Strategy\",\"Long Straightaways ○\",\"Stamina Eater\",\"Tail Held High\",\"All I've Got\",\"Take the Chance\",\"Eager\",\"Scramble\"]",
     "event_skills": "[\"Straightaway Recovery\",\"Indomitable\",\"Hanshin Racecourse ○\"]",
     "events": "[]",
-    "server": "jp",
-    "release_date": "2023-01-30",
+    "server": "global",
+    "release_date": "2026-11-09",
     "release_date_jp": "2023-01-30",
-    "release_date_global": null,
+    "release_date_global": "2026-11-09",
     "obtained": "gacha",
     "gt_url_name": "30131-marvelous-sunday",
     "i18n": {
@@ -15642,10 +15684,10 @@
     "hint_skills": "[\"Rainy Days ○\",\"Nimble Navigator\",\"Position Pilfer\",\"Sprinting Gear\",\"Late Surger Corners ○\",\"Fearless\",\"Leap Forward\"]",
     "event_skills": "[\"Frenzied Late Surgers\",\"Slick Surge\",\"Sharp Arc\",\"Sprint Straightaways ○\"]",
     "events": "[]",
-    "server": "jp",
-    "release_date": "2023-01-30",
+    "server": "global",
+    "release_date": "2026-11-09",
     "release_date_jp": "2023-01-30",
-    "release_date_global": null,
+    "release_date_global": "2026-11-09",
     "obtained": "gacha",
     "gt_url_name": "30132-biko-pegasus",
     "i18n": {
@@ -15684,10 +15726,10 @@
     "hint_skills": "[\"Sunny Days ○\",\"Final Push\",\"Sprint Corners ○\",\"Countermeasure\",\"Meticulous Measures\",\"Hydrate\"]",
     "event_skills": "[\"Sunny Days ○\",\"Plan X\",\"Sprinting Gear\"]",
     "events": "[]",
-    "server": "jp",
-    "release_date": "2023-01-30",
+    "server": "global",
+    "release_date": "2026-11-09",
     "release_date_jp": "2023-01-30",
-    "release_date_global": null,
+    "release_date_global": "2026-11-09",
     "obtained": "story_event",
     "gt_url_name": "30133-hishi-akebono",
     "i18n": {
@@ -20174,9 +20216,9 @@
     "rarity": "SSR",
     "max_level": 50,
     "effects": "{\"friendship_bonus\":{\"lv1\":10,\"lv25\":22,\"lv30\":25,\"lv35\":26,\"lv40\":27,\"lv45\":28,\"lv50\":30},\"training_bonus\":{\"lv1\":0,\"lv25\":0,\"lv30\":0,\"lv35\":0,\"lv40\":0,\"lv45\":5,\"lv50\":10},\"initial_bond\":{\"lv1\":0,\"lv25\":0,\"lv30\":0,\"lv35\":10,\"lv40\":25,\"lv45\":25,\"lv50\":25},\"race_bonus\":{\"lv1\":1,\"lv25\":4,\"lv30\":5,\"lv35\":6,\"lv40\":7,\"lv45\":8,\"lv50\":10},\"fan_bonus\":{\"lv1\":1,\"lv25\":12,\"lv30\":15,\"lv35\":16,\"lv40\":17,\"lv45\":18,\"lv50\":20},\"event_recovery\":{\"lv1\":0,\"lv25\":20,\"lv30\":20,\"lv35\":23,\"lv40\":26,\"lv45\":30,\"lv50\":30},\"event_effectiveness\":{\"lv1\":0,\"lv25\":15,\"lv30\":15,\"lv35\":16,\"lv40\":18,\"lv45\":20,\"lv50\":20},\"wisdom_friendship_recovery\":{\"lv1\":0,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":2,\"lv50\":2}}",
-    "skills": "[\"Slipstream\",\"Corner Adept ○\",\"Opening Leg Adept\",\"Middle Leg Adept\",\"Straightaway Adept\",\"Rising Heat\",\"Uma Stan\",\"Peerless\",\"Tail Held High\",\"Fighting Spirit\",\"Groundwork\",\"Unpredecented Prodigy\"]",
+    "skills": "[\"Slipstream\",\"Corner Adept ○\",\"Opening Leg Adept\",\"Middle Leg Adept\",\"Straightaway Adept\",\"Rising Heat\",\"Uma Stan\",\"Peerless\",\"Tail Held High\",\"Fighting Spirit\",\"Groundwork\",\"Unprecedented Prodigy\"]",
     "hint_skills": "[]",
-    "event_skills": "[\"Slipstream\",\"Corner Adept ○\",\"Opening Leg Adept\",\"Middle Leg Adept\",\"Straightaway Adept\",\"Rising Heat\",\"Uma Stan\",\"Peerless\",\"Tail Held High\",\"Fighting Spirit\",\"Groundwork\",\"Unpredecented Prodigy\"]",
+    "event_skills": "[\"Slipstream\",\"Corner Adept ○\",\"Opening Leg Adept\",\"Middle Leg Adept\",\"Straightaway Adept\",\"Rising Heat\",\"Uma Stan\",\"Peerless\",\"Tail Held High\",\"Fighting Spirit\",\"Groundwork\",\"Unprecedented Prodigy\"]",
     "events": "[]",
     "server": "jp",
     "release_date": "2025-02-24",
@@ -23488,9 +23530,9 @@
     "rarity": "SSR",
     "max_level": 50,
     "effects": "{\"friendship_bonus\":{\"lv1\":10,\"lv25\":22,\"lv30\":25,\"lv35\":27,\"lv40\":30,\"lv45\":32,\"lv50\":35},\"training_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":5,\"lv40\":10,\"lv45\":10,\"lv50\":10},\"motivation_bonus\":{\"lv1\":10,\"lv25\":34,\"lv30\":40,\"lv35\":45,\"lv40\":50,\"lv45\":55,\"lv50\":60},\"initial_bond\":{\"lv1\":10,\"lv25\":22,\"lv30\":25,\"lv35\":27,\"lv40\":30,\"lv45\":32,\"lv50\":35},\"specialty_priority\":{\"lv1\":10,\"lv25\":10,\"lv30\":10,\"lv35\":10,\"lv40\":10,\"lv45\":60,\"lv50\":120},\"stamina_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":1,\"lv50\":1},\"skill_point_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":1,\"lv50\":2},\"race_bonus\":{\"lv1\":1,\"lv25\":5,\"lv30\":5,\"lv35\":6,\"lv40\":7,\"lv45\":8,\"lv50\":10},\"fan_bonus\":{\"lv1\":1,\"lv25\":10,\"lv30\":10,\"lv35\":12,\"lv40\":15,\"lv45\":17,\"lv50\":20},\"hint_levels\":{\"lv1\":1,\"lv25\":1,\"lv30\":2,\"lv35\":2,\"lv40\":3,\"lv45\":3,\"lv50\":4},\"hint_frequency\":{\"lv1\":10,\"lv25\":51,\"lv30\":60,\"lv35\":70,\"lv40\":80,\"lv45\":90,\"lv50\":100},\"initial_stamina\":{\"lv1\":10,\"lv25\":22,\"lv30\":25,\"lv35\":26,\"lv40\":27,\"lv45\":28,\"lv50\":30}}",
-    "skills": "[\"Ignited Spirit WIT\",\"Unpredecented Prodigy\",\"Quick Thinking\",\"Exceptional Acumen\",\"Advantage\",\"Straightaway Adept\",\"Kyoto Racecourse ○\",\"Groundwork\",\"Fuse\",\"Peerless\",\"Find a Way!\",\"Intrigued\",\"With Feelings Aboard\",\"Giant Stride\",\"Presence\",\"On the Ball\",\"Intuitive Power\",\"Taking the Reins\",\"With All I Have\"]",
+    "skills": "[\"Ignited Spirit WIT\",\"Unprecedented Prodigy\",\"Quick Thinking\",\"Exceptional Acumen\",\"Advantage\",\"Straightaway Adept\",\"Kyoto Racecourse ○\",\"Groundwork\",\"Fuse\",\"Peerless\",\"Find a Way!\",\"Intrigued\",\"With Feelings Aboard\",\"Giant Stride\",\"Presence\",\"On the Ball\",\"Intuitive Power\",\"Taking the Reins\",\"With All I Have\"]",
     "hint_skills": "[\"Kyoto Racecourse ○\",\"Straightaway Adept\",\"Groundwork\",\"Fuse\",\"Peerless\",\"Find a Way!\",\"Intrigued\",\"With Feelings Aboard\",\"Giant Stride\",\"Presence\",\"On the Ball\",\"Intuitive Power\",\"Taking the Reins\",\"With All I Have\"]",
-    "event_skills": "[\"Ignited Spirit WIT\",\"Unpredecented Prodigy\",\"Quick Thinking\",\"Exceptional Acumen\",\"Advantage\",\"Straightaway Adept\"]",
+    "event_skills": "[\"Ignited Spirit WIT\",\"Unprecedented Prodigy\",\"Quick Thinking\",\"Exceptional Acumen\",\"Advantage\",\"Straightaway Adept\"]",
     "events": "[]",
     "server": "jp",
     "release_date": "2026-10-26",
@@ -23546,5 +23588,47 @@
       "zh": null
     },
     "image_url": "/img/cards/30323.webp"
+  },
+  {
+    "id": "no_reason_30324_ssr",
+    "support_id": 30324,
+    "char_id": 1096,
+    "name_en": "No Reason [馳せて奪うは映山紅]",
+    "name_jp": "ノーリーズン[馳せて奪うは映山紅]",
+    "character": "No Reason",
+    "title_en": null,
+    "title_jp": "馳せて奪うは映山紅",
+    "type": "stamina",
+    "rarity": "SSR",
+    "max_level": 50,
+    "effects": "{\"friendship_bonus\":{\"lv1\":10,\"lv25\":15,\"lv30\":20,\"lv35\":21,\"lv40\":23,\"lv45\":25,\"lv50\":25},\"training_bonus\":{\"lv1\":1,\"lv25\":5,\"lv30\":10,\"lv35\":11,\"lv40\":12,\"lv45\":13,\"lv50\":15},\"motivation_bonus\":{\"lv1\":10,\"lv25\":34,\"lv30\":40,\"lv35\":45,\"lv40\":50,\"lv45\":55,\"lv50\":60},\"initial_bond\":{\"lv1\":10,\"lv25\":22,\"lv30\":25,\"lv35\":27,\"lv40\":30,\"lv45\":32,\"lv50\":35},\"specialty_priority\":{\"lv1\":5,\"lv25\":35,\"lv30\":50,\"lv35\":53,\"lv40\":57,\"lv45\":61,\"lv50\":65},\"guts_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":1,\"lv50\":2},\"skill_point_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":1,\"lv50\":2},\"race_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":5,\"lv50\":10},\"fan_bonus\":{\"lv1\":1,\"lv25\":1,\"lv30\":1,\"lv35\":1,\"lv40\":1,\"lv45\":10,\"lv50\":15},\"hint_levels\":{\"lv1\":1,\"lv25\":1,\"lv30\":2,\"lv35\":2,\"lv40\":3,\"lv45\":3,\"lv50\":4},\"hint_frequency\":{\"lv1\":10,\"lv25\":51,\"lv30\":60,\"lv35\":70,\"lv40\":80,\"lv45\":90,\"lv50\":100},\"initial_stamina\":{\"lv1\":10,\"lv25\":22,\"lv30\":25,\"lv35\":26,\"lv40\":27,\"lv45\":28,\"lv50\":30},\"initial_guts\":{\"lv1\":5,\"lv25\":5,\"lv30\":5,\"lv35\":10,\"lv40\":25,\"lv45\":25,\"lv50\":25}}",
+    "skills": "[\"Straight Heart\",\"March to Battle\",\"All I've Got\",\"Medium Straightaways ○\",\"Medium Corners ○\",\"Full Throttle\",\"Ignition\",\"Dynamic Motion\",\"Straight Steps\",\"Ceaseless Training\",\"Exploit the Gap\",\"Beast Within\",\"Gorgeous Step\",\"No Stagnation\",\"Be Ambitious\",\"Go With the Flow\",\"Raise the Smoke Signal\"]",
+    "hint_skills": "[\"Medium Straightaways ○\",\"Medium Corners ○\",\"Full Throttle\",\"Ignition\",\"Dynamic Motion\",\"Straight Steps\",\"Ceaseless Training\",\"Exploit the Gap\",\"Beast Within\",\"Gorgeous Step\",\"No Stagnation\",\"Be Ambitious\",\"Go With the Flow\",\"Raise the Smoke Signal\"]",
+    "event_skills": "[\"Straight Heart\",\"March to Battle\",\"All I've Got\"]",
+    "events": "[]",
+    "server": "jp",
+    "release_date": "2026-11-10",
+    "release_date_jp": "2026-11-10",
+    "release_date_global": null,
+    "obtained": "gacha",
+    "gt_url_name": "30324-no-reason",
+    "i18n": {
+      "ko": {
+        "name": "노 리즌",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "無需理由",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "无需理由",
+        "title": null,
+        "desc": null
+      }
+    },
+    "image_url": "/img/cards/30324.webp"
   }
 ]

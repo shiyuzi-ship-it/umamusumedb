@@ -1,7 +1,84 @@
 {
-  "generatedAt": "2026-11-09T02:00:49.606Z",
+  "generatedAt": "2026-11-16T02:04:23.327Z",
   "source": "GameTora data files (gametora.com)",
   "releases": [
+    {
+      "date": "2026-11-10",
+      "server": "jp",
+      "kind": "character",
+      "id": "yukino_bijin_102903",
+      "name_en": "Yukino Bijin (熟れしめでたし実り姫)",
+      "name_jp": "ユキノビジン（熟れしめでたし実り姫）",
+      "rarity": 3
+    },
+    {
+      "date": "2026-11-10",
+      "server": "jp",
+      "kind": "support",
+      "id": "stay_gold_20102_sr",
+      "name_en": "Stay Gold [黄昏に馳せる追憶]",
+      "name_jp": "ステイゴールド[黄昏に馳せる追憶]",
+      "rarity": "SR",
+      "type": "power"
+    },
+    {
+      "date": "2026-11-10",
+      "server": "jp",
+      "kind": "support",
+      "id": "no_reason_30324_ssr",
+      "name_en": "No Reason [馳せて奪うは映山紅]",
+      "name_jp": "ノーリーズン[馳せて奪うは映山紅]",
+      "rarity": "SSR",
+      "type": "stamina"
+    },
+    {
+      "date": "2026-11-09",
+      "server": "global",
+      "kind": "character",
+      "id": "mejiro_ryan_marguerite_latte",
+      "name_en": "Mejiro Ryan (Marguerite Latte)",
+      "name_jp": "メジロライアン（マーガレット・ラッテ）",
+      "rarity": 3
+    },
+    {
+      "date": "2026-11-09",
+      "server": "global",
+      "kind": "character",
+      "id": "ines_fujin_melt_your_heart",
+      "name_en": "Ines Fujin (Melt Your Heart)",
+      "name_jp": "アイネスフウジン（MELTY GIFT）",
+      "rarity": 3
+    },
+    {
+      "date": "2026-11-09",
+      "server": "global",
+      "kind": "support",
+      "id": "marvelous_sunday_marvelous_chocolate_show_ssr",
+      "name_en": "Marvelous Sunday [Marvelous☆Chocolate Show]",
+      "name_jp": "マーベラスサンデー[マーベラス☆ショコラSHOW]",
+      "rarity": "SSR",
+      "type": "speed"
+    },
+    {
+      "date": "2026-11-09",
+      "server": "global",
+      "kind": "support",
+      "id": "biko_pegasus_transform_garcon_form_ssr",
+      "name_en": "Biko Pegasus [Transform! Garçon Form!]",
+      "name_jp": "ビコーペガサス[変身！ギャルソンフォーム！]",
+      "rarity": "SSR",
+      "type": "power"
+    },
+    {
+      "date": "2026-11-09",
+      "server": "global",
+      "kind": "support",
+      "id": "hishi_akebono_fondente_smile_ssr",
+      "name_en": "Hishi Akebono [Fondente Smile]",
+      "name_jp": "ヒシアケボノ[フォンデンテで笑って]",
+      "rarity": "SSR",
+      "type": "wisdom"
+    },
     {
       "date": "2026-11-05",
       "server": "global",

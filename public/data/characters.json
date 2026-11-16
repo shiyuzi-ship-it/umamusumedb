@@ -3241,9 +3241,9 @@
     "birthday": "April 11",
     "cv": "Afumi Hashi",
     "height_cm": 163,
-    "server": "jp",
+    "server": "global",
     "release_date_jp": "2023-01-30",
-    "release_date_global": null,
+    "release_date_global": "2026-11-09",
     "obtained": "gacha",
     "gt_url_name": "102702-mejiro-ryan",
     "i18n": {
@@ -3448,6 +3448,52 @@
       }
     },
     "image_url": "/img/characters/102902.webp"
+  },
+  {
+    "id": "yukino_bijin_102903",
+    "card_id": 102903,
+    "char_id": 1029,
+    "name_en": "Yukino Bijin (熟れしめでたし実り姫)",
+    "name_jp": "ユキノビジン（熟れしめでたし実り姫）",
+    "base_name_en": "Yukino Bijin",
+    "title_en": null,
+    "title_jp": "熟れしめでたし実り姫",
+    "rarity": 3,
+    "initial_stats": "{\"speed\":91,\"stamina\":96,\"power\":83,\"guts\":97,\"wisdom\":83}",
+    "initial_stats_4star": "{\"speed\":101,\"stamina\":106,\"power\":93,\"guts\":108,\"wisdom\":92}",
+    "initial_stats_5star": "{\"speed\":111,\"stamina\":117,\"power\":102,\"guts\":119,\"wisdom\":101}",
+    "max_stats": "{\"speed\":1200,\"stamina\":1200,\"power\":1200,\"guts\":1200,\"wisdom\":1200}",
+    "growth_rates": "{\"speed\":\"15%\",\"stamina\":\"0%\",\"power\":\"5%\",\"guts\":\"10%\",\"wisdom\":\"0%\"}",
+    "aptitudes": "{\"turf\":\"A\",\"dirt\":\"B\",\"sprint\":\"D\",\"mile\":\"A\",\"medium\":\"A\",\"long\":\"E\",\"escape\":\"C\",\"lead\":\"A\",\"between\":\"F\",\"chase\":\"G\"}",
+    "unique_skill": "{\"name_en\":\"Time to Reap, Time to Celebrate\",\"name_jp\":\"今ぞ刈りどき祝祭の季\",\"effect\":\"If you're trying to overtake someone during the first half of the Middle Leg, your speed will increase; the effect is stronger in Mile and Medium races\"}",
+    "awakening_skills": "[\"With a Light in My Heart\",\"Hot Pursuit\",\"Face-Off\",\"Bursting with Energy\"]",
+    "innate_skills": "[\"Latch On\",\"Lively\",\"Refined Conduct\"]",
+    "birthday": "March 10",
+    "cv": "Nozomi Yamamoto",
+    "height_cm": 156,
+    "server": "jp",
+    "release_date_jp": "2026-11-10",
+    "release_date_global": null,
+    "obtained": "gacha",
+    "gt_url_name": "102903-yukino-bijin",
+    "i18n": {
+      "ko": {
+        "name": "유키노 비진",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "雪之美人",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "雪之美人",
+        "title": null,
+        "desc": null
+      }
+    },
+    "image_url": "/img/characters/102903.webp"
   },
   {
     "id": "rice_shower_rosy_dreams",
@@ -3655,9 +3701,9 @@
     "birthday": "April 10",
     "cv": "Rika Nagae",
     "height_cm": 167,
-    "server": "jp",
+    "server": "global",
     "release_date_jp": "2023-01-30",
-    "release_date_global": null,
+    "release_date_global": "2026-11-09",
     "obtained": "gacha",
     "gt_url_name": "103102-ines-fujin",
     "i18n": {
