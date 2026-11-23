@@ -1,7 +1,25 @@
 {
-  "generatedAt": "2026-11-16T02:04:23.327Z",
+  "generatedAt": "2026-11-23T01:58:14.766Z",
   "source": "GameTora data files (gametora.com)",
   "releases": [
+    {
+      "date": "2026-11-21",
+      "server": "global",
+      "kind": "character",
+      "id": "shinko_windy_wicked_punk",
+      "name_en": "Shinko Windy (Wicked Punk)",
+      "name_jp": "シンコウウインディ（Wicked Punk）",
+      "rarity": 3
+    },
+    {
+      "date": "2026-11-16",
+      "server": "jp",
+      "kind": "character",
+      "id": "daring_tact_107501",
+      "name_en": "Daring Tact (白光のレガリア)",
+      "name_jp": "デアリングタクト（白光のレガリア）",
+      "rarity": 3
+    },
     {
       "date": "2026-11-10",
       "server": "jp",

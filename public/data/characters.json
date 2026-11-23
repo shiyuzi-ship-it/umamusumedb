@@ -5035,9 +5035,9 @@
     "birthday": "April 14",
     "cv": "Yuuki Takada",
     "height_cm": 152,
-    "server": "jp",
+    "server": "global",
     "release_date_jp": "2023-02-13",
-    "release_date_global": null,
+    "release_date_global": "2026-11-21",
     "obtained": "gacha",
     "gt_url_name": "104301-shinko-windy",
     "i18n": {
@@ -8232,6 +8232,52 @@
       }
     },
     "image_url": "/img/characters/107403.webp"
+  },
+  {
+    "id": "daring_tact_107501",
+    "card_id": 107501,
+    "char_id": 1075,
+    "name_en": "Daring Tact (白光のレガリア)",
+    "name_jp": "デアリングタクト（白光のレガリア）",
+    "base_name_en": "Daring Tact",
+    "title_en": null,
+    "title_jp": "白光のレガリア",
+    "rarity": 3,
+    "initial_stats": "{\"speed\":99,\"stamina\":81,\"power\":99,\"guts\":78,\"wisdom\":93}",
+    "initial_stats_4star": "{\"speed\":110,\"stamina\":90,\"power\":110,\"guts\":87,\"wisdom\":103}",
+    "initial_stats_5star": "{\"speed\":121,\"stamina\":99,\"power\":121,\"guts\":95,\"wisdom\":114}",
+    "max_stats": "{\"speed\":1200,\"stamina\":1200,\"power\":1200,\"guts\":1200,\"wisdom\":1200}",
+    "growth_rates": "{\"speed\":\"0%\",\"stamina\":\"0%\",\"power\":\"10%\",\"guts\":\"10%\",\"wisdom\":\"10%\"}",
+    "aptitudes": "{\"turf\":\"A\",\"dirt\":\"G\",\"sprint\":\"F\",\"mile\":\"A\",\"medium\":\"A\",\"long\":\"F\",\"escape\":\"G\",\"lead\":\"D\",\"between\":\"A\",\"chase\":\"F\"}",
+    "unique_skill": "{\"name_en\":\"Crown of Drifting Snow\",\"name_jp\":\"灰雪の冠\",\"effect\":\"Turf・Your speed will slightly increase three times (at the start of the second half of the Middle Leg, halfway through the race, and at the start of the Last Spurt); the effect is stronger in Mile and Medium races\"}",
+    "awakening_skills": "[\"Unbroken\",\"Wild Hunt\",\"Belligerent\",\"Independence\"]",
+    "innate_skills": "[\"Rending the Silence\",\"Perfect Sync\",\"Pushing Through!\"]",
+    "birthday": "April 15",
+    "cv": "Hina Youmiya",
+    "height_cm": 158,
+    "server": "jp",
+    "release_date_jp": "2026-11-16",
+    "release_date_global": null,
+    "obtained": "gacha",
+    "gt_url_name": "107501-daring-tact",
+    "i18n": {
+      "ko": {
+        "name": "데어링 택트",
+        "title": null,
+        "desc": null
+      },
+      "zh_tw": {
+        "name": "謀勇兼備",
+        "title": null,
+        "desc": null
+      },
+      "zh": {
+        "name": "谋勇兼备",
+        "title": null,
+        "desc": null
+      }
+    },
+    "image_url": "/img/characters/107501.webp"
   },
   {
     "id": "sakura_laurel_saisir_le_reve",

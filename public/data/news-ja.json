@@ -1,51 +1,51 @@
 {
-  "fetchedAt": "2026-11-16T02:04:27.935Z",
+  "fetchedAt": "2026-11-23T01:58:21.499Z",
   "source": "https://umamusume.jp/api/ajax/pr_info_index?format=json",
   "items": [
     {
-      "title": "【予告】育成ウマ娘が新登場！セレクトピックアップ サポートカードガチャも開催決定！",
-      "link": "https://umamusume.jp/news/detail/?id=3546",
-      "date": "2026-11-15"
+      "title": "レースイベント「リーグ オブ ヒーローズ」開催！",
+      "link": "https://umamusume.jp/news/detail/?id=3545",
+      "date": "2026-11-22"
+    },
+    {
+      "title": "「ぱかライブTV' #9」は11月29日20時に放送！次回のガチャ更新などゲーム最新情報をお届け！",
+      "link": "https://umamusume.jp/news/detail/?id=3553",
+      "date": "2026-11-20"
+    },
+    {
+      "title": "ユーザーサポートページメンテナンスのお知らせ",
+      "link": "https://umamusume.jp/news/detail/?id=3556",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "PHPの脆弱性対応に伴うメンテナンスのお知らせ",
+      "link": "https://umamusume.jp/news/detail/?id=3555",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "レースイベント「リーグ オブ ヒーローズ」チーム編成期間開始！",
+      "link": "https://umamusume.jp/news/detail/?id=3544",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "第17回「リーグ オブ ヒーローズ」特別賞品のお申込みについて",
+      "link": "https://umamusume.jp/news/detail/?id=3543",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "イベント「アグネスタキオンの因子研究」終了！",
+      "link": "https://umamusume.jp/news/detail/?id=3541",
+      "date": "2026-11-19"
+    },
+    {
+      "title": "Facebookによるデータ連携機能メンテナンスのお知らせ",
+      "link": "https://umamusume.jp/news/detail/?id=3554",
+      "date": "2026-11-18"
     },
     {
       "title": "Google Play版アップデートに伴うデータの再ダウンロードに関するお知らせ",
       "link": "https://umamusume.jp/news/detail/?id=3549",
       "date": "2026-11-13"
-    },
-    {
-      "title": "『7th EVENT in LOS ANGELES』返金と公演グッズの通信販売に関するご案内",
-      "link": "https://umamusume.jp/news/detail/?id=3548",
-      "date": "2026-11-13"
-    },
-    {
-      "title": "育成ウマ娘&サポートカード新登場！ピックアップガチャ開催！",
-      "link": "https://umamusume.jp/news/detail/?id=3535",
-      "date": "2026-11-10"
-    },
-    {
-      "title": "セレクトピックアップ スタンプシートガチャ開催！",
-      "link": "https://umamusume.jp/news/detail/?id=3536",
-      "date": "2026-11-10"
-    },
-    {
-      "title": "イベント「アグネスタキオンの因子研究」開催中！",
-      "link": "https://umamusume.jp/news/detail/?id=3540",
-      "date": "2026-11-10"
-    },
-    {
-      "title": "【予告】育成ウマ娘&サポートカード新登場！ピックアップガチャ開催決定！",
-      "link": "https://umamusume.jp/news/detail/?id=3534",
-      "date": "2026-11-09"
-    },
-    {
-      "title": "イベント「アグネスタキオンの因子研究」開催予告！",
-      "link": "https://umamusume.jp/news/detail/?id=3539",
-      "date": "2026-11-09"
-    },
-    {
-      "title": "育成シナリオ「駿大祭編」におけるカルストンライトオの一部育成イベントの不具合について",
-      "link": "https://umamusume.jp/news/detail/?id=3538",
-      "date": "2026-11-04"
     },
     {
       "title": "現在確認している不具合について",
