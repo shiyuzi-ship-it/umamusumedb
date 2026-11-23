@@ -91,6 +91,7 @@
 /characters/almond_eye_2025/ /characters/almond_eye_112901/ 301
 /characters/gran_alegria_2025/ /characters/gran_alegria_113101/ 301
 /characters/loves_only_you_2025/ /characters/loves_only_you_113201/ 301
+/characters/daring_tact_2025/ /characters/daring_tact_107501/ 301
 /cards/kitasan_black_ssr/ /cards/kitasan_black_fire_at_my_heels_ssr/ 301
 /cards/super_creek_ssr/ /cards/ 301
 /cards/fine_motion_ssr/ /cards/ 301
@@ -220,6 +221,7 @@
 /ja/characters/almond_eye_2025/ /ja/characters/almond_eye_112901/ 301
 /ja/characters/gran_alegria_2025/ /ja/characters/gran_alegria_113101/ 301
 /ja/characters/loves_only_you_2025/ /ja/characters/loves_only_you_113201/ 301
+/ja/characters/daring_tact_2025/ /ja/characters/daring_tact_107501/ 301
 /ja/cards/kitasan_black_ssr/ /ja/cards/kitasan_black_fire_at_my_heels_ssr/ 301
 /ja/cards/super_creek_ssr/ /ja/cards/ 301
 /ja/cards/fine_motion_ssr/ /ja/cards/ 301
@@ -352,6 +354,7 @@
 /zh/characters/almond_eye_2025/ /zh/characters/almond_eye_112901/ 301
 /zh/characters/gran_alegria_2025/ /zh/characters/gran_alegria_113101/ 301
 /zh/characters/loves_only_you_2025/ /zh/characters/loves_only_you_113201/ 301
+/zh/characters/daring_tact_2025/ /zh/characters/daring_tact_107501/ 301
 
 # Legacy character ids (zh-tw) -> current outfit slugs
 /zh-tw/characters/oguri_cap_starlight/ /zh-tw/characters/oguri_cap_starlight_beat/ 301
@@ -410,6 +413,7 @@
 /zh-tw/characters/almond_eye_2025/ /zh-tw/characters/almond_eye_112901/ 301
 /zh-tw/characters/gran_alegria_2025/ /zh-tw/characters/gran_alegria_113101/ 301
 /zh-tw/characters/loves_only_you_2025/ /zh-tw/characters/loves_only_you_113201/ 301
+/zh-tw/characters/daring_tact_2025/ /zh-tw/characters/daring_tact_107501/ 301
 
 # Legacy character ids (ko) -> current outfit slugs
 /ko/characters/oguri_cap_starlight/ /ko/characters/oguri_cap_starlight_beat/ 301
@@ -468,6 +472,7 @@
 /ko/characters/almond_eye_2025/ /ko/characters/almond_eye_112901/ 301
 /ko/characters/gran_alegria_2025/ /ko/characters/gran_alegria_113101/ 301
 /ko/characters/loves_only_you_2025/ /ko/characters/loves_only_you_113201/ 301
+/ko/characters/daring_tact_2025/ /ko/characters/daring_tact_107501/ 301
 
 # Dynamic (wildcard) rules last: Pages only honours rules listed after dynamic ones up to a small cap
 /zh-cn/* /zh/:splat 301
