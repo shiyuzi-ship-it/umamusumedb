@@ -15,6 +15,8 @@ import { stripVariantName } from '@/lib/name-utils';
 import { serverLabel } from '@/lib/game-format';
 import { createSkillIndex, findSkillIdByName } from '@/lib/skill-lookup';
 import { Star, Zap, Heart, Brain, Shield, TrendingUp, Trophy, Award } from 'lucide-react';
+import { HOLO_POOL_SLUGS, holoRitualHref } from '@/lib/holo';
+import { holoStrings } from '@/lib/holo-strings';
 
 export function getStaticPaths() {
   return characters.map((character) => ({
@@ -172,6 +174,9 @@ const __relOutfits = __outfits(character).map((o: any) => ({ href: __lp(`/charac
           <div class="space-y-3">
             <h1 class="text-2xl font-display gradient-text">{character.name_jp || character.name_en}</h1>
             <p class="text-lg text-gray-600">{character.name_en}</p>
+            {HOLO_POOL_SLUGS.has(character.id) && (
+              <a href={holoRitualHref('ja')} class="mt-2 inline-block text-sm px-3 py-2 rounded-full font-semibold text-amber-950 bg-gradient-to-r from-amber-300 to-amber-400 hover:from-amber-200 hover:to-amber-300">{holoStrings('ja').charCta}</a>
+            )}
             
             <!-- Rarity -->
             <div class="flex items-center gap-2">

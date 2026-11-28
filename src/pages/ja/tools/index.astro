@@ -2,6 +2,9 @@
 import Layout from '@/layouts/Layout.astro';
 import Header from '@/components/Header.astro';
 import Breadcrumb from '@/components/Breadcrumb.astro';
+import { holoIntroHref } from '@/lib/holo';
+import { holoStrings } from '@/lib/holo-strings';
+const hs = holoStrings('ja');
 ---
 
 <Layout title="ツール - ウマ娘DB" description="ウマ娘の育成を最適化する計算機・ビルダー集">
@@ -20,6 +23,16 @@ import Breadcrumb from '@/components/Breadcrumb.astro';
     <div class="min-h-screen">
       <div class="max-w-7xl mx-auto">
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <a
+            href={holoIntroHref('ja')}
+            class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-2 border-amber-400"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <h3 class="text-xl font-bold">{hs.toolsName}</h3>
+            </div>
+            <p class="text-gray-600">{hs.toolsDesc}</p>
+          </a>
+
           <a
             href="/ja/tools/factor-calculator/"
             class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow border-2 border-yellow-400"

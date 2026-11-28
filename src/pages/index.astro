@@ -7,6 +7,9 @@ import { characters, supportCards, skills } from '@/lib/static-content';
 import releasesData from '../../public/data/releases.json';
 import scenariosData from '../../public/data/scenarios.json';
 import { Search, Users, Sparkles, Star, Calculator, TrendingUp, Newspaper } from 'lucide-react';
+import { holoRitualHref } from '@/lib/holo';
+import { holoStrings } from '@/lib/holo-strings';
+const hs = holoStrings('en');
 
 const releases = (releasesData as any).releases as any[];
 const latestGlobal = releases.filter((r) => r.server === 'global').slice(0, 12);
@@ -77,6 +80,17 @@ const dataDate = (releasesData as any).generatedAt.slice(0, 10);
       </div>
       <p class="text-center text-xs text-gray-500 mt-3">Covers the Global and JP servers; items not yet in Global are marked “JP only”. {globalCharacterCount} characters and {globalCardCount} support cards are available on Global.</p>
     </div>
+
+    <aside class="holo-home-bar">
+      <div>
+        <div class="font-semibold text-gray-900">{hs.homeTitle}</div>
+        <p class="text-sm text-gray-600">{hs.homeDesc}</p>
+      </div>
+      <a href={holoRitualHref('en')} class="inline-block text-center px-4 py-2 rounded-full font-semibold text-amber-950 bg-gradient-to-r from-amber-300 to-amber-400 hover:from-amber-200 hover:to-amber-300 text-sm whitespace-nowrap">{hs.homeCta}</a>
+    </aside>
+    <style is:global>
+      @import url('/holo/pack-assets/pack-v5.css');
+    </style>
 
     <!-- Quick Tools Section -->
     <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
