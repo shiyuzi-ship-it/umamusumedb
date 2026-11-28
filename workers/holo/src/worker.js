@@ -628,6 +628,27 @@ function matchIssuePath(pathname) {
   return m ? decodeURIComponent(m[1]) : null;
 }
 
+
+const RITUAL_ORIGIN = 'https://umamusumedb.pages.dev';
+
+function isRitualPath(pathname) {
+  return pathname === '/zh/holo' || pathname === '/zh/holo/';
+}
+
+async function proxyRitual(request, url) {
+  const dest = new URL('/zh/holo/', RITUAL_ORIGIN);
+  dest.search = url.search;
+  dest.hash = url.hash;
+  const headers = new Headers(request.headers);
+  headers.delete('Host');
+  headers.delete('cf-connecting-ip');
+  return fetch(dest.toString(), {
+    method: request.method,
+    headers,
+    redirect: 'manual',
+  });
+}
+
 export default {
   async fetch(request, env) {
     if (!env.DB || !env.HOLO_SIGNING_SECRET) {
@@ -638,6 +659,10 @@ export default {
 
     if (request.method === 'OPTIONS' && path.startsWith('/api/holo')) {
       return new Response(null, { status: 204, headers: corsHeaders(request) });
+    }
+
+    if (isRitualPath(path) && (request.method === 'GET' || request.method === 'HEAD')) {
+      return proxyRitual(request, url);
     }
 
     try {
