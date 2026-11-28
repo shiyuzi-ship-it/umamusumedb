@@ -1,0 +1,651 @@
+/* v5 polish: typography, stage chrome, foil, orbit, finer bag tear.
+   Loaded after pack.css / share.css. Does not revert the v4 film-bag language. */
+
+:root {
+  --holo-ink: #f4f6fb;
+  --holo-muted: #9aa8c0;
+  --holo-gold: #f3e0b0;
+  --holo-gold-deep: #c9a45a;
+  --holo-bg: #070b17;
+}
+
+/* ---------- Stage / chrome typography ---------- */
+body {
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+.topbar {
+  padding: 14px 18px 10px;
+  align-items: center;
+}
+
+.top-link,
+.icon-pill,
+.pill-ghost {
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  letter-spacing: 0.01em;
+}
+
+.top-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  color: rgba(232, 236, 248, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 14, 28, 0.45);
+}
+
+.stage-shell {
+  padding-top: 4px;
+}
+
+.ritual-viewport {
+  min-height: min(72vh, 640px);
+}
+
+/* Sharper pack print under the film */
+.bag-print,
+.pack-main-title,
+.pack-kicker,
+.pack-bottom-note,
+.pack-date-pill {
+  -webkit-font-smoothing: antialiased;
+}
+
+.pack-main-title {
+  font-size: clamp(1.5rem, 5.6vw, 1.86rem);
+  letter-spacing: 0.14em;
+  color: #fff4d4;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.75),
+    0 2px 12px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(250, 227, 171, 0.18);
+}
+
+.pack-kicker,
+.bag-face-copy .pack-kicker {
+  color: rgba(255, 244, 212, 0.9);
+}
+
+.pack-bottom-note {
+  color: rgba(255, 244, 212, 0.78);
+}
+
+.bag-film-tex {
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+  filter: saturate(0.7) contrast(1.06);
+}
+
+.bag-wrinkle {
+  opacity: 0.22;
+}
+
+.bag-spec {
+  opacity: 0.16;
+  mix-blend-mode: screen;
+}
+
+/* Finer, less morphed tear: keep a crisp film edge, quieter gold */
+.tear-nick,
+.tear-head,
+.tear-stretch {
+  filter: saturate(0.85);
+}
+
+.stage-shell[data-beat="5"] .ambient-halo,
+.stage-shell[data-beat="6"] .ambient-halo {
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(160, 210, 255, 0.16) 0%, transparent 58%),
+    radial-gradient(ellipse at 50% 80%, rgba(250, 227, 171, 0.07) 0%, transparent 52%);
+}
+
+/* Soft iridescent curtain, not a gold flash frame */
+.card-light-sweep::before {
+  background: linear-gradient(
+    112deg,
+    transparent 36%,
+    rgba(180, 230, 255, 0.10) 44%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(196, 164, 255, 0.22) 55%,
+    rgba(255, 190, 220, 0.14) 59%,
+    transparent 68%
+  );
+}
+
+@keyframes lightCurtainFade {
+  0% { opacity: 0.7; }
+  35% { opacity: 0.85; }
+  100% { opacity: 0; }
+}
+
+/* Early draw: show the unofficial card back as a flat overlay (not a flipped face). */
+.card-face-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 5;
+}
+
+.card-physical.is-orbit-ready .card-face-back {
+  transform: rotateY(180deg) translateZ(-1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-face-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.7));
+}
+
+.card-physical.is-orbit-ready .card-media-wrap {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(1.6px);
+}
+
+.stage-shell[data-beat="3"] .card-face-back,
+.stage-shell[data-beat="4"] .card-face-back {
+  opacity: 1;
+  transform: none;
+  backface-visibility: visible;
+  -webkit-backface-visibility: visible;
+}
+
+.stage-shell[data-beat="3"] .hero-card-img,
+.stage-shell[data-beat="4"] .hero-card-img,
+.stage-shell[data-beat="3"] .holo-foil-canvas,
+.stage-shell[data-beat="4"] .holo-foil-canvas,
+.stage-shell[data-beat="3"] .holo-foil-css,
+.stage-shell[data-beat="4"] .holo-foil-css,
+.stage-shell[data-beat="3"] .card-glare-overlay,
+.stage-shell[data-beat="4"] .card-glare-overlay {
+  opacity: 0;
+}
+
+.stage-shell[data-beat="3"] .card-silhouette-veil,
+.stage-shell[data-beat="4"] .card-silhouette-veil {
+  opacity: 0;
+}
+
+/* ---------- Orbit / foil ---------- */
+.card-rig {
+  perspective: 1200px;
+}
+
+.card-tilt-box {
+  transform:
+    translateY(var(--card-draw-y, 0%))
+    translateZ(var(--card-draw-z, 0px))
+    rotateX(calc(var(--card-draw-rx, 0deg) + var(--tilt-rx, 0deg)))
+    rotateY(var(--tilt-ry, 0deg));
+  transform-style: preserve-3d;
+  cursor: grab;
+  touch-action: none;
+  will-change: transform;
+}
+
+.bag-card-slot .card-tilt-box {
+  width: 100%;
+  pointer-events: none;
+  cursor: default;
+  transform-origin: center bottom;
+  transition: none;
+  touch-action: auto;
+}
+
+.card-tilt-box,
+.card-tilt-box:focus,
+.card-tilt-box:focus-visible {
+  outline: none;
+}
+
+.card-tilt-box.is-orbiting,
+.card-tilt-box.is-tilting {
+  cursor: grabbing;
+  transition: transform 0.05s linear;
+}
+
+/* Physical edge on the painted card body (same insets as .card-fx-clip),
+   not the transparent tilt-box margin. Origin at the face so a 90deg edge
+   is hidden when frontal and only reads as thickness when yawed/pitched. */
+.card-thickness-left,
+.card-thickness-right {
+  /* End short of the body corner radius so the side faces do not poke out
+     as gold ticks at the rounded corners when the card is frontal. */
+  top: calc(5.5% + 3.4%);
+  height: auto;
+  bottom: calc(3.5% + 3.4%);
+  width: 5px;
+  box-shadow: none;
+}
+.card-thickness-left {
+  left: 4.333%;
+  transform-origin: left center;
+  transform: rotateY(90deg);
+}
+.card-thickness-right {
+  right: 4.333%;
+  left: auto;
+  transform-origin: right center;
+  transform: rotateY(-90deg);
+}
+.card-thickness-bottom {
+  left: calc(4.333% + 4.5%);
+  right: calc(4.333% + 4.5%);
+  width: auto;
+  bottom: 3.5%;
+  height: 5px;
+  transform-origin: center bottom;
+  transform: rotateX(90deg);
+}
+
+.holo-foil-canvas,
+.holo-foil-css {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 10px;
+  z-index: 3;
+}
+
+.holo-foil-canvas {
+  mix-blend-mode: plus-lighter;
+  opacity: 0.92;
+}
+
+.has-webgl-foil .holo-foil-css { display: none; }
+
+.holo-foil-css {
+  background:
+    radial-gradient(circle at var(--foil-x, 42%) var(--foil-y, 36%), rgba(180, 230, 255, 0.28), transparent 42%),
+    linear-gradient(
+      118deg,
+      transparent 30%,
+      rgba(120, 220, 255, 0.16) 42%,
+      rgba(255, 255, 255, 0.22) 50%,
+      rgba(220, 160, 255, 0.16) 58%,
+      transparent 70%
+    );
+  background-size: 100% 100%, 180% 180%;
+  background-position: center, var(--foil-x, 40%) var(--foil-y, 38%);
+  mix-blend-mode: color-dodge;
+  opacity: 0.32;
+}
+
+.card-glare-overlay {
+  z-index: 4;
+  mix-blend-mode: soft-light;
+}
+
+/* Reveal copy — more editorial, less prototype */
+.reveal-panel {
+  margin-top: 18px;
+  padding: 4px 8px 8px;
+  max-width: 28rem;
+}
+
+.char-jp {
+  font-size: clamp(1.28rem, 4.6vw, 1.62rem);
+  font-weight: 670;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  color: #f7f8fc;
+}
+
+.char-en {
+  font-weight: 400;
+  color: var(--holo-muted);
+  font-size: 0.92em;
+}
+
+.char-outfit {
+  margin-top: 6px;
+  color: #c9d3e6;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.issue-plaque {
+  margin-top: 16px;
+  padding: 10px 14px 12px;
+  border-radius: 14px;
+  background: rgba(9, 13, 26, 0.55);
+  border: 1px solid rgba(250, 227, 171, 0.16);
+}
+
+.issue-kicker {
+  letter-spacing: 0.14em;
+  text-transform: none;
+  color: var(--holo-muted);
+}
+
+.issue-code {
+  font-size: 1.02rem;
+  letter-spacing: 0.04em;
+  color: var(--holo-gold);
+}
+
+.holo-extras {
+  margin-top: 8px;
+  color: #c3b389;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.primary-actions {
+  margin-top: 18px;
+  gap: 10px;
+}
+
+.btn-action {
+  min-height: 44px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary-gold {
+  box-shadow: 0 8px 20px rgba(200, 150, 60, 0.22);
+}
+
+.quiet-links {
+  margin-top: 14px;
+  gap: 16px;
+}
+
+.daily-lock-note {
+  margin-top: 12px;
+  color: var(--holo-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.site-footer {
+  padding: 18px 16px 28px;
+}
+
+.copyright-line {
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  color: #6e7c95;
+  line-height: 1.7;
+}
+
+.inspect-bar {
+  margin-top: 8px;
+  color: var(--holo-muted);
+  font-size: 0.78rem;
+}
+
+.seal-hint {
+  color: #a9b6cc;
+}
+
+/* Bag crumple: keep thin-film language, less hard morph */
+.bag-object.is-crumpled .bag {
+  filter: saturate(0.95) contrast(1.05);
+}
+
+/* ---------- Share page polish + orbit ---------- */
+.share-top {
+  padding: 18px 22px 8px;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.share-main {
+  max-width: 30rem;
+  padding: 4px 20px 56px;
+}
+
+.share-card-wrap {
+  max-width: min(86vw, 380px);
+  perspective: 1200px;
+  margin: 8px auto 0;
+}
+
+.share-card-wrap .card-tilt-box,
+.share-orbit {
+  width: 100%;
+  aspect-ratio: 690 / 960;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg));
+  cursor: grab;
+  touch-action: none;
+  position: relative;
+}
+
+.share-orbit.is-tilting { cursor: grabbing; transition: transform 0.05s linear; }
+
+.share-orbit img.share-card,
+.share-orbit .share-card {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.55));
+}
+
+.share-names {
+  margin: 22px 0 4px;
+  font-size: 1.22rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+}
+
+.share-outfit,
+.share-meta {
+  color: var(--holo-muted);
+  font-size: 0.9rem;
+}
+
+.share-id {
+  margin: 16px 0 6px;
+}
+
+.share-actions,
+.share-links {
+  margin: 14px 0 0;
+  gap: 10px;
+}
+
+.btn-gold, .btn-ghost {
+  min-height: 44px;
+  padding: 10px 18px;
+}
+
+.share-hint {
+  margin: 8px 0 0;
+  color: #7f8da6;
+  font-size: 0.75rem;
+}
+
+.share-foot {
+  margin-top: 32px;
+}
+
+/* Intro page polish (site Layout, light theme) */
+.holo-intro-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin: 0 0 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .holo-intro-hero {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+.holo-intro-pack {
+  width: min(200px, 42vw);
+  margin: 0 auto;
+  filter: drop-shadow(0 16px 24px rgba(40, 24, 8, 0.18));
+}
+
+.holo-intro-cta {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 650;
+  color: #2a1d08;
+  background: linear-gradient(135deg, #f3d48a, #e0b15a);
+  box-shadow: 0 8px 18px rgba(200, 150, 60, 0.2);
+  text-decoration: none;
+}
+
+.holo-intro-panel {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.06);
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.holo-intro-panel h2 {
+  font-size: 1.15rem;
+  font-weight: 650;
+  color: #111827;
+  margin: 1.1rem 0 0.6rem;
+}
+
+.holo-intro-panel h2:first-child { margin-top: 0; }
+
+.holo-intro-panel ul {
+  list-style: disc;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.holo-intro-panel code {
+  font-size: 0.85em;
+  background: #f3f4f6;
+  padding: 0.05rem 0.3rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+}
+
+/* Home / tools / character CTA */
+.holo-home-bar {
+  margin-bottom: 2rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  background: linear-gradient(90deg, #fffbeb, #fff1f2);
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .holo-home-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* The card must be able to travel above the torn mouth. */
+.pack-scene,
+.bag-object,
+.bag-rig,
+.bag {
+  overflow: visible;
+}
+
+/*
+  Draw occlusion (pack-v6):
+  The bag body hides the still-inside portion. The only exit is the torn mouth.
+  Slot is extended above the bag so the card can travel out, but clipped at the
+  mouth so nothing below the tear is painted over the pouch. The visible
+  (already exited) part sits above the torn lip — the lip is the rim, not a
+  sticker on top of the card.
+
+  Slot is top:-100%; height:200% of the bag, so bag-top is 50% of the slot
+  and mouth at ~8.5% of the bag is ~54.25% of the slot. Hide the rest.
+*/
+.stage-shell[data-beat="3"] .bag-card-slot,
+.stage-shell[data-beat="4"] .bag-card-slot {
+  top: -100%;
+  height: 200%;
+  z-index: 9;
+  opacity: 1;
+  overflow: hidden;
+  /* Straight clip just below the torn lip (~8.5% of the bag).
+     Slot is 200% tall starting at -100%, so bag 8.5% = 54.25% of the slot;
+     hide the bottom 45.75%. The rectangular card then sits on top of the rim. */
+  clip-path: inset(0 0 45.75% 0);
+  transform: translateZ(6px);
+}
+
+/* Torn rim / remaining crimp / tear highlight stay UNDER the exiting card. */
+.stage-shell[data-beat="3"] .bag-mouth-lip,
+.stage-shell[data-beat="4"] .bag-mouth-lip,
+.stage-shell[data-beat="3"] .bag-torn-lip,
+.stage-shell[data-beat="4"] .bag-torn-lip,
+.stage-shell[data-beat="3"] .bag-tear-seam,
+.stage-shell[data-beat="4"] .bag-tear-seam,
+.stage-shell[data-beat="3"] .bag-flap,
+.stage-shell[data-beat="4"] .bag-flap,
+.stage-shell[data-beat="3"] .bag-crimp,
+.stage-shell[data-beat="4"] .bag-crimp {
+  z-index: 7;
+}
+
+.stage-shell[data-beat="3"] .bag-mouth-lip,
+.stage-shell[data-beat="4"] .bag-mouth-lip {
+  transform: translateZ(4px);
+}
+
+/* Foil / iridescence / prism / glare stay on the card body, not on
+   official-alpha break-out (hair/ears/hands in the transparent margin).
+   Body insets match scripts/build-holo-roster.py (52/88/56 on 1200×1600). */
+.card-fx-clip {
+  position: absolute;
+  left: 4.333%;
+  right: 4.333%;
+  top: 5.5%;
+  bottom: 3.5%;
+  border-radius: 4.75% / 3.42%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.card-fx-clip .holo-foil-canvas,
+.card-fx-clip .holo-foil-css,
+.card-fx-clip .card-glare-overlay,
+.card-fx-clip .card-light-sweep {
+  inset: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+
+.card-physical,
+.card-media-wrap {
+  overflow: visible;
+}

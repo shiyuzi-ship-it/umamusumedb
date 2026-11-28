@@ -12,9 +12,13 @@
     gold_ship_100701: '#472233',
   };
 
+  const strings = record.strings || {};
   function shareUrl() {
-    return `https://umamusumedb.com/zh/holo/${encodeURIComponent(record.id)}`;
+    if (record.sharePath) return 'https://umamusumedb.com' + record.sharePath;
+    const pre = record.prefix || '/zh';
+    return `https://umamusumedb.com${pre}/holo/${encodeURIComponent(record.id)}`;
   }
+
 
   function loadImage(src) {
     return new Promise((resolve, reject) => {
@@ -59,7 +63,7 @@
       ctx.fillStyle = '#fae3ab';
       ctx.font = '600 18px -apple-system, "PingFang SC", sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('七日纪念框', W / 2, dstY - 28);
+      ctx.fillText(strings.weekFrame || '', W / 2, dstY - 28);
       ctx.restore();
     }
 
@@ -87,13 +91,15 @@
     ctx.textAlign = 'left';
     ctx.fillStyle = '#d5c49a';
     ctx.font = '600 18px -apple-system, "PingFang SC", sans-serif';
-    const extras = [`第 ${rec.streak || 1} 日`];
-    if (rec.stamps) extras.push(`传递 ${rec.stamps}`);
+    const extras = [];
+    extras.push('Day ' + (rec.streak || 1));
+    if (rec.stamps) extras.push('×' + rec.stamps);
+
     ctx.fillText(extras.join('  ·  '), 48, captionTop + 78);
 
     ctx.fillStyle = '#8b9bb5';
     ctx.font = '500 16px -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif';
-    ctx.fillText('umamusumedb.com  ·  非官方同人预览（免费展示，非官方周边）  ·  Artwork © Cygames, Inc.', 48, captionTop + 112);
+    ctx.fillText(strings.posterCredit || 'umamusumedb.com  ·  Artwork © Cygames, Inc.', 48, captionTop + 112);
     return canvas;
   }
 
@@ -122,7 +128,7 @@
       const url = shareUrl();
       const prev = copyBtn.textContent;
       const ok = () => {
-        copyBtn.textContent = '✓ 已复制分享链接';
+        copyBtn.textContent = strings.copied || '✓';
         setTimeout(() => { copyBtn.textContent = prev; }, 2000);
       };
       const fallback = () => {
@@ -148,20 +154,25 @@
       if (dlBtn.disabled) return;
       const prev = dlBtn.textContent;
       dlBtn.disabled = true;
-      dlBtn.textContent = '生成纪念图中…';
+      dlBtn.textContent = strings.saving || '…';
       try {
-        const img = await loadImage(`/holo/cards/${record.cardId}/card.webp`);
+        const img = await loadImage(record.art || (`/holo/cards/${record.cardId}/card.webp`));
         const canvas = renderCaptionedPoster(img, record);
         const blob = await canvasToBlob(canvas);
         downloadBlob(blob, `${record.id}_${record.cardId}.png`);
-        dlBtn.textContent = '已保存';
+        dlBtn.textContent = strings.saved || 'OK';
         setTimeout(() => { dlBtn.textContent = prev; dlBtn.disabled = false; }, 1600);
       } catch (e) {
-        dlBtn.textContent = '保存失败，请重试';
+        dlBtn.textContent = strings.saveFail || 'Error';
         setTimeout(() => { dlBtn.textContent = prev; dlBtn.disabled = false; }, 2000);
       }
     });
   }
 
   window.__HOLO_RENDER_POSTER__ = renderCaptionedPoster;
+
+  if (window.HoloOrbit) {
+    var box = document.getElementById('cardTiltBox');
+    if (box) window.HoloOrbit.mount(box, { interactive: true, idle: true });
+  }
 })();

@@ -680,7 +680,7 @@ body::before {
 .bag-weld-left { left: 0; }
 .bag-weld-right { right: 0; }
 
-/* Torn mouth lip — thin curled plastic, occludes the emerging card */
+/* Torn mouth lip — thin curled plastic rim of the opening; sits under the exiting card */
 .bag-mouth-lip {
   position: absolute;
   left: 0;

@@ -1,12 +1,22 @@
 /**
  * umamusumedb-holo
- * Daily holographic pack: draw API, daily cap, streak, pass-on stamps, ZH share pages.
+ * Daily holographic pack: draw API, daily cap, streak, pass-on stamps, locale-aware share pages.
  */
+import poolData from './pool-data.js';
+import { HTML_LANG, OG_LOCALE, prefix as localePrefix, ui as shareUi, locPath } from './share-i18n.js';
+
 const ISSUE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const ISSUE_RE = /^UMA-(\d{8})-([A-HJ-NP-Z2-9]{4})$/;
 const ORIGIN = 'https://umamusumedb.com';
-const INTRO_PATH = '/zh/tools/daily-pack/';
-const INTRO_URL = ORIGIN + INTRO_PATH;
+const LANGS = new Set(['ja', 'zh', 'zh-tw', 'ko']);
+
+function introPath(locale) {
+  return locPath(locale, '/tools/daily-pack/');
+}
+function ritualPath(locale) {
+  return locPath(locale, '/holo/');
+}
+
 const IP_SOFT_CAP = 3;
 const FRAME_STREAK = 7;
 const ALLOWED_ORIGINS = new Set([
@@ -15,37 +25,51 @@ const ALLOWED_ORIGINS = new Set([
   'https://umamusumedb.pages.dev',
 ]);
 
-const CARD_POOL = [
-  {
-    id: 'daring_tact_107501',
-    weight: 40,
-    name: 'Daring Tact',
-    jpName: 'デアリングタクト',
-    outfit: '白光のレガリア',
-    slug: 'daring_tact_107501',
-    isRecentOutfit: true,
-  },
-  {
-    id: 'special_week_100101',
-    weight: 30,
-    name: 'Special Week',
-    jpName: 'スペシャルウィーク',
-    outfit: 'Special Dreamer / スペシャルドリーマー',
-    slug: 'special_week_special_dreamer',
+function normalizePoolCard(c) {
+  return {
+    id: c.id,
+    weight: c.weight || 1,
+    name: c.baseEn || c.nameEn || '',
+    jpName: c.baseJp || c.nameJp || '',
+    outfit: c.titleJp || c.titleEn || '',
+    slug: c.id,
+    art: c.art,
+    og: c.og,
+    card_id: c.card_id,
+    aliases: c.aliases || [],
+    i18n: c.i18n || {},
     isRecentOutfit: false,
-  },
-  {
-    id: 'gold_ship_100701',
-    weight: 30,
-    name: 'Gold Ship',
-    jpName: 'ゴールドシップ',
-    outfit: 'Red Strife / レッドストライフ',
-    slug: 'gold_ship_red_strife',
-    isRecentOutfit: false,
-  },
-];
+  };
+}
 
-const CARD_BY_ID = new Map(CARD_POOL.map((c) => [c.id, c]));
+const CARD_POOL = (poolData.cards || []).map(normalizePoolCard);
+const CARD_BY_ID = new Map();
+for (const card of CARD_POOL) {
+  CARD_BY_ID.set(card.id, card);
+  for (const a of card.aliases || []) CARD_BY_ID.set(a, card);
+}
+
+function localizedCard(card, locale) {
+  const block = (card.i18n && (card.i18n[locale] || card.i18n.en)) || {};
+  return {
+    ...card,
+    localName: block.name || card.name,
+    localTitle: block.title || card.outfit,
+  };
+}
+
+function parseHoloRoute(pathname) {
+  const segs = pathname.split('/').filter(Boolean);
+  let locale = 'en';
+  let i = 0;
+  if (segs[0] && LANGS.has(segs[0])) {
+    locale = segs[0];
+    i = 1;
+  }
+  if (segs[i] !== 'holo') return null;
+  const issueId = segs[i + 1] ? decodeURIComponent(segs[i + 1]) : null;
+  return { locale, issueId, isRitual: !issueId };
+}
 
 function shanghaiParts(date = new Date()) {
   const parts = new Intl.DateTimeFormat('en-CA', {
@@ -248,6 +272,9 @@ function issuePublic(row, stamps) {
     streak: row.streak ?? 1,
     stamps: stamps ?? 0,
     frame: (row.streak ?? 1) >= FRAME_STREAK,
+    art: card ? card.art : `/holo/cards/${row.card_id}/card.webp`,
+    og: card ? card.og : `/holo/og/${row.card_id}.webp`,
+    slug: card ? card.slug : row.card_id,
     card: card
       ? {
           id: card.id,
@@ -255,7 +282,10 @@ function issuePublic(row, stamps) {
           jpName: card.jpName,
           outfit: card.outfit,
           slug: card.slug,
-          isRecentOutfit: card.isRecentOutfit,
+          art: card.art,
+          og: card.og,
+          isRecentOutfit: false,
+          i18n: card.i18n || {},
         }
       : null,
   };
@@ -476,30 +506,35 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-function shareNotFoundHtml() {
-  const title = '未找到这张纪念闪卡 | UmamusumeDB';
-  const desc = '这个编号不存在或尚未发放。每日免费一包，随机一张纪念闪卡。';
+function shareNotFoundHtml(locale = 'zh') {
+  const s = shareUi(locale);
+  const intro = ORIGIN + introPath(locale);
+  const ritual = ritualPath(locale);
+  const home = localePrefix(locale) + '/';
+  const title = s.notTitle;
+  const desc = s.notBody;
   return `<!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="${HTML_LANG[locale] || 'en'}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${title}</title>
-  <meta name="description" content="${desc}" />
+  <title>${escapeHtml(title)}</title>
+  <meta name="description" content="${escapeHtml(desc)}" />
   <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="${INTRO_URL}" />
-  <meta property="og:title" content="${title}" />
-  <meta property="og:description" content="${desc}" />
-  <meta property="og:url" content="${INTRO_URL}" />
+  <link rel="canonical" href="${intro}" />
+  <meta property="og:title" content="${escapeHtml(title)}" />
+  <meta property="og:description" content="${escapeHtml(desc)}" />
+  <meta property="og:url" content="${intro}" />
   <meta property="og:image" content="${ORIGIN}/holo/og/pack.webp" />
-  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale" content="${OG_LOCALE[locale] || 'en_US'}" />
   <meta property="og:site_name" content="UmamusumeDB" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@umamusumedb" />
   <meta name="twitter:image" content="${ORIGIN}/holo/og/pack.webp" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/holo/pack-assets/pack-v5.css" />
   <style>
-    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,"PingFang SC","Noto Sans SC",sans-serif;background:#070b17;color:#f5f7fc;padding:24px;}
+    body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,"PingFang SC","Noto Sans SC","Noto Sans JP",sans-serif;background:#070b17;color:#f5f7fc;padding:24px;}
     .box{max-width:28rem;text-align:center}
     h1{font-size:1.4rem;margin:0 0 12px}
     p{color:#8b9bb5;line-height:1.6}
@@ -509,50 +544,71 @@ function shareNotFoundHtml() {
 </head>
 <body>
   <div class="box">
-    <h1>没有找到这个编号</h1>
-    <p>分享链接里的编号不存在，或尚未发放。不会随机显示其他闪卡。</p>
-    <p><a class="cta" href="/zh/holo/">拆今日卡包</a></p>
-    <p><a href="${INTRO_PATH}">了解今日卡包</a> · <a href="/zh/">返回首页</a></p>
+    <h1>${escapeHtml(s.notH1)}</h1>
+    <p>${escapeHtml(s.notBody)}</p>
+    <p><a class="cta" href="${ritual}">${escapeHtml(s.open)}</a></p>
+    <p><a href="${introPath(locale)}">${escapeHtml(s.intro)}</a> · <a href="${home}">${escapeHtml(s.home)}</a></p>
   </div>
 </body>
 </html>`;
 }
 
-function sharePageHtml(issue, stamps) {
-  const card = CARD_BY_ID.get(issue.card_id);
-  if (!card) return shareNotFoundHtml();
+function sharePageHtml(issue, stamps, locale = 'zh') {
+  const card0 = CARD_BY_ID.get(issue.card_id);
+  if (!card0) return shareNotFoundHtml(locale);
+  const card = localizedCard(card0, locale);
+  const s = shareUi(locale);
   const id = issue.id;
-  const pageUrl = `${ORIGIN}/zh/holo/${encodeURIComponent(id)}`;
-  const ogImage = `${ORIGIN}/holo/og/${card.id}.webp`;
-  const cardImg = `/holo/cards/${card.id}/card.webp`;
-  const charUrl = `/zh/characters/${card.slug}/`;
+  const ritual = ritualPath(locale);
+  const intro = introPath(locale);
+  const pageUrl = `${ORIGIN}${ritual}${encodeURIComponent(id)}`;
+  const ogImage = `${ORIGIN}${card.og}`;
+  const cardImg = card.art;
+  const charUrl = `${localePrefix(locale)}/characters/${card.slug}/`;
   const title = `${card.jpName} / ${card.name} · ${id} | UmamusumeDB`;
-  const desc = `今日卡包纪念闪卡 ${card.jpName}（${card.outfit}），编号 ${id}。非官方同人预览，Artwork © Cygames, Inc.`;
+  const outfit = card.localTitle || card.outfit;
+  const desc = `${s.intro} ${card.jpName}（${outfit}），${id}. Artwork © Cygames, Inc.`;
   const streak = issue.streak || 1;
   const stampCount = stamps ?? 0;
   const frame = streak >= FRAME_STREAK;
+  const streakLabel = locale === 'en' ? `Day ${streak}` : locale === 'ko' ? `${streak}일차` : `第 ${streak} 日`;
+  const stampLabel = stampCount
+    ? (locale === 'en' ? `Passed on ${stampCount}` : locale === 'ja' ? `パス ${stampCount}` : locale === 'ko' ? `전달 ${stampCount}` : locale === 'zh-tw' ? `傳遞 ${stampCount}` : `传递 ${stampCount}`)
+    : '';
   const payload = JSON.stringify({
     id,
-    cardId: card.id,
+    cardId: issue.card_id,
+    art: card.art,
     date: issue.issued_date,
     streak,
     stamps: stampCount,
     frame,
     name: card.name,
     jpName: card.jpName,
-    outfit: card.outfit,
+    outfit,
     slug: card.slug,
-    isRecentOutfit: !!card.isRecentOutfit,
+    locale,
+    prefix: localePrefix(locale),
+    sharePath: `${ritual}${id}`,
+    strings: {
+      copied: s.copied,
+      saving: s.saving,
+      saved: s.saved,
+      saveFail: s.saveFail,
+      weekFrame: s.week,
+      posterCredit: s.cred,
+      issueLabel: s.issue,
+    },
   });
   return `<!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="${HTML_LANG[locale] || 'en'}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(desc)}" />
   <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="${INTRO_URL}" />
+  <link rel="canonical" href="${ORIGIN}${intro}" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(desc)}" />
@@ -560,7 +616,7 @@ function sharePageHtml(issue, stamps) {
   <meta property="og:image" content="${ogImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:locale" content="${OG_LOCALE[locale] || 'en_US'}" />
   <meta property="og:site_name" content="UmamusumeDB" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@umamusumedb" />
@@ -569,51 +625,60 @@ function sharePageHtml(issue, stamps) {
   <meta name="twitter:image" content="${ogImage}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/holo/pack-assets/share.css" />
+  <link rel="stylesheet" href="/holo/pack-assets/pack-v5.css" />
 </head>
 <body>
   <header class="share-top">
-    <a href="${INTRO_PATH}">今日卡包</a>
-    <a href="/zh/">UmamusumeDB</a>
+    <a href="${intro}">${escapeHtml(s.intro)}</a>
+    <a href="${localePrefix(locale) || '/'}">${escapeHtml(s.home)}</a>
   </header>
   <main class="share-main">
     <div class="share-card-wrap${frame ? ' has-week-frame' : ''}">
-      <img class="share-card" src="${cardImg}" alt="${escapeHtml(card.jpName + ' / ' + card.name + ' — ' + card.outfit + ' (' + id + ')')}" width="690" height="960" />
+      <div class="share-orbit card-tilt-box" id="cardTiltBox">
+        <div class="card-physical">
+          <div class="card-media-wrap">
+            <img class="share-card hero-card-img" src="${cardImg}" alt="${escapeHtml(card.jpName + ' / ' + card.name + ' — ' + outfit + ' (' + id + ')')}" width="690" height="960" />
+          </div>
+        </div>
+      </div>
     </div>
+    <p class="share-hint">${escapeHtml(s.hint)}</p>
     <p class="share-names"><strong>${escapeHtml(card.jpName)}</strong> / ${escapeHtml(card.name)}</p>
-    <p class="share-outfit">${escapeHtml(card.outfit)}${card.isRecentOutfit ? ' · 新胜负服稍常见' : ''}</p>
-    <p class="share-meta">第 ${streak} 日${stampCount ? ' · 传递 ' + stampCount : ''}${frame ? ' · 七日纪念框' : ''}</p>
-    <p class="share-id"><span>编号</span> <code>${escapeHtml(id)}</code></p>
+    <p class="share-outfit">${escapeHtml(outfit)}</p>
+    <p class="share-meta">${escapeHtml(streakLabel)}${stampLabel ? ' · ' + escapeHtml(stampLabel) : ''}${frame ? ' · ' + escapeHtml(s.week) : ''}</p>
+    <p class="share-id"><span>${escapeHtml(s.issue)}</span> <code>${escapeHtml(id)}</code></p>
     <div class="share-actions">
-      <button type="button" id="downloadPngBtn" class="btn-gold">保存纪念图</button>
-      <button type="button" id="copyLinkBtn" class="btn-ghost">复制分享链接</button>
+      <button type="button" id="downloadPngBtn" class="btn-gold">${escapeHtml(s.save)}</button>
+      <button type="button" id="copyLinkBtn" class="btn-ghost">${escapeHtml(s.copy)}</button>
     </div>
     <div class="share-links">
-      <a class="btn-gold" href="/zh/holo/?from=${encodeURIComponent(id)}">拆今日卡包</a>
-      <a class="btn-ghost" href="${charUrl}">角色资料</a>
+      <a class="btn-gold" href="${ritual}?from=${encodeURIComponent(id)}">${escapeHtml(s.open)}</a>
+      <a class="btn-ghost" href="${charUrl}">${escapeHtml(s.char)}</a>
     </div>
-    <p class="share-foot">非官方同人预览 · 角色立绘版权归 © Cygames, Inc. 所有 · umamusumedb.com · 免费展示，非官方周边</p>
+    <p class="share-foot">${escapeHtml(s.foot)}</p>
   </main>
   <script type="application/json" id="holoIssue">${payload}</script>
+  <script src="/holo/pack-assets/card-orbit.js" defer></script>
   <script src="/holo/pack-assets/share-page.js" defer></script>
 </body>
 </html>`;
 }
 
-async function handleShare(request, env, issueId) {
+async function handleShare(request, env, issueId, locale) {
   if (!ISSUE_RE.test(issueId)) {
-    return new Response(shareNotFoundHtml(), {
+    return new Response(shareNotFoundHtml(locale), {
       status: 404,
       headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, follow' },
     });
   }
   const found = await loadIssue(env, issueId);
   if (!found) {
-    return new Response(shareNotFoundHtml(), {
+    return new Response(shareNotFoundHtml(locale), {
       status: 404,
       headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, follow' },
     });
   }
-  return new Response(sharePageHtml(found.row, found.stamps), {
+  return new Response(sharePageHtml(found.row, found.stamps, locale), {
     status: 200,
     headers: {
       'content-type': 'text/html; charset=utf-8',
@@ -623,20 +688,15 @@ async function handleShare(request, env, issueId) {
   });
 }
 
-function matchIssuePath(pathname) {
-  const m = pathname.match(/^\/zh\/holo\/(UMA-[^/]+)\/?$/);
-  return m ? decodeURIComponent(m[1]) : null;
-}
-
-
 const RITUAL_ORIGIN = 'https://umamusumedb.pages.dev';
 
 function isRitualPath(pathname) {
-  return pathname === '/zh/holo' || pathname === '/zh/holo/';
+  const route = parseHoloRoute(pathname);
+  return !!(route && route.isRitual);
 }
 
-async function proxyRitual(request, url) {
-  const dest = new URL('/zh/holo/', RITUAL_ORIGIN);
+async function proxyRitual(request, url, locale) {
+  const dest = new URL(ritualPath(locale), RITUAL_ORIGIN);
   dest.search = url.search;
   dest.hash = url.hash;
   const headers = new Headers(request.headers);
@@ -661,8 +721,9 @@ export default {
       return new Response(null, { status: 204, headers: corsHeaders(request) });
     }
 
-    if (isRitualPath(path) && (request.method === 'GET' || request.method === 'HEAD')) {
-      return proxyRitual(request, url);
+    const route = parseHoloRoute(path);
+    if (route && route.isRitual && (request.method === 'GET' || request.method === 'HEAD')) {
+      return proxyRitual(request, url, route.locale);
     }
 
     try {
@@ -670,8 +731,7 @@ export default {
       if (path === '/api/holo/draw' && request.method === 'POST') return await handleDraw(request, env);
       const issueJson = path.match(/^\/api\/holo\/issue\/([^/]+)\/?$/);
       if (issueJson && request.method === 'GET') return await handleIssueJson(request, env, decodeURIComponent(issueJson[1]));
-      const shareId = matchIssuePath(path);
-      if (shareId && request.method === 'GET') return await handleShare(request, env, shareId);
+      if (route && route.issueId && request.method === 'GET') return await handleShare(request, env, route.issueId, route.locale);
     } catch (err) {
       if (path.startsWith('/api/')) {
         return json({ ok: false, error: 'server', message: '服务暂时不可用，请稍后重试。' }, 500, request);

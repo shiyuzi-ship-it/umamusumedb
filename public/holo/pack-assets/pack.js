@@ -2,6 +2,41 @@
 (function () {
   'use strict';
 
+  const HOLO = (function () {
+    var cfg = {
+      locale: 'zh',
+      prefix: '/zh',
+      origin: 'https://umamusumedb.com',
+      introPath: '/zh/tools/daily-pack/',
+      ritualPath: '/zh/holo/',
+      allowDemo: false,
+      strings: {}
+    };
+    try {
+      var el = document.getElementById('holo-config');
+      if (el && el.textContent) Object.assign(cfg, JSON.parse(el.textContent));
+      else if (window.__HOLO__) Object.assign(cfg, window.__HOLO__);
+    } catch (e) {}
+    return cfg;
+  })();
+
+  function hs(key, vars) {
+    var s = (HOLO.strings && HOLO.strings[key]) || '';
+    if (!s) return '';
+    if (vars) {
+      Object.keys(vars).forEach(function (k) {
+        s = s.split('{' + k + '}').join(vars[k]);
+      });
+    }
+    return s;
+  }
+
+  function ritualUrl(issueId) {
+    var base = HOLO.ritualPath || ((HOLO.prefix || '') + '/holo/');
+    if (issueId) return (HOLO.origin || '') + base + encodeURIComponent(issueId);
+    return (HOLO.origin || '') + base;
+  }
+
   const ISSUE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   const STORAGE_ISSUES_KEY = 'umadb_holo_issued_v1';
   const STORAGE_DAILY_PREFIX = 'umadb_holo_daily_v1_';
@@ -328,7 +363,7 @@
   }
 
   function shareUrlFor(issueId) {
-    return `https://umamusumedb.com/zh/holo/${encodeURIComponent(issueId)}`;
+    return ritualUrl(issueId);
   }
 
   function referralFromParam() {
@@ -399,7 +434,27 @@
   }
 
   function getCardById(cardId) {
-    return CARD_POOL.find(c => c.id === cardId) || CARD_POOL[0];
+    var found = CARD_POOL.find(function (c) {
+      return c.id === cardId || (c.aliases && c.aliases.indexOf(cardId) !== -1);
+    });
+    if (found) return found;
+    // Synthesize a record from the issued id so we never hash to a random card.
+    var slug = cardId;
+    var art = '/holo/cards/' + cardId + '/card.webp';
+    return {
+      id: cardId,
+      weight: 1,
+      name: cardId,
+      jpName: cardId,
+      outfit: '',
+      slug: slug,
+      aura: 'moon',
+      posterGlow: '#233a63',
+      isRecentOutfit: false,
+      charUrl: (HOLO.origin || '') + (HOLO.prefix || '') + '/characters/' + slug + '/',
+      webpPath: art,
+      compositePath: art
+    };
   }
 
   function deterministicCardForUnknownShareId(issueId) {
@@ -503,8 +558,8 @@
   soundBtn.addEventListener('click', () => {
     soundEnabled = !soundEnabled;
     soundBtn.setAttribute('aria-pressed', String(soundEnabled));
-    soundBtn.setAttribute('aria-label', soundEnabled ? '关闭拆包音效' : '开启拆包音效');
-    soundBtn.title = soundEnabled ? '音效：已开启' : '音效：已静音';
+    soundBtn.setAttribute('aria-label', soundEnabled ? hs('soundOn') : hs('soundOff'));
+    soundBtn.title = soundEnabled ? hs('soundOn') : hs('soundOff');
     soundIconOff.hidden = soundEnabled;
     soundIconOn.hidden = !soundEnabled;
     if (soundEnabled) {
@@ -653,17 +708,17 @@
     charOutfit.textContent = card.outfit;
     recentWeightNote.hidden = !card.isRecentOutfit;
 
-    issueKicker.textContent = currentViewContext.isSharedOther ? '分享编号' : '今日编号';
+    issueKicker.textContent = currentViewContext.isSharedOther ? (hs('issueShared') || 'Share') : (hs('issueToday') || 'Today');
     issueCode.textContent = record.issueId;
     charDbLink.href = card.charUrl;
     charDbLink.removeAttribute('target');
 
     const streakEl = document.getElementById('streakLine');
     const stampEl = document.getElementById('stampLine');
-    if (streakEl) streakEl.textContent = `第 ${record.streak || 1} 日`;
+    if (streakEl) streakEl.textContent = hs('streakTemplate', { n: record.streak || 1 }) || ('Day ' + (record.streak || 1));
     if (stampEl) {
       stampEl.hidden = !(record.stamps > 0);
-      stampEl.textContent = record.stamps > 0 ? `传递 ${record.stamps}` : '';
+      stampEl.textContent = record.stamps > 0 ? (hs('stampsTemplate', { n: record.stamps }) || String(record.stamps)) : '';
     }
     const frameOn = !!(record.frame || (record.streak || 0) >= 7);
     cardTiltBox.classList.toggle('has-week-frame', frameOn);
@@ -687,7 +742,7 @@
     const h = String(Math.floor(diffSec / 3600)).padStart(2, '0');
     const m = String(Math.floor((diffSec % 3600) / 60)).padStart(2, '0');
     const s = String(diffSec % 60).padStart(2, '0');
-    dailyLockNote.textContent = `今日卡包已开启 · 距离明日新包 ${h}:${m}:${s}`;
+    dailyLockNote.textContent = hs('dailyLockTemplate', { clock: h + ':' + m + ':' + s });
   }
 
   function startDailyCountdown() {
@@ -721,9 +776,10 @@
     packScene.classList.add('pack-parked');
     stageRoot.setAttribute('data-stage', 'revealed');
     stageRoot.setAttribute('data-beat', '0');
+    setOrbitInteractive(true);
 
     if (!context?.isDemoPlay && window.history && window.history.replaceState) {
-      window.history.replaceState(null, '', `/zh/holo/${encodeURIComponent(record.issueId)}`);
+      window.history.replaceState(null, '', (HOLO.ritualPath || '/holo/') + encodeURIComponent(record.issueId));
     }
   }
 
@@ -737,6 +793,7 @@
     isOpening = true;
     poseLocked = true;
     stopIdleSway();
+    setOrbitInteractive(false);
     pointerTilt = null;
     packScene.classList.remove('pack-parked');
     packScene.style.opacity = '';
@@ -767,7 +824,7 @@
       stageRoot.setAttribute('data-beat', '3');
       playSlideSound();
       applyPackPose({ rx: -12, ry: -8, tx: 0, ty: 36, tz: 12, scale: 0.96 });
-      tweenNumeric(0, -56, 1700, easeOutCubic, (v, e) => {
+      tweenNumeric(0, -78, 1700, easeOutCubic, (v, e) => {
         setCardDraw(v, 6 - e * 5, 2);
       });
     });
@@ -775,7 +832,7 @@
     // Beat 4: almost-out pause
     scheduleBeat(4400, () => {
       stageRoot.setAttribute('data-beat', '4');
-      setCardDraw(-60, 1, 3);
+      setCardDraw(-84, 1, 3);
       applyPackPose({ rx: -8, ry: -8, tx: 0, ty: 30, tz: 8, scale: 0.96 });
     });
 
@@ -798,10 +855,11 @@
 
     scheduleBeat(6500, () => {
       stageRoot.setAttribute('data-beat', '6');
+      if (skipBtn && document.activeElement === skipBtn) skipBtn.blur();
       skipBtn.hidden = true;
       isOpening = false;
       if (!context?.isDemoPlay && window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', `/zh/holo/${encodeURIComponent(record.issueId)}`);
+        window.history.replaceState(null, '', (HOLO.ritualPath || '/holo/') + encodeURIComponent(record.issueId));
       }
     });
 
@@ -809,6 +867,7 @@
       stageRoot.setAttribute('data-stage', 'revealed');
       stageRoot.setAttribute('data-beat', '0');
       packScene.classList.add('pack-parked');
+      setOrbitInteractive(true);
     });
   }
 
@@ -879,9 +938,9 @@
     } catch (err) {
       isOpening = false;
       if (err && err.message === 'daily_cap') {
-        showPackError((err.payload && err.payload.message) || '今日开启次数已达上限，请明天再来。');
+        showPackError((err.payload && err.payload.message) || hs('packError'));
       } else {
-        showPackError('开启失败，请稍后重试。');
+        showPackError(hs('packError'));
       }
     }
   }
@@ -994,87 +1053,41 @@
     }
   });
 
+
   // =========================================================================
-  // Post-Reveal Card Tilt Inspection + Lazy 3D WebGL2 Mode Toggle
+  // Post-reveal pointer/touch orbit + foil (shared HoloOrbit)
   // =========================================================================
-  function applyCardTiltFromPoint(clientX, clientY) {
-    if (is3dActive) return;
-    const st = stageRoot.getAttribute('data-stage');
-    const bt = stageRoot.getAttribute('data-beat');
-    if (st !== 'revealed' && bt !== '5' && bt !== '6') return;
-
-    const rect = cardTiltBox.getBoundingClientRect();
-    const px = Math.max(0, Math.min(1, (clientX - rect.left) / Math.max(1, rect.width)));
-    const py = Math.max(0, Math.min(1, (clientY - rect.top) / Math.max(1, rect.height)));
-    const ry = (px - 0.5) * 24;
-    const rx = (0.5 - py) * 18;
-
-    cardTiltBox.classList.add('is-tilting');
-    cardTiltBox.style.setProperty('--tilt-rx', `${rx.toFixed(2)}deg`);
-    cardTiltBox.style.setProperty('--tilt-ry', `${ry.toFixed(2)}deg`);
-    cardTiltBox.style.setProperty('--glare-x', `${(px * 100).toFixed(1)}%`);
-    cardTiltBox.style.setProperty('--glare-y', `${(py * 100).toFixed(1)}%`);
-    cardTiltBox.style.setProperty('--glare-alpha', '1');
+  var orbitCtl = null;
+  function mountOrbit() {
+    if (orbitCtl || !window.HoloOrbit || !cardTiltBox) return;
+    orbitCtl = window.HoloOrbit.mount(cardTiltBox, { interactive: false, idle: true });
   }
-
-  function resetCardTilt() {
-    cardTiltBox.classList.remove('is-tilting');
-    cardTiltBox.style.setProperty('--tilt-rx', '0deg');
-    cardTiltBox.style.setProperty('--tilt-ry', '0deg');
-    cardTiltBox.style.setProperty('--glare-alpha', '0');
-  }
-
-  let cardTouchActive = false;
-  cardTiltBox.addEventListener('pointerdown', (e) => {
-    if (is3dActive) return;
-    cardTouchActive = true;
-    applyCardTiltFromPoint(e.clientX, e.clientY);
-  });
-
-  cardTiltBox.addEventListener('pointermove', (e) => {
-    if (is3dActive) return;
-    if (e.pointerType === 'mouse' || cardTouchActive) {
-      applyCardTiltFromPoint(e.clientX, e.clientY);
+  function setOrbitInteractive(on) {
+    mountOrbit();
+    if (orbitCtl) {
+      orbitCtl.setInteractive(!!on);
+      if (on) orbitCtl.reset();
     }
-  });
-
-  cardTiltBox.addEventListener('pointerup', () => {
-    cardTouchActive = false;
-    resetCardTilt();
-  });
-  cardTiltBox.addEventListener('pointercancel', () => {
-    cardTouchActive = false;
-    resetCardTilt();
-  });
-  cardTiltBox.addEventListener('pointerleave', () => {
-    cardTouchActive = false;
-    resetCardTilt();
-  });
+    if (tiltHint) tiltHint.textContent = hs('inspectHint');
+  }
 
   function set3dMode(enable) {
-    is3dActive = !!enable;
-    toggle3dBtn.setAttribute('aria-pressed', String(is3dActive));
-    toggle3dBtn.textContent = is3dActive ? '返回纯净卡面' : '切换 3D 实时检视';
-    fullscreen3dLink.hidden = !is3dActive;
-    tiltHint.textContent = is3dActive ? '3D 实时光效已开启' : '轻触拖动卡面可倾斜赏光';
-    resetCardTilt();
-
-    if (is3dActive) {
-      const src = webglIframe.getAttribute('data-src');
-      if (src && !webglIframe.getAttribute('src')) {
-        webglIframe.setAttribute('src', src);
-      }
-      cardMediaWrap.hidden = true;
-      webglPane.hidden = false;
-    } else {
-      webglPane.hidden = true;
-      cardMediaWrap.hidden = false;
+    // Kept as a no-op hook: inspect is always the in-page orbit, not a heavy iframe.
+    is3dActive = false;
+    if (toggle3dBtn) {
+      toggle3dBtn.hidden = true;
+      toggle3dBtn.setAttribute('aria-pressed', 'false');
     }
+    if (fullscreen3dLink) fullscreen3dLink.hidden = true;
+    if (webglPane) webglPane.hidden = true;
+    if (cardMediaWrap) cardMediaWrap.hidden = false;
+    if (tiltHint) tiltHint.textContent = hs('inspectHint');
   }
 
-  toggle3dBtn.addEventListener('click', () => {
-    set3dMode(!is3dActive);
-  });
+  if (toggle3dBtn) {
+    toggle3dBtn.addEventListener('click', function (e) { e.preventDefault(); });
+  }
+
 
   // =========================================================================
   // Copy Share Link & Captioned PNG Download (Works on HTTP and file://)
@@ -1085,7 +1098,7 @@
     const prevText = copyLinkBtn.textContent;
 
     const showSuccess = () => {
-      copyLinkBtn.textContent = '✓ 已复制分享链接';
+      copyLinkBtn.textContent = hs('copied') || copyLinkBtn.textContent;
       setTimeout(() => {
         copyLinkBtn.textContent = prevText;
       }, 2000);
@@ -1193,7 +1206,7 @@
       ctx.fillStyle = '#fae3ab';
       ctx.font = '600 18px -apple-system, "PingFang SC", sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('七日纪念框', W / 2, 36);
+      ctx.fillText(hs('weekFrame') || '', W / 2, 36);
       ctx.restore();
     }
 
@@ -1227,13 +1240,13 @@
     ctx.textAlign = 'left';
     ctx.fillStyle = '#d5c49a';
     ctx.font = '600 18px -apple-system, "PingFang SC", sans-serif';
-    const extras = [`第 ${record.streak || 1} 日`];
-    if (record.stamps) extras.push(`传递 ${record.stamps}`);
+    const extras = [hs('posterStreakTemplate', { n: record.streak || 1 })];
+    if (record.stamps) extras.push(hs('posterStampTemplate', { n: record.stamps }));
     ctx.fillText(extras.join('  ·  '), 48, captionTop + 86);
 
     ctx.fillStyle = '#8b9bb5';
     ctx.font = '500 16px -apple-system, BlinkMacSystemFont, "PingFang SC", "Segoe UI", sans-serif';
-    ctx.fillText('umamusumedb.com  ·  非官方同人预览（免费展示，非官方周边）  ·  Artwork © Cygames, Inc.', 48, captionTop + 122);
+    ctx.fillText(hs('posterCredit') || 'umamusumedb.com  ·  Artwork © Cygames, Inc.', 48, captionTop + 122);
 
     if (record.frame || (record.streak || 0) >= 7) {
       // decorative frame is drawn after the artwork, before the plaque; handled below if coords known
@@ -1271,7 +1284,7 @@
     const card = getCardById(currentRecord.cardId);
     const prevLabel = downloadPngBtn.textContent;
     downloadPngBtn.disabled = true;
-    downloadPngBtn.textContent = '生成纪念图中…';
+    downloadPngBtn.textContent = hs('saving');
     const filename = `${currentRecord.issueId}_${card.id}.png`;
 
     try {
@@ -1283,7 +1296,7 @@
       exportedBlob = await exportCanvasToBlob(canvas);
 
       triggerBlobDownload(exportedBlob, filename);
-      downloadPngBtn.textContent = '✓ 已保存纪念图';
+      downloadPngBtn.textContent = hs('saved');
       setTimeout(() => {
         downloadPngBtn.textContent = prevLabel;
         downloadPngBtn.disabled = false;
@@ -1303,14 +1316,73 @@
 
   // =========================================================================
   // Production init: Shanghai day, server draw, no demo bypass, unknown IDs never hashed.
+  async function loadPool() {
+    try {
+      const res = await fetch('/holo/pool.json');
+      const data = await res.json();
+      if (data && data.cards && data.cards.length) {
+        const prefix = HOLO.prefix || '';
+        const origin = HOLO.origin || 'https://umamusumedb.com';
+        const loc = HOLO.locale || 'en';
+        CARD_POOL.splice(0, CARD_POOL.length);
+        data.cards.forEach(function (c) {
+          var names = (c.i18n && (c.i18n[loc] || c.i18n.en)) || {};
+          CARD_POOL.push({
+            id: c.id,
+            cardIdNum: c.card_id,
+            aliases: c.aliases || [],
+            weight: c.weight || 1,
+            name: c.baseEn || c.nameEn || '',
+            jpName: c.baseJp || c.nameJp || '',
+            outfit: names.title || c.titleJp || c.titleEn || '',
+            slug: c.id,
+            aura: 'moon',
+            posterGlow: '#1d2d52',
+            isRecentOutfit: false,
+            charUrl: origin + prefix + '/characters/' + c.id + '/',
+            webpPath: c.art,
+            compositePath: c.art
+          });
+        });
+      }
+    } catch (e) {}
+  }
+
   async function init() {
+    mountOrbit();
+    await loadPool();
     if (packDateLabel) packDateLabel.textContent = formatDisplayDate();
+    if (tiltHint) tiltHint.textContent = hs('inspectHint');
+
+    const demoParams = new URLSearchParams(window.location.search);
+    if (HOLO.allowDemo && demoParams.get('demo') === 'play') {
+      const requested = demoParams.get('card');
+      let card = null;
+      if (requested) {
+        card = CARD_POOL.find(function (c) {
+          return c.id === requested
+            || String(c.cardIdNum) === requested
+            || (c.aliases && c.aliases.indexOf(requested) !== -1);
+        }) || null;
+      }
+      if (!card) card = pickWeightedCard();
+      const rec = {
+        issueId: 'UMA-' + getLocalYYYYMMDD() + '-DEMO',
+        cardId: card.id,
+        dateStr: getLocalYYYYMMDD(),
+        streak: 1,
+        stamps: 0,
+        frame: false
+      };
+      runOpeningRitualForRecord(rec, { isDemoPlay: true, isTodaysOwnDraw: true });
+      return;
+    }
 
     const params = new URLSearchParams(window.location.search);
     const requestedId = params.get('id');
     const idPattern = /^UMA-(\d{8})-([A-HJ-NP-Z2-9]{4})$/;
     if (requestedId && idPattern.test(requestedId)) {
-      window.location.replace('/zh/holo/' + encodeURIComponent(requestedId) + (params.get('from') ? ('?from=' + encodeURIComponent(params.get('from'))) : ''));
+      window.location.replace((HOLO.ritualPath || '/holo/') + encodeURIComponent(requestedId) + (params.get('from') ? ('?from=' + encodeURIComponent(params.get('from'))) : ''));
       return;
     }
 

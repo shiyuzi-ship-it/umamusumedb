@@ -1,0 +1,269 @@
+---
+import type { Locale } from '@/lib/i18n';
+import { holoIntroHref, holoPrefix, holoRitualHref } from '@/lib/holo';
+import { holoStrings, holoClientDict, HOLO_HTML_LANG, HOLO_OG_LOCALE } from '@/lib/holo-strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const s = holoStrings(locale);
+const htmlLang = HOLO_HTML_LANG[locale];
+const ogLocale = HOLO_OG_LOCALE[locale];
+const introHref = holoIntroHref(locale);
+const ritualHref = holoRitualHref(locale);
+const prefix = holoPrefix(locale);
+const canonical = 'https://umamusumedb.com' + introHref;
+const holoConfig = {
+  locale,
+  prefix,
+  origin: 'https://umamusumedb.com',
+  introPath: introHref,
+  ritualPath: ritualHref,
+  allowDemo: false,
+  strings: holoClientDict(locale),
+};
+---
+<!DOCTYPE html>
+<html lang={htmlLang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{s.ritualTitle}</title>
+  <meta name="description" content={s.ritualDesc} />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={s.ritualTitle} />
+  <meta property="og:description" content={s.ritualDesc} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content="https://umamusumedb.com/holo/og/pack.webp" />
+  <meta property="og:locale" content={ogLocale} />
+  <meta property="og:site_name" content="UmamusumeDB" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@umamusumedb" />
+  <meta name="twitter:title" content={s.ritualTitle} />
+  <meta name="twitter:description" content={s.ritualDesc} />
+  <meta name="twitter:image" content="https://umamusumedb.com/holo/og/pack.webp" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="/holo/pack-assets/pack.css" />
+  <link rel="stylesheet" href="/holo/pack-assets/pack-v5.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YE3RZ9MXLS"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YE3RZ9MXLS');
+  </script>
+</head>
+<body data-aura="neutral">
+  <header class="topbar">
+    <a class="top-link" href={introHref} aria-label={s.backToIntro}>&larr; {s.backToIntro}</a>
+    <div class="topbar-right">
+      <button id="skipBtn" class="pill-ghost skip-btn" type="button" hidden>{s.skip}</button>
+      <button id="soundBtn" class="icon-pill" type="button" aria-pressed="false" aria-label={s.soundOff} title={s.soundOff}>
+        <svg id="soundIconOff" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+          <path d="m22 9-6 6" />
+          <path d="m16 9 6 6" />
+        </svg>
+        <svg id="soundIconOn" viewBox="0 0 24 24" aria-hidden="true" hidden>
+          <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M18.8 5.8a9 9 0 0 1 0 12.4" />
+        </svg>
+        <span>{s.sound}</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="stageRoot" class="stage-shell" data-stage="sealed" data-beat="0">
+    <div id="ritualViewport" class="ritual-viewport">
+      <div class="ambient-halo" aria-hidden="true"></div>
+
+      <!-- Revealed-stage hero slot; during the draw the tilt box lives inside the pack pocket -->
+      <div id="cardRig" class="card-rig">
+        <div id="cardTiltBox" class="card-tilt-box">
+          <div class="card-physical">
+            <div class="card-thickness card-thickness-left" aria-hidden="true"></div>
+            <div class="card-thickness card-thickness-right" aria-hidden="true"></div>
+            <div class="card-thickness card-thickness-bottom" aria-hidden="true"></div>
+            <div class="card-draw-shadow" aria-hidden="true"></div>
+            <div id="cardMediaWrap" class="card-media-wrap">
+              <img id="heroCardImg" class="hero-card-img" alt="" decoding="async" draggable="false" />
+              <div id="cardGlareOverlay" class="card-glare-overlay" aria-hidden="true"></div>
+              <div id="cardSilhouetteVeil" class="card-silhouette-veil" aria-hidden="true">
+                <div class="veil-emblem"></div>
+              </div>
+              <div id="cardLightSweep" class="card-light-sweep" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div id="webglPane" class="webgl-pane" hidden>
+            <iframe id="webglIframe" class="webgl-iframe" title={s.inspectHint}></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div id="packScene" class="pack-scene">
+        <div id="packShadow" class="bag-ground-shadow" aria-hidden="true"></div>
+
+        <div
+          id="packObject"
+          class="bag-object"
+          role="button"
+          tabindex="0"
+          aria-label={s.packAria}
+        >
+          <div id="packRig" class="bag-rig">
+            <div class="bag" id="bag">
+              <div class="bag-side bag-side-left" aria-hidden="true"></div>
+              <div class="bag-side bag-side-right" aria-hidden="true"></div>
+              <div class="bag-back-film" aria-hidden="true"></div>
+
+              <div id="packCardSlot" class="bag-card-slot"></div>
+
+              <div id="bagPouch" class="bag-pouch">
+                <div class="bag-print">
+                  <svg class="bag-ornament-svg pack-ornament-svg" viewBox="0 0 280 344" fill="none" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="foilGoldRose" x1="20" y1="10" x2="260" y2="330" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#FAE3AB" stop-opacity="0.72" />
+                        <stop offset="48%" stop-color="#EFB8C8" stop-opacity="0.52" />
+                        <stop offset="100%" stop-color="#CFA252" stop-opacity="0.68" />
+                      </linearGradient>
+                      <linearGradient id="gateGlow" x1="140" y1="44" x2="140" y2="214" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#FAE3AB" stop-opacity="0.55" />
+                        <stop offset="65%" stop-color="#EFB8C8" stop-opacity="0.22" />
+                        <stop offset="100%" stop-color="#0D152E" stop-opacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M16 14 H264 L268 18 V308 L260 316 H20 L12 308 V18 Z" stroke="url(#foilGoldRose)" stroke-width="1" opacity="0.55" />
+                    <path d="M22 20 H258 V304 H22 Z" stroke="url(#foilGoldRose)" stroke-width="0.6" opacity="0.28" />
+                    <ellipse cx="140" cy="218" rx="154" ry="74" stroke="url(#foilGoldRose)" stroke-width="0.85" opacity="0.26" />
+                    <ellipse cx="140" cy="224" rx="132" ry="60" stroke="url(#foilGoldRose)" stroke-width="0.75" stroke-dasharray="4 5" opacity="0.24" />
+                    <ellipse cx="140" cy="230" rx="108" ry="46" stroke="url(#foilGoldRose)" stroke-width="0.7" opacity="0.2" />
+                    <circle cx="140" cy="116" r="52" stroke="url(#foilGoldRose)" stroke-width="1.05" opacity="0.52" />
+                    <circle cx="140" cy="116" r="44" stroke="url(#foilGoldRose)" stroke-width="0.65" stroke-dasharray="2 4" opacity="0.38" />
+                    <path d="M106 150 V106 C106 94 114 88 120 88 C126 88 134 94 134 106 V150" stroke="url(#gateGlow)" stroke-width="1.2" />
+                    <path d="M124 152 V98 C124 83 132 75 140 75 C148 75 156 83 156 98 V152" stroke="url(#foilGoldRose)" stroke-width="1.35" opacity="0.78" />
+                    <path d="M146 150 V106 C146 94 154 88 160 88 C166 88 174 94 174 106 V150" stroke="url(#gateGlow)" stroke-width="1.2" />
+                    <line x1="94" y1="152" x2="186" y2="152" stroke="url(#foilGoldRose)" stroke-width="1" opacity="0.48" />
+                    <path d="M140 94 L144.5 111.5 L162 116 L144.5 120.5 L140 138 L135.5 120.5 L118 116 L135.5 111.5 Z" fill="url(#foilGoldRose)" opacity="0.78" />
+                    <circle cx="140" cy="116" r="2.6" fill="#FFF9EA" />
+                    <rect x="25" y="23" width="5" height="5" transform="rotate(45 27.5 25.5)" fill="#FAE3AB" opacity="0.55" />
+                    <rect x="250" y="23" width="5" height="5" transform="rotate(45 252.5 25.5)" fill="#FAE3AB" opacity="0.55" />
+                  </svg>
+                  <div class="bag-face-copy pack-face-copy">
+                    <span class="pack-kicker">{s.packKicker}</span>
+                    <div class="pack-center-lockup">
+                      <span class="pack-main-title">{s.packTitle}</span>
+                      <span id="packDateLabel" class="pack-date-pill">---- · -- · --</span>
+                    </div>
+                    <span class="pack-bottom-note">{s.packNote}</span>
+                  </div>
+                </div>
+                <div class="bag-film" aria-hidden="true">
+                  <div class="bag-film-tex"></div>
+                  <div class="bag-wrinkle"></div>
+                  <div class="bag-spec"></div>
+                  <div class="bag-sheen"></div>
+                  <div class="bag-glaze"></div>
+                </div>
+                <div class="bag-pillow" aria-hidden="true"></div>
+                <div class="bag-crimp bag-crimp-top">
+                  <span class="tear-nick" aria-hidden="true"></span>
+                  <span class="crimp-caption">{s.nickCaption}</span>
+                </div>
+                <div class="bag-crimp bag-crimp-bottom"></div>
+                <div class="bag-weld bag-weld-left" aria-hidden="true"></div>
+                <div class="bag-weld bag-weld-right" aria-hidden="true"></div>
+                <div id="packMouthLip" class="bag-mouth-lip" aria-hidden="true"></div>
+              </div>
+
+              <div id="bagFlap" class="bag-flap" aria-hidden="true">
+                <div class="bag-flap-inner">
+                  <div class="bag-film">
+                    <div class="bag-film-tex"></div>
+                    <div class="bag-wrinkle"></div>
+                    <div class="bag-spec"></div>
+                    <div class="bag-sheen"></div>
+                    <div class="bag-glaze"></div>
+                  </div>
+                  <div class="bag-crimp bag-crimp-top">
+                    <span class="tear-nick"></span>
+                    <span class="crimp-caption">{s.nickCaption}</span>
+                  </div>
+                  <div class="bag-torn-lip"></div>
+                </div>
+              </div>
+
+              <div id="packTearSeam" class="bag-tear-seam" aria-hidden="true">
+                <div class="tear-stretch"></div>
+                <div class="tear-head"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <canvas id="fxCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+    </div>
+
+    <div id="sealedControls" class="sealed-controls">
+      <button id="openPackBtn" class="tear-cta-btn" type="button">{s.tearBtn}</button>
+      <p class="gesture-hint">{s.tearHint}</p>
+      <p id="packErrorNote" class="pack-error-note" hidden></p>
+    </div>
+
+    <section id="revealPanel" class="reveal-panel" aria-live="polite">
+      <div class="inspect-bar">
+        <span id="tiltHint" class="tilt-hint">{s.inspectHint}</span>
+        <button id="toggle3dBtn" class="mode-pill-btn" type="button" aria-pressed="false" hidden></button>
+        <a id="fullscreen3dLink" class="mode-pill-link" href="#" target="_blank" rel="noopener" hidden></a>
+      </div>
+
+      <div id="revealIdentity" class="reveal-step step-name">
+        <h1 class="char-title">
+          <span id="charJpName"></span>
+          <span class="char-sep">/</span>
+          <span id="charEnName" class="char-en"></span>
+        </h1>
+        <p class="char-outfit">
+          <span id="charOutfit"></span><span id="recentWeightNote" class="weight-whisper" hidden></span>
+        </p>
+      </div>
+
+      <div id="revealIssue" class="reveal-step step-id">
+        <div class="issue-plaque">
+          <span id="issueKicker" class="issue-kicker">{s.issueToday}</span>
+          <code id="issueCode" class="issue-code">UMA-YYYYMMDD-XXXX</code>
+        </div>
+        <p class="holo-extras"><span id="streakLine">{s.streak(1)}</span><span id="stampLine" hidden></span></p>
+      </div>
+
+      <div id="revealActions" class="reveal-step step-actions">
+        <div class="primary-actions">
+          <button id="downloadPngBtn" class="btn-action btn-primary-gold" type="button">{s.savePng}</button>
+          <button id="copyLinkBtn" class="btn-action btn-secondary-glass" type="button">{s.copyLink}</button>
+        </div>
+        <div class="quiet-links">
+          <a id="charDbLink" class="quiet-link" href={prefix + "/characters/"}>{s.charLink}</a>
+          <button id="replayRitualBtn" class="quiet-link-btn" type="button" hidden>{s.replay}</button>
+          <a id="openOwnPackLink" class="quiet-link" href={ritualHref} hidden>{s.openOwn}</a>
+        </div>
+        <p id="dailyLockNote" class="daily-lock-note" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p id="copyrightLine" class="copyright-line">
+      {s.copyright}
+      <a href={prefix + '/'}>umamusumedb.com</a>
+    </p>
+  </footer>
+
+  <script is:inline id="holo-config" type="application/json" set:html={JSON.stringify(holoConfig)} />
+  <script is:inline src="/holo/pack-assets/card-orbit.js"></script>
+  <script is:inline src="/holo/pack-assets/pack.js"></script>
+</body>
+</html>

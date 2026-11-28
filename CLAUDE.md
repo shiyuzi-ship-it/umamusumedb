@@ -212,13 +212,13 @@ Uses the Cloudflare MCP (`execute` tool) and an upload JWT; the JWT is written t
 - `/guides/`, `/privacy-policy/`, `/terms-of-service/`, `/data-sources/` and every tool (incl. `/tools/character-comparison/`) exist in all five locales.
 
 
-## Daily holographic pack (ZH soft launch)
+## Daily holographic pack (all five locales)
 
-- Ritual UI: `/zh/holo/` (static, `noindex,follow`, no AdSense). Intro (canonical, indexable): `/zh/tools/daily-pack/`.
+- Ritual UI: `/holo/`, `/ja/holo/`, `/zh/holo/`, `/zh-tw/holo/`, `/ko/holo/` (static, `noindex,follow`, no AdSense). Intro (canonical, indexable, Auto ads allowed): `/tools/daily-pack/` and the same path under each locale prefix.
 - Share pages and draw API are a separate Worker, **not** Pages Functions: Worker `umamusumedb-holo`, D1 `umamusumedb-holo`.
-- Routes on the umamusumedb.com zone: `umamusumedb.com/api/holo*` and `umamusumedb.com/zh/holo/*` (the trailing `*` does not take `/zh/holo/` itself, which stays on Pages).
-- Source: `workers/holo/`. Secrets stay in the Worker (never commit). Deploy the Worker via Cloudflare MCP; keep deploying the static site with `scripts/pages-upload.mjs` as above, and always include `_redirects`.
-- Soft-launch pool is the three existing demo cards only. Do not add a top-nav item or ads on ritual/share pages.
+- Routes on the umamusumedb.com zone (and `www`): `*/api/holo*` plus `*/holo/*`, `*/ja/holo/*`, `*/zh/holo/*`, `*/zh-tw/holo/*`, `*/ko/holo/*`. The trailing `*` also matches the exact ritual path (`/zh/holo/` and the other locale roots); the Worker proxies those exact ritual GET/HEAD requests to `https://umamusumedb.pages.dev` so the static ritual UI stays on Pages. Issue-id paths such as `/zh/holo/UMA-YYYYMMDD-XXXX` are served by the Worker.
+- Source: `workers/holo/`. Secrets stay in the Worker (never commit). Deploy the Worker via Cloudflare MCP together with the static site (`scripts/pages-upload.mjs` as above, always include `_redirects`) so non-ZH share URLs are actually served.
+- Pool is the 274 official portraits, plus legacy path aliases (`daring_tact_107501`, `special_week_100101`, `gold_ship_100701`) so already-issued shares keep resolving. Do not put Auto ads on ritual/share pages.
 
 ## Common Issues and Solutions
 

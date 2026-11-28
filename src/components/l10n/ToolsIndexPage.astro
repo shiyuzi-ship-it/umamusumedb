@@ -5,6 +5,7 @@ import Breadcrumb from '@/components/Breadcrumb.astro';
 import type { Locale } from '@/lib/i18n';
 import { t } from '@/lib/ui-strings';
 import { path } from '@/lib/page-helpers';
+import { holoStrings } from '@/lib/holo-strings';
 interface Props { locale: Locale }
 const { locale: loc } = Astro.props;
 const tools: { href: string; name: string; desc: string }[] = [
@@ -15,9 +16,9 @@ const tools: { href: string; name: string; desc: string }[] = [
   { href: '/tools/character-comparison/', name: t(loc, 'toolCompare'), desc: t(loc, 'toolCompareDesc') },
   { href: '/tools/training-goals/', name: t(loc, 'toolGoals'), desc: t(loc, 'toolGoalsDesc') },
 ];
-if (loc === 'zh') {
-  tools.push({ href: '/tools/daily-pack/', name: '今日卡包', desc: '每日免费一包，随机一张纪念闪卡，可保存与分享。' });
-}
+const hs = holoStrings(loc);
+tools.push({ href: '/tools/daily-pack/', name: hs.toolsName, desc: hs.toolsDesc });
+
 ---
 <Layout title={t(loc, 'toolsTitle')} description={t(loc, 'toolsDesc')} itemList={tools.map((x) => ({ name: x.name, url: path(x.href, loc) }))}>
   <Header />

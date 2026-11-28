@@ -1,0 +1,10 @@
+---
+import RitualPage from '@/components/holo/RitualPage.astro';
+import { NEW_LOCALES } from '@/lib/new-locales';
+import type { Locale } from '@/lib/i18n';
+export function getStaticPaths() {
+  return NEW_LOCALES.map((lang) => ({ params: { lang } }));
+}
+const { lang } = Astro.params;
+---
+<RitualPage locale={lang as Locale} />

@@ -1,69 +1,42 @@
 /** Daily holographic pack — shared constants and date helpers (Asia/Shanghai). */
+import type { Locale } from './i18n';
+import { HOLO_POOL_SLUGS as GENERATED_SLUGS, HOLO_LEGACY_ALIASES, HOLO_ROSTER_COUNT } from './holo-pool.generated';
+
 export const HOLO_ISSUE_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 export const HOLO_ISSUE_RE = /^UMA-(\d{8})-([A-HJ-NP-Z2-9]{4})$/;
 export const HOLO_INTRO_PATH = '/tools/daily-pack/';
 export const HOLO_RITUAL_PATH = '/holo/';
 export const HOLO_FRAME_STREAK = 7;
 
-export type HoloCardId = 'daring_tact_107501' | 'special_week_100101' | 'gold_ship_100701';
+export { HOLO_LEGACY_ALIASES, HOLO_ROSTER_COUNT };
 
-export interface HoloCard {
-  id: HoloCardId;
-  weight: number;
-  name: string;
-  jpName: string;
-  outfit: string;
-  slug: string;
-  aura: 'moon' | 'gold' | 'rose';
-  posterGlow: string;
-  isRecentOutfit: boolean;
+export type HoloCardId = string;
+
+/** Site character slugs that have an official portrait in the daily pack. */
+export const HOLO_POOL_SLUGS = new Set<string>(GENERATED_SLUGS);
+
+/** Legacy soft-launch issue ids (demo stems) plus every current site slug. */
+export const HOLO_POOL_IDS = new Set<string>([...GENERATED_SLUGS, ...Object.keys(HOLO_LEGACY_ALIASES)]);
+
+export function resolveHoloCardId(id: string): string {
+  return HOLO_LEGACY_ALIASES[id] || id;
 }
 
-export const HOLO_CARD_POOL: HoloCard[] = [
-  {
-    id: 'daring_tact_107501',
-    weight: 40,
-    name: 'Daring Tact',
-    jpName: 'デアリングタクト',
-    outfit: '白光のレガリア',
-    slug: 'daring_tact_107501',
-    aura: 'moon',
-    posterGlow: '#233a63',
-    isRecentOutfit: true,
-  },
-  {
-    id: 'special_week_100101',
-    weight: 30,
-    name: 'Special Week',
-    jpName: 'スペシャルウィーク',
-    outfit: 'Special Dreamer / スペシャルドリーマー',
-    slug: 'special_week_special_dreamer',
-    aura: 'gold',
-    posterGlow: '#432746',
-    isRecentOutfit: false,
-  },
-  {
-    id: 'gold_ship_100701',
-    weight: 30,
-    name: 'Gold Ship',
-    jpName: 'ゴールドシップ',
-    outfit: 'Red Strife / レッドストライフ',
-    slug: 'gold_ship_red_strife',
-    aura: 'rose',
-    posterGlow: '#472233',
-    isRecentOutfit: false,
-  },
-];
+export function holoPrefix(locale: Locale): string {
+  return locale === 'en' ? '' : `/${locale}`;
+}
 
-export const HOLO_POOL_IDS = new Set(HOLO_CARD_POOL.map((c) => c.id));
-export const HOLO_POOL_SLUGS = new Set(HOLO_CARD_POOL.map((c) => c.slug));
+export function holoRitualHref(locale: Locale, issueId?: string): string {
+  const base = `${holoPrefix(locale)}${HOLO_RITUAL_PATH}`;
+  return issueId ? `${base}${encodeURIComponent(issueId)}` : base;
+}
+
+export function holoIntroHref(locale: Locale): string {
+  return `${holoPrefix(locale)}${HOLO_INTRO_PATH}`;
+}
 
 export function isHoloIssueId(value: string | null | undefined): boolean {
   return !!value && HOLO_ISSUE_RE.test(value);
-}
-
-export function getHoloCard(id: string): HoloCard | undefined {
-  return HOLO_CARD_POOL.find((c) => c.id === id);
 }
 
 /** Calendar date in Asia/Shanghai as YYYYMMDD. */

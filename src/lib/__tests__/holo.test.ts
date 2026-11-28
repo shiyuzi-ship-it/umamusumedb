@@ -2,8 +2,12 @@ import { describe, it, expect } from 'vitest';
 import {
   HOLO_ISSUE_ALPHABET,
   HOLO_ISSUE_RE,
-  HOLO_CARD_POOL,
+  HOLO_POOL_SLUGS,
+  HOLO_ROSTER_COUNT,
+  HOLO_LEGACY_ALIASES,
   isHoloIssueId,
+  holoRitualHref,
+  holoIntroHref,
   shanghaiYYYYMMDD,
   previousShanghaiDate,
   msUntilNextShanghaiMidnight,
@@ -25,13 +29,14 @@ describe('holo issue ids', () => {
     expect(isHoloIssueId('UMA-2026-K7P4')).toBe(false);
     expect(HOLO_ISSUE_RE.test('UMA-20261128-2345')).toBe(true);
   });
-  it('soft-launch pool is the three approved demo cards with 40/30/30 weights', () => {
-    expect(HOLO_CARD_POOL.map((c) => c.id)).toEqual([
-      'daring_tact_107501',
-      'special_week_100101',
-      'gold_ship_100701',
-    ]);
-    expect(HOLO_CARD_POOL.map((c) => c.weight)).toEqual([40, 30, 30]);
+  it('covers every official-portrait character and keeps soft-launch aliases', () => {
+    expect(HOLO_ROSTER_COUNT).toBe(274);
+    expect(HOLO_POOL_SLUGS.size).toBe(274);
+    expect(HOLO_POOL_SLUGS.has('special_week_special_dreamer')).toBe(true);
+    expect(HOLO_POOL_SLUGS.has('daring_tact_107501')).toBe(true);
+    expect(HOLO_LEGACY_ALIASES['daring_tact_107501']).toBe('daring_tact_107501');
+    expect(HOLO_LEGACY_ALIASES['special_week_100101']).toBe('special_week_special_dreamer');
+    expect(HOLO_LEGACY_ALIASES['gold_ship_100701']).toBe('gold_ship_red_strife');
   });
 });
 
@@ -59,7 +64,12 @@ describe('Asia/Shanghai day boundary', () => {
 });
 
 describe('locale availability', () => {
-  it('exposes the intro page only in Simplified Chinese', () => {
-    expect(availableLocalesFor('/tools/daily-pack/')).toEqual(['zh']);
+  it('exposes the intro and ritual routes in all five locales', () => {
+    expect(availableLocalesFor('/tools/daily-pack/')).toEqual(['en', 'ja', 'zh', 'zh-tw', 'ko']);
+    expect(availableLocalesFor('/holo/')).toEqual(['en', 'ja', 'zh', 'zh-tw', 'ko']);
+    expect(holoIntroHref('en')).toBe('/tools/daily-pack/');
+    expect(holoIntroHref('zh')).toBe('/zh/tools/daily-pack/');
+    expect(holoRitualHref('ja')).toBe('/ja/holo/');
+    expect(holoRitualHref('zh-tw', 'UMA-20261128-2AG2')).toBe('/zh-tw/holo/UMA-20261128-2AG2');
   });
 });
