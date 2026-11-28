@@ -67,8 +67,15 @@ function parseHoloRoute(pathname) {
     i = 1;
   }
   if (segs[i] !== 'holo') return null;
+  // /holo/cards/..., /holo/pack-assets/..., /holo/og/... are Pages static files.
+  // The /holo/* Worker route also matches those, so they must be proxied, not treated as shares.
+  if (segs.length > i + 2) return { locale, issueId: null, isRitual: false, isStatic: true };
   const issueId = segs[i + 1] ? decodeURIComponent(segs[i + 1]) : null;
-  return { locale, issueId, isRitual: !issueId };
+  if (!issueId) return { locale, issueId: null, isRitual: true, isStatic: false };
+  if (!ISSUE_RE.test(issueId) && locale === 'en') {
+    return { locale, issueId: null, isRitual: false, isStatic: true };
+  }
+  return { locale, issueId, isRitual: false, isStatic: false };
 }
 
 function shanghaiParts(date = new Date()) {
@@ -695,8 +702,8 @@ function isRitualPath(pathname) {
   return !!(route && route.isRitual);
 }
 
-async function proxyRitual(request, url, locale) {
-  const dest = new URL(ritualPath(locale), RITUAL_ORIGIN);
+async function proxyToPages(request, url, pathname) {
+  const dest = new URL(pathname, RITUAL_ORIGIN);
   dest.search = url.search;
   dest.hash = url.hash;
   const headers = new Headers(request.headers);
@@ -707,6 +714,14 @@ async function proxyRitual(request, url, locale) {
     headers,
     redirect: 'manual',
   });
+}
+
+async function proxyRitual(request, url, locale) {
+  return proxyToPages(request, url, ritualPath(locale));
+}
+
+async function proxyStaticHolo(request, url) {
+  return proxyToPages(request, url, url.pathname);
 }
 
 export default {
@@ -722,6 +737,9 @@ export default {
     }
 
     const route = parseHoloRoute(path);
+    if (route && route.isStatic && (request.method === 'GET' || request.method === 'HEAD')) {
+      return proxyStaticHolo(request, url);
+    }
     if (route && route.isRitual && (request.method === 'GET' || request.method === 'HEAD')) {
       return proxyRitual(request, url, route.locale);
     }

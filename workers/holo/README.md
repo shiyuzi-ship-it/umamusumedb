@@ -7,7 +7,7 @@ Cloudflare Worker + D1 backend for the daily holographic pack on umamusumedb.com
 - Routes on umamusumedb.com and www:
   - `*/api/holo*`
   - `*/holo/*`, `*/ja/holo/*`, `*/zh/holo/*`, `*/zh-tw/holo/*`, `*/ko/holo/*`
-  - Exact ritual paths (`/holo/`, `/ja/holo/`, `/zh/holo/`, `/zh-tw/holo/`, `/ko/holo/`) are proxied to Cloudflare Pages (`umamusumedb.pages.dev`)
+  - Exact ritual paths (`/holo/`, `/ja/holo/`, `/zh/holo/`, `/zh-tw/holo/`, `/ko/holo/`) and prefix-less static files under `/holo/` (cards, og, pack-assets, pool.json) are proxied to Cloudflare Pages (`umamusumedb.pages.dev`)
   - `/{locale}/holo/UMA-YYYYMMDD-XXXX` is served by this Worker
 
 ## Routes
