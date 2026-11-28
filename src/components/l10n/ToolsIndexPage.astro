@@ -7,12 +7,19 @@ import { t } from '@/lib/ui-strings';
 import { path } from '@/lib/page-helpers';
 interface Props { locale: Locale }
 const { locale: loc } = Astro.props;
-const tools = [
-  ['/tools/training-calculator/', 'toolTraining'], ['/tools/factor-calculator/', 'toolFactor'], ['/tools/skill-builder/', 'toolSkill'],
-  ['/tools/support-deck/', 'toolDeck'], ['/tools/character-comparison/', 'toolCompare'], ['/tools/training-goals/', 'toolGoals'],
+const tools: { href: string; name: string; desc: string }[] = [
+  { href: '/tools/training-calculator/', name: t(loc, 'toolTraining'), desc: t(loc, 'toolTrainingDesc') },
+  { href: '/tools/factor-calculator/', name: t(loc, 'toolFactor'), desc: t(loc, 'toolFactorDesc') },
+  { href: '/tools/skill-builder/', name: t(loc, 'toolSkill'), desc: t(loc, 'toolSkillDesc') },
+  { href: '/tools/support-deck/', name: t(loc, 'toolDeck'), desc: t(loc, 'toolDeckDesc') },
+  { href: '/tools/character-comparison/', name: t(loc, 'toolCompare'), desc: t(loc, 'toolCompareDesc') },
+  { href: '/tools/training-goals/', name: t(loc, 'toolGoals'), desc: t(loc, 'toolGoalsDesc') },
 ];
+if (loc === 'zh') {
+  tools.push({ href: '/tools/daily-pack/', name: '今日卡包', desc: '每日免费一包，随机一张纪念闪卡，可保存与分享。' });
+}
 ---
-<Layout title={t(loc, 'toolsTitle')} description={t(loc, 'toolsDesc')} itemList={tools.map(([h, k]) => ({ name: t(loc, k), url: path(h, loc) }))}>
+<Layout title={t(loc, 'toolsTitle')} description={t(loc, 'toolsDesc')} itemList={tools.map((x) => ({ name: x.name, url: path(x.href, loc) }))}>
   <Header />
   <main class="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
     <Breadcrumb items={[{ label: t(loc, 'toolsH1') }]} />
@@ -20,8 +27,8 @@ const tools = [
     <p class="text-gray-600 mb-2">{t(loc, 'toolsDesc')}</p>
     <p class="text-xs text-gray-500 mb-6">{t(loc, 'toolNote')}</p>
     <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {tools.map(([href, key]) => (
-        <li><a href={path(href, loc)} class="block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow h-full"><h2 class="text-xl font-bold mb-2">{t(loc, key)}</h2><p class="text-gray-600">{t(loc, key + 'Desc')}</p></a></li>
+      {tools.map((x) => (
+        <li><a href={path(x.href, loc)} class="block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow h-full"><h2 class="text-xl font-bold mb-2">{x.name}</h2><p class="text-gray-600">{x.desc}</p></a></li>
       ))}
     </ul>
   </main>

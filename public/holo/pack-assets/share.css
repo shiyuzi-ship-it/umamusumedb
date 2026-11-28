@@ -1,0 +1,86 @@
+:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "PingFang SC", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  background: #070b17;
+  color: #f5f7fc;
+}
+.share-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 20px;
+  font-size: 0.9rem;
+}
+.share-top a { color: #c9d4ea; text-decoration: none; }
+.share-top a:hover { color: #fae3ab; }
+.share-main {
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 8px 20px 48px;
+  text-align: center;
+}
+.share-card-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: min(86vw, 360px);
+}
+.share-card {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  filter: drop-shadow(0 18px 32px rgba(0,0,0,.55));
+}
+.has-week-frame::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 16px;
+  pointer-events: none;
+  border: 2px solid rgba(250, 227, 171, 0.85);
+  box-shadow: 0 0 0 4px rgba(7,11,23,.65), 0 0 24px rgba(250,227,171,.35);
+}
+.has-week-frame::before {
+  content: "七日纪念";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #fae3ab;
+  background: #070b17;
+  padding: 0 8px;
+  z-index: 1;
+}
+.share-names { margin: 20px 0 4px; font-size: 1.1rem; }
+.share-outfit, .share-meta { margin: 4px 0; color: #8b9bb5; font-size: 0.9rem; }
+.share-id { margin: 14px 0; }
+.share-id span { color: #8b9bb5; font-size: 0.8rem; margin-right: 8px; }
+.share-id code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: #fae3ab;
+  font-size: 1.05rem;
+}
+.share-actions, .share-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 12px 0;
+}
+.btn-gold, .btn-ghost {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+.btn-gold { background: linear-gradient(135deg,#f3d48a,#e0b15a); color: #2a1d08; }
+.btn-ghost { background: transparent; color: #e8eefc; border: 1px solid rgba(250,227,171,.4); }
+.share-foot { margin-top: 28px; color: #6d7c96; font-size: 0.75rem; line-height: 1.6; }

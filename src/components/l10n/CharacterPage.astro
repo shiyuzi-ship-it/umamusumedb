@@ -10,6 +10,7 @@ import { charName, charBaseName, cardName, skillName, skillDesc } from '@/lib/lo
 import { findSkill, otherOutfits, cardsOfCharacter } from '@/lib/related';
 import { skillLocales } from '@/lib/skill-class';
 import { STAT_KEYS, statLabel, gradeClass, path, formatBirthday } from '@/lib/page-helpers';
+import { HOLO_POOL_SLUGS } from '@/lib/holo';
 
 interface Props { locale: Locale; character: any }
 const { locale, character } = Astro.props;
@@ -80,6 +81,9 @@ const statTable: [string, any][] = [['3★', stats3], ...(stats4 ? [['4★', sta
             {rows.map(([k, v]) => (<div class="flex justify-between gap-3"><dt class="text-gray-500">{k}</dt><dd class="font-medium text-right">{v}</dd></div>))}
           </dl>
           <ScheduleLink locale={loc} pending={!character.release_date_global} class="block mt-3 text-sm text-uma-primary hover:underline" />
+          {loc === 'zh' && HOLO_POOL_SLUGS.has(character.id) && (
+            <a href="/zh/holo/" class="mt-4 inline-block text-sm px-3 py-2 rounded-full font-semibold text-amber-950 bg-gradient-to-r from-amber-300 to-amber-400 hover:from-amber-200 hover:to-amber-300">去拆今日卡包</a>
+          )}
         </div>
       </div>
 

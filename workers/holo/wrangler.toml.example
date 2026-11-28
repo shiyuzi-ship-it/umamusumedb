@@ -1,0 +1,15 @@
+# Deployed via Cloudflare MCP (no wrangler login). Keep this file as the
+# documented bindings for the umamusumedb-holo Worker.
+name = "umamusumedb-holo"
+main = "src/worker.js"
+compatibility_date = "2026-11-28"
+workers_dev = true
+
+# D1 database id is filled in after creation (not a secret).
+[[d1_databases]]
+binding = "DB"
+database_name = "umamusumedb-holo"
+database_id = "3e2f0f58-c73d-450b-b6ea-9033baebe3b5"
+
+# Secrets (set via the API, never committed):
+#   HOLO_SIGNING_SECRET

@@ -5,7 +5,7 @@ export const privacy: Docs = {
   en: {
     title: 'Privacy Policy - UmamusumeDB',
     description: 'Privacy Policy for UmamusumeDB - Learn how we collect, use, and protect your data.',
-    h1: 'Privacy Policy', updated: 'Last Updated: October 31, 2026',
+    h1: 'Privacy Policy', updated: 'Last Updated: November 28, 2026',
     sections: [
       { h: '1. Introduction', blocks: [
         { p: 'Welcome to UmamusumeDB ("we," "our," or "us"). We are committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your information.' },
@@ -17,14 +17,14 @@ export const privacy: Docs = {
         { h3: '2.2 Analytics Data' },
         { p: 'We use Google Analytics to understand how visitors use our site. Google Analytics collects information such as how often users visit our site, what pages they visit, and what other sites they used prior to coming to our site.' },
         { h3: '2.3 Information Stored in Your Browser' },
-        { p: 'Some tools store your settings or progress (for example, completed goals in the Training Goals tool) in your browser\'s local storage. This data stays on your device; we do not receive it. You can remove it at any time by clearing your browser\'s site data.' } ] },
+        { p: 'Some tools store your settings or progress (for example, completed goals in the Training Goals tool) in your browser\'s local storage. This data stays on your device; we do not receive it. You can remove it at any time by clearing your browser\'s site data.' }, { p: 'The optional daily holographic pack also uses essential signed cookies (to remember today\'s free issue and a visitor token for a consecutive-day streak and pass-on stamps) and may store a short-lived salted hash of your network address solely to apply a soft daily cap. This is not an account, and clearing site data resets the cookies on your device.' } ] },
       { h: '3. How We Use Your Information', blocks: [
         { p: 'We use the collected information for the following purposes:' },
         { ul: ['To provide and maintain our service', 'To improve and optimize our website', 'To analyze usage patterns and trends', 'To detect and prevent technical issues', 'To serve relevant advertisements through Google AdSense', 'To comply with legal obligations'] } ] },
       { h: '4. Cookies and Tracking Technologies', blocks: [
         { p: 'UmamusumeDB uses cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files stored on your device.' },
         { h3: 'Types of Cookies We Use:' },
-        { ul: ['<strong>Essential Cookies:</strong> Necessary for the website to function properly', '<strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website (Google Analytics)', '<strong>Advertising Cookies:</strong> Used to deliver relevant ads through Google AdSense'] },
+        { ul: ['<strong>Essential Cookies:</strong> Necessary for the website to function properly, including the daily holographic pack\'s one-per-day limit, streak, and pass-on stamps', '<strong>Analytics Cookies:</strong> Help us understand how visitors interact with our website (Google Analytics)', '<strong>Advertising Cookies:</strong> Used to deliver relevant ads through Google AdSense'] },
         { p: 'You can control cookies through your browser settings. However, disabling cookies may affect the functionality of our website.' } ] },
       { h: '5. Third-Party Services', blocks: [
         { h3: '5.1 Google Analytics' },
@@ -47,7 +47,7 @@ export const privacy: Docs = {
   ja: {
     title: 'プライバシーポリシー - UmamusumeDB',
     description: 'UmamusumeDB のプライバシーポリシー。取得する情報、その利用方法、保護の取り組みについて説明します。',
-    h1: 'プライバシーポリシー', updated: '最終更新日: 2026年10月31日',
+    h1: 'プライバシーポリシー', updated: '最終更新日: 2026年11月28日',
     sections: [
       { h: '1. はじめに', blocks: [
         { p: 'UmamusumeDB(以下「当サイト」)へようこそ。当サイトは、利用者のプライバシーを守り、情報の取得・利用・保護の方法を透明にお伝えすることを約束します。' },
@@ -59,14 +59,14 @@ export const privacy: Docs = {
         { h3: '2.2 アクセス解析データ' },
         { p: '訪問者が当サイトをどのように利用しているかを把握するため、Google アナリティクスを使用しています。Google アナリティクスは、サイトの訪問頻度、閲覧ページ、訪問前に利用していたサイトなどの情報を収集します。' },
         { h3: '2.3 ブラウザに保存される情報' },
-        { p: '一部のツールは、設定や進捗(例: 育成目標ツールの達成済み目標)をブラウザのローカルストレージに保存します。このデータは利用者のデバイス内にのみ保存され、当サイトには送信されません。ブラウザのサイトデータを削除すればいつでも消去できます。' } ] },
+        { p: '一部のツールは、設定や進捗(例: 育成目標ツールの達成済み目標)をブラウザのローカルストレージに保存します。このデータは利用者のデバイス内にのみ保存され、当サイトには送信されません。ブラウザのサイトデータを削除すればいつでも消去できます。' }, { p: '任意参加の「今日のカードパック」（ホログラム記念カード）では、当日の無料配布分と連続日数・パスオン記録のために必須の署名付き Cookie を使用し、1 日あたりの上限を緩やかに適用する目的でのみ、ネットワークアドレスの短期間のソルト付きハッシュを保存することがあります。アカウント登録は行いません。サイトデータを削除すると、端末上の Cookie はリセットされます。' } ] },
       { h: '3. 情報の利用目的', blocks: [
         { p: '取得した情報は、次の目的で利用します。' },
         { ul: ['サービスの提供と維持', 'ウェブサイトの改善と最適化', '利用状況や傾向の分析', '技術的な問題の検出と防止', 'Google AdSense による関連性の高い広告の配信', '法令上の義務の履行'] } ] },
       { h: '4. Cookie とトラッキング技術', blocks: [
         { p: '当サイトは、閲覧体験を向上させるために Cookie および類似のトラッキング技術を使用します。Cookie は、利用者のデバイスに保存される小さなデータファイルです。' },
         { h3: '使用する Cookie の種類:' },
-        { ul: ['<strong>必須 Cookie:</strong> ウェブサイトが正しく動作するために必要です', '<strong>解析用 Cookie:</strong> 訪問者が当サイトをどう利用しているかを把握するために使用します(Google アナリティクス)', '<strong>広告用 Cookie:</strong> Google AdSense で関連性の高い広告を配信するために使用します'] },
+        { ul: ['<strong>必須 Cookie:</strong> ウェブサイトが正しく動作するために必要です（デイリーパックの 1 日 1 回制限、連続日数、パスオン記録を含む）', '<strong>解析用 Cookie:</strong> 訪問者が当サイトをどう利用しているかを把握するために使用します(Google アナリティクス)', '<strong>広告用 Cookie:</strong> Google AdSense で関連性の高い広告を配信するために使用します'] },
         { p: 'Cookie はブラウザの設定で制御できます。ただし、Cookie を無効にすると当サイトの一部機能に影響が出る場合があります。' } ] },
       { h: '5. 第三者サービス', blocks: [
         { h3: '5.1 Google アナリティクス' },
@@ -89,7 +89,7 @@ export const privacy: Docs = {
   zh: {
     title: '隐私政策 - UmamusumeDB',
     description: 'UmamusumeDB 隐私政策:了解我们如何收集、使用和保护您的数据。',
-    h1: '隐私政策', updated: '最后更新:2026 年 10 月 31 日',
+    h1: '隐私政策', updated: '最后更新:2026 年 11 月 28 日',
     sections: [
       { h: '1. 简介', blocks: [
         { p: '欢迎来到 UmamusumeDB(以下称“我们”)。我们致力于保护您的隐私,并公开透明地说明我们如何收集、使用和保护您的信息。' },
@@ -101,14 +101,14 @@ export const privacy: Docs = {
         { h3: '2.2 分析数据' },
         { p: '我们使用 Google Analytics 来了解访客如何使用本站。Google Analytics 会收集访客访问本站的频率、浏览的页面以及访问前使用过的其他网站等信息。' },
         { h3: '2.3 存储在浏览器中的信息' },
-        { p: '部分工具会将您的设置或进度(例如“育成目标”工具中已完成的目标)保存在浏览器的本地存储中。这些数据只保存在您的设备上,我们不会收到。您可以随时通过清除浏览器的网站数据将其删除。' } ] },
+        { p: '部分工具会将您的设置或进度(例如“育成目标”工具中已完成的目标)保存在浏览器的本地存储中。这些数据只保存在您的设备上,我们不会收到。您可以随时通过清除浏览器的网站数据将其删除。' }, { p: '可选的「今日卡包」功能还会使用必要的签名 Cookie（用于记住当天已发放的免费闪卡，以及连续天数与“传递”计数），并可能保存网络地址的加盐短时哈希，仅用于软性的每日次数上限。这不是账户系统；清除网站数据会重置您设备上的相关 Cookie。' } ] },
       { h: '3. 我们如何使用您的信息', blocks: [
         { p: '我们将收集到的信息用于以下目的:' },
         { ul: ['提供和维护我们的服务', '改进和优化我们的网站', '分析使用模式和趋势', '检测和预防技术问题', '通过 Google AdSense 展示相关广告', '履行法律义务'] } ] },
       { h: '4. Cookie 和跟踪技术', blocks: [
         { p: 'UmamusumeDB 使用 Cookie 及类似的跟踪技术来改善您的浏览体验。Cookie 是存储在您设备上的小型数据文件。' },
         { h3: '我们使用的 Cookie 类型:' },
-        { ul: ['<strong>必要 Cookie:</strong>网站正常运行所必需', '<strong>分析 Cookie:</strong>帮助我们了解访客如何与网站互动(Google Analytics)', '<strong>广告 Cookie:</strong>用于通过 Google AdSense 投放相关广告'] },
+        { ul: ['<strong>必要 Cookie:</strong>网站正常运行所必需（包括今日卡包的每日一次限制、连续天数和传递计数）', '<strong>分析 Cookie:</strong>帮助我们了解访客如何与网站互动(Google Analytics)', '<strong>广告 Cookie:</strong>用于通过 Google AdSense 投放相关广告'] },
         { p: '您可以通过浏览器设置控制 Cookie。但禁用 Cookie 可能会影响本网站的部分功能。' } ] },
       { h: '5. 第三方服务', blocks: [
         { h3: '5.1 Google Analytics' },
@@ -131,7 +131,7 @@ export const privacy: Docs = {
   ko: {
     title: '개인정보처리방침 - UmamusumeDB',
     description: 'UmamusumeDB 개인정보처리방침: 수집하는 정보, 이용 방법, 보호 방법을 안내합니다.',
-    h1: '개인정보처리방침', updated: '최종 수정일: 2026년 10월 31일',
+    h1: '개인정보처리방침', updated: '최종 수정일: 2026년 11월 28일',
     sections: [
       { h: '1. 소개', blocks: [
         { p: 'UmamusumeDB(이하 "당사이트")에 오신 것을 환영합니다. 당사이트는 이용자의 개인정보를 보호하고, 정보를 수집·이용·보호하는 방식을 투명하게 알리기 위해 최선을 다합니다.' },
@@ -143,14 +143,14 @@ export const privacy: Docs = {
         { h3: '2.2 분석 데이터' },
         { p: '방문자가 사이트를 어떻게 이용하는지 파악하기 위해 Google 애널리틱스를 사용합니다. Google 애널리틱스는 사이트 방문 빈도, 방문한 페이지, 방문 전에 이용한 다른 사이트 등의 정보를 수집합니다.' },
         { h3: '2.3 브라우저에 저장되는 정보' },
-        { p: '일부 도구는 설정이나 진행 상황(예: 육성 목표 도구의 완료한 목표)을 브라우저의 로컬 저장소에 저장합니다. 이 데이터는 이용자의 기기에만 남으며 당사이트로 전송되지 않습니다. 브라우저의 사이트 데이터를 삭제하면 언제든 지울 수 있습니다.' } ] },
+        { p: '일부 도구는 설정이나 진행 상황(예: 육성 목표 도구의 완료한 목표)을 브라우저의 로컬 저장소에 저장합니다. 이 데이터는 이용자의 기기에만 남으며 당사이트로 전송되지 않습니다. 브라우저의 사이트 데이터를 삭제하면 언제든 지울 수 있습니다.' }, { p: '선택적으로 제공되는 오늘의 홀로그램 카드 팩은 당일의 무료 발급분과 연속 일수·전달 스탬프를 기억하기 위한 필수 서명 쿠키를 사용하며, 일일 한도를 부드럽게 적용할 목적으로만 네트워크 주소의 짧은 기간 솔트 해시를 저장할 수 있습니다. 계정은 만들지 않으며, 사이트 데이터를 삭제하면 기기의 쿠키가 초기화됩니다.' } ] },
       { h: '3. 정보의 이용 목적', blocks: [
         { p: '수집한 정보는 다음 목적으로 이용합니다.' },
         { ul: ['서비스 제공 및 유지', '웹사이트 개선 및 최적화', '이용 패턴과 추세 분석', '기술적 문제의 탐지 및 예방', 'Google AdSense를 통한 관련 광고 게재', '법적 의무 준수'] } ] },
       { h: '4. 쿠키 및 추적 기술', blocks: [
         { p: 'UmamusumeDB는 이용 경험을 향상시키기 위해 쿠키 및 유사한 추적 기술을 사용합니다. 쿠키는 이용자의 기기에 저장되는 작은 데이터 파일입니다.' },
         { h3: '사용하는 쿠키의 종류:' },
-        { ul: ['<strong>필수 쿠키:</strong> 웹사이트가 제대로 작동하는 데 필요합니다', '<strong>분석 쿠키:</strong> 방문자가 웹사이트를 어떻게 이용하는지 파악하는 데 도움이 됩니다(Google 애널리틱스)', '<strong>광고 쿠키:</strong> Google AdSense를 통해 관련 광고를 제공하는 데 사용됩니다'] },
+        { ul: ['<strong>필수 쿠키:</strong> 웹사이트가 제대로 작동하는 데 필요합니다(오늘의 카드 팩의 하루 1회 한도, 연속 일수, 전달 스탬프 포함)', '<strong>분석 쿠키:</strong> 방문자가 웹사이트를 어떻게 이용하는지 파악하는 데 도움이 됩니다(Google 애널리틱스)', '<strong>광고 쿠키:</strong> Google AdSense를 통해 관련 광고를 제공하는 데 사용됩니다'] },
         { p: '쿠키는 브라우저 설정에서 제어할 수 있습니다. 다만 쿠키를 비활성화하면 웹사이트의 일부 기능에 영향이 있을 수 있습니다.' } ] },
       { h: '5. 제3자 서비스', blocks: [
         { h3: '5.1 Google 애널리틱스' },

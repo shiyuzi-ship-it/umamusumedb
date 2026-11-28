@@ -1,2 +1,5 @@
 /img/*
   Cache-Control: public, max-age=2592000
+
+/holo/*
+  Cache-Control: public, max-age=2592000

@@ -50,6 +50,17 @@ const rel = releases.map((r) => {
       <p class="text-xs text-gray-500 mt-3">{t(loc, 'serverNote')}</p>
     </div>
 
+
+    {loc === 'zh' && (
+      <aside class="mb-8 rounded-xl border border-amber-200/80 bg-gradient-to-r from-amber-50 to-rose-50 px-4 py-3 sm:px-5 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <div class="font-semibold text-gray-900">今日卡包</div>
+          <p class="text-sm text-gray-600">每日免费一包，随机一张纪念闪卡，带唯一编号。</p>
+        </div>
+        <a href="/zh/holo/" class="inline-block text-center px-4 py-2 rounded-full font-semibold text-amber-950 bg-gradient-to-r from-amber-300 to-amber-400 hover:from-amber-200 hover:to-amber-300 text-sm whitespace-nowrap">拆开今日卡包</a>
+      </aside>
+    )}
+
     <section class="mb-10">
       <div class="flex justify-between items-baseline mb-3"><h2 class="text-2xl font-display">{t(loc, 'newestChars')}</h2><a href={path('/characters/', loc)} class="text-sm text-uma-primary hover:underline">{t(loc, 'viewAll')}</a></div>
       <ul class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">

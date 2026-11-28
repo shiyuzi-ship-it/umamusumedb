@@ -211,6 +211,15 @@ Uses the Cloudflare MCP (`execute` tool) and an upload JWT; the JWT is written t
 - `/links/` (all 5 locales; content in `src/lib/legal/links.ts`, rendered by `DocPage` kind `links`) is the friends / link-exchange page (contact hello@umamusumedb.com). Partner links are plain followed links (`rel="noopener"` only; we never sell links). Footer has the entry in every locale; the `ja` footer also links the partner directly (ウマ娘うまぴょい速報). Add a partner by editing `links.ts` (all four authored locales) and, if wanted, `Footer.astro`.
 - `/guides/`, `/privacy-policy/`, `/terms-of-service/`, `/data-sources/` and every tool (incl. `/tools/character-comparison/`) exist in all five locales.
 
+
+## Daily holographic pack (ZH soft launch)
+
+- Ritual UI: `/zh/holo/` (static, `noindex,follow`, no AdSense). Intro (canonical, indexable): `/zh/tools/daily-pack/`.
+- Share pages and draw API are a separate Worker, **not** Pages Functions: Worker `umamusumedb-holo`, D1 `umamusumedb-holo`.
+- Routes on the umamusumedb.com zone: `umamusumedb.com/api/holo*` and `umamusumedb.com/zh/holo/*` (the trailing `*` does not take `/zh/holo/` itself, which stays on Pages).
+- Source: `workers/holo/`. Secrets stay in the Worker (never commit). Deploy the Worker via Cloudflare MCP; keep deploying the static site with `scripts/pages-upload.mjs` as above, and always include `_redirects`.
+- Soft-launch pool is the three existing demo cards only. Do not add a top-nav item or ads on ritual/share pages.
+
 ## Common Issues and Solutions
 
 ### Data Not Loading

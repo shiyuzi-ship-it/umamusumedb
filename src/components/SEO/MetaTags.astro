@@ -11,6 +11,8 @@ export interface Props {
   /** Absolute URLs of every real translation of this page (including the page itself). Empty/single => no hreflang block. */
   alternates?: Partial<Record<Locale, string>>;
   noindex?: boolean;
+  /** Use summary_large_image even when the image is not the default OG. */
+  largeOg?: boolean;
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   locale = 'en',
   alternates = {},
   noindex = false,
+  largeOg = false,
 } = Astro.props;
 
 const fullTitle = title.includes('UmamusumeDB') ? title : `${title} | UmamusumeDB`;
@@ -51,7 +54,7 @@ const ogAlternates = altEntries.filter(([l]) => l !== locale).map(([l]) => LOCAL
 <meta property="og:locale" content={LOCALE_META[locale].og} />
 {showHreflang && ogAlternates.map((alt) => <meta property="og:locale:alternate" content={alt} />)}
 
-<meta name="twitter:card" content={isDefaultOg ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:card" content={(isDefaultOg || largeOg) ? 'summary_large_image' : 'summary'} />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={image} />
